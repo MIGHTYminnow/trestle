@@ -13,7 +13,7 @@
  *
  */
  
-function mm_custom_defaults( $defaults ) {
+function trestle_custom_defaults( $defaults ) {
  
 	$defaults['auto_nav'] = '0';
 	$defaults['include_home_link'] = '1';
@@ -21,14 +21,14 @@ function mm_custom_defaults( $defaults ) {
  
 	return $defaults;
 }
-add_filter( 'genesis_theme_settings_defaults', 'mm_custom_defaults' );
+add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
  
  
 /**
  * Sanitization
  */
  
-function mm_register_social_sanitization_filters() {
+function trestle_register_social_sanitization_filters() {
 	genesis_add_option_filter( 
 		'no_html', 
 		GENESIS_SETTINGS_FIELD,
@@ -46,7 +46,7 @@ function mm_register_social_sanitization_filters() {
 		)
 	);
 }
-add_action( 'genesis_settings_sanitizer_init', 'mm_register_social_sanitization_filters' );
+add_action( 'genesis_settings_sanitizer_init', 'trestle_register_social_sanitization_filters' );
  
  
 /**
@@ -55,17 +55,17 @@ add_action( 'genesis_settings_sanitizer_init', 'mm_register_social_sanitization_
  * @param string $_genesis_theme_settings_pagehook
  */
  
-function mm_register_settings_box( $_genesis_theme_settings_pagehook ) {
-	add_meta_box('mm-navigation-settings', 'Primary Navigation', 'mm_navigation_settings_box', $_genesis_theme_settings_pagehook, 'main', 'high');
-	add_meta_box('mm-footer-settings', 'Footer', 'mm_footer_settings_box', $_genesis_theme_settings_pagehook, 'main', 'high');
+function trestle_register_settings_box( $_genesis_theme_settings_pagehook ) {
+	add_meta_box('mm-navigation-settings', 'Primary Navigation', 'trestle_navigation_settings_box', $_genesis_theme_settings_pagehook, 'main', 'high');
+	// add_meta_box('mm-footer-settings', 'Footer', 'trestle_footer_settings_box', $_genesis_theme_settings_pagehook, 'main', 'high');
 }
-add_action('genesis_theme_settings_metaboxes', 'mm_register_settings_box');
+add_action('genesis_theme_settings_metaboxes', 'trestle_register_settings_box');
 
 /**
  * Create Navigation Metabox
  */
  
-function mm_navigation_settings_box() {
+function trestle_navigation_settings_box() {
 	?>
 	<p>
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option('auto_nav') ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[auto_nav]">Automatically generate nav menu (replaces custom/manual menu with auto-generated menu)</label><br />
@@ -78,7 +78,7 @@ function mm_navigation_settings_box() {
  * Create Footer Metabox
  */
  
-function mm_footer_settings_box() {
+function trestle_footer_settings_box() {
 	?>
 	<p>
 		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[footer_text]">Custom footer text</label><br />

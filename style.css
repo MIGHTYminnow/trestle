@@ -137,6 +137,8 @@ body {
 a,
 button,
 input:focus,
+input[type="text"],
+input[type="search"],
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
@@ -147,6 +149,8 @@ textarea:focus,
 	-ms-transition:     all 0.1s ease-in-out;
 	-o-transition:      all 0.1s ease-in-out;
 	transition:         all 0.1s ease-in-out;
+	-webkit-appearance: none;
+	-moz-appearance: none;
 }
 
 ::-moz-selection {
@@ -860,12 +864,6 @@ Site Navigation
 	text-align: center;
 }
 
-.nav-primary {
-	margin: 0 20px;
-	border-radius: 3px;
-	overflow: hidden;
-}
-
 .genesis-nav-menu {
 	clear: both;
 	color: #999;
@@ -975,7 +973,14 @@ Site Navigation
 --------------------------------------------- */
 
 .nav-primary {
+	margin: 0 20px;
+	border-radius: 3px;
+	overflow: hidden;
 	background-color: #333;
+}
+
+.nav-primary .genesis-nav-menu {
+	display: none;
 }
 
 .nav-primary .genesis-nav-menu li {
@@ -1011,7 +1016,7 @@ Site Navigation
 	text-align: center;
 }
 
-.primary-nav .genesis-nav-menu ul ul a {
+.nav-primary .genesis-nav-menu ul ul a {
 	padding-left: 40px;
 }
 
@@ -1458,6 +1463,21 @@ Media Queries
 	.footer-widgets-1 {
 		margin-right: 40px;
 		margin-right: 4rem;
+	}
+
+	.archive-description {
+		padding: 40px 40px 24px;
+		padding: 4rem 4rem 2.4rem;
+	}
+
+	.author-box {
+		padding: 40px;
+		padding: 4rem;
+	}
+
+	.comment-respond, .entry-comments, .entry-pings {
+		padding: 40px;
+		padding: 4rem;
 	}
 
 	.entry-footer .entry-meta {

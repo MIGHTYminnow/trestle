@@ -38,7 +38,7 @@ function header_actions() {
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700' );
 
 	// Custom jQuery
-	wp_enqueue_script( 'mm_jquery', get_stylesheet_directory_uri() . '/includes/mm-jquery.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'trestle_jquery', get_stylesheet_directory_uri() . '/includes/trestle-jquery.js', array( 'jquery' ), '1.0', true );
 
 }
 add_action( 'wp_enqueue_scripts', 'header_actions');
@@ -203,13 +203,16 @@ add_action( 'tgmpa_register', 'register_required_plugins' );
  * Auto & Mobile Navigation
 ===========================================*/
 
-function mm_nav_modifications() {
+function trestle_nav_modifications() {
 
 	// Auto-generate nav if Genesis theme setting is checked
 	if ( 1 == genesis_get_option( 'auto_nav' ) ) {
 
+		// Remove existing nav
+		remove_action( 'genesis_after_header', 'genesis_do_nav' );
+
 		// Replace existing nav with auto-generated nav
-		function mm_auto_nav() {
+		function trestle_auto_nav() {
 			
 			$args = array(
 				'echo'           => false,
@@ -232,30 +235,31 @@ function mm_nav_modifications() {
 			$nav_markup_close  = genesis_structural_wrap( 'menu-primary', 'close', 0 );
 			$nav_markup_close .= genesis_html5() ? '</nav>' : '</div>';
 
-			echo apply_filters ( 'mm_do_nav', $nav_markup_open . $nav . $nav_markup_close );
+			echo apply_filters ( 'trestle_do_nav', $nav_markup_open . $nav . $nav_markup_close );
 		}
-		add_action( 'genesis_do_nav', 'mm_auto_nav', 10 );
+		add_action( 'genesis_after_header', 'trestle_auto_nav', 10 );
 
 	}
 
 	// Add mobile menu button
-	function mm_add_mobile_nav() {
-		echo '<a id="menu-button" class="button" href="javascript: void()"><i class="icon-list-ul"></i>&nbsp;&nbsp;Navigation</a>';
+	function trestle_add_mobile_nav() {
+		if ( 1 == genesis_get_option( 'auto_nav' ) || has_nav_menu( 'primary' ) )
+			echo '<a id="menu-button" class="button" href="javascript: void()"><i class="icon-list-ul"></i>&nbsp;&nbsp;Navigation</a>';
 	}
-    add_action( 'genesis_after_header', 'mm_add_mobile_nav', 0 );
+    add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
             	
            
 }
-add_action( 'init', 'mm_nav_modifications' );
+add_action( 'init', 'trestle_nav_modifications' );
 
 
 /*===========================================
  * Footer
 ===========================================*/
-function mm_custom_footer($output) {
+function trestle_custom_footer($output) {
 	return $output . '<p>[footer_childtheme_link before=""] by <a href="http://mightyminnow.com">MIGHTYminnow</a></p>';
 }
-add_filter( 'genesis_footer_output', 'mm_custom_footer' );
+add_filter( 'genesis_footer_output', 'trestle_custom_footer' );
 /*===========================================
  * Shortcodes
 ===========================================*/
