@@ -173,6 +173,40 @@ a img {
 	margin-bottom: -0.4rem;
 }
 
+a.emailLink:before {
+	content: url(/wp-content/themes/trestle/images/email.png);
+	margin: 0 4px 0 0;
+	white-space: nowrap;
+}
+
+a.pdfLink:before {
+	content: url(/wp-content/themes/trestle/images/pdf.png);
+	margin: 0 4px 0 0;
+	white-space: nowrap;
+}
+
+a.docLink:before {
+	content: url(/wp-content/themes/trestle/images/doc.png);
+	margin: 0 4px 0 0;
+	white-space: nowrap;
+}
+
+a.externalLink:after {
+	content: url(/wp-content/themes/trestle/images/external.png);
+	margin: 0 0 0 4px;
+	white-space: nowrap;
+}
+
+a.imageLink,
+a.imageLink:hover {
+	border-bottom: none !important;
+	text-decoration: none !important;
+}
+
+a.imageLink:before {
+	display: none;
+}
+
 a:hover {
 	color: #333;
 }
@@ -199,19 +233,21 @@ blockquote::before {
 }
 
 blockquote {
-	margin: 40px 40px 24px;
-	margin: 4rem 4rem 2.4rem;
+	margin: 20px 40px 24px 55px;
+	margin: 2rem 4rem 2.4rem 5.5rem;
 }
 
 blockquote::before {
 	content: "\201C";
 	display: block;
-	font-size: 30px;
-	font-size: 3rem;
+	font-family: Georgia;
+	font-size: 60px;
+	font-size: 6rem;
+	line-height: 1;
 	height: 0;
-	left: -20px;
+	left: -30px;
 	position: relative;
-	top: -10px;
+	top: 0px;
 }
 
 .entry-content code {
@@ -300,8 +336,8 @@ textarea {
 	color: #999;
 	font-size: 14px;
 	font-size: 1.4rem;
-	padding: 15px;
-	padding: 1.5rem;
+	padding: 16px;
+	padding: 1.6rem;
 	width: 100%;
 }
 
@@ -327,7 +363,7 @@ input[type="submit"],
 .button,
 .entry-content .button {
 	background-color: #333;
-	border: none;
+	border: 1px solid #333;
 	box-shadow: none;
 	color: #fff;
 	cursor: pointer;
@@ -344,6 +380,7 @@ input:hover[type="submit"],
 .button:hover,
 .entry-content .button:hover {
 	background-color: #f15123;
+	border-color: #f15123;
 }
 
 .entry-content .button:hover {
@@ -931,8 +968,7 @@ Site Navigation
 
 .genesis-nav-menu .sub-menu a,
 .genesis-nav-menu ul a {
-	border: 1px solid #eee;
-	border-bottom: none;
+	border-top: 1px solid #eee;
 	padding: 10px 20px;
 	padding: 1rem 2rem;
 	position: relative;

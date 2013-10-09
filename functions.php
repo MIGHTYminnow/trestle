@@ -8,7 +8,7 @@
 include_once( get_template_directory() . '/lib/init.php' );
 
 // Other includes
-require_once dirname( __FILE__ ) . '/includes/admin.php';
+require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
 
 // Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Trestle' );
@@ -32,16 +32,25 @@ add_theme_support( 'genesis-footer-widgets', 3 );
  * Header styles and scripts
 ===========================================*/
 
-function header_actions() {
+function trestle_header_actions() {
 
 	// Google fonts
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700' );
 
 	// Custom jQuery
-	wp_enqueue_script( 'trestle_jquery', get_stylesheet_directory_uri() . '/includes/trestle-jquery.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'trestle_jquery', get_stylesheet_directory_uri() . '/includes/js/trestle-jquery.js', array( 'jquery' ), '1.0', true );
 
 }
-add_action( 'wp_enqueue_scripts', 'header_actions');
+add_action( 'wp_enqueue_scripts', 'trestle_header_actions');
+
+
+/*===========================================
+ * Admin styles and scripts
+===========================================*/
+function trestle_admin_actions() {
+    add_editor_style( get_stylesheet_directory_uri() . '/includes/admin/admin.css' );
+}
+add_action( 'init', 'trestle_admin_actions' );
 
 
 /*===========================================
@@ -51,10 +60,10 @@ add_action( 'wp_enqueue_scripts', 'header_actions');
 ===========================================*/
 
 // Include plugin activation class
-require_once dirname( __FILE__ ) . '/includes/class-tgm-plugin-activation.php';
+require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activation.php';
 
 // Fetch & install plugins from wordpress.org
-function register_required_plugins() {
+function trestle_register_required_plugins() {
 
 	$plugins = array(
 
@@ -81,6 +90,12 @@ function register_required_plugins() {
 		array(
 			'name' 		=> 'Exclude Pages',
 			'slug' 		=> 'exclude-pages',
+			'required' 	=> true,
+		),
+
+		array(
+			'name' 		=> 'Genesis Featured Widget Amplified',
+			'slug' 		=> 'genesis-featured-widget-amplified',
 			'required' 	=> true,
 		),
 
@@ -127,12 +142,6 @@ function register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Genesis Featured Widget Amplified',
-			'slug' 		=> 'genesis-featured-widget-amplified',
-			'required' 	=> true,
-		),
-
-		array(
 			'name' 		=> 'Respond.js',
 			'slug' 		=> 'respondjs',
 			'required' 	=> true,
@@ -141,6 +150,12 @@ function register_required_plugins() {
 		array(
 			'name' 		=> 'Simple Image Sizes',
 			'slug' 		=> 'simple-image-sizes',
+			'required' 	=> true,
+		),
+
+		array(
+			'name' 		=> 'Simple Section Navigation',
+			'slug' 		=> 'simple-section-navigation',
 			'required' 	=> true,
 		),
 
@@ -196,7 +211,7 @@ function register_required_plugins() {
 	tgmpa( $plugins, $config );
 
 }
-add_action( 'tgmpa_register', 'register_required_plugins' );
+add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
 
 
 /*===========================================
@@ -254,12 +269,19 @@ add_action( 'init', 'trestle_nav_modifications' );
 
 
 /*===========================================
+ * Actions & Filters
+===========================================*/
+
+
+/*===========================================
  * Footer
 ===========================================*/
 function trestle_custom_footer($output) {
 	return $output . '<p>[footer_childtheme_link before=""] by <a href="http://mightyminnow.com">MIGHTYminnow</a></p>';
 }
 add_filter( 'genesis_footer_output', 'trestle_custom_footer' );
+
+
 /*===========================================
  * Shortcodes
 ===========================================*/
