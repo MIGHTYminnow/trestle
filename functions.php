@@ -94,6 +94,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'FancyBox for WordPress',
+			'slug' 		=> 'fancybox-for-wordpress',
+			'required' 	=> true,
+		),
+
+		array(
 			'name' 		=> 'Genesis Featured Widget Amplified',
 			'slug' 		=> 'genesis-featured-widget-amplified',
 			'required' 	=> true,
@@ -277,7 +283,7 @@ add_action( 'init', 'trestle_nav_modifications' );
  * Footer
 ===========================================*/
 function trestle_custom_footer($output) {
-	return $output . '<p>[footer_childtheme_link before=""] by <a href="http://mightyminnow.com">MIGHTYminnow</a></p>';
+	return $output . '<p class="mm">[footer_childtheme_link before=""] by <a href="http://mightyminnow.com">MIGHTYminnow</a></p>';
 }
 add_filter( 'genesis_footer_output', 'trestle_custom_footer' );
 

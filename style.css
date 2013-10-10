@@ -328,16 +328,21 @@ img {
 
 input,
 select,
+textarea,
+button,
+.button {
+	padding: 16px 24px;
+	padding: 1.6rem 2.4rem;
+}
+
+input,
+select,
 textarea {
 	background-color: #fff;
 	border: 1px solid #ddd;
 	border-radius: 3px;
 	box-shadow: 1px 1px 3px #eee inset;
 	color: #999;
-	font-size: 14px;
-	font-size: 1.4rem;
-	padding: 16px;
-	padding: 1.6rem;
 	width: 100%;
 }
 
@@ -367,8 +372,6 @@ input[type="submit"],
 	box-shadow: none;
 	color: #fff;
 	cursor: pointer;
-	padding: 16px 24px;
-	padding: 1.6rem 2.4rem;
 	text-transform: uppercase;
 	width: auto;
 }
@@ -395,6 +398,40 @@ input:hover[type="submit"],
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button {
 	display: none;
+}
+
+/* Button Colors */
+.red {
+	background-color: #f15123;
+	border-color: #f15123;
+}
+
+.red:hover {
+	background-color: #333;
+	border-color: #333;
+	color: #FFF;
+}
+
+.blue {
+	background-color: #0971B2;
+	border-color: #0971B2;
+}
+
+.blue:hover {
+	background-color: #333;
+	border-color: #333;
+	color: #FFF;
+}
+
+.green {
+	background-color: #00A476;
+	border-color: #00A476;
+}
+
+.green:hover {
+	background-color: #333;
+	border-color: #333;
+	color: #FFF;
 }
 
 /* Tables
@@ -968,7 +1005,8 @@ Site Navigation
 
 .genesis-nav-menu .sub-menu a,
 .genesis-nav-menu ul a {
-	border-top: 1px solid #eee;
+	border: 1px solid #eee;
+	border-bottom: none;
 	padding: 10px 20px;
 	padding: 1rem 2rem;
 	position: relative;
@@ -1034,7 +1072,8 @@ Site Navigation
 
 .nav-primary a:hover,
 .nav-primary .current-menu-item > a,
-.nav-primary .current_page_item > a {
+.nav-primary .current_page_item > a,
+.nav-primary .current_page_ancestor > a {
 	color: #fff;
 }
 
@@ -1057,8 +1096,10 @@ Site Navigation
 }
 
 .nav-primary .sub-menu a:hover,
-.nav-primary ul ul a:hover {
-	color: #333;
+.nav-primary ul ul a:hover,
+.nav-primary ul ul .current_page_item > a,
+.nav-primary ul ul .current_page_ancestor > a  {
+	color: #222;
 }
 
 /* Secondary Navigation
@@ -1100,13 +1141,18 @@ Content Area
 .entry-content ol,
 .entry-content p,
 .entry-content ul,
+.ez-home-container-area ol,
+.ez-home-container-area p,
+.ez-home-container-area ul,
 .quote-caption {
 	margin-bottom: 26px;
 	margin-bottom: 2.6rem;
 }
 
 .entry-content ol,
-.entry-content ul {
+.entry-content ul,
+.ez-home-container-area ol,
+.ez-home-container-area ul {
 	margin-left: 40px;
 	margin-left: 4rem;
 }
@@ -1122,10 +1168,6 @@ Content Area
 .entry-content ol ol,
 .entry-content ul ul {
 	margin-bottom: 0;
-}
-
-.entry-content .search-form {
-	width: 50%;
 }
 
 .entry-meta {
@@ -1386,6 +1428,11 @@ Site Footer
 	border-bottom: 1px solid #ddd;
 }
 
+.site-footer a:before,
+.site-footer a:after {
+	display: none;
+}
+
 .site-footer p {
 	margin-bottom: .75em;
 }
@@ -1404,11 +1451,25 @@ General Components
 	padding-right: 115px;
 }
 
+/* FancyBox for Wordpress */
+#fancybox-wrap * {
+	-webkit-box-sizing: content-box !important;
+	-moz-box-sizing: content-box !important;
+	-ms-box-sizing: content-box !important;
+	box-sizing: content-box !important;
+}
+
 .search-form input[type="submit"] {
 	float: right;
 	max-width: 108px;
 	margin-right: -115px;
 }
+
+
+/*
+Specific Pages
+---------------------------------------------------------------------------------------------------- */
+
 
 /*
 Media Queries
