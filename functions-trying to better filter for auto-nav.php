@@ -224,65 +224,29 @@ add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
  * Auto & Mobile Navigation
 ===========================================*/
 
-function trestle_nav_modifications() {
+function trestle_nav_modifications( $items, $menu, $args ) {
+//echo '<pre>' . print_r($args, true) . '</pre>';
+
 
 	// Auto-generate nav if Genesis theme setting is checked
 	if ( 1 == genesis_get_option( 'auto_nav' ) ) {
+		
+		$args = array(
+			'echo'           => false,
+			'show_home'      => genesis_get_option( 'include_home_link' ),
+			'menu_class'     => ''
+		);
 
-		// Remove existing nav
-		remove_action( 'genesis_after_header', 'genesis_do_nav' );
+		$ul_class = 'menu genesis-nav-menu menu-primary';
 
-		// Replace existing nav with auto-generated nav
-		function trestle_auto_nav() {
-			
-			$args = array(
-				'echo'           => false,
-				'show_home'      => genesis_get_option( 'include_home_link' ),
-				'menu_class'     => 'auto-menu'
-			);
+		$items = get_posts( $args );		
 
-			$ul_class = 'menu genesis-nav-menu menu-primary';
+	}       		
 
-			$menu_args = new stdClass();
-
-			$menu_args->theme_location = 'primary';
-
-			$nav_items = wp_page_menu( $args );
-
-			// Remove opening <div class="auto-nav"><ul>
-			$nav_items = preg_replace( '/<div\s*.*auto-menu[^>]*>\s*<ul>/', '', $nav_items );
-
-			// Remove closing </ul></div>
-			$nav_items = preg_replace( '/<\/ul>\s*<\/div>/', '', $nav_items );
-			
-			// Add Genesis nav extras
-			$nav_items = genesis_nav_right( $nav_items, $menu_args );
-					
-			$nav = '<ul class="' . $ul_class . '">' . $nav_items . '</ul>';
-
-			$nav_markup_open = genesis_markup( array(
-				'html5'   => '<nav %s>',
-				'xhtml'   => '<div id="nav">',
-				'context' => 'nav-primary',
-				'echo'    => false,
-			) );
-			$nav_markup_open .= genesis_structural_wrap( 'menu-primary', 'open', 0 );
-
-			$nav_markup_close  = genesis_structural_wrap( 'menu-primary', 'close', 0 );
-			$nav_markup_close .= genesis_html5() ? '</nav>' : '</div>';
-
-			// Args to pass to navigation right/extras function
-			$args = new stdClass();
-			$args->theme_location = 'primary';
-
-			echo apply_filters ( 'trestle_do_nav', $nav_markup_open . $nav . $nav_markup_close, $args );
-		}
-		add_action( 'genesis_after_header', 'trestle_auto_nav', 10 );
-
-	}       	
+	return $items;
            
 }
-add_action( 'init', 'trestle_nav_modifications' );
+add_filter( 'wp_get_nav_menu_items', 'trestle_nav_modifications', 99, 3 );
 
 // Add mobile menu button
 function trestle_add_mobile_nav() {

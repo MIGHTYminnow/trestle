@@ -238,7 +238,7 @@ function trestle_nav_modifications() {
 			$args = array(
 				'echo'           => false,
 				'show_home'      => genesis_get_option( 'include_home_link' ),
-				'menu_class'     => 'auto-menu'
+				'menu_class'     => ''
 			);
 
 			$ul_class = 'menu genesis-nav-menu menu-primary';
@@ -247,16 +247,9 @@ function trestle_nav_modifications() {
 
 			$menu_args->theme_location = 'primary';
 
-			$nav_items = wp_page_menu( $args );
+			$nav_items = genesis_nav_right( preg_replace('/\/?<ul>/', '', wp_page_menu( $args ) , 1), $menu_args );
 
-			// Remove opening <div class="auto-nav"><ul>
-			$nav_items = preg_replace( '/<div\s*.*auto-menu[^>]*>\s*<ul>/', '', $nav_items );
-
-			// Remove closing </ul></div>
-			$nav_items = preg_replace( '/<\/ul>\s*<\/div>/', '', $nav_items );
-			
-			// Add Genesis nav extras
-			$nav_items = genesis_nav_right( $nav_items, $menu_args );
+			echo '<pre>' . print_r($nav_items, true) . '</pre>';
 					
 			$nav = '<ul class="' . $ul_class . '">' . $nav_items . '</ul>';
 

@@ -1,19 +1,17 @@
-// as the page loads, cal these scripts
+// Executes when the document is ready
 jQuery(document).ready(function() {
 	
+	// Get our URL
 	var h = window.location.host.toLowerCase();
-	jQuery("a[href^='http']:not([href*='" + h + "']), a[href$='.pdf'], a[hrefjQuery$='.mp3'], a[href$='.m4a'], a[href$='.wav']").attr("target", "_blank");
 	
 	// External Links
-	jQuery("a[href^='http://']:not([href*='" + h + "'])").addClass("externalLink");
-	jQuery("a[href^='https://']:not([href*='" + h + "'])").addClass("externalLink");
-	jQuery("img").parent().removeClass("externalLink");
+	jQuery('[href^="http://"],[href^="https://"]').not('[href*="' + h + '"], .button, .menu-primary a').addClass('externalLink').attr("target", "_blank");
 
 	// Add classes to different types of media links
-	jQuery('a[href^="mailto:"]').addClass('emailLink');
-	jQuery('a[href*=".pdf"]').attr({"target":"_blank"}).addClass('pdfLink');
-	jQuery('a[href*=".doc"]').attr({"target":"_blank"}).addClass('docLink');
-	jQuery('img').parent('a').addClass('imageLink');
+	jQuery('a[href^="mailto:"]:not(.button)').addClass('emailLink');
+	jQuery('a[href*=".pdf"]:not(.button)').attr({"target":"_blank"}).addClass('pdfLink');
+	jQuery('a[href*=".doc"]:not(.button)').attr({"target":"_blank"}).addClass('docLink');
+	jQuery('img').parent('a:not(.button)').addClass('imageLink').removeClass('externalLink');
 
 	// Add classes to parts of lists
 	jQuery('li:last-child').addClass('last');
@@ -47,7 +45,7 @@ jQuery(document).ready(function() {
 }); /* end of as page load scripts */
 
 
-// executes when complete page is fully loaded, including all frames, objects and images
+// Executes when complete page is fully loaded, including all frames, objects, and images
 jQuery(window).load(function() {
 
 });
