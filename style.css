@@ -1131,6 +1131,17 @@ Site Navigation
 	color: #222;
 }
 
+/* No jQuery styles */
+.no-jquery #menu-button {
+	margin-bottom: 0;
+}
+
+.no-jquery #menu-button:hover + .nav-primary .genesis-nav-menu,
+.no-jquery .nav-primary a:hover + ul,
+.no-jquery ul:hover {
+	display: block;
+}
+
 /* Secondary Navigation
 --------------------------------------------- */
 

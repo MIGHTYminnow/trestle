@@ -1,6 +1,9 @@
 // Executes when the document is ready
 jQuery(document).ready(function() {
 	
+	// Remove .no-jquery body class
+	jQuery('body').removeClass('no-jquery');
+
 	// Get our URL
 	var h = window.location.host.toLowerCase();
 	

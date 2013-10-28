@@ -100,6 +100,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'Genesis Favicon Uploader',
+			'slug' 		=> 'genesis-favicon-uploader',
+			'required' 	=> true,
+		),
+
+		array(
 			'name' 		=> 'Genesis Featured Widget Amplified',
 			'slug' 		=> 'genesis-featured-widget-amplified',
 			'required' 	=> true,
@@ -287,7 +293,7 @@ add_action( 'init', 'trestle_nav_modifications' );
 // Add mobile menu button
 function trestle_add_mobile_nav() {
 	if ( 1 == genesis_get_option( 'auto_nav' ) || has_nav_menu( 'primary' ) )
-		echo '<a id="menu-button" class="button" href="javascript: void()"><i class="icon-list-ul"></i>&nbsp;&nbsp;Navigation</a>';
+		echo '<a id="menu-button" class="button" href="javascript: void(0)"><i class="icon-list-ul"></i>&nbsp;&nbsp;Navigation</a>';
 }
 add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
 
@@ -296,6 +302,12 @@ add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
  * Actions & Filters
 ===========================================*/
 
+// Add jquery class to body
+function no_jquery( $classes ) {
+	$classes[] = 'no-jquery';
+	return $classes;
+}
+add_filter('body_class','no_jquery');
 
 /*===========================================
  * Footer
