@@ -100,12 +100,6 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Genesis Favicon Uploader',
-			'slug' 		=> 'genesis-favicon-uploader',
-			'required' 	=> true,
-		),
-
-		array(
 			'name' 		=> 'Genesis Featured Widget Amplified',
 			'slug' 		=> 'genesis-featured-widget-amplified',
 			'required' 	=> true,
