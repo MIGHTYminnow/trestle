@@ -497,11 +497,6 @@ Structure and Layout
 
 .site-inner {
 	clear: both;
-}
-
-.content-sidebar-wrap,
-#ez-home-container-wrap {
-	clear: both;
 	padding: 20px;
 	padding: 2rem;
 }
@@ -1386,8 +1381,8 @@ Sidebars
 .sidebar .widget {
 	background-color: #fff;
 	border-radius: 3px;
-	margin-bottom: 40px;
-	margin-bottom: 4rem;
+	margin-bottom: 30px;
+	margin-bottom: 3rem;
 }
 
 
@@ -1576,7 +1571,13 @@ Media Queries
 		padding-left: 0;
 		padding-right: 0;
 	}
-	
+
+	.content-sidebar-sidebar .content-sidebar-wrap,
+	.sidebar-content-sidebar .content-sidebar-wrap,
+	.sidebar-sidebar-content .content-sidebar-wrap {
+		width: 80%;
+	}
+		
 	.content {
 		width: 66.5%;
 	}
@@ -1585,19 +1586,13 @@ Media Queries
 		width: 100%;
 	}
 
-	.sidebar-content-sidebar .content,
-	.sidebar-sidebar-content .content,
-	.content-sidebar-sidebar .content {
-		width: 40%;
-	}
-
 	.entry, .sidebar .widget {
 		padding: 30px 40px;
 		padding: 3rem 4rem;
 	}
 
 	.sidebar-secondary {
-		width: 180px;
+		width: 17.25%;
 	}
 
 	.footer-widgets-1 {
