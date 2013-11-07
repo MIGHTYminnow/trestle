@@ -13,7 +13,7 @@ require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
 // Child theme (do not remove)
 define( 'CHILD_THEME_NAME', 'Trestle' );
 define( 'CHILD_THEME_URL', 'http://www.mightyminnow.com/2013/08/our-new-mobile-first-child-theme-for-genesis-2-0/' );
-define( 'CHILD_THEME_VERSION', '1.3' );
+define( 'CHILD_THEME_VERSION', '1.0' );
 
 // Add HTML5 markup structure
 add_theme_support( 'html5' );
@@ -35,7 +35,7 @@ add_theme_support( 'genesis-footer-widgets', 3 );
 function trestle_header_actions() {
 
 	// Google fonts
-	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700' );
+	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700,900' );
 
 	// Custom jQuery
 	wp_enqueue_script( 'trestle_jquery', get_stylesheet_directory_uri() . '/includes/js/trestle-jquery.js', array( 'jquery' ), '1.0', true );
@@ -277,7 +277,7 @@ function trestle_nav_modifications() {
 
 			echo apply_filters ( 'trestle_do_nav', $nav_markup_open . $nav . $nav_markup_close, $args );
 		}
-		add_action( 'genesis_after_header', 'trestle_auto_nav', 10 );
+		add_action( 'genesis_after_header', 'trestle_auto_nav', 0 );
 
 	}       	
            
@@ -296,7 +296,7 @@ add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
  * Actions & Filters
 ===========================================*/
 
-// Add jquery class to body
+// Add jquery class to body for styling nav if jQuery isn't enabled (jQuery will remove this class if enabled)
 function no_jquery( $classes ) {
 	$classes[] = 'no-jquery';
 	return $classes;

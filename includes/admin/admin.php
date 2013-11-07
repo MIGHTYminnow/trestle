@@ -1,6 +1,6 @@
 <?php
 /*===========================================
- * Genesis Custom Theme Settings
+ * Trestle Custom Theme Settings
  *
  * Modified from: http://www.billerickson.net/genesis-theme-options/
 ===========================================*/
@@ -17,7 +17,7 @@ function trestle_custom_defaults( $defaults ) {
  
 	$defaults['auto_nav'] = '0';
 	$defaults['include_home_link'] = '1';
-	$defaults['footer_text'] = sprintf( '[footer_copyright before="%s "] &#x000B7; [footer_childtheme_link before="" after=" %s"] [footer_genesis_link url="http://www.studiopress.com/" before=""] &#x000B7; [footer_wordpress_link] &#x000B7; [footer_loginout]', __( 'Copyright', 'trestle' ), __( 'on', 'trestle' ) );
+	$defaults['nav_extras'] = '1';
  
 	return $defaults;
 }
@@ -81,19 +81,27 @@ function trestle_navigation_settings_box() {
 	</p>
 	<?php
 
+	$trestle_nav_title = __( 'Trestle Auto Nav Placeholder', 'trestle' );
+
+	// Create placeholder menu for 'primary' spot if auto-nav is selected - this ensures that nav extras can be used even when no custom menu is formally set to primary
+	if ( 1 == genesis_get_option( 'auto_nav' ) && !wp_get_nav_menu_object( $trestle_nav_title ) && !has_nav_menu( 'primary' ) ) {
+		
+		// Create placholder menu
+		wp_create_nav_menu( $trestle_nav_title );
+
+		// Assign placeholder menu to 'primary'
+		$menu_locations = get_theme_mod('nav_menu_locations');
+		$menu_locations['primary'] = wp_get_nav_menu_object( $trestle_nav_title )->term_id;
+		set_theme_mod( 'nav_menu_locations', $menu_locations );
+		
+	}
+
+	// Remove placeholder menu if auto-nav is disabled
+	if ( 1 != genesis_get_option( 'auto_nav' ) && wp_get_nav_menu_object( $trestle_nav_title ) && $trestle_nav_title != get_registered_nav_menus()['primary'] )
+		wp_delete_nav_menu( $trestle_nav_title );
+
+	// Output default Genesis nav options
 	$genesis_settings_object = new Genesis_Admin_Settings;
 	$genesis_settings_object->nav_box();
-}
 
-/**
- * Create Footer Metabox
- */
- 
-function trestle_footer_settings_box() {
-	?>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[footer_text]">Custom footer text</label><br />
-		<input type="text" class="widefat" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[footer_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[footer_text]" value="<?php echo genesis_get_option( 'footer_text' ); ?>" />
-	</p>
-	<?php
 }
