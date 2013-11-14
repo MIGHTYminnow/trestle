@@ -200,6 +200,9 @@ function trestle_register_required_plugins() {
 
 function trestle_nav_modifications() {
 
+	// Add mobile nav button
+	add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
+
 	// Auto-generate nav if Genesis theme setting is checked
 	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) ) {
 

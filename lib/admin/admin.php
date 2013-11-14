@@ -29,17 +29,21 @@ function trestle_custom_defaults( $defaults ) {
 		$defaults[$k] = $v;
 
 		// Update actual options if they don't yet exist
-		if ( !array_key_exists( $k, $options ) ) 
+		if ( $options && !array_key_exists( $k, $options ) ) 
 			$options[$k] = $v;
 
 	}
 	update_option( GENESIS_SETTINGS_FIELD, $options );
+
+	//
  					
  	// Return modified default array
 	return $defaults;
+
 }
 add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
 
+// Also perform
  
 /**
  * Sanitization

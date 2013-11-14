@@ -79,11 +79,8 @@ function trestle_theme_setup() {
 	 * Auto & Mobile Navigation
 	===========================================*/	
 	
-	// Implement auto-nav
+	// Implement auto-nav and mobile nav button
 	add_action( 'init', 'trestle_nav_modifications' );
-
-	// Add mobile nav button
-	add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
 
 
 	/*===========================================
