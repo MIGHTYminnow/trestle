@@ -4,31 +4,50 @@
  *
  * Modified from: http://www.billerickson.net/genesis-theme-options/
 ===========================================*/
- 
+
 /**
  * Register Defaults
  *
  * @param array $defaults
- * @return array modified defaults
- *
+ * @return  array $defaults updated defaults
  */
  
 function trestle_custom_defaults( $defaults ) {
- 
-	$defaults['auto_nav'] = '0';
-	$defaults['include_home_link'] = '1';
-	$defaults['nav_extras'] = '1';
- 
+ 	
+ 	// Trestle default key/value pairs
+ 	$trestle_defaults = array(
+		'trestle_auto_nav' => '0',
+		'trestle_include_home_link' => '0',
+		'trestle_nav_button_text' => __( '[icon name="icon-list-ul"]  Navigation', 'trestle' ),
+	);
+
+	// Populate Trestle settings with default values if they don't yet exist
+	$options = get_option( GENESIS_SETTINGS_FIELD );
+	foreach ( $trestle_defaults as $k => $v ) {
+
+		// Add defaults to Genesis default settings array
+		$defaults[$k] = $v;
+
+		// Update actual options if they don't yet exist
+		if ( !array_key_exists( $k, $options ) ) 
+			$options[$k] = $v;
+
+	}
+	update_option( GENESIS_SETTINGS_FIELD, $options );
+ 					
+ 	// Return modified default array
 	return $defaults;
 }
 add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
- 
+
  
 /**
  * Sanitization
  */
  
 function trestle_register_social_sanitization_filters() {
+	
+	// No HTML
 	genesis_add_option_filter( 
 		'no_html', 
 		GENESIS_SETTINGS_FIELD,
@@ -38,11 +57,12 @@ function trestle_register_social_sanitization_filters() {
 		)
 	);
 
+	// Safe HTML
 	genesis_add_option_filter( 
 		'safe_html', 
 		GENESIS_SETTINGS_FIELD,
 		array(
-			'footer_text',
+			'nav_button_text',
 		)
 	);
 }
@@ -65,6 +85,7 @@ function trestle_register_settings_box( $_genesis_theme_settings_pagehook ) {
     // Call our own custom nav metabox which combines our own settings with Genesis'
 	add_meta_box('mm-navigation-settings', __( 'Navigation', 'trestle' ), 'trestle_navigation_settings_box', $_genesis_theme_settings_pagehook, 'main', 'high');
 	
+
 }
 add_action('genesis_theme_settings_metaboxes', 'trestle_register_settings_box');
 
@@ -76,8 +97,12 @@ function trestle_navigation_settings_box() {
 	?>
 	<h4><?php _e( 'Primary Navigation Options', 'trestle' ) ?></h4>
 	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option('auto_nav') ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[auto_nav]"><?php _e(' Automatically generate nav menu (replaces custom/manual menu with auto-generated menu)', 'trestle' ); ?></label><br />
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[include_home_link]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[include_home_link]" value="1" <?php checked( esc_attr( genesis_get_option('include_home_link') ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[include_home_link]"><?php _e( 'Include Home Link', 'trestle' ); ?></label>
+		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option('trestle_auto_nav') ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Automatically generate nav menu (replaces custom/manual menu with auto-generated menu)', 'trestle' ); ?></label><br />
+		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" value="1" <?php checked( esc_attr( genesis_get_option('trestle_include_home_link') ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]"><?php _e( 'Include Home Link', 'trestle' ); ?></label>
+	</p>
+	<p>
+		<?php _e('Text for mobile navigation button (shortcodes can be included):', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" value="<?php echo esc_attr( genesis_get_option('trestle_nav_button_text') ); ?>" /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]">
 	</p>
 	<?php
 
@@ -97,7 +122,8 @@ function trestle_navigation_settings_box() {
 	}
 
 	// Remove placeholder menu if auto-nav is disabled
-	if ( 1 != genesis_get_option( 'auto_nav' ) && wp_get_nav_menu_object( $trestle_nav_title ) && $trestle_nav_title != get_registered_nav_menus()['primary'] )
+	$menus = get_registered_nav_menus();
+	if ( 1 != genesis_get_option( 'auto_nav' ) && wp_get_nav_menu_object( $trestle_nav_title ) && $trestle_nav_title != $menus['primary'] )
 		wp_delete_nav_menu( $trestle_nav_title );
 
 	// Output default Genesis nav options

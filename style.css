@@ -6,6 +6,8 @@
 	Author: MIGHTYminnow
 	Author URI: http://www.mightyminnow.com/
 	Version: 1.0
+	Tags: genesis, mobile, first, responsive, clean, black, orange, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-width, custom-menu, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+	Text Domain: trestle;
 */
 
 /* Table of Contents
@@ -277,13 +279,13 @@ h6 {
 }
 
 h1 {
-	font-size: 36px;
-	font-size: 3.6rem;
+	font-size: 28px;
+	font-size: 2.8rem;
 }
 
 h2 {
-	font-size: 30px;
-	font-size: 3rem;
+	font-size: 24px;
+	font-size: 2.4rem;
 }
 
 .entry-content h2 {
@@ -291,18 +293,18 @@ h2 {
 }
 
 h3 {
-	font-size: 24px;
-	font-size: 2.4rem;
-}
-
-h4 {
 	font-size: 20px;
 	font-size: 2rem;
 }
 
-h5 {
+h4 {
 	font-size: 18px;
 	font-size: 1.8rem;
+}
+
+h5 {
+	font-size: 16px;
+	font-size: 1.6rem;
 }
 
 h6 {
@@ -421,7 +423,7 @@ input:hover[type="submit"],
 }
 
 .arrow-left:before {
-	content: "\f0a9\00a0\00a0";
+	content: "\f0a8\00a0\00a0";
 	font-family: FontAwesome;
 }
 
@@ -705,8 +707,6 @@ img.alignright,
 --------------------------------------------- */
 
 .entry-title {
-	font-size: 36px;
-	font-size: 3.6rem;
 	line-height: 1;
 }
 
@@ -1545,7 +1545,41 @@ Media Queries
 
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 480px) {
+
+	h1 {
+	font-size: 36px;
+	font-size: 3.6rem;
+	}
+
+	h2 {
+		font-size: 30px;
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 24px;
+		font-size: 2.4rem;
+	}
+
+	h4 {
+		font-size: 20px;
+		font-size: 2rem;
+	}
+
+	h5 {
+		font-size: 18px;
+		font-size: 1.8rem;
+	}
+
+	h6 {
+		font-size: 16px;
+		font-size: 1.6rem;
+	}
+	
+}
+
+@media (min-width: 768px) {
 	
 	body {
 		background-color: #f5f5f5;

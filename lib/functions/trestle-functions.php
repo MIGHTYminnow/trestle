@@ -24,6 +24,7 @@ function trestle_header_actions() {
  * Admin styles and scripts
 ===========================================*/
 
+// Add admin stylesheet (doesn't yet exist)
 function trestle_admin_actions() {
     add_editor_style( get_stylesheet_directory_uri() . '/lib/admin/admin.css' );
 }
@@ -192,6 +193,7 @@ function trestle_register_required_plugins() {
 
 }
 
+
 /*===========================================
  * Auto & Mobile Navigation
 ===========================================*/
@@ -199,7 +201,7 @@ function trestle_register_required_plugins() {
 function trestle_nav_modifications() {
 
 	// Auto-generate nav if Genesis theme setting is checked
-	if ( 1 == genesis_get_option( 'auto_nav' ) ) {
+	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) ) {
 
 		// Remove existing nav
 		remove_action( 'genesis_after_header', 'genesis_do_nav' );
@@ -209,7 +211,7 @@ function trestle_nav_modifications() {
 			
 			$args = array(
 				'echo'           => false,
-				'show_home'      => genesis_get_option( 'include_home_link' ),
+				'show_home'      => genesis_get_option( 'trestle_include_home_link' ),
 				'menu_class'     => 'auto-menu'
 			);
 
@@ -257,9 +259,15 @@ function trestle_nav_modifications() {
 
 // Add mobile menu button
 function trestle_add_mobile_nav() {
-	if ( 1 == genesis_get_option( 'auto_nav' ) || has_nav_menu( 'primary' ) )
-		echo '<a id="menu-button" class="button" href="javascript: void(0)"><i class="icon-list-ul"></i>&nbsp;&nbsp;Navigation</a>';
+	
+	// Only add the button if there is a primary menu
+	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) || has_nav_menu( 'primary' ) ) {
+
+		echo '<a id="menu-button" class="button" href="javascript: void(0)">' . do_shortcode( genesis_get_option('trestle_nav_button_text') ) . '</a>';
+	}
+
 }
+
 
 /*===========================================
  * Actions & Filters
@@ -271,13 +279,11 @@ function no_jquery( $classes ) {
 	return $classes;
 }
 
+
 /*===========================================
  * Footer
 ===========================================*/
+
 function trestle_custom_footer($output) {
 	return $output . '<p class="mm">[footer_childtheme_link before=""] by <a href="http://mightyminnow.com">MIGHTYminnow</a></p>';
 }
-
-/*===========================================
- * Shortcodes
-===========================================*/

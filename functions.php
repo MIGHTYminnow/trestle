@@ -21,6 +21,9 @@ function trestle_theme_setup() {
 	define( 'CHILD_THEME_URL', 'http://demo.mightyminnow.com/theme/trestle/' );
 	define( 'CHILD_THEME_VERSION', '1.0' );
 
+	// Load theme text domain
+	load_theme_textdomain( 'trestle', get_template_directory() . '/languages');
+
 	// Add HTML5 markup structure
 	add_theme_support( 'html5' );
 
