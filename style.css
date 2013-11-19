@@ -155,6 +155,15 @@ textarea:focus,
 	-moz-appearance: none;
 }
 
+
+input[type=checkbox] {
+	-webkit-appearance: checkbox;
+}
+
+input[type=radio] {
+	-webkit-appearance: radio;
+}
+
 ::-moz-selection {
 	background-color: #333;
 	color: #fff;
@@ -175,25 +184,27 @@ a img {
 	margin-bottom: -0.4rem;
 }
 
-a.emailLink:before {
+/* Link Icons */
+
+.link-icons a.emailLink:before {
 	content: url(/wp-content/themes/trestle/images/email.png);
 	margin: 0 4px 0 0;
 	white-space: nowrap;
 }
 
-a.pdfLink:before {
+.link-icons a.pdfLink:before {
 	content: url(/wp-content/themes/trestle/images/pdf.png);
 	margin: 0 4px 0 0;
 	white-space: nowrap;
 }
 
-a.docLink:before {
+.link-icons a.docLink:before {
 	content: url(/wp-content/themes/trestle/images/doc.png);
 	margin: 0 4px 0 0;
 	white-space: nowrap;
 }
 
-a.externalLink:after {
+.link-icons a.externalLink:after {
 	content: url(/wp-content/themes/trestle/images/external.png);
 	margin: 0 0 0 4px;
 	white-space: nowrap;
@@ -1137,7 +1148,6 @@ Site Navigation
 	position: absolute;
 	z-index: 99;
 	top: 0;
-	bottom: 0;
 	right: 0;
 	width: 50px;
 	padding-left: 0;
@@ -1580,10 +1590,6 @@ Media Queries
 }
 
 @media (min-width: 768px) {
-	
-	body {
-		background-color: #f5f5f5;
-	}
 
 	.title-area {
 		text-align: left;
@@ -1644,28 +1650,29 @@ Media Queries
 		width: 17.25%;
 	}
 
-	/* Padding -  remove padding in rules below for solid background */
-	.entry,
-	.sidebar .widget,
-	.author-box,
-	.comment-respond,
-	.entry-comments,
-	.entry-pings {
+	/* Bubble Layout - padding and margins
+	--------------------------------------------- */
+
+	body.bubble {
+		background-color: #f5f5f5;
+	}
+
+	.bubble .entry,
+	.bubble .sidebar .widget,
+	.bubble .author-box,
+	.bubble .comment-respond,
+	.bubble .entry-comments,
+	.bubble .entry-pings {
 		padding: 30px 40px;
 		padding: 3rem 4rem;
 	}
 
-	.footer-widgets-1 {
-		margin-right: 40px;
-		margin-right: 4rem;
-	}
-
-	.archive-description {
+	.bubble .archive-description {
 		padding: 40px 40px 24px;
 		padding: 4rem 4rem 2.4rem;
 	}
 
-	.entry-footer .entry-meta {
+	.bubble .entry-footer .entry-meta {
 		border-top: 2px solid #f5f5f5;
 		margin: 0 -40px;
 		margin: 0 -4rem;
@@ -1680,6 +1687,11 @@ Media Queries
 	.sidebar-primary,
 	.title-area {
 		width: 30%;
+	}
+
+	.footer-widgets-1,
+	.footer-widgets-2 {
+		margin-right: 5%;
 	}
 
 	.five-sixths,

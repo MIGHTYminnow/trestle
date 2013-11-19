@@ -22,7 +22,7 @@ function trestle_theme_setup() {
 	define( 'CHILD_THEME_VERSION', '1.0' );
 
 	// Load theme text domain
-	load_theme_textdomain( 'trestle', get_template_directory() . '/languages');
+	load_theme_textdomain( 'trestle', get_stylesheet_directory() . '/languages');
 
 	// Add HTML5 markup structure
 	add_theme_support( 'html5' );
@@ -59,13 +59,6 @@ function trestle_theme_setup() {
 
 
 	/*===========================================
-	 * Admin styles and scripts
-	===========================================*/
-	
-	add_action( 'init', 'trestle_admin_actions' );
-
-
-	/*===========================================
 	 * Load Required/Suggested Plugins
 	 * 
 	 * Utilizes TGM Plugin Activation class: 
@@ -82,13 +75,16 @@ function trestle_theme_setup() {
 	// Implement auto-nav and mobile nav button
 	add_action( 'init', 'trestle_nav_modifications' );
 
+	// Create / remove placeholder menu for Trestle auto nav
+	add_action( 'init', 'trestle_nav_placeholder' );
+
 
 	/*===========================================
 	 * Actions & Filters
 	===========================================*/
 
-	// Add jquery class to body for styling nav if jQuery isn't enabled (jQuery will remove this class if enabled)
-	add_filter('body_class','no_jquery');
+	// Add body classes
+	add_filter( 'body_class', 'trestle_body_classes' );
 
 
 	/*===========================================
@@ -97,5 +93,21 @@ function trestle_theme_setup() {
 
 	// Add Trestle custom footer attribute to Mm
 	add_filter( 'genesis_footer_output', 'trestle_custom_footer' );
+
+	/*===========================================
+	 * Admin Functionality
+	===========================================*/
+
+	// Trestle admin scripts and styles
+	add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
+
+	// Trestle default settings
+	add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
+
+	// Sanitize settings
+	add_action( 'genesis_settings_sanitizer_init', 'trestle_register_social_sanitization_filters' );
+	 
+	// Register Trestle settings metabox
+	add_action( 'genesis_theme_settings_metaboxes', 'trestle_register_settings_box' );
 
 }

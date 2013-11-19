@@ -15,18 +15,8 @@ function trestle_header_actions() {
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700,900' );
 
 	// Custom jQuery
-	wp_enqueue_script( 'trestle_jquery', get_stylesheet_directory_uri() . '/lib/js/trestle-jquery.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'trestle-jquery', get_stylesheet_directory_uri() . '/lib/js/jquery.js', array( 'jquery' ), '1.0', true );
 
-}
-
-
-/*===========================================
- * Admin styles and scripts
-===========================================*/
-
-// Add admin stylesheet (doesn't yet exist)
-function trestle_admin_actions() {
-    add_editor_style( get_stylesheet_directory_uri() . '/lib/admin/admin.css' );
 }
 
 
@@ -271,15 +261,54 @@ function trestle_add_mobile_nav() {
 
 }
 
+// Generate / remove Trestle Auto Nav placeholder menu as needed (necessary to enable Nav Extras)
+function trestle_nav_placeholder() {
+
+	$trestle_nav_title = __( 'Trestle Auto Nav Placeholder', 'trestle' );
+
+	// Create placeholder menu for 'primary' spot if auto-nav is selected - this ensures that nav extras can be used even when no custom menu is formally set to primary
+	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) && !wp_get_nav_menu_object( $trestle_nav_title ) && !has_nav_menu( 'primary' ) ) {
+		
+		// Create placholder menu
+		wp_create_nav_menu( $trestle_nav_title );
+
+		// Assign placeholder menu to 'primary'
+		$menu_locations = get_theme_mod('nav_menu_locations');
+		$menu_locations['primary'] = wp_get_nav_menu_object( $trestle_nav_title )->term_id;
+		set_theme_mod( 'nav_menu_locations', $menu_locations );
+		
+	}
+
+	// Remove placeholder menu if auto-nav is disabled
+	$menus = get_registered_nav_menus();
+
+	if ( 1 != genesis_get_option( 'trestle_auto_nav' ) && wp_get_nav_menu_object( $trestle_nav_title ) && $trestle_nav_title != $menus['primary'] )
+		wp_delete_nav_menu( $trestle_nav_title );
+
+}
+
 
 /*===========================================
  * Actions & Filters
 ===========================================*/
 
-// Add jquery class to body for styling nav if jQuery isn't enabled (jQuery will remove this class if enabled)
-function no_jquery( $classes ) {
+// Add body classes
+function trestle_body_classes( $classes ) {
+	
+	// Add 'no-jquery' class to be removed by jQuery if enabled
 	$classes[] = 'no-jquery';
+
+	// Add 'bubble' class
+	if ( 'bubble' == genesis_get_option( 'trestle_layout' ) )
+		$classes[] = 'bubble';
+
+	// Add 'link-icons' class
+	if ( genesis_get_option('trestle_link_icons') )
+		$classes[] = 'link-icons';
+	
+	
 	return $classes;
+
 }
 
 
