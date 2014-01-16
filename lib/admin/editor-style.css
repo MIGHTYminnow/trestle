@@ -10,6 +10,9 @@
 
 /* Overrides
 --------------------------------------------- */
+body {
+	background-color: #FFF;
+}
 
 .content {
 	width: 100%;
