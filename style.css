@@ -476,8 +476,8 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 .genesis-nav-menu .button:hover {
-	background-color: #666;
-	border-color: #666;	
+	background-color: #555;
+	border-color: #555;	
 }
 
 .blue {
@@ -1351,6 +1351,11 @@ Content Area
 	margin: 2rem 0 3rem;
 }
 
+.archive-pagination ul {
+	margin-left: 0;
+}
+
+
 .archive-pagination li {
 	display: inline;
 }
@@ -1373,6 +1378,7 @@ Content Area
 .archive-pagination li a:hover,
 .archive-pagination li.active a {
 	background-color: #f15123;
+	color: #FFF;
 }
 
 .entry-pagination a {

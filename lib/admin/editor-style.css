@@ -18,3 +18,9 @@ body {
 	width: 100%;
 	font-size: 1.6rem;
 }
+
+.content ul,
+.content ol {
+	margin: 0 0 26px 40px;
+	margin: 0 0 2.6rem 4rem;
+}
