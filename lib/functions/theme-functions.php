@@ -22,6 +22,9 @@ function trestle_header_actions() {
 	// Google fonts
 	wp_enqueue_style( 'trestle-google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700,900' );
 
+	// Custom CSS if desired
+	wp_enqueue_style( 'trestle-custom-css', '/wp-content/uploads/custom.css' );
+
 	// Custom jQuery
 	wp_enqueue_script( 'trestle-jquery', get_stylesheet_directory_uri() . '/lib/js/theme-jquery.js', array( 'jquery' ), '1.0.0', true );
 }
