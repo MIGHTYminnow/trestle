@@ -464,7 +464,8 @@ input[type="search"]::-webkit-search-results-button {
 
 /* Button Colors & Classes */
 
-.red {
+.red,
+.genesis-nav-menu .button {
 	background-color: #f15123;
 	border-color: #f15123;
 }
@@ -472,6 +473,11 @@ input[type="search"]::-webkit-search-results-button {
 .red:hover {
 	background-color: #333;
 	border-color: #333;
+}
+
+.genesis-nav-menu .button:hover {
+	background-color: #666;
+	border-color: #666;	
 }
 
 .blue {
@@ -1193,6 +1199,14 @@ Site Navigation
 	display: inline;
 	padding: 0;
 }
+
+.nav-primary .genesis-nav-menu > .right > .button {
+	padding: 8px 15px;
+	color: #FFF;
+	font-weight: bold;
+}
+
+
 
 /* Sub Menus
 --------------------------------------------- */
