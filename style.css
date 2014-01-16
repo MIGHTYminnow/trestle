@@ -1,27 +1,27 @@
 /*
 	Theme Name: Trestle
-	Theme URI: http://www.mightyminnow.com/2013/08/our-new-mobile-first-child-theme-for-genesis-2-0/
+	Theme URI: http://demo.mightyminnow.com/theme/trestle
 	Template: genesis
-	Description: This is a "Mobile First" child theme based on the default <a href="http://www.genesisframework.com/">Genesis 2.0 Sample Theme</a>.
+	Description: Trestle is a Genesis child theme for developers based on the default <a href="http://www.genesisframework.com/">Genesis 2.0 Sample Theme</a>. It features mobile first CSS, helpful theme options, and lots more tools to support your development process.
 	Author: MIGHTYminnow
 	Author URI: http://www.mightyminnow.com/
 	Version: 1.0
-	Tags: genesis, mobile, first, responsive, clean, black, orange, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-width, custom-menu, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
-	Text Domain: trestle;
+	Tags: genesis, mobile first, responsive, clean, black, white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-width, custom-menu, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+	Text Domain: trestle
 */
 
 /* Table of Contents
 
-	- Imports
 	- HTML5 Reset
 		- Baseline Normalize
 		- Box Sizing
 		- Float Clearing
 	- Defaults
 		- Typographical Elements
+		- Links
 		- Headings
 		- Objects
-		- Forms
+		- Forms & Buttons
 		- Tables
 	- Structure and Layout
 		- Site Containers
@@ -38,12 +38,20 @@
 		- Genesis Latest Tweets
 		- Gravity Forms
 		- Jetpack
+		- FancyBox for WordPress
+		- MapPress
+		- Simple Section Navigation
 	- Site Header
 		- Title Area
 		- Widget Area
 	- Site Navigation
-		- Header Navigation
-		- Primary Navigation
+		- General Navigation
+		- Sub Navigation
+		- Site Header Navigation
+		- Primary / Mobile Navigation
+		- Navigation Extras
+		- Sub Menus
+		- Non jQuery Styles
 		- Secondary Navigation
 	- Content Area
 		- Entries
@@ -53,6 +61,7 @@
 	- Footer Widgets
 	- Site Footer
 	- General Components
+	- Specific Pages
 	- Media Queries
 
 */
@@ -174,56 +183,6 @@ input[type=radio] {
 	color: #fff;
 }
 
-a {
-	color: #666;
-	text-decoration: none;
-}
-
-a img {
-	margin-bottom: -4px;
-	margin-bottom: -0.4rem;
-}
-
-/* Link Icons */
-
-.link-icons a.emailLink:before {
-	content: url(/wp-content/themes/trestle/images/email.png);
-	margin: 0 4px 0 0;
-	white-space: nowrap;
-}
-
-.link-icons a.pdfLink:before {
-	content: url(/wp-content/themes/trestle/images/pdf.png);
-	margin: 0 4px 0 0;
-	white-space: nowrap;
-}
-
-.link-icons a.docLink:before {
-	content: url(/wp-content/themes/trestle/images/doc.png);
-	margin: 0 4px 0 0;
-	white-space: nowrap;
-}
-
-.link-icons a.externalLink:after {
-	content: url(/wp-content/themes/trestle/images/external.png);
-	margin: 0 0 0 4px;
-	white-space: nowrap;
-}
-
-a.imageLink,
-a.imageLink:hover {
-	border-bottom: none !important;
-	text-decoration: none !important;
-}
-
-a.imageLink:before {
-	display: none;
-}
-
-a:hover {
-	color: #333;
-}
-
 p {
 	margin: 0 0 24px;
 	margin: 0 0 2.4rem;
@@ -263,13 +222,86 @@ blockquote::before {
 	top: 0px;
 }
 
-.entry-content code {
+.content code {
 	background-color: #333;
 	color: #ddd;
 }
 
 cite {
 	font-style: normal;
+}
+
+/* Links
+--------------------------------------------- */
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #333;
+}
+
+.site-inner a {
+	border-bottom: 1px solid #ddd;
+}
+
+.content a {
+	color: #f15123;
+}
+
+.content a:hover {
+	color: #333;
+}
+
+.content .attachment a,
+.content .gallery a {
+	border: none;
+}
+
+a img {
+	margin-bottom: -4px;
+	margin-bottom: -0.4rem;
+}
+
+.external-link-icons .external-link:after {
+	content: url(/wp-content/themes/trestle/images/external.png);
+	margin: 0 0 0 4px;
+	white-space: nowrap;
+}
+
+.menu .external-link:after {
+	display: none;
+}
+
+.email-link-icons .email-link:before {
+	content: url(/wp-content/themes/trestle/images/email.png);
+	margin: 0 4px 0 0;
+	white-space: nowrap;
+}
+
+.pdf-link-icons .pdf-link:before {
+	content: url(/wp-content/themes/trestle/images/pdf.png);
+	margin: 0 4px 0 0;
+	white-space: nowrap;
+}
+
+.doc-link-icons .doc-link:before {
+	content: url(/wp-content/themes/trestle/images/doc.png);
+	margin: 0 4px 0 0;
+	white-space: nowrap;
+}
+
+.image-link,
+.image-link:hover {
+	border-bottom: none !important;
+	text-decoration: none !important;
+}
+
+.image-link:before,
+.image-link:after {
+	display: none;
 }
 
 /* Headings
@@ -299,7 +331,7 @@ h2 {
 	font-size: 2.4rem;
 }
 
-.entry-content h2 {
+.content h2 {
 	clear: both;
 }
 
@@ -340,14 +372,16 @@ img {
 	width: auto; /* IE8 */
 }
 
-/* Forms
+/* Forms & Buttons
 --------------------------------------------- */
 
 input,
 select,
 textarea,
 button,
-.button {
+.button,
+.genesis-nav-menu a,
+.nav-primary .genesis-nav-menu > .right {
 	padding: 16px 24px;
 	padding: 1.6rem 2.4rem;
 }
@@ -382,8 +416,7 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-.button,
-.entry-content .button {
+.button {
 	background-color: #333;
 	border: 1px solid #333;
 	box-shadow: none;
@@ -391,6 +424,7 @@ input[type="submit"],
 	cursor: pointer;
 	text-transform: uppercase;
 	width: auto;
+	border-radius: 3px;
 }
 
 button:hover,
@@ -398,20 +432,24 @@ input:hover[type="button"],
 input:hover[type="reset"],
 input:hover[type="submit"],
 .button:hover,
-.entry-content .button:hover,
 .genesis-nav-menu input[type="submit"] {
 	background-color: #f15123;
 	border-color: #f15123;
+	color: #fff;
 }
 
-.red {
-	background-color: #f15123;
-	border-color: #f15123;
+.button {
+	display: inline-block;
 }
 
-.red:hover {
-	background-color: #333;
-	border: 1px solid #333;
+.button:before,
+.button:after {
+	display: none;
+}
+
+.content .button,
+.content .button:hover {
+	color: #FFF;
 }
 
 .genesis-nav-menu input[type="submit"]:hover {
@@ -419,31 +457,13 @@ input:hover[type="submit"],
 	border-color: #555;
 }
 
-.entry-content .button:hover {
-	color: #fff;
-}
-
-.button {
-	border-radius: 3px;
-	display: inline-block;
-}
-
-.arrow-right:after {
-	content: "\00a0\00a0\f0a9";
-	font-family: FontAwesome;
-}
-
-.arrow-left:before {
-	content: "\f0a8\00a0\00a0";
-	font-family: FontAwesome;
-}
-
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button {
 	display: none;
 }
 
-/* Button Colors */
+/* Button Colors & Classes */
+
 .red {
 	background-color: #f15123;
 	border-color: #f15123;
@@ -452,7 +472,6 @@ input[type="search"]::-webkit-search-results-button {
 .red:hover {
 	background-color: #333;
 	border-color: #333;
-	color: #FFF;
 }
 
 .blue {
@@ -463,7 +482,6 @@ input[type="search"]::-webkit-search-results-button {
 .blue:hover {
 	background-color: #333;
 	border-color: #333;
-	color: #FFF;
 }
 
 .green {
@@ -474,7 +492,18 @@ input[type="search"]::-webkit-search-results-button {
 .green:hover {
 	background-color: #333;
 	border-color: #333;
-	color: #FFF;
+}
+
+.arrow-right:after {
+	display: inline-block;
+	content: "\00a0\00a0\f0a9";
+	font-family: FontAwesome;
+}
+
+.arrow-left:before {
+	display: inline-block;
+	content: "\f0a8\00a0\00a0";
+	font-family: FontAwesome;
 }
 
 /* Tables
@@ -516,6 +545,7 @@ Structure and Layout
 
 /* Site Containers
 --------------------------------------------- */
+
 .site-inner,
 .wrap {
 	margin: 0 auto;
@@ -530,8 +560,6 @@ Structure and Layout
 
 /* Column Widths and Positions
 --------------------------------------------- */
-
-/* Wrapping div for .content and .sidebar-primary */
 
 .content-sidebar-wrap {
 	float: left;
@@ -584,7 +612,7 @@ Structure and Layout
 }
 
 /* Column Classes
-	Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
+   Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
 --------------------------------------------- */
 
 .five-sixths,
@@ -597,7 +625,8 @@ Structure and Layout
 .three-sixths,
 .two-fourths,
 .two-sixths,
-.two-thirds {
+.two-thirds,
+.footer-widgets .widget-area {
 	float: left;
 	margin: 0;
 	width: 100%;
@@ -625,9 +654,6 @@ Common Classes
 	margin-left: 2.4rem;
 }
 
-.sticky {
-}
-
 img.centered,
 .aligncenter {
 	display: block;
@@ -642,24 +668,26 @@ img.alignnone {
 
 .alignleft {
 	float: left;
+	clear: left;
 	text-align: left;
 }
 
 .alignright {
 	float: right;
+	clear: right;
 	text-align: right;
 }
 
 img.alignleft,
 .wp-caption.alignleft {
-	margin: 0 24px 24px 0;
-	margin: 0 2.4rem 2.4rem 0;
+	margin: 0.3em 24px 24px 0;
+	margin: 0.3em 2.4rem 2.4rem 0;
 }
 
 img.alignright,
 .wp-caption.alignright {
-	margin: 0 0 24px 24px;
-	margin: 0 0 2.4rem 2.4rem;
+	margin: 0.3em 0 24px 24px;
+	margin: 0.3em 0 2.4rem 2.4rem;
 }
 
 .wp-caption-text {
@@ -687,6 +715,8 @@ img.alignright,
 .breadcrumb {
 	margin-bottom: 20px;
 	margin-bottom: 2rem;
+	background-color: #FFF;
+	border-radius: 3px;
 }
 
 .archive-description,
@@ -694,6 +724,10 @@ img.alignright,
 	background-color: #fff;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
+}
+
+.archive-description h1 {
+	margin-bottom: 0;
 }
 
 .author-box-title {
@@ -718,12 +752,13 @@ img.alignright,
 --------------------------------------------- */
 
 .entry-title {
-	line-height: 1;
+	word-wrap: break-word;
 }
 
 .entry-title a,
 .sidebar .widget-title a {
 	color: #333;
+	border-bottom: none;
 }
 
 .entry-title a:hover {
@@ -865,23 +900,25 @@ img#wpstats {
 	display: none;
 }
 
-/* Fancybox for Wordpress
+/* FancyBox for Wordpress
 --------------------------------------------- */
+
 #fancybox-wrap, #fancybox-wrap * {
 	-webkit-box-sizing: content-box;
 	   -moz-box-sizing: content-box;
 			 box-sizing: content-box;
 }
 
-/* Mappress
+/* MapPress
 --------------------------------------------- */
+
 .mapp-layout,
 .mapp-map-links {
 	border: none !important;
 }
 
-/* Simple Section Navigation */
-.simple-section-nav .current-menu-item > a,
+/* Simple Section Navigation
+--------------------------------------------- */
 .simple-section-nav .current_page_item > a,
 .simple-section-nav .current_page_ancestor > a {
 	color: #f15123;
@@ -986,6 +1023,10 @@ Site Header
 /*
 Site Navigation
 ---------------------------------------------------------------------------------------------------- */
+
+/* General Navigation
+--------------------------------------------- */
+
 #menu-button {
 	display: block;
 	margin: 0 20px 10px;
@@ -1000,36 +1041,29 @@ Site Navigation
 	width: 100%;
 }
 
-.genesis-nav-menu .menu-item,
 .genesis-nav-menu li {
 	position: relative;
 	display: inline-block;
 }
 
 .genesis-nav-menu a,
-.nav-primary .genesis-nav-menu > .right {
-	border: none;
+.genesis-nav-menu > .right {
+	border-width: 0;
 	color: #999;
 	display: block;
-	padding: 20px;
-	padding: 2rem;
 	position: relative;
 }
 
 .genesis-nav-menu a:hover,
-.genesis-nav-menu .current-menu-item > a,
-.genesis-nav-menu .current_page_item > a
-.genesis-nav-menu .sub-menu .current-menu-item > a:hover,
+.genesis-nav-menu .current_page_item > a,
 .genesis-nav-menu .sub-menu .current_page_item > a:hover {
 	color: #333;
 }
 
-.genesis-nav-menu .sub-menu .current-menu-item > a,
 .genesis-nav-menu ul .current_page_item > a {
 	color: #333;
 }
 
-.genesis-nav-menu > .menu-item > a,
 .genesis-nav-menu > li > a {
 	text-transform: uppercase;
 }
@@ -1044,8 +1078,9 @@ Site Navigation
 	padding: 1.4rem 0 0;
 }
 
+/* Sub Navigation
+--------------------------------------------- */
 
-/* Sub nav */
 .genesis-nav-menu .sub-menu,
 .genesis-nav-menu ul {
 	display: none;
@@ -1058,27 +1093,42 @@ Site Navigation
 	transition:         opacity .4s ease-in-out;
 }
 
-.genesis-nav-menu .current-menu-item > .sub-menu,
 .genesis-nav-menu .current_page_item > ul,
 .genesis-nav-menu .current_page_parent > ul,
 .genesis-nav-menu .current_page_ancestor > ul {
 	display: block;
 }
 
-.genesis-nav-menu .sub-menu,
-.genesis-nav-menu ul {
-	font-size: .9em;
+.genesis-nav-menu li .sub-menu,
+.genesis-nav-menu li ul {
+	border: 0 solid #EEE;
+	border-top-width: 1px;
+}
+
+.genesis-nav-menu > li > .sub-menu,
+.genesis-nav-menu > li > ul {
+	border: 1px solid #EEE;
+	font-size: 0.9em;
+}
+
+.genesis-nav-menu .sub-menu li,
+.genesis-nav-menu ul li {
+	padding-left: 15px;
+	padding-left: 1.5rem;
 }
 
 .genesis-nav-menu .sub-menu a,
 .genesis-nav-menu ul a {
-	border: 1px solid #eee;
-	border-bottom: none;
-	padding: 10px 20px;
-	padding: 1rem 2rem;
 	position: relative;
+	padding: 10px 5px;
+	border: 0 solid #eee;
+	border-bottom-width: 1px;
 }
 
+.genesis-nav-menu .sub-menu li:last-child > a,
+.genesis-nav-menu ul li:last-child > a {
+	border-bottom-width: 0;
+}
 
 /* Site Header Navigation
 --------------------------------------------- */
@@ -1126,13 +1176,14 @@ Site Navigation
 }
 
 .nav-primary a:hover,
-.nav-primary .current-menu-item > a,
 .nav-primary .current_page_item > a,
 .nav-primary .current_page_ancestor > a {
 	color: #fff;
 }
 
-/* Nav extras */
+/* Navigation Extras
+--------------------------------------------- */
+
 .nav-primary .genesis-nav-menu > .right {
 	border-top-style: double;
 	border-width: 4px;
@@ -1143,7 +1194,9 @@ Site Navigation
 	padding: 0;
 }
 
-/* Sub menus */
+/* Sub Menus
+--------------------------------------------- */
+
 .nav-primary .genesis-nav-menu .sub-icon {
 	position: absolute;
 	z-index: 99;
@@ -1157,10 +1210,6 @@ Site Navigation
 	text-align: center;
 }
 
-.nav-primary .genesis-nav-menu ul ul a {
-	padding-left: 40px;
-}
-
 .nav-primary .sub-menu a:hover,
 .nav-primary ul ul a:hover,
 .nav-primary ul ul .current_page_item > a,
@@ -1168,7 +1217,9 @@ Site Navigation
 	color: #222;
 }
 
-/* No jQuery styles */
+/* Non jQuery Styles
+--------------------------------------------- */
+
 .no-jquery #menu-button {
 	margin-bottom: 0;
 }
@@ -1201,26 +1252,9 @@ Content Area
 	margin-bottom: 4rem;
 }
 
-.site-inner a {
-	border-bottom: 1px solid #ddd;
-}
-
-.entry-content a {
-	color: #f15123;
-}
-
-.entry-content a:hover {
-	color: #333;
-}
-
-.entry-content .attachment a,
-.entry-content .gallery a {
-	border: none;
-}
-
-.entry-content ol,
-.entry-content p,
-.entry-content ul,
+.content ol,
+.content p,
+.content ul,
 .ez-home-container-area ol,
 .ez-home-container-area p,
 .ez-home-container-area ul,
@@ -1229,24 +1263,30 @@ Content Area
 	margin-bottom: 2.6rem;
 }
 
-.entry-content ol,
-.entry-content ul,
+.content ol,
+.content ul,
 .ez-home-container-area ol,
 .ez-home-container-area ul {
 	margin-left: 40px;
 	margin-left: 4rem;
 }
 
-.entry-content ol li {
+.content ol li {
 	list-style-type: decimal;
 }
 
-.entry-content ul li {
+.content ul li {
 	list-style-type: disc;
 }
 
-.entry-content ol ol,
-.entry-content ul ul {
+.content ol ol,
+.content ul ul {
+	margin-bottom: 0;
+}
+
+/* Lists inside columns (to remove bottom margin as needed at mobile sizes */
+.no-list-margin ul,
+.no-list-margin ol {
 	margin-bottom: 0;
 }
 
@@ -1263,6 +1303,10 @@ Content Area
 .entry-header .entry-meta {
 	margin-bottom: 24px;
 	margin-bottom: 2.4rem;
+}
+
+.entry-footer {
+	clear: both;
 }
 
 .entry-footer .entry-meta {
@@ -1289,14 +1333,16 @@ Content Area
 .entry-pagination {
 	font-size: 14px;
 	font-size: 1.4rem;
-	margin: 40px 0;
-	margin: 4rem 0;
+	margin: 20px 0 30px;
+	margin: 2rem 0 3rem;
 }
 
 .archive-pagination li {
 	display: inline;
 }
 
+.pagination-next a,
+.pagination-previous a,
 .archive-pagination li a {
 	background-color: #333;
 	border-radius: 3px;
@@ -1307,6 +1353,9 @@ Content Area
 	padding: 0.8rem 1.2rem;
 }
 
+
+.pagination-next a:hover,
+.pagination-previous a:hover,
 .archive-pagination li a:hover,
 .archive-pagination li.active a {
 	background-color: #f15123;
@@ -1384,9 +1433,6 @@ li.comment {
 	display: none;
 }
 
-.bypostauthor {
-}
-
 .form-allowed-tags {
 	background-color: #f5f5f5;
 	font-size: 14px;
@@ -1422,8 +1468,13 @@ Sidebars
 .sidebar .widget {
 	background-color: #fff;
 	border-radius: 3px;
-	margin-bottom: 30px;
-	margin-bottom: 3rem;
+	margin-bottom: 8.045977%;
+}
+
+.content-sidebar-sidebar .sidebar .widget,
+.sidebar-content-sidebar .sidebar .widget,
+.sidebar-sidebar-content .sidebar .widget {
+	margin-bottom: 8.2733813%;
 }
 
 
@@ -1523,14 +1574,14 @@ General Components
 
 /* Search Form
 --------------------------------------------- */
+
 .search-form {
-	padding-right: 115px;
+	padding-right: 125px;
 }
 
 .search-form input[type="submit"] {
 	float: right;
-	max-width: 108px;
-	margin-right: -115px;
+	margin-right: -125px;
 }
 
 
@@ -1555,11 +1606,11 @@ Media Queries
 
 }
 
-@media only screen and (min-width: 480px) {
+@media (min-width: 480px) {
 
 	h1 {
-	font-size: 36px;
-	font-size: 3.6rem;
+		font-size: 36px;
+		font-size: 3.6rem;
 	}
 
 	h2 {
@@ -1590,6 +1641,17 @@ Media Queries
 }
 
 @media (min-width: 768px) {
+
+	/* General
+	--------------------------------------------- */
+
+	.wrap {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	/* Header
+	--------------------------------------------- */
 
 	.title-area {
 		text-align: left;
@@ -1627,9 +1689,12 @@ Media Queries
 		text-align: right;
 	}
 
-	.wrap {
-		padding-left: 0;
-		padding-right: 0;
+	/* Content
+	--------------------------------------------- */
+
+	.site-inner {
+		padding-top: 30px;
+		padding-top: 3rem;
 	}
 
 	.content-sidebar-sidebar .content-sidebar-wrap,
@@ -1637,28 +1702,50 @@ Media Queries
 	.sidebar-sidebar-content .content-sidebar-wrap {
 		width: 80%;
 	}
-		
-	.content {
-		width: 66.5%;
-	}
 
 	.full-width-content .content {
 		width: 100%;
 	}
 
-	.sidebar-secondary {
-		width: 17.25%;
+	.content-sidebar .sidebar-primary,
+	.sidebar-content-sidebar .content,
+	.sidebar-content-sidebar .sidebar-primary,
+	.sidebar-sidebar-content .content,
+	.sidebar-sidebar-content .sidebar-primary {
+		padding-left: 30px;
 	}
 
-	/* Bubble Layout - padding and margins
+	.content-sidebar-sidebar .content,
+	.sidebar-content .sidebar-primary,
+	.content-sidebar-sidebar .sidebar-primary {
+		padding-right: 30px;
+	}
+
+	.sidebar-secondary {
+		width: 18%;
+	}
+
+	/* Bubble Layout - Padding & Margins
 	--------------------------------------------- */
 
 	body.bubble {
 		background-color: #f5f5f5;
 	}
 
+	.bubble .site-inner {
+		padding-top: 20px;
+		padding-top: 2rem;
+	}
+
+	.bubble .content,
+	.bubble .sidebar-primary {
+		padding: 0;
+	}
+
 	.bubble .entry,
 	.bubble .sidebar .widget,
+	.bubble .breadcrumb,
+	.bubble .archive-description,
 	.bubble .author-box,
 	.bubble .comment-respond,
 	.bubble .entry-comments,
@@ -1667,9 +1754,33 @@ Media Queries
 		padding: 3rem 4rem;
 	}
 
-	.bubble .archive-description {
-		padding: 40px 40px 24px;
-		padding: 4rem 4rem 2.4rem;
+	.bubble .entry,
+	.bubble .breadcrumb,
+	.bubble .archive-description,
+	.bubble .author-box {
+		margin-bottom: 3.8674033%;
+	}
+
+	.bubble.full-width-content .entry,
+	.bubble.full-width-content .breadcrumb,
+	.bubble.full-width-content .archive-description,
+	.bubble.full-width-content .author-box {
+		margin-bottom: 2%;
+	}
+
+	.bubble.content-sidebar-sidebar .entry,
+	.bubble.content-sidebar-sidebar .breadcrumb,
+	.bubble.content-sidebar-sidebar .archive-description,
+	.bubble.content-sidebar-sidebar .author-box,
+	.bubble.sidebar-content-sidebar .entry,
+	.bubble.sidebar-content-sidebar .breadcrumb,
+	.bubble.sidebar-content-sidebar .archive-description,
+	.bubble.sidebar-content-sidebar .author-box,
+	.bubble.sidebar-sidebar-content .entry,
+	.bubble.sidebar-sidebar-content .breadcrumb,
+	.bubble.sidebar-sidebar-content .archive-description,
+	.bubble.sidebar-sidebar-content .author-box {
+		margin-bottom: 3.9723661%;
 	}
 
 	.bubble .entry-footer .entry-meta {
@@ -1679,20 +1790,9 @@ Media Queries
 		padding: 32px 40px 8px;
 		padding: 3.2rem 4rem 0.8rem;
 	}
-	/* End padding section */
 
-	.footer-widgets-1,
-	.footer-widgets-2,
-	.footer-widgets-3,
-	.sidebar-primary,
-	.title-area {
-		width: 30%;
-	}
-
-	.footer-widgets-1,
-	.footer-widgets-2 {
-		margin-right: 5%;
-	}
+	/* Columns
+	--------------------------------------------- */
 
 	.five-sixths,
 	.four-sixths,
@@ -1704,27 +1804,34 @@ Media Queries
 	.three-sixths,
 	.two-fourths,
 	.two-sixths,
-	.two-thirds {
+	.two-thirds,
+	.footer-widgets .widget-area {
 		margin-left: 2.564102564102564%;
 	}
 
 	.one-half,
 	.three-sixths,
-	.two-fourths {
+	.two-fourths,
+	.footer-widgets-number-2 .footer-widgets .widget-area {
 		width: 48.717948717948715%;
 	}
 
 	.one-third,
-	.two-sixths {
+	.two-sixths,
+	.sidebar-primary,
+	.title-area,
+	.footer-widgets-number-3 .footer-widgets .widget-area  {
 		width: 31.623931623931625%;
 	}
 
 	.four-sixths,
-	.two-thirds {
+	.two-thirds,
+	.content {
 		width: 65.81196581196582%;
 	}
 
-	.one-fourth {
+	.one-fourth,
+	.footer-widgets-number-4 .footer-widgets .widget-area {
 		width: 23.076923076923077%;
 	}
 
@@ -1732,7 +1839,13 @@ Media Queries
 		width: 74.35897435897436%;
 	}
 
-	.one-sixth {
+	.one-fifth,
+	.footer-widgets-number-5 .footer-widgets .widget-area {
+		width: 17.948717949%;
+	}
+
+	.one-sixth,
+	.footer-widgets-number-6 .footer-widgets .widget-area {
 		width: 14.52991452991453%;
 	}
 
@@ -1740,12 +1853,20 @@ Media Queries
 		width: 82.90598290598291%;
 	}
 	
-	.first {
+	.first,
+	.footer-widgets .footer-widgets-1 {
 		clear: both;
 		margin-left: 0;
 	}
 
-	/* Mobile Navigation
+	/* Lists inside columns (to remove bottom margin as needed at mobile sizes */
+	.no-list-margin ul,
+	.no-list-margin ol {
+		margin-bottom: 26px;
+		margin-bottom: 2.6rem;
+	}
+
+	/* Non-Mobile Navigation
 	--------------------------------------------- */
 	#menu-button {
 		display: none;
@@ -1758,17 +1879,16 @@ Media Queries
 	}
 
 	.nav-primary .genesis-nav-menu {
-		display: block !important;
+		display: block;
 	}
 
-	.nav-primary .genesis-nav-menu .menu-item,
 	.nav-primary .genesis-nav-menu li {
 		display: inline-block;
 		text-align: left;
 	}
 
 	.nav-primary .genesis-nav-menu > li {
-		border-top: none;
+		border-top-width: 0;
 	}
 
 	.nav-primary .genesis-nav-menu .sub-menu,
@@ -1792,7 +1912,9 @@ Media Queries
 		padding: 2rem;
 	}
 
-	/* Nav extras */
+	/* Navigation Extras
+	--------------------------------------------- */
+
 	.nav-primary .genesis-nav-menu > .right {
 		display: inline-block;
 		float: right;
@@ -1822,14 +1944,26 @@ Media Queries
 		display: none;
 	}
 
-	/* Sub menus */
+	/* Sub Menus
+	--------------------------------------------- */
+
+	.genesis-nav-menu li .sub-menu,
+	.genesis-nav-menu li ul {
+		border-width: 0 0 1px;
+	}
+
+	.genesis-nav-menu .sub-menu li,
+	.genesis-nav-menu ul li {
+		padding-left: 0;
+	}
+
 	.nav-primary .genesis-nav-menu ul a,
 	.nav-primary .genesis-nav-menu ul ul a {
 		position: relative;
+		width: 200px;
 		padding: 10px 20px;
 		padding: 1rem 2rem;
-		width: 200px;
-		font-size: .9em;
+		border-width: 1px 1px 0 1px;
 	}
 
 	.nav-primary .genesis-nav-menu > .parent > a:after {
@@ -1852,18 +1986,15 @@ Media Queries
 		vertical-align: middle;
 	}
 
-	.nav-primary .genesis-nav-menu .menu-item:hover,
 	.nav-primary .genesis-nav-menu li:hover {
 		position: relative;
 	}
 
-	.nav-primary .genesis-nav-menu .menu-item:hover > .sub-menu,
 	.nav-primary .genesis-nav-menu li:hover > ul {
 		left: auto;
 		opacity: 1;
 	}
 
-	.nav-primary .genesis-nav-menu .sub-menu .menu-item:hover > .sub-menu,
 	.nav-primary .genesis-nav-menu ul li:hover > ul {
 		top: 0;
 		left: 100%;

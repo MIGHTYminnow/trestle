@@ -1,0 +1,17 @@
+/* 
+ * Trestle editor styles
+ *
+ * @since 1.0.0
+ *
+ * @package Trestle
+ */
+
+@import url( '/wp-content/themes/trestle/style.css' );
+
+/* Overrides
+--------------------------------------------- */
+
+.content {
+	width: 100%;
+	font-size: 1.6rem;
+}

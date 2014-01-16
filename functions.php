@@ -1,28 +1,44 @@
 <?php
 
 /**
- * Genesis Theme Setup
- * @since  1.0
- *
- * This setup function attaches all theme functionality 
- * via the appropriate hooks and filters and includes
- * additional theme files
+ * Trestle theme functionality
+ *  
+ * @since  1.0.0
+ * 
+ * @package Trestle
  */
 
 add_action( 'genesis_setup' ,'trestle_theme_setup', 15 );
 function trestle_theme_setup() {
 
 	/*===========================================
-	 * Trestle theme settings
+	 * Required Files
+	===========================================*/
+	
+	// Trestle theme functions
+	require_once dirname( __FILE__ ) . '/lib/functions/theme-functions.php';
+
+	// Admin functionality
+	require_once dirname( __FILE__ ) . '/lib/admin/admin.php';
+	
+	// Shortcodes
+	require_once dirname( __FILE__ ) . '/lib/shortcodes/shortcodes.php';
+	
+	// Plugin activation class
+	require_once dirname( __FILE__ ) . '/lib/classes/class-tgm-plugin-activation.php';
+
+
+	/*===========================================
+	 * Trestle Theme Setup
 	===========================================*/
 
 	// Child theme definitions (do not remove)
 	define( 'CHILD_THEME_NAME', 'Trestle' );
 	define( 'CHILD_THEME_URL', 'http://demo.mightyminnow.com/theme/trestle/' );
-	define( 'CHILD_THEME_VERSION', '1.0' );
+	define( 'CHILD_THEME_VERSION', '1.0.0' );
 
 	// Load theme text domain
-	load_theme_textdomain( 'trestle', get_stylesheet_directory() . '/languages');
+	load_theme_textdomain( 'trestle', get_stylesheet_directory() . '/languages' );
 
 	// Add HTML5 markup structure
 	add_theme_support( 'html5' );
@@ -33,39 +49,16 @@ function trestle_theme_setup() {
 	// Add support for custom background
 	add_theme_support( 'custom-background' );
 
-	// Add support for 3-column footer widgets
-	add_theme_support( 'genesis-footer-widgets', 3 );
+	// Add support for footer widgets if specified in Trestle settings
+	$trestle_footer_widgets_number = esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
+	add_theme_support( 'genesis-footer-widgets', $trestle_footer_widgets_number );
 
 
 	/*===========================================
-	 * Required Files
-	===========================================*/
-	
-	// Trestle theme functions
-	require_once dirname( __FILE__ ) . '/lib/functions/trestle-functions.php';
-
-	// Admin functionality
-	require_once dirname( __FILE__ ) . '/lib/admin/admin.php';
-	
-	// Plugin activation class
-	require_once dirname( __FILE__ ) . '/lib/classes/class-tgm-plugin-activation.php';
-
-
-	/*===========================================
-	 * Styles and scripts
+	 * Header Styles & Scripts
 	===========================================*/
 
-	add_action( 'wp_enqueue_scripts', 'trestle_header_actions');
-
-
-	/*===========================================
-	 * Load Required/Suggested Plugins
-	 * 
-	 * Utilizes TGM Plugin Activation class: 
-	 * https://github.com/thomasgriffin/TGM-Plugin-Activation
-	===========================================*/
-	
-	add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
+	add_action( 'wp_enqueue_scripts', 'trestle_header_actions' );
 
 
 	/*===========================================
@@ -75,39 +68,27 @@ function trestle_theme_setup() {
 	// Implement auto-nav and mobile nav button
 	add_action( 'init', 'trestle_nav_modifications' );
 
-	// Create / remove placeholder menu for Trestle auto nav
-	add_action( 'init', 'trestle_nav_placeholder' );
+
+	/*===========================================
+	 * Posts & Pages
+	===========================================*/
+
+	// Setup revisions number
+	add_filter( 'wp_revisions_to_keep', 'trestle_update_revisions_number', 10, 2 );
+
+	// Manually control where Post Info & Meta display
+	add_action( 'the_post', 'trestle_post_info_meta', 0 );
 
 
 	/*===========================================
-	 * Actions & Filters
+	 * General Actions & Filters
 	===========================================*/
 
 	// Add body classes
 	add_filter( 'body_class', 'trestle_body_classes' );
 
-
-	/*===========================================
-	 * Footer
-	===========================================*/
-
-	// Add Trestle custom footer attribute to Mm
-	add_filter( 'genesis_footer_output', 'trestle_custom_footer' );
-
-	/*===========================================
-	 * Admin Functionality
-	===========================================*/
-
-	// Trestle admin scripts and styles
-	add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
-
-	// Trestle default settings
-	add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
-
-	// Sanitize settings
-	add_action( 'genesis_settings_sanitizer_init', 'trestle_register_social_sanitization_filters' );
-	 
-	// Register Trestle settings metabox
-	add_action( 'genesis_theme_settings_metaboxes', 'trestle_register_settings_box' );
-
+	// Do custom Read More text
+	add_filter( 'excerpt_more', 'trestle_read_more_link' );
+	add_filter( 'get_the_content_more_link', 'trestle_read_more_link' );
+	add_filter( 'the_content_more_link', 'trestle_read_more_link' );
 }
