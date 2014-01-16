@@ -371,8 +371,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'WordPress Hotkeys',
-			'slug' 		=> 'wordpress-hotkeys',
+			'name' 		=> 'WP Hotkeys',
+			'slug' 		=> 'wp-hotkeys',
 			'required' 	=> false,
 		),
 	);
