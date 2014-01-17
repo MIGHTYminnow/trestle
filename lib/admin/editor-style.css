@@ -19,6 +19,14 @@ body {
 	font-size: 1.6rem;
 }
 
+.content a {
+	color: #f15123;
+}
+
+.content a:hover {
+	color: #333;
+}
+
 .content ul,
 .content ol {
 	margin: 0 0 26px 40px;
