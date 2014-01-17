@@ -1201,9 +1201,9 @@ Site Navigation
 }
 
 .nav-primary .genesis-nav-menu > .right > .button {
-	padding: 8px 15px;
+	padding: 12px 18px;
 	color: #FFF;
-	font-weight: bold;
+	vertical-align: middle;
 }
 
 
