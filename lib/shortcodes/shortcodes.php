@@ -27,17 +27,29 @@ function shortcode_empty_paragraph_fix($content)
 add_filter('the_content', 'shortcode_empty_paragraph_fix');
 
 /**
- * Columns - [col class="one-half first no-list-margin"]
+ * Columns - [col class="one-half first no-list-margin"] Contents [/col]
  *
  * Classes:
  *     - width (one-half, one-third, etc - uses native Genesis column classes in style.css)
  *     - first (used to specify the first column in a row)
  *     - no-list-margin (will cause contained list elements to collapse as one on mobile sizes)
  */
-function column( $atts, $content = null ) {
+function trestle_column( $atts, $content = null ) {
     extract( shortcode_atts( array(
-        'class' => 'one-half',
+        'class' => '',
     ), $atts ) );
     return '<div class="col ' . $class . '">' . do_shortcode( $content ) . '</div>';
 }
-add_shortcode( 'col', 'column' );
+add_shortcode( 'col', 'trestle_column' );
+
+/**
+ * Buttons - [button href="url" class="class"]Text[/button]
+ */
+function trestle_button( $atts, $content = null ) {
+    extract( shortcode_atts( array(
+        'href' => '#',
+        'class' => '',
+    ), $atts ) );
+    return '<a class="button ' . $class . '" href="' . $href . '">' . do_shortcode( $content ) . '</a>';
+}
+add_shortcode( 'button', 'trestle_button' );

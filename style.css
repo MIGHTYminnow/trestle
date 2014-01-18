@@ -37,6 +37,7 @@
 	- Plugins
 		- Genesis eNews Extended
 		- Genesis Latest Tweets
+		- Genesis Extender
 		- Gravity Forms
 		- Jetpack
 		- FancyBox for WordPress
@@ -592,6 +593,7 @@ Structure and Layout
 --------------------------------------------- */
 .bubble .entry,
 .bubble .sidebar .widget,
+.bubble .ez-widget-area,
 .bubble .breadcrumb,
 .bubble .archive-description,
 .bubble .author-box,
@@ -869,7 +871,8 @@ Plugins
 	color: #999;
 }
 
-.sidebar .widget.enews-widget {
+.sidebar .widget.enews-widget,
+.bubble .sidebar .widget.enews-widget {
 	background-color: #333;
 }
 
@@ -900,6 +903,7 @@ Plugins
 
 .enews-widget input:hover[type="submit"] {
 	background-color: #fff;
+	border-color: #FFF;
 	color: #333;
 }
 
@@ -910,6 +914,18 @@ Plugins
 	margin-bottom: 16px;
 	margin-bottom: 1.6rem;
 }
+
+/* Genesis Extender
+--------------------------------------------- */
+
+.home .ez-home-container-area {
+	margin-bottom: 0;
+}
+
+.bubble .ez-widget-area {
+	margin-bottom: 28px;
+}
+
 
 /* Gravity Forms
 --------------------------------------------- */
@@ -1077,17 +1093,20 @@ Site Navigation
 /* General Navigation
 --------------------------------------------- */
 
-#menu-button,
-.custom-background.bubble #menu-button {
-	display: block;
+#menu-button {
 	margin: 0 20px;
 	margin: 0 2rem;
 	text-align: center;
+	display: block;
 }
 
 .bubble #menu-button {
 	margin-top: 20px;
 	margin-top: 2rem;
+}
+
+.custom-background #menu-button {
+	margin-top: 0;
 }
 
 .genesis-nav-menu {
@@ -1252,8 +1271,8 @@ Site Navigation
 .nav-primary .genesis-nav-menu > .right > .button {
 	padding: 12px 18px;
 	color: #FFF;
+	font-weight: normal;
 }
-
 
 
 /* Sub Menus
@@ -1533,7 +1552,8 @@ Sidebars
 	margin-bottom: 0;
 }
 
-.sidebar .widget {
+.sidebar .widget,
+.bubble .ez-widget-area {
 	background-color: #fff;
 	border-radius: 3px;
 }
