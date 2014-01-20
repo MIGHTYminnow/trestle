@@ -310,7 +310,7 @@ function trestle_read_more_link( $default_text ) {
 	$custom_text = esc_attr( genesis_get_option( 'trestle_read_more_text' ) );
 
 	if ( $custom_text )	
-		return '&hellip;&nbsp;<a class="more-link" href="' . get_permalink() . '">' . $custom_text . '</a>';
+		return '&hellip;&nbsp;<a class="more-link" title="' . $custom_text . '" href="' . get_permalink() . '">' . $custom_text . '</a>';
 	else
 		return $default_text;
 }

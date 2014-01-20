@@ -261,6 +261,12 @@ function trestle_register_required_plugins() {
 			'required' 	=> true,
 		),
 
+		array(
+			'name' 		=> 'Respond.js',
+			'slug' 		=> 'respondjs',
+			'required' 	=> true,
+		),
+
 		// Optional plugins
 		array(
 			'name' 		=> 'Black Studio TinyMCE Widget',
@@ -343,12 +349,6 @@ function trestle_register_required_plugins() {
 		array(
 			'name' 		=> 'Widget Context',
 			'slug' 		=> 'widget-context',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'Respond.js',
-			'slug' 		=> 'respondjs',
 			'required' 	=> false,
 		),
 
