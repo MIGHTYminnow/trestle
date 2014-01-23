@@ -287,6 +287,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'Facebook Open Graph Meta Tags for WordPress',
+			'slug' 		=> 'wonderm00ns-simple-facebook-open-graph-tags',
+			'required'  => false,
+		),
+
+		array(
 			'name' 		=> 'FancyBox for WordPress',
 			'slug' 		=> 'fancybox-for-wordpress',
 			'required'  => false,
