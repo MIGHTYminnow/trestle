@@ -76,7 +76,7 @@ function trestle_nav_modifications() {
 function trestle_add_mobile_nav() {
 	// Only add the button if there is a primary menu
 	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) || has_nav_menu( 'primary' ) )
-		echo '<a id="menu-button" class="button" href="javascript: void(0)">' . do_shortcode( genesis_get_option( 'trestle_nav_button_text' ) ) . '</a>';
+		echo '<a id="menu-button" class="button" href="javascript:void(0)">' . do_shortcode( genesis_get_option( 'trestle_nav_button_text' ) ) . '</a>';
 }
 
 /**
