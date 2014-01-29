@@ -140,7 +140,7 @@ html {
 body {
 	background-color: #fff;
 	color: #666;
-	font-family: Lato, sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-size: 16px;
 	font-size: 1.6rem;
 	font-weight: 300;
@@ -195,14 +195,32 @@ p {
 	padding: 0;
 }
 
-strong {
-	font-weight: 700;
+p,
+ol,
+ul,
+.quote-caption {
+	margin-bottom: 26px;
+	margin-bottom: 2.6rem;
 }
 
 ol,
 ul {
-	margin: 0;
-	padding: 0;
+	margin-left: 40px;
+	margin-left: 4rem;
+	padding-left: 0;
+}
+
+.content ul li {
+	list-style-type: disc;
+}
+
+.content ol ol,
+.content ul ul {
+	margin-bottom: 0;
+}
+
+strong {
+	font-weight: 700;
 }
 
 blockquote,
@@ -326,7 +344,6 @@ h4,
 h5,
 h6 {
 	color: #333;
-	font-family: Lato, sans-serif;
 	font-weight: 700;
 	line-height: 1.2;
 	margin: 0 0 14px;
@@ -595,6 +612,20 @@ Structure and Layout
 
 }
 
+.entry,
+.sidebar .widget,
+.ez-widget-area,
+.breadcrumb,
+.archive-description,
+.author-box,
+.comment-respond,
+.entry-comments,
+.entry-pings {
+	margin-bottom: 20px;
+	margin-bottom: 2rem;
+	border-radius: 3px;
+}
+
 /* Bubble Layout
 --------------------------------------------- */
 .bubble .entry,
@@ -606,8 +637,6 @@ Structure and Layout
 .bubble .comment-respond,
 .bubble .entry-comments,
 .bubble .entry-pings {
-	margin-bottom: 20px;
-	margin-bottom: 2rem;
 	padding: 30px 40px;
 	padding: 3rem 4rem;
 }
@@ -770,7 +799,6 @@ img.alignright,
 	margin-bottom: 20px;
 	margin-bottom: 2rem;
 	background-color: #FFF;
-	border-radius: 3px;
 }
 
 .archive-description,
@@ -1014,7 +1042,6 @@ Site Header
 
 .title-area {
 	float: left;
-	font-family: Lato, sans-serif;
 	font-weight: 700;
 	padding: 16px 0;
 	padding: 1.6rem 0;
@@ -1116,8 +1143,8 @@ Site Navigation
 
 .genesis-nav-menu {
 	clear: both;
+	margin: 0;
 	color: #999;
-	font-family: Lato, sans-serif;
 	line-height: 1.5;
 	width: 100%;
 }
@@ -1165,6 +1192,7 @@ Site Navigation
 .genesis-nav-menu .sub-menu,
 .genesis-nav-menu ul {
 	display: none;
+	margin: 0;
 	background-color: #fff;
 	border-bottom: 1px solid #eee;
 	-webkit-transition: opacity .4s ease-in-out;
@@ -1332,42 +1360,9 @@ Content Area
 --------------------------------------------- */
 
 .entry {
-	background-color: #fff;
-	border-radius: 3px;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
-}
-
-.content ol,
-.content p,
-.content ul,
-.ez-home-container-area ol,
-.ez-home-container-area p,
-.ez-home-container-area ul,
-.quote-caption {
-	margin-bottom: 26px;
-	margin-bottom: 2.6rem;
-}
-
-.content ol,
-.content ul,
-.ez-home-container-area ol,
-.ez-home-container-area ul {
-	margin-left: 40px;
-	margin-left: 4rem;
-}
-
-.content ol li {
-	list-style-type: decimal;
-}
-
-.content ul li {
-	list-style-type: disc;
-}
-
-.content ol ol,
-.content ul ul {
-	margin-bottom: 0;
+	background-color: #fff;
 }
 
 /* Lists inside columns (to remove bottom margin as needed at mobile sizes */
@@ -1493,8 +1488,15 @@ Content Area
 	margin-right: 1.2rem;
 }
 
-.comment-list li,
-.ping-list li {
+.content .comment-list,
+.content .ping-list,
+.content .comment-list ul,
+.content .ping-list ul {
+	margin-left: 0;
+}
+
+.content .comment-list li,
+.content .ping-list li {
 	list-style-type: none;
 }
 
@@ -1557,12 +1559,10 @@ Sidebars
 	margin-bottom: 0;
 }
 
-.sidebar .widget,
 .bubble .ez-widget-area {
 	background-color: #fff;
 	border-radius: 3px;
 }
-
 
 /*
 Footer Widgets
@@ -1856,7 +1856,6 @@ Media Queries
 	.sidebar .widget,
 	.bubble .sidebar .widget {
 		background-color: #fff;
-		border-radius: 3px;
 		margin-bottom: 8.045977%;
 	}
 
