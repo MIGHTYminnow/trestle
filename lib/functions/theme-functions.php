@@ -34,6 +34,20 @@ function trestle_header_actions() {
 
 
 /*===========================================
+ * Widget Areas
+===========================================*/
+
+/**
+ * Register custom widget areas
+ *
+ * @since 1.0.0
+ */
+function trestle_register_widget_areas() {
+
+}
+
+
+/*===========================================
  * Auto & Mobile Navigation
 ===========================================*/
 

@@ -60,6 +60,11 @@ function trestle_theme_setup() {
 
 	add_action( 'wp_enqueue_scripts', 'trestle_header_actions' );
 
+	/*===========================================
+	 * Widget Areas
+	===========================================*/
+	
+	add_action( 'widgets_init', 'trestle_register_widget_areas' );
 
 	/*===========================================
 	 * Auto & Mobile Navigation
