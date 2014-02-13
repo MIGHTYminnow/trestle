@@ -296,7 +296,7 @@ a img {
 }
 
 .external-link-icons .external-link:after {
-	content: url(/wp-content/themes/trestle/images/external.png);
+	content: url(images/external.png);
 	margin: 0 0 0 4px;
 	white-space: nowrap;
 }
@@ -306,19 +306,19 @@ a img {
 }
 
 .email-link-icons .email-link:before {
-	content: url(/wp-content/themes/trestle/images/email.png);
+	content: url(images/email.png);
 	margin: 0 4px 0 0;
 	white-space: nowrap;
 }
 
 .pdf-link-icons .pdf-link:before {
-	content: url(/wp-content/themes/trestle/images/pdf.png);
+	content: url(images/pdf.png);
 	margin: 0 4px 0 0;
 	white-space: nowrap;
 }
 
 .doc-link-icons .doc-link:before {
-	content: url(/wp-content/themes/trestle/images/doc.png);
+	content: url(images/doc.png);
 	margin: 0 4px 0 0;
 	white-space: nowrap;
 }

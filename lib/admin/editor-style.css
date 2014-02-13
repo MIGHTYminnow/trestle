@@ -6,7 +6,7 @@
  * @package Trestle
  */
 
-@import url( '/wp-content/themes/trestle/style.css' );
+@import url( '../../style.css' );
 
 /* Overrides
 --------------------------------------------- */

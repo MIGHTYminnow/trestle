@@ -2,7 +2,7 @@
 /**
  * Trestle theme functions (front-end)
  *
- * Note: all admin theme functionality is located at: trestle/lib/admin/admin.php
+ * Note: all admin theme functionality is located at: lib/admin/admin.php
  *
  * @since 1.0.0
  *
