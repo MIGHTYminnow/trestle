@@ -641,6 +641,10 @@ Structure and Layout
 	padding: 3rem 4rem;
 }
 
+.bubble .sidebar .widget {
+	background-color: #fff;
+}
+
 /* Column Widths and Positions
 --------------------------------------------- */
 
@@ -1859,7 +1863,6 @@ Media Queries
 
 	.sidebar .widget,
 	.bubble .sidebar .widget {
-		background-color: #fff;
 		margin-bottom: 8.045977%;
 	}
 
