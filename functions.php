@@ -84,6 +84,9 @@ function trestle_theme_setup() {
 	// Manually control where Post Info & Meta display
 	add_action( 'the_post', 'trestle_post_info_meta', 0 );
 
+	// Remove default featured image fallback of 'first-attached'
+	add_filter( 'genesis_get_image_default_args', 'trestle_featured_image_fallback' );
+
 
 	/*===========================================
 	 * General Actions & Filters

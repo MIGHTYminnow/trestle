@@ -261,6 +261,23 @@ function trestle_post_info_meta() {
 	}
 }
 
+/**
+ * Unset Genesis default featured image fallback of 'first-attached'
+ *
+ * This function prevents Genesis' default behavior of displaying
+ * the 'first-attached' image as a post's featured image (in archive)
+ * views, even when the post has no current featured image.
+ *
+ * @since 1.0.0
+ *
+ * @param array $args Default Genesis image args
+ * @return array Updated image args
+ */
+function trestle_featured_image_fallback( $args ) {
+	$args['fallback'] = false;
+	return $args;
+}
+
 
 /*===========================================
  * General Actions & Filters
