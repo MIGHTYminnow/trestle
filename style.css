@@ -1556,6 +1556,10 @@ Sidebars
 	margin-bottom: 0;
 }
 
+.sidebar ul {
+	margin-left: 0;
+}
+
 .sidebar li {
 	list-style-type: none;
 	margin-bottom: 6px;
