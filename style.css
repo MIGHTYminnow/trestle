@@ -959,6 +959,12 @@ Plugins
 	margin-bottom: 0;
 }
 
+.home .ez-home-container-area p:last-child,
+.home .ez-home-container-area ul:last-child,
+.home .ez-home-container-area ol:last-child {
+	margin-bottom: 0;
+}
+
 .bubble .ez-widget-area {
 	margin-bottom: 28px;
 }
