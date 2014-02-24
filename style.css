@@ -1382,6 +1382,7 @@ Content Area
 /* Lists inside columns (to remove bottom margin as needed at mobile sizes */
 .no-list-margin ul,
 .no-list-margin ol {
+	margin-top: 0;
 	margin-bottom: 0;
 }
 
