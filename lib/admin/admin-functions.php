@@ -317,6 +317,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'Jetpack by WordPress.com',
+			'slug' 		=> 'jetpack',
+			'required' 	=> false,
+		),
+
+		array(
 			'name' 		=> 'MapPress Easy Google Maps',
 			'slug' 		=> 'mappress-google-maps-for-wordpress',
 			'required' 	=> false,
