@@ -387,6 +387,12 @@ function trestle_register_required_plugins() {
 			'slug' 		=> 'wp-hotkeys',
 			'required' 	=> false,
 		),
+
+		array(
+			'name' 		=> 'WP Super Cache',
+			'slug' 		=> 'wp-super-cache',
+			'required' 	=> false,
+		),
 	);
 
 	// Change this to your theme text domain, used for internationalising strings
