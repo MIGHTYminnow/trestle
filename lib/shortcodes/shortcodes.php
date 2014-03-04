@@ -12,7 +12,7 @@
 ===========================================*/
 
 // Fix for empty <p> tags around shortcodes
-function shortcode_empty_paragraph_fix($content)
+function trestle_shortcode_empty_paragraph_fix($content)
 {   
     $array = array (
         '<p>[' => '[', 
@@ -24,7 +24,7 @@ function shortcode_empty_paragraph_fix($content)
 
     return $content;
 }
-add_filter('the_content', 'shortcode_empty_paragraph_fix');
+add_filter('the_content', 'trestle_shortcode_empty_paragraph_fix');
 
 /**
  * Columns - [col class="one-half first no-list-margin"] Contents [/col]
