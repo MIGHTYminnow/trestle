@@ -329,12 +329,6 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'My Page Order',
-			'slug' 		=> 'my-page-order',
-			'required' 	=> false,
-		),
-
-		array(
 			'name' 		=> 'NextGen Gallery',
 			'slug' 		=> 'nextgen-gallery',
 			'required' 	=> false,
@@ -347,8 +341,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Post Types Order',
-			'slug' 		=> 'post-types-order',
+			'name' 		=> 'Simple Custom Post Order',
+			'slug' 		=> 'simple-custom-post-order',
 			'required' 	=> false,
 		),
 
