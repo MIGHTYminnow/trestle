@@ -329,6 +329,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'My Page Order',
+			'slug' 		=> 'my-page-order',
+			'required' 	=> false,
+		),
+
+		array(
 			'name' 		=> 'NextGen Gallery',
 			'slug' 		=> 'nextgen-gallery',
 			'required' 	=> false,
@@ -341,8 +347,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Simple Custom Post Order',
-			'slug' 		=> 'simple-custom-post-order',
+			'name' 		=> 'Post Types Order',
+			'slug' 		=> 'post-types-order',
 			'required' 	=> false,
 		),
 
@@ -379,12 +385,6 @@ function trestle_register_required_plugins() {
 		array(
 			'name' 		=> 'WP Hotkeys',
 			'slug' 		=> 'wp-hotkeys',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'WP Super Cache',
-			'slug' 		=> 'wp-super-cache',
 			'required' 	=> false,
 		),
 	);
