@@ -1026,7 +1026,11 @@ img#wpstats {
 --------------------------------------------- */
 .simple-section-nav .current_page_item > a,
 .simple-section-nav .current_page_ancestor > a {
-	color: #f15123;
+	
+}
+
+.simple-section-nav .current_page_item > a {
+	font-weight: bold;
 }
 
 
