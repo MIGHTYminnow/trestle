@@ -353,6 +353,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'Responsive Video Embeds',
+			'slug' 		=> 'responsive-video-embeds',
+			'required' 	=> false,
+		),
+
+		array(
 			'name' 		=> 'Social Media Widget',
 			'slug' 		=> 'social-media-widget',
 			'required' 	=> false,
