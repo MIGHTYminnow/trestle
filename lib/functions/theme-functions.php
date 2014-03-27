@@ -106,7 +106,7 @@ function trestle_auto_nav_items( $nav_items, stdClass $menu_args ) {
 	if ( 'primary' == $menu_args->theme_location ) {
 		$args = array(
 			'echo'           => false,
-			'show_home'      => genesis_get_option( 'trestle_include_home_link' ),
+			'show_home'      => ( genesis_get_option( 'trestle_include_home_link' ) && genesis_get_option( 'trestle_home_link_text' ) ) ? do_shortcode( genesis_get_option( 'trestle_home_link_text' ) ): genesis_get_option( 'trestle_include_home_link' ),
 			'menu_class'     => 'auto-menu'
 		);
 

@@ -37,6 +37,7 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_layout' => 'solid',
 		'trestle_auto_nav' => 0,
 		'trestle_include_home_link' => 0,
+		'trestle_home_link_text' => __( 'Home', 'trestle' ),
 		'trestle_nav_button_text' => '[icon name="icon-list-ul"]  ' . __( 'Navigation', 'trestle' ),
 		'trestle_read_more_text' => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'trestle_revisions_number' => 3,
@@ -101,6 +102,7 @@ function trestle_register_social_sanitization_filters() {
 		'safe_html', 
 		GENESIS_SETTINGS_FIELD,
 		array(
+			'trestle_home_link_text',
 			'trestle_nav_button_text',
 			'trestle_read_more_text'
 		)
@@ -147,6 +149,12 @@ function trestle_settings_box() {
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_auto_nav' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Automatically generate nav menu (replaces custom/manual menu with auto-generated menu)', 'trestle' ); ?></label><br />
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_include_home_link' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]"><?php _e( 'Include home link', 'trestle' ); ?></label>
 	</p>
+	
+	<p>
+		<?php _e( 'Home link text (shortcodes can be included):', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_home_link_text' ) ); ?>" /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]">
+	</p>
+	
 	<p>
 		<?php _e( 'Text for mobile navigation button (shortcodes can be included):', 'trestle' ); ?></label><br />
 		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_nav_button_text' ) ); ?>" /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]">
