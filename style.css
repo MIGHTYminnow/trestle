@@ -410,7 +410,7 @@ textarea,
 button,
 .button,
 .genesis-nav-menu a,
-.nav-primary .genesis-nav-menu > .right {
+.genesis-nav-menu > .right {
 	padding: 16px 24px;
 	padding: 1.6rem 2.4rem;
 }
@@ -1314,7 +1314,7 @@ Site Navigation
 --------------------------------------------- */
 
 .nav-secondary {
-	background-color: #fff;
+	background-color: #FFF;
 }
 
 .nav-secondary a:hover,
@@ -2003,24 +2003,25 @@ Media Queries
 		display: none;
 	}
 
-	.nav-primary {
+	.nav-primary,
+	.nav-secondary {
 		margin: 0;
 		border-radius: 0;
 		overflow: visible;
 		display: block !important;
 	}
 
-	.nav-primary .genesis-nav-menu li {
+	.genesis-nav-menu li {
 		display: inline-block;
 		text-align: left;
 	}
 
-	.nav-primary .genesis-nav-menu > li {
+	.genesis-nav-menu > li {
 		border-top-width: 0;
 	}
 
-	.nav-primary .genesis-nav-menu .sub-menu,
-	.nav-primary .genesis-nav-menu ul {
+	.genesis-nav-menu .sub-menu,
+	.genesis-nav-menu ul {
 		display: block;
 		left: -9999px;
 		opacity: 0;
@@ -2030,12 +2031,12 @@ Media Queries
 		font-size: 1em;
 	}
 
-	.nav-primary .genesis-nav-menu .sub-icon {
+	.genesis-nav-menu .sub-icon {
 		display: none;
 	}
 
-	.nav-primary .genesis-nav-menu a,
-	.nav-primary .genesis-nav-menu > .right {
+	.genesis-nav-menu a,
+	.genesis-nav-menu > .right {
 		padding: 20px;
 		padding: 2rem;
 	}
@@ -2043,32 +2044,32 @@ Media Queries
 	/* Navigation Extras
 	--------------------------------------------- */
 
-	.nav-primary .genesis-nav-menu > .right {
+	.genesis-nav-menu > .right {
 		display: inline-block;
 		float: right;
 		border-top: none;
 	}
 
-	.nav-primary .genesis-nav-menu > .rss > a {
+	.genesis-nav-menu > .rss > a {
 		margin: 0 0 0 20px;
 		margin: 0 0 0 2rem;
 	}
 
-	.nav-primary .genesis-nav-menu > .search {
+	.genesis-nav-menu > .search {
 		padding: 11px 20px;
 		padding: 1.1rem 2rem;
 	}
 
-	.nav-primary .genesis-nav-menu > .search form {
+	.genesis-nav-menu > .search form {
 		padding-right: 0;
 	}
 	
-	.nav-primary .genesis-nav-menu > .search input {
+	.genesis-nav-menu > .search input {
 		padding: 10px 20px;
 		padding: 1rem 2rem;
 	}
 
-	.nav-primary .genesis-nav-menu > .search input[type="submit"] {
+	.genesis-nav-menu > .search input[type="submit"] {
 		display: none;
 	}
 
@@ -2085,8 +2086,8 @@ Media Queries
 		padding-left: 0;
 	}
 
-	.nav-primary .genesis-nav-menu ul a,
-	.nav-primary .genesis-nav-menu ul ul a {
+	.genesis-nav-menu .sub-menu a, 
+	.genesis-nav-menu ul a {
 		position: relative;
 		width: 200px;
 		padding: 10px 20px;
@@ -2094,7 +2095,7 @@ Media Queries
 		border-width: 1px 1px 0 1px;
 	}
 
-	.nav-primary .genesis-nav-menu > .parent > a:after {
+	.genesis-nav-menu > .parent > a:after {
 		content: "\f0d7";
 		position: relative;
 		top: -.2em;
@@ -2103,7 +2104,7 @@ Media Queries
 		font-size: .6em;
 	}
 
-	.nav-primary .genesis-nav-menu ul .parent > a:after {
+	.genesis-nav-menu ul .parent > a:after {
 		content: "\f0da";
 		position: absolute;
 		top: 1em;
@@ -2114,16 +2115,16 @@ Media Queries
 		vertical-align: middle;
 	}
 
-	.nav-primary .genesis-nav-menu li:hover {
+	.genesis-nav-menu li:hover {
 		position: relative;
 	}
 
-	.nav-primary .genesis-nav-menu li:hover > ul {
+	.genesis-nav-menu li:hover > ul {
 		left: auto;
 		opacity: 1;
 	}
 
-	.nav-primary .genesis-nav-menu ul li:hover > ul {
+	.genesis-nav-menu ul li:hover > ul {
 		top: 0;
 		left: 100%;
 		margin-left: -1px;
