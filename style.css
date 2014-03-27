@@ -1179,11 +1179,11 @@ Site Navigation
 .genesis-nav-menu a:hover,
 .genesis-nav-menu .current_page_item > a,
 .genesis-nav-menu .sub-menu .current_page_item > a:hover {
-	color: #333;
+	color: #FFF;
 }
 
 .genesis-nav-menu ul .current_page_item > a {
-	color: #333;
+	color: #FFF;
 }
 
 .genesis-nav-menu > li > a {
@@ -1265,15 +1265,18 @@ Site Navigation
 }
 
 .site-header .menu a {
-	font-size: .8em;
 	padding: 15px 10px;
 	padding: 1.5rem 1rem;
+	font-size: .8em;
+	color: #FFF;
 }
+
 
 /* Primary / Mobile Navigation
 --------------------------------------------- */
 
-.nav-primary {
+.nav-primary,
+.nav-secondary {
 	display: none;
 	margin: 0 20px;
 	margin: 5px 2rem 0;
@@ -1282,44 +1285,63 @@ Site Navigation
 	background-color: #333;
 }
 
-.nav-primary .genesis-nav-menu li {
+.genesis-nav-menu li {
 	display: block;
 }
 
-.nav-primary .genesis-nav-menu > li,
-.nav-primary .genesis-nav-menu > .right {
+.genesis-nav-menu > li,
+.genesis-nav-menu > .right {
 	border-top: 1px solid #444;
 }
 
-.nav-primary .genesis-nav-menu > li.first {
+.genesis-nav-menu > li.first {
 	border-top: none;
 }
 
-.nav-primary .genesis-nav-menu a {
+.genesis-nav-menu a {
 	padding-right: 50px;
 	padding-right: 5rem;
 }
 
-.nav-primary a:hover,
-.nav-primary .current_page_item > a,
-.nav-primary .current_page_ancestor > a {
+.genesis-nav-menu a:hover,
+.genesis-nav-menu .current_page_item > a,
+.genesis-nav-menu .current_page_ancestor > a {
 	color: #fff;
 }
+
+
+/* Secondary Navigation
+--------------------------------------------- */
+
+.nav-secondary {
+	background-color: #fff;
+}
+
+.nav-secondary a:hover,
+.nav-secondary .current_page_item > a,
+.nav-secondary .sub-menu .current_page_item > a:hover {
+	color: #111;
+}
+
+.nav-secondary ul .current_page_item > a {
+	color: #111;
+}
+
 
 /* Navigation Extras
 --------------------------------------------- */
 
-.nav-primary .genesis-nav-menu > .right {
+.genesis-nav-menu > .right {
 	border-top-style: double;
 	border-width: 4px;
 }
 
-.nav-primary .genesis-nav-menu > .right > a {
+.genesis-nav-menu > .right > a {
 	display: inline;
 	padding: 0;
 }
 
-.nav-primary .genesis-nav-menu > .right > .button {
+.genesis-nav-menu > .right > .button {
 	padding: 12px 18px;
 	color: #FFF;
 	font-weight: normal;
@@ -1329,7 +1351,7 @@ Site Navigation
 /* Sub Menus
 --------------------------------------------- */
 
-.nav-primary .genesis-nav-menu .sub-icon {
+.genesis-nav-menu .sub-icon {
 	position: absolute;
 	z-index: 99;
 	top: 0;
@@ -1342,10 +1364,9 @@ Site Navigation
 	text-align: center;
 }
 
-.nav-primary .sub-menu a:hover,
-.nav-primary ul ul a:hover,
-.nav-primary ul ul .current_page_item > a,
-.nav-primary ul ul .current_page_ancestor > a  {
+.genesis-nav-menu ul a:hover,
+.genesis-nav-menu ul .current_page_item > a,
+.genesis-nav-menu ul .current_page_ancestor > a  {
 	color: #222;
 }
 
@@ -1356,17 +1377,10 @@ Site Navigation
 	margin-bottom: 0;
 }
 
-.no-jquery #menu-button:hover + .nav-primary .genesis-nav-menu,
-.no-jquery .nav-primary a:hover + ul,
+.no-jquery #menu-button:hover + .genesis-nav-menu,
+.no-jquery a:hover + ul,
 .no-jquery ul:hover {
 	display: block;
-}
-
-/* Secondary Navigation
---------------------------------------------- */
-
-.nav-secondary {
-	background-color: #fff;
 }
 
 
