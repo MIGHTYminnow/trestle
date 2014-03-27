@@ -1298,7 +1298,8 @@ Site Navigation
 	border-top: none;
 }
 
-.genesis-nav-menu a {
+.genesis-nav-menu a,
+.genesis-nav-menu ul a {
 	padding-right: 50px;
 	padding-right: 5rem;
 }
@@ -1351,7 +1352,8 @@ Site Navigation
 /* Sub Menus
 --------------------------------------------- */
 
-.genesis-nav-menu .sub-icon {
+.genesis-nav-menu .sub-icon,
+.genesis-nav-menu ul .sub-icon {
 	position: absolute;
 	z-index: 99;
 	top: 0;
