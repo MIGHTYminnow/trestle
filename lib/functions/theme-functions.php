@@ -30,6 +30,12 @@ function trestle_header_actions() {
 	
 	// Custom jQuery (if desired)
 	wp_enqueue_script( 'trestle-custom-jquery', '/wp-content/uploads/custom.js', array( 'jquery' ), '1.0.0', true );
+
+	// Pass PHP variables to theme jQuery
+	$php_vars = array (
+		'trestle_equal_cols_breakpoint' => genesis_get_option( 'trestle_equal_cols_breakpoint' ),
+	);
+	wp_localize_script( 'trestle-custom-jquery', 'php_vars', $php_vars );
 }
 
 
@@ -312,6 +318,10 @@ function trestle_body_classes( $classes ) {
 	// Add footer widget number class
 	if ( genesis_get_option( 'trestle_footer_widgets_number' ) )
 		$classes[] = 'footer-widgets-number-' . esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
+
+	// Add class for equal height Genesis Extender columns
+	if ( 1 == genesis_get_option( 'trestle_equal_height_cols' ) )
+		$classes[] = 'equal-height-genesis-extender-cols';
 	
 	return $classes;
 }

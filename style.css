@@ -32,9 +32,8 @@
 		- WordPress
 		- Genesis
 		- Titles
-	- Widgets
+	- Plugins & Widgets
 		- Featured Content
-	- Plugins
 		- Genesis eNews Extended
 		- Genesis Latest Tweets
 		- Genesis Extender
@@ -43,6 +42,8 @@
 		- FancyBox for WordPress
 		- MapPress
 		- Simple Section Navigation
+		- Events Manager
+		- Simple Newsletter Signup
 	- Site Header
 		- Title Area
 		- Widget Area
@@ -77,7 +78,7 @@ HTML5 Reset
 	normalize.css v2.1.2 | MIT License | git.io/normalize
 --------------------------------------------- */
 
-article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:1em;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:1em;margin:0}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
 
 /* Box Sizing
 --------------------------------------------- */
@@ -161,6 +162,7 @@ input[type="reset"],
 input[type="submit"],
 textarea:focus,
 .button {
+	font-weight: 300;
 	-webkit-transition: all 0.1s ease-in-out;
 	-moz-transition:    all 0.1s ease-in-out;
 	-ms-transition:     all 0.1s ease-in-out;
@@ -275,13 +277,10 @@ a:hover {
 
 .site-inner a {
 	border-bottom: 1px solid #ddd;
-}
-
-.content a {
 	color: #f15123;
 }
 
-.content a:hover {
+.site-inner a:hover {
 	color: #333;
 }
 
@@ -364,6 +363,12 @@ h2 {
 	clear: both;
 }
 
+.widget .entry h2 {
+	margin-bottom: 5px;
+	margin-bottom: 0.5rem;
+	font-size: 1em;
+}
+
 h3 {
 	font-size: 20px;
 	font-size: 2rem;
@@ -410,9 +415,15 @@ textarea,
 button,
 .button,
 .genesis-nav-menu a,
-.genesis-nav-menu > .right {
-	padding: 16px 24px;
-	padding: 1.6rem 2.4rem;
+.nav-primary .genesis-nav-menu > .right,
+#subscribe-email input,
+div.gform_wrapper input[type="email"],
+div.gform_wrapper input[type="text"],
+div.gform_wrapper textarea,
+div.gform_wrapper .ginput_complex label {
+	padding: 15px;
+	padding: 1.5rem;
+	line-height: 1.25;
 }
 
 input,
@@ -426,9 +437,15 @@ textarea {
 	width: 100%;
 }
 
+input[type="file"] {
+	padding-left: 0;
+	padding-right: 0;
+	border: none !important;
+	box-shadow: none;
+}
+
 input:focus,
 textarea:focus {
-	border: 1px solid #999;
 	outline: none;
 }
 
@@ -445,7 +462,11 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-.button {
+body .button {
+	padding-left: 26px;
+	padding-right: 26px;
+	padding-left: 2.6rem;
+	padding-right: 2.6rem;
 	background-color: #333;
 	border: 1px solid #333;
 	box-shadow: none;
@@ -454,13 +475,15 @@ input[type="submit"],
 	text-transform: uppercase;
 	width: auto;
 	border-radius: 3px;
+	font-weight: normal;
+	letter-spacing: 0.02em;
 }
 
 button:hover,
 input:hover[type="button"],
 input:hover[type="reset"],
 input:hover[type="submit"],
-.button:hover,
+body .button:hover,
 .genesis-nav-menu input[type="submit"] {
 	background-color: #f15123;
 	border-color: #f15123;
@@ -479,6 +502,52 @@ input:hover[type="submit"],
 .content .button,
 .content .button:hover {
 	color: #FFF;
+}
+
+/* Sidebar Forms, Buttons, & Inputs */
+
+.sidebar input,
+.sidebar select,
+.sidebar textarea,
+.sidebar button,
+.sidebar .button,
+.sidebar .genesis-nav-menu a,
+.sidebar .nav-primary .genesis-nav-menu > .right,
+.sidebar #subscribe-email input,
+.sidebar div.gform_wrapper input[type="email"],
+.sidebar div.gform_wrapper input[type="text"],
+.sidebar div.gform_wrapper textarea,
+.sidebar .gform_wrapper .ginput_complex .ginput_left select,
+.sidebar .gform_wrapper .ginput_complex .ginput_right select,
+.sidebar .gform_wrapper .ginput_complex .ginput_left,
+.sidebar .gform_wrapper .ginput_complex .ginput_right,
+.sidebar .gform_wrapper .ginput_complex .ginput_right input[type=text] {
+	width: 100% !important;
+	padding: 0.5em;
+}
+
+.sidebar input[type="file"],
+.sidebar .gform_wrapper .ginput_complex .ginput_left,
+.sidebar .gform_wrapper .ginput_complex .ginput_right {
+	padding: 0;
+}
+
+.sidebar div.gform_wrapper .gfield_time_hour input,
+.sidebar div.gform_wrapper .gfield_time_minute input,
+.sidebar div.gform_wrapper .gfield_date_month input,
+.sidebar div.gform_wrapper .gfield_date_day input,
+.sidebar div.gform_wrapper .gfield_date_year input {
+	width: 70% !important;
+}
+
+.sidebar div.gform_wrapper li,
+.sidebar div.gform_wrapper input[type="button"] + input[type="submit"] {
+	margin-top: 8px;
+	margin-top: 0.8rem;
+}
+
+.sidebar label {
+	font-size: 0.9em;
 }
 
 .genesis-nav-menu input[type="submit"]:hover {
@@ -871,7 +940,7 @@ img.alignright,
 
 
 /*
-Widgets
+Plugins & Widgets
 ---------------------------------------------------------------------------------------------------- */
 
 /* Featured Content
@@ -895,11 +964,6 @@ Widgets
 .featured-content .entry-title a {
 	border: none;
 }
-
-
-/*
-Plugins
----------------------------------------------------------------------------------------------------- */
 
 /* Genesis eNews Extended
 --------------------------------------------- */
@@ -959,9 +1023,9 @@ Plugins
 	margin-bottom: 0;
 }
 
-.home .ez-home-container-area p:last-child,
-.home .ez-home-container-area ul:last-child,
-.home .ez-home-container-area ol:last-child {
+.home .ez-home-container-area .widget:last-child p:last-child,
+.home .ez-home-container-area .widget:last-child ul:last-child,
+.home .ez-home-container-area .widget:last-child ol:last-child {
 	margin-bottom: 0;
 }
 
@@ -973,14 +1037,15 @@ Plugins
 /* Gravity Forms
 --------------------------------------------- */
 
+div.gform_wrapper {
+	max-width: 100%;
+}
+
 div.gform_wrapper input[type="email"],
 div.gform_wrapper input[type="text"],
-div.gform_wrapper textarea,
-div.gform_wrapper .ginput_complex label {
+div.gform_wrapper textarea {
 	font-size: 16px;
 	font-size: 1.6rem;
-	padding: 16px;
-	padding: 1.6rem;
 }
 
 div.gform_wrapper .ginput_complex label {
@@ -993,16 +1058,50 @@ div.gform_wrapper form li {
 	margin: 1.6rem 0 0;
 }
 
+div.gform_wrapper li,
+div.gform_wrapper form .gfield_checkbox li {
+	margin: 0;
+}
+
+div.gform_wrapper ul.gfield_radio li { /* Prevent radio optoin from being cut off by default GF CSS */
+	padding-left: 1px !important;
+}
+
 div.gform_wrapper .gform_footer input[type="submit"] {
 	font-size: 14px;
 	font-size: 1.4rem;
 }
 
-/* Jetpack
+/* Jetpack - WP Stats
 --------------------------------------------- */
 
 img#wpstats {
 	display: none;
+}
+
+
+/* Jetpack - Blog Subscriptions
+--------------------------------------------- */
+
+#jetpack_subscription_widget input,
+#subscribe-email input {
+	width: 100%;
+}
+
+.jetpack_subscription_widget .success {
+	margin-bottom: 15px;
+	padding: 15px;
+	background-color: #DFF7DD;
+	border: 1px solid #CFE7CD;
+	color: #7EA57B;
+}
+
+.jetpack_subscription_widget .error {
+	margin-bottom: 15px;
+	padding: 15px;
+	background-color: #FFEDE8;
+	border: 1px solid #EFDDD8;
+	color: #F15123;
 }
 
 /* FancyBox for Wordpress
@@ -1024,6 +1123,7 @@ img#wpstats {
 
 /* Simple Section Navigation
 --------------------------------------------- */
+
 .simple-section-nav .current_page_item > a,
 .simple-section-nav .current_page_ancestor > a {
 	
@@ -1031,6 +1131,91 @@ img#wpstats {
 
 .simple-section-nav .current_page_item > a {
 	font-weight: bold;
+}
+
+/* Events Manager
+--------------------------------------------- */
+
+.em-calendar-wrapper {
+	clear: both;
+}
+
+.em-calendar-wrapper .fullcalendar tbody td {
+	vertical-align: top;
+}
+
+.em-calendar-wrapper .fullcalendar thead th,
+.em-calendar-wrapper .fullcalendar thead td {
+	display: inline-block;
+}
+
+.em-calendar-wrapper .fullcalendar thead th,
+.em-calendar-wrapper .fullcalendar thead td,
+.em-calendar-wrapper .fullcalendar .days-names td {
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.em-calendar-wrapper .fullcalendar thead th,
+.em-calendar-wrapper .fullcalendar thead td {
+	border: none;
+	width: 10%;
+}
+
+.em-calendar-wrapper .fullcalendar .month_name {
+	width: 80%;
+}
+
+.em-calendar-wrapper .fullcalendar thead a,
+.em-calendar-wrapper .fullcalendar .eventful > a:first-child,
+.em-calendar-wrapper .fullcalendar .eventful-post > a:first-child,
+.em-calendar-wrapper .fullcalendar .eventful-pre > a:first-child {
+	border-bottom: none;
+	text-decoration: none;
+}
+
+.em-calendar-wrapper .fullcalendar tbody {
+	line-height: 1.2;
+}
+
+.em-calendar-wrapper .fullcalendar tbody tr,
+.em-calendar-wrapper .fullcalendar tbody td {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.em-calendar-wrapper .fullcalendar tbody td {
+	display: block;
+	border-top-width: 0;
+}
+
+.em-calendar-wrapper .fullcalendar tbody .days-names + tr td:first-child {
+	border-top-width: 1px;
+}
+
+.em-calendar-wrapper .fullcalendar .days-names td {
+	display: none;
+	height: auto;
+	padding: 1em 0;
+	background-color: #999;
+	color: #FFF;
+	border-color: #666;
+}
+
+.em-calendar-wrapper .fullcalendar ul {
+	margin: 5px 0px 10px 20px;
+	margin: 0.5rem 0 1rem 2rem;
+	font-size: 0.9em;
+}
+
+.em-calendar-wrapper .fullcalendar li {
+	margin-bottom: .5em;
+}
+
+.em-calendar-wrapper table.fullcalendar tr td a {
+	text-decoration: none;
 }
 
 
@@ -1057,8 +1242,8 @@ Site Header
 .title-area {
 	float: left;
 	font-weight: 700;
-	padding: 16px 0;
-	padding: 1.6rem 0;
+	margin-bottom: 16px;
+	margin-bottom: 1.6rem;
 	width: 100%;
 	text-align: center;
 }
@@ -1159,7 +1344,6 @@ Site Navigation
 	clear: both;
 	margin: 0;
 	color: #999;
-	line-height: 1.5;
 	width: 100%;
 }
 
@@ -1193,11 +1377,6 @@ Site Navigation
 .genesis-nav-menu > .rss > a {
 	margin-right: 15px;
 	margin-right: 1.5rem;
-}
-
-.genesis-nav-menu > .search {
-	padding: 14px 0 0;
-	padding: 1.4rem 0 0;
 }
 
 /* Sub Navigation
@@ -1345,12 +1524,30 @@ Site Navigation
 	padding: 0;
 }
 
-.genesis-nav-menu > .right > .button {
-	padding: 12px 18px;
+.genesis-nav-menu > .right .button,
+.genesis-nav-menu > .right .search-form {
+	margin: -1em 0;
 	color: #FFF;
-	font-weight: normal;
 }
 
+.genesis-nav-menu > .right .button,
+.genesis-nav-menu > .right input {
+	display: inline-block;
+	float: none !important;
+	width: auto;
+	padding: 0.6em 1.2em;
+	border: none;
+}
+
+.genesis-nav-menu > .right .search-form {
+	display: inline-block;
+	padding: 0;
+}
+
+.genesis-nav-menu > .right input[type="submit"] {
+	display: none;
+	margin: 0 0 0 0.5em;
+}
 
 /* Sub Menus
 --------------------------------------------- */
@@ -1400,6 +1597,14 @@ Content Area
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
 	background-color: #fff;
+}
+
+.widget .entry,
+.bubble .widget .entry {
+	padding: 0;
+	margin-bottom: 20px;
+	margin-bottom: 2rem;
+
 }
 
 /* Lists inside columns (to remove bottom margin as needed at mobile sizes */
@@ -1791,6 +1996,8 @@ Media Queries
 	--------------------------------------------- */
 
 	.title-area {
+		width: auto;
+		margin-bottom: 0;
 		text-align: left;
 	}
 
@@ -1814,8 +2021,6 @@ Media Queries
 
 	.site-header .search-form {
 		float: right;
-		margin-top: 16px;
-		margin-top: 1.6rem;
 	}
 
 	.site-header .widget-area {
@@ -2042,8 +2247,8 @@ Media Queries
 
 	.genesis-nav-menu a,
 	.genesis-nav-menu > .right {
-		padding: 20px;
-		padding: 2rem;
+		padding: 16px 20px;
+		padding: 1.6rem 2rem;
 	}
 
 	/* Navigation Extras
@@ -2060,22 +2265,12 @@ Media Queries
 		margin: 0 0 0 2rem;
 	}
 
-	.genesis-nav-menu > .search {
-		padding: 11px 20px;
-		padding: 1.1rem 2rem;
-	}
-
 	.genesis-nav-menu > .search form {
 		padding-right: 0;
 	}
-	
-	.genesis-nav-menu > .search input {
-		padding: 10px 20px;
-		padding: 1rem 2rem;
-	}
 
-	.genesis-nav-menu > .search input[type="submit"] {
-		display: none;
+	.genesis-nav-menu > .right input[type="submit"] {
+		display: inline-block;
 	}
 
 	/* Sub Menus
@@ -2133,6 +2328,34 @@ Media Queries
 		top: 0;
 		left: 100%;
 		margin-left: -1px;
+	}
+
+	/* Plugins
+	--------------------------------------------- */
+	
+	/* Events Manager */
+	.em-calendar-wrapper .fullcalendar tr {
+		display: table-row !important;
+	}
+
+	.em-calendar-wrapper .fullcalendar th,
+	.em-calendar-wrapper .fullcalendar td {
+		display: table-cell !important;
+	}
+
+	.em-calendar-wrapper .fullcalendar thead th,
+	.em-calendar-wrapper .fullcalendar thead td,
+	.em-calendar-wrapper .fullcalendar .month_name {
+		width: auto;
+	}
+
+	.em-calendar-wrapper .fullcalendar tbody td {
+		width: 14.285714286%;
+		height: 100px;
+	}
+
+	.em-calendar-wrapper .fullcalendar tbody td {
+		border-top-width: 1px;
 	}
 
 }
