@@ -25,11 +25,15 @@ function trestle_header_actions() {
 	// Theme jQuery
 	wp_enqueue_script( 'theme-jquery', get_stylesheet_directory_uri() . '/lib/js/theme-jquery.js', array( 'jquery' ), '1.0.0', true );
 
-	// Custom CSS (if desired)
-	wp_enqueue_style( 'trestle-custom-css', '/wp-content/uploads/custom.css' );
+	// Custom CSS (if it exists)
+	$custom_css_file = 'wp-content/uploads/trestle/custom.css';
+	if ( is_readable( ABSPATH . $custom_css_file ) )
+		wp_enqueue_style( 'trestle-custom-css', '/' . $custom_css_file );
 	
-	// Custom jQuery (if desired)
-	wp_enqueue_script( 'trestle-custom-jquery', '/wp-content/uploads/custom.js', array( 'jquery' ), '1.0.0', true );
+	// Custom jQuery (if it exists)
+	$custom_js_file = 'wp-content/uploads/trestle/custom.js';
+	if ( is_readable( ABSPATH . $custom_js_file ) )
+		wp_enqueue_script( 'trestle-custom-jquery', '/' . $custom_js_file, array( 'jquery' ), '1.0.0', true );
 
 	// Pass PHP variables to theme jQuery
 	$php_vars = array (
