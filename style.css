@@ -570,8 +570,8 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 .blue {
-	background-color: #0971B2;
-	border-color: #0971B2;
+	background-color: #0971b2;
+	border-color: #0971b2;
 }
 
 .blue:hover {
@@ -580,8 +580,8 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 .green {
-	background-color: #00A476;
-	border-color: #00A476;
+	background-color: #00a476;
+	border-color: #00a476;
 }
 
 .green:hover {
@@ -660,7 +660,7 @@ Structure and Layout
 	margin: 2rem;
 	padding: 30px;
 	padding: 3rem;
-	background-color: #FFF;
+	background-color: #fff;
 }
 
 .custom-background.bubble .site-inner {
@@ -862,7 +862,7 @@ img.alignright,
 .breadcrumb {
 	margin-bottom: 20px;
 	margin-bottom: 2rem;
-	background-color: #FFF;
+	background-color: #fff;
 }
 
 .archive-description,
@@ -995,7 +995,7 @@ Plugins & Widgets
 
 .enews-widget input:hover[type="submit"] {
 	background-color: #fff;
-	border-color: #FFF;
+	border-color: #fff;
 	color: #333;
 }
 
@@ -1101,17 +1101,17 @@ img#wpstats {
 .jetpack_subscription_widget .success {
 	margin-bottom: 15px;
 	padding: 15px;
-	background-color: #DFF7DD;
-	border: 1px solid #CFE7CD;
-	color: #7EA57B;
+	background-color: #dff7dd;
+	border: 1px solid #cfe7cd;
+	color: #7ea57b;
 }
 
 .jetpack_subscription_widget .error {
 	margin-bottom: 15px;
 	padding: 15px;
-	background-color: #FFEDE8;
-	border: 1px solid #EFDDD8;
-	color: #F15123;
+	background-color: #ffede8;
+	border: 1px solid #efddd8;
+	color: #f15123;
 }
 
 /* FancyBox for Wordpress
@@ -1210,7 +1210,7 @@ img#wpstats {
 	height: auto;
 	padding: 1em 0;
 	background-color: #999;
-	color: #FFF;
+	color: #fff;
 	border-color: #666;
 }
 
@@ -1234,7 +1234,7 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background-color: #FFF;
+	background-color: #fff;
 }
 
 .custom-background .site-header {
@@ -1373,11 +1373,11 @@ Site Navigation
 .genesis-nav-menu a:hover,
 .genesis-nav-menu .current_page_item > a,
 .genesis-nav-menu .sub-menu .current_page_item > a:hover {
-	color: #FFF;
+	color: #fff;
 }
 
 .genesis-nav-menu ul .current_page_item > a {
-	color: #FFF;
+	color: #fff;
 }
 
 .genesis-nav-menu > li > a {
@@ -1413,13 +1413,13 @@ Site Navigation
 
 .genesis-nav-menu li .sub-menu,
 .genesis-nav-menu li ul {
-	border: 0 solid #EEE;
+	border: 0 solid #eee;
 	border-top-width: 1px;
 }
 
 .genesis-nav-menu > li > .sub-menu,
 .genesis-nav-menu > li > ul {
-	border: 1px solid #EEE;
+	border: 1px solid #eee;
 	font-size: 0.9em;
 }
 
@@ -1507,7 +1507,7 @@ Site Navigation
 --------------------------------------------- */
 
 .nav-secondary {
-	background-color: #FFF;
+	background-color: #fff;
 }
 
 .nav-secondary a:hover,
@@ -1537,7 +1537,7 @@ Site Navigation
 .genesis-nav-menu > .right .button,
 .genesis-nav-menu > .right .search-form {
 	margin: -1em 0;
-	color: #FFF;
+	color: #fff;
 }
 
 .genesis-nav-menu > .right .button,
@@ -1698,7 +1698,7 @@ Content Area
 .archive-pagination li a:hover,
 .archive-pagination li.active a {
 	background-color: #f15123;
-	color: #FFF;
+	color: #fff;
 }
 
 .entry-pagination a {
