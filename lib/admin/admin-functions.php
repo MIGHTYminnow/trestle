@@ -76,8 +76,13 @@ function trestle_register_social_sanitization_filters() {
 		array(
 			'trestle_auto_nav',
 			'trestle_include_home_link',
-			'trestle_link_icons',
+			'trestle_custom_nav_extras',
+			'trestle_manual_post_info_meta',
 			'trestle_equal_height_cols',
+			'trestle_external_link_icons',
+			'trestle_email_link_icons',
+			'trestle_pdf_link_icons',
+			'trestle_doc_link_icons',
 		)
 	);
 
@@ -86,8 +91,8 @@ function trestle_register_social_sanitization_filters() {
 		'absint', 
 		GENESIS_SETTINGS_FIELD,
 		array(
-			'footer-widgets-number',
 			'trestle_revisions_number',
+			'trestle_footer_widgets_number',
 			'trestle_equal_cols_breakpoint',
 		)
 	);
@@ -108,6 +113,7 @@ function trestle_register_social_sanitization_filters() {
 		array(
 			'trestle_home_link_text',
 			'trestle_nav_button_text',
+			'trestle_custom_nav_extras_text',
 			'trestle_read_more_text'
 		)
 	);
