@@ -1512,12 +1512,14 @@ Site Navigation
 
 .nav-secondary a:hover,
 .nav-secondary .current_page_item > a,
-.nav-secondary .sub-menu .current_page_item > a:hover {
+.nav-secondary .current_page_ancestor > a,
+.nav-secondary ul .current_page_item > a {
 	color: #111;
 }
 
-.nav-secondary ul .current_page_item > a {
-	color: #111;
+.nav-secondary .current_page_item > a,
+.nav-secondary .current_page_ancestor > a {
+	font-weight: normal;
 }
 
 
