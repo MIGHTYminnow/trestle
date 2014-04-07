@@ -1542,6 +1542,10 @@ Site Navigation
 	color: #fff;
 }
 
+.genesis-nav-menu > .right .button {
+	margin: -0.7em 0;
+}
+
 .genesis-nav-menu > .right .button,
 .genesis-nav-menu > .right input {
 	display: inline-block;
