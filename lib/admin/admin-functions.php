@@ -282,8 +282,8 @@ function trestle_register_required_plugins() {
 	$plugins = array(
 		// Required plugins
 		array(
-			'name' 		=> 'Font Awesome Icons',
-			'slug' 		=> 'font-awesome',
+			'name' 		=> 'Better Font Awesome',
+			'slug' 		=> 'better-font-awesome',
 			'required' 	=> true,
 		),
 
