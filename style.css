@@ -411,7 +411,7 @@ textarea,
 button,
 .button,
 .genesis-nav-menu a,
-.nav-primary .genesis-nav-menu > .right,
+.genesis-nav-menu > .right,
 #subscribe-email input,  /* Begin Jetpack - Blog Subscription */
 div.gform_wrapper input[type="email"], /* Begin Gravity Forms */
 div.gform_wrapper input[type="text"],
@@ -513,8 +513,6 @@ body .button:hover,
 .sidebar textarea,
 .sidebar button,
 .sidebar .button,
-.sidebar .genesis-nav-menu a,
-.sidebar .nav-primary .genesis-nav-menu > .right,
 .sidebar #subscribe-email input, /* Begin Jetpack - Blog Subscription */
 .sidebar div.gform_wrapper input[type="email"], /* Begin Gravity Forms */
 .sidebar div.gform_wrapper input[type="text"],
@@ -1561,7 +1559,6 @@ Site Navigation
 }
 
 .genesis-nav-menu > .right input[type="submit"] {
-	display: none;
 	margin: 0 0 0 0.5em;
 }
 
