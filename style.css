@@ -1451,10 +1451,6 @@ Site Navigation
 	border-top: 1px solid #eee;
 }
 
-.site-header .sub-menu .sub-menu {
-	margin-top: -55px;
-}
-
 .site-header .menu a {
 	padding: 15px 10px;
 	padding: 1.5rem 1rem;
@@ -2324,12 +2320,11 @@ Media Queries
 	.genesis-nav-menu ul .parent > a:after {
 		content: "\f0da";
 		position: absolute;
-		top: 1em;
 		right: 8px;
 		margin: 0;
 		font-family: FontAwesome;
 		font-size: .8em;
-		vertical-align: middle;
+		line-height: 1.5;
 	}
 
 	.genesis-nav-menu li:hover {
