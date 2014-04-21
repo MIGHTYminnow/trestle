@@ -210,6 +210,8 @@ ul {
 .site-inner ul {
 	margin-left: 40px;
 	margin-left: 4rem;
+	margin-bottom: 26px;
+	margin-bottom: 2.6rem;
 }
 
 .content ul li {
@@ -591,16 +593,18 @@ body .green:hover {
 	border-color: #333;
 }
 
-body .arrow-right:after {
+.arrow-right:after {
 	display: inline-block;
 	content: "\00a0\00a0\f0a9";
 	font-family: FontAwesome;
+	line-height: 1;
 }
 
 .arrow-left:before {
 	display: inline-block;
 	content: "\f0a8\00a0\00a0";
 	font-family: FontAwesome;
+	line-height: 1;
 }
 
 /* Tables
