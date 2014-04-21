@@ -555,13 +555,13 @@ input[type="search"]::-webkit-search-results-button {
 
 /* Button Colors & Classes */
 
-.red,
+body .red,
 .genesis-nav-menu .button {
 	background-color: #f15123;
 	border-color: #f15123;
 }
 
-.red:hover {
+body .red:hover {
 	background-color: #333;
 	border-color: #333;
 }
@@ -571,27 +571,27 @@ input[type="search"]::-webkit-search-results-button {
 	border-color: #555;	
 }
 
-.blue {
+body .blue {
 	background-color: #0971b2;
 	border-color: #0971b2;
 }
 
-.blue:hover {
+body .blue:hover {
 	background-color: #333;
 	border-color: #333;
 }
 
-.green {
+body .green {
 	background-color: #00a476;
 	border-color: #00a476;
 }
 
-.green:hover {
+body .green:hover {
 	background-color: #333;
 	border-color: #333;
 }
 
-.arrow-right:after {
+body .arrow-right:after {
 	display: inline-block;
 	content: "\00a0\00a0\f0a9";
 	font-family: FontAwesome;
