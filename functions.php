@@ -23,6 +23,9 @@ function trestle_theme_setup() {
 	
 	// Shortcodes
 	require_once dirname( __FILE__ ) . '/lib/shortcodes/shortcodes.php';
+
+	// Additional sidebars
+	require_once dirname( __FILE__ ) . '/lib/sidebars/sidebars.php';
 	
 	// Plugin activation class
 	require_once dirname( __FILE__ ) . '/lib/classes/class-tgm-plugin-activation.php';
