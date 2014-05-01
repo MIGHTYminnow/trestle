@@ -2032,7 +2032,7 @@ Media Queries
 		clear: right;
 	}
 
-	.site-header .menu .last a {
+	.site-header .menu > .last a {
 		padding-right: 0;
 	}
 
