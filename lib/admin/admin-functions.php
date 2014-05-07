@@ -161,20 +161,22 @@ function trestle_settings_box() {
 	</p>
 	
 	<p>
-		<?php _e( 'Home link text (shortcodes can be included):', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_home_link_text' ) ); ?>" /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]">
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]"><?php _e( 'Home link text (shortcodes can be included):', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_home_link_text' ) ); ?>" />
 	</p>
 	
 	<p>
-		<?php _e( 'Text for mobile navigation button (shortcodes can be included):', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_nav_button_text' ) ); ?>" /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]">
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]"><?php _e( 'Text for mobile navigation button (shortcodes can be included):', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_nav_button_text' ) ); ?>" /> 
 	</p>
 	
 	<h4><?php _e( 'Primary Navigation Extras', 'trestle' ) ?></h4>
-	<p><input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_custom_nav_extras' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]"><?php _e( 'Display custom navigation extras content (overrides standard Genesis navigation extras)', 'trestle' ); ?></label></p>
 	<p>
-		<?php _e( 'Custom navigation extras text:', 'trestle' ); ?><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_custom_nav_extras_text' ) ); ?>" /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]">
+		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_custom_nav_extras' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]"><?php _e( 'Display custom navigation extras content (overrides standard Genesis navigation extras)', 'trestle' ); ?></label>
+	</p>
+	<p>
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]"><?php _e( 'Custom navigation extras text:', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_custom_nav_extras_text' ) ); ?>" /> 
 	</p>
 	
 	<h4><?php _e( 'Blog/Posts', 'trestle' ) ?></h4>
@@ -194,7 +196,9 @@ function trestle_settings_box() {
 	</p>
 	
 	<h4><?php _e( 'Post Info & Meta', 'trestle' ) ?></h4>
-	<p><input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_manual_post_info_meta' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]"><?php _e( 'Manually select where to show Post Info & Meta', 'trestle' ); ?></label></p>
+	<p>
+		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_manual_post_info_meta' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]"><?php _e( 'Manually select where to show Post Info & Meta', 'trestle' ); ?></label>
+	</p>
 	<div class="trestle-post-info-meta">
 		<div class="one-half first">
 			<b><?php _e( 'Show Post Info on:', 'trestle' ) ?></b>
@@ -255,7 +259,7 @@ function trestle_settings_box() {
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_equal_height_cols' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]"><?php _e( 'Automatically equalize height of Genesis Extender homepage columns', 'trestle' ); ?></label>
 	</p>
 	<p class="trestle-equal-columns-breakpoint">
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]"><?php _e( 'Implement at', 'trestle' ); ?></label> <input type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" value="<?php echo esc_attr( genesis_get_option( 'trestle_equal_cols_breakpoint' ) ); ?>" size="4"/>px&nbsp;<?php _e( 'and wider (should match main CSS breakpoint)', 'trestle' ); ?>
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]"><?php _e( 'Implement at', 'trestle' ); ?><input type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" value="<?php echo esc_attr( genesis_get_option( 'trestle_equal_cols_breakpoint' ) ); ?>" size="4"/>px&nbsp;<?php _e( 'and wider (should match main CSS breakpoint)', 'trestle' ); ?></label> 
 	</p>
 
 	<h4><?php _e( 'Link Icons', 'trestle' ) ?></h4>
