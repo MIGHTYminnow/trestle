@@ -36,6 +36,7 @@ function trestle_custom_defaults( $defaults ) {
  	$trestle_defaults = array(
 		'trestle_layout' => 'solid',
 		'trestle_auto_nav' => 0,
+		'trestle_auto_nav_depth' => 0,
 		'trestle_include_home_link' => 0,
 		'trestle_home_link_text' => __( 'Home', 'trestle' ),
 		'trestle_nav_button_text' => '[icon name="icon-list-ul"]  ' . __( 'Navigation', 'trestle' ),
@@ -91,6 +92,7 @@ function trestle_register_social_sanitization_filters() {
 		'absint', 
 		GENESIS_SETTINGS_FIELD,
 		array(
+			'trestle_auto_nav_depth',
 			'trestle_revisions_number',
 			'trestle_footer_widgets_number',
 			'trestle_equal_cols_breakpoint',
@@ -156,7 +158,16 @@ function trestle_settings_box() {
 	
 	<h4><?php _e( 'Primary Navigation', 'trestle' ) ?></h4>
 	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_auto_nav' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Automatically generate nav menu (replaces custom/manual menu with auto-generated menu)', 'trestle' ); ?></label><br />
+		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_auto_nav' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Automatically generate nav menu', 'trestle' ); ?></label>
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav_depth]"><?php _e( 'with a depth of', 'trestle' ) ?>: </label>
+		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav_depth]" />
+			<option value="0" <?php selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), '0' ); ?> >Unlimited</option>
+			<?php
+				for( $i=1; $i<=10; $i++ ) {
+					echo '<option value="' . $i . '" ' . selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), $i, false ) . '>' . $i . '</option>' . "\n";
+				}
+			?>
+		</select><br />
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_include_home_link' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]"><?php _e( 'Include home link', 'trestle' ); ?></label>
 	</p>
 	

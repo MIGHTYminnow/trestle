@@ -115,6 +115,7 @@ function trestle_add_mobile_nav() {
 function trestle_auto_nav_items( $nav_items, stdClass $menu_args ) {
 	if ( 'primary' == $menu_args->theme_location ) {
 		$args = array(
+			'depth'          => genesis_get_option( 'trestle_auto_nav_depth' ) ? genesis_get_option( 'trestle_auto_nav_depth' ) : 0,
 			'echo'           => false,
 			'show_home'      => ( genesis_get_option( 'trestle_include_home_link' ) && genesis_get_option( 'trestle_home_link_text' ) ) ? do_shortcode( genesis_get_option( 'trestle_home_link_text' ) ): genesis_get_option( 'trestle_include_home_link' ),
 			'menu_class'     => 'auto-menu'
