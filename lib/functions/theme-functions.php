@@ -119,13 +119,13 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 	if ( $logo_url ) {
 
 		// Default logo class
-		$classes = array('logo');
+		$classes = array('logo-full');
 
 		// If no mobile logo is specified, make regular logo act as mobile logo too
 		if( ! $logo_url_mobile )
-			$classes[] = 'logo-show';
+			$classes[] = 'show';
 
-		$logo_html .= sprintf( '<img class="%s" alt="%s" src="%s" />',
+		$logo_html .= sprintf( '<img class="logo %s" alt="%s" src="%s" />',
 			implode(' ', $classes),
 			esc_attr( get_bloginfo( 'name' ) ),
 			$logo_url 
@@ -140,9 +140,9 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 
 		// If no regular logo is specified, make mobile logo act as regular logo too
 		if( ! $logo_url )
-			$classes[] = 'logo-show';
+			$classes[] = 'show';
 
-		$logo_html .= sprintf( '<img class="%s" alt="%s" src="%s" />',
+		$logo_html .= sprintf( '<img class="logo %s" alt="%s" src="%s" />',
 			implode(' ', $classes),
 			esc_attr( get_bloginfo( 'name' ) ),
 			$logo_url_mobile 

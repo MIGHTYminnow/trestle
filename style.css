@@ -1303,11 +1303,11 @@ Site Header
 /* Logo
 --------------------------------------------- */
 
-.logo {
+.logo-full {
 	display: none;
 }
 
-.logo-show {
+.logo.show {
 	display: inline-block !important;
 }
 
@@ -2020,7 +2020,7 @@ Media Queries
 		display: none;
 	}
 
-	.logo {
+	.logo-full {
 		display: inline-block;
 	}
 
