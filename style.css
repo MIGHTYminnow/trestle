@@ -1264,10 +1264,6 @@ Site Header
 	text-align: center;
 }
 
-.header-image .title-area {
-	padding: 0;
-}
-
 .site-title {
 	font-size: 28px;
 	font-size: 2.8rem;
@@ -1291,6 +1287,12 @@ Site Header
 	margin-bottom: 0;
 }
 
+.has-logo .site-title a:first-child {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+}
+
 /* Full width header, no widgets */
 
 .header-full-width .title-area,
@@ -1298,25 +1300,17 @@ Site Header
 	width: 100%;
 }
 
-.header-image .site-description,
-.header-image .site-title a {
-	display: block;
-	text-indent: -9999px;
+/* Logo
+--------------------------------------------- */
+
+.logo {
+	display: none;
 }
 
-/* Logo, hide text */
-
-.header-image .site-header .wrap {
-	background: url(images/logo.png) no-repeat;
-	background-position: center top;
-	padding: 0;
+.logo-show {
+	display: inline-block !important;
 }
 
-.header-image .site-title a {
-	float: left;
-	min-height: 164px;
-	width: 100%;
-}
 
 /* Widget Area
 --------------------------------------------- */
@@ -2012,14 +2006,22 @@ Media Queries
 	/* Header
 	--------------------------------------------- */
 
+	.header-image .site-header .wrap {
+		background-position: left top;
+	}
+
 	.title-area {
 		width: auto;
 		margin-bottom: 0;
 		text-align: left;
 	}
 
-	.header-image .site-header .wrap {
-		background-position: left top;
+	.logo-mobile {
+		display: none;
+	}
+
+	.logo {
+		display: inline-block;
 	}
 
 	.header-image .site-header .widget-area {

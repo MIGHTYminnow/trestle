@@ -10,7 +10,20 @@
  */
 
 /*===========================================
- * Header Styles & Scripts
+ * Widget Areas
+===========================================*/
+
+/**
+ * Register custom widget areas
+ *
+ * @since 1.0.0
+ */
+function trestle_register_widget_areas() {
+
+}
+
+/*===========================================
+ * Head Styles & Scripts
 ===========================================*/
 
 /**
@@ -44,16 +57,112 @@ function trestle_header_actions() {
 
 
 /*===========================================
- * Widget Areas
+ * Body Classes
 ===========================================*/
 
 /**
- * Register custom widget areas
+ * Adds custom classes to the <body> element for styling purposes.
+ *
+ * @since 1.0.0
+ *
+ * @param array $classes Body classes.
+ * @return array 		 Updated body classes.
+ */
+function trestle_body_classes( $classes ) {
+	// Add 'no-jquery' class to be removed by jQuery if enabled
+	$classes[] = 'no-jquery';
+
+	// Add 'bubble' class
+	if ( 'bubble' == genesis_get_option( 'trestle_layout' ) )
+		$classes[] = 'bubble';
+
+	// Add link icon classes
+	if ( genesis_get_option( 'trestle_external_link_icons' ) )
+		$classes[] = 'external-link-icons';
+	if ( genesis_get_option( 'trestle_email_link_icons' ) )
+		$classes[] = 'email-link-icons';
+	if ( genesis_get_option( 'trestle_pdf_link_icons' ) )
+		$classes[] = 'pdf-link-icons';
+	if ( genesis_get_option( 'trestle_doc_link_icons' ) )
+		$classes[] = 'doc-link-icons';
+
+	// Add footer widget number class
+	if ( genesis_get_option( 'trestle_footer_widgets_number' ) )
+		$classes[] = 'footer-widgets-number-' . esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
+
+	// Add class for equal height Genesis Extender columns
+	if ( 1 == genesis_get_option( 'trestle_equal_height_cols' ) )
+		$classes[] = 'equal-height-genesis-extender-cols';
+
+	// Add logo class
+	if ( genesis_get_option( 'trestle_logo_url' ) || genesis_get_option( 'trestle_logo_url_mobile' ) )
+		$classes[] = 'has-logo';
+	
+	return $classes;
+}
+
+/*===========================================
+ * Header
+===========================================*/
+
+/**
+ * Output logos.
  *
  * @since 1.0.0
  */
-function trestle_register_widget_areas() {
+function trestle_do_logos( $title, $inside, $wrap ) {
+	$logo_url = genesis_get_option( 'trestle_logo_url' );
+	$logo_url_mobile = genesis_get_option( 'trestle_logo_url_mobile' );
+	$logo_html = '';
 
+	// Regular logo
+	if ( $logo_url ) {
+
+		// Default logo class
+		$classes = array('logo');
+
+		// If no mobile logo is specified, make regular logo act as mobile logo too
+		if( ! $logo_url_mobile )
+			$classes[] = 'logo-show';
+
+		$logo_html .= sprintf( '<img class="%s" alt="%s" src="%s" />',
+			implode(' ', $classes),
+			esc_attr( get_bloginfo( 'name' ) ),
+			$logo_url 
+		);
+	}
+
+	// Mobile logo
+	if ( $logo_url_mobile ) {
+
+		// Default mobile logo class
+		$classes = array('logo-mobile');
+
+		// If no regular logo is specified, make mobile logo act as regular logo too
+		if( ! $logo_url )
+			$classes[] = 'logo-show';
+
+		$logo_html .= sprintf( '<img class="%s" alt="%s" src="%s" />',
+			implode(' ', $classes),
+			esc_attr( get_bloginfo( 'name' ) ),
+			$logo_url_mobile 
+		);	
+	}
+
+	if ( $logo_html ) {
+		$inside .= sprintf( '<a href="%s" title="%s">%s</a>',
+			trailingslashit( home_url() ),
+			esc_attr( get_bloginfo( 'name' ) ),
+			$logo_html
+		);
+	}
+
+	//* Build the title
+	$title  = genesis_html5() ? sprintf( "<{$wrap} %s>", genesis_attr( 'site-title' ) ) : sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
+	$title .= genesis_html5() ? "{$inside}</{$wrap}>" : '';
+
+	//* Echo (filtered)
+	return $title;
 }
 
 
@@ -293,43 +402,6 @@ function trestle_featured_image_fallback( $args ) {
 /*===========================================
  * General Actions & Filters
 ===========================================*/
-
-/**
- * Adds custom classes to the <body> element for styling purposes.
- *
- * @since 1.0.0
- *
- * @param array $classes Body classes.
- * @return array 		 Updated body classes.
- */
-function trestle_body_classes( $classes ) {
-	// Add 'no-jquery' class to be removed by jQuery if enabled
-	$classes[] = 'no-jquery';
-
-	// Add 'bubble' class
-	if ( 'bubble' == genesis_get_option( 'trestle_layout' ) )
-		$classes[] = 'bubble';
-
-	// Add link icon classes
-	if ( genesis_get_option( 'trestle_external_link_icons' ) )
-		$classes[] = 'external-link-icons';
-	if ( genesis_get_option( 'trestle_email_link_icons' ) )
-		$classes[] = 'email-link-icons';
-	if ( genesis_get_option( 'trestle_pdf_link_icons' ) )
-		$classes[] = 'pdf-link-icons';
-	if ( genesis_get_option( 'trestle_doc_link_icons' ) )
-		$classes[] = 'doc-link-icons';
-
-	// Add footer widget number class
-	if ( genesis_get_option( 'trestle_footer_widgets_number' ) )
-		$classes[] = 'footer-widgets-number-' . esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
-
-	// Add class for equal height Genesis Extender columns
-	if ( 1 == genesis_get_option( 'trestle_equal_height_cols' ) )
-		$classes[] = 'equal-height-genesis-extender-cols';
-	
-	return $classes;
-}
 
 /**
  * Resets post type back to page once post info / meta functionality is done.

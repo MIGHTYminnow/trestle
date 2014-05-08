@@ -58,16 +58,31 @@ function trestle_theme_setup() {
 
 
 	/*===========================================
-	 * Header Styles & Scripts
+	 * Widget Areas
+	===========================================*/
+	
+	add_action( 'widgets_init', 'trestle_register_widget_areas' );
+
+
+	/*===========================================
+	 * Head Styles & Scripts
 	===========================================*/
 
 	add_action( 'wp_enqueue_scripts', 'trestle_header_actions' );
 
 	/*===========================================
-	 * Widget Areas
+	 * Body Classes
 	===========================================*/
-	
-	add_action( 'widgets_init', 'trestle_register_widget_areas' );
+
+	add_filter( 'body_class', 'trestle_body_classes' );
+
+	/*===========================================
+	 * Header
+	===========================================*/
+
+	// Add logo
+	add_filter( 'genesis_seo_title', 'trestle_do_logos', 10, 3 );
+
 
 	/*===========================================
 	 * Auto & Mobile Navigation
@@ -94,9 +109,6 @@ function trestle_theme_setup() {
 	/*===========================================
 	 * General Actions & Filters
 	===========================================*/
-
-	// Add body classes
-	add_filter( 'body_class', 'trestle_body_classes' );
 
 	// Do custom Read More text
 	add_filter( 'excerpt_more', 'trestle_read_more_link' );

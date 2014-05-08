@@ -113,6 +113,8 @@ function trestle_register_social_sanitization_filters() {
 		'safe_html', 
 		GENESIS_SETTINGS_FIELD,
 		array(
+			'trestle_logo_url',
+			'trestle_logo_url_mobile',
 			'trestle_home_link_text',
 			'trestle_nav_button_text',
 			'trestle_custom_nav_extras_text',
@@ -154,6 +156,16 @@ function trestle_settings_box() {
 		<input type="radio" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_layout]" value="solid" <?php checked( esc_attr( genesis_get_option( 'trestle_layout' ) ), 'solid' ); ?> />
 		<img src="<?php echo $img_path; ?>icon-bubble.gif" width="200" height="160" <?php echo 'bubble' == genesis_get_option( 'trestle_layout' ) ? 'class="checked"' : '' ?> />
 		<input type="radio" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_layout]" value="bubble" <?php checked( esc_attr( genesis_get_option( 'trestle_layout' ) ), 'bubble' ); ?> />
+	</p>
+
+	<h4><?php _e( 'Header', 'trestle' ) ?></h4>
+	<p>
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]"><?php _e( 'Logo URL', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url' ) ); ?>" />
+	</p>
+	<p>
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]"><?php _e( 'Mobile Logo URL', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url_mobile' ) ); ?>" />
 	</p>
 	
 	<h4><?php _e( 'Primary Navigation', 'trestle' ) ?></h4>
