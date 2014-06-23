@@ -38,13 +38,18 @@ function trestle_header_actions() {
 	// Theme jQuery
 	wp_enqueue_script( 'theme-jquery', get_stylesheet_directory_uri() . '/lib/js/theme-jquery.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 
+	// Get WP uploads directory
+	$upload_dir = wp_upload_dir();
+	$upload_dir = $upload_dir['basedir'];
+
 	// Custom CSS (if it exists)
-	$custom_css_file = 'wp-content/uploads/trestle/custom.css';
+	$custom_css_file = $upload_dir . '/trestle/custom.css';
 	if ( is_readable( ABSPATH . $custom_css_file ) )
 		wp_enqueue_style( 'trestle-custom-css', '/' . $custom_css_file );
 	
 	// Custom jQuery (if it exists)
-	$custom_js_file = 'wp-content/uploads/trestle/custom.js';
+	$custom_js_file = $upload_dir . '/trestle/custom.js';
+	echo $custom_js_file;
 	if ( is_readable( ABSPATH . $custom_js_file ) )
 		wp_enqueue_script( 'trestle-custom-jquery', '/' . $custom_js_file, array( 'jquery' ), CHILD_THEME_VERSION, true );
 
@@ -181,6 +186,11 @@ function trestle_do_logos( $title, $inside, $wrap ) {
  * @see trestle_nav_placeholder()
  */
 function trestle_nav_modifications() {
+	global $trestle_nav_title;
+
+	// Set title for Trestle placeholder navigation menu
+	$trestle_nav_title = __( 'Trestle Auto Nav Placeholder', 'trestle' );
+
 	// Add mobile nav button
 	add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
 
@@ -276,15 +286,15 @@ function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
  * @since 1.0.0
  */
 function trestle_nav_placeholder() {
-	// Set title for Trestle placeholder navigation menu
-	$trestle_nav_title = __( 'Trestle Auto Nav Placeholder', 'trestle' );
+	global $trestle_nav_title;
 
 	// Create placeholder menu for 'primary' spot if auto-nav is selected - this ensures that nav extras can be used even when no custom menu is formally set to primary
-	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) && ! wp_get_nav_menu_object( $trestle_nav_title ) && ! has_nav_menu( 'primary' ) ) {
-		// Create placholder menu
+	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) && ! wp_get_nav_menu_object( $trestle_nav_title ) ) {
 		wp_create_nav_menu( $trestle_nav_title );
+	}
 
-		// Assign placeholder menu to 'primary'
+	// Assign placeholder menu to 'primary' if auto-nav is selected and there is no current primary menu
+	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) && ! wp_get_nav_menu_object( $trestle_nav_title ) && ! has_nav_menu( 'primary' ) ) {
 		$menu_locations = get_theme_mod( 'nav_menu_locations' );
 		$menu_locations['primary'] = wp_get_nav_menu_object( $trestle_nav_title )->term_id;
 		set_theme_mod( 'nav_menu_locations', $menu_locations );
