@@ -40,17 +40,18 @@ function trestle_header_actions() {
 
 	// Get WP uploads directory
 	$upload_dir = wp_upload_dir();
-	$upload_dir = $upload_dir['path'];
+	$upload_path = $upload_dir['basedir'];
+	$upload_url = $upload_dir['baseurl'];
 
 	// Custom CSS (if it exists)
-	$custom_css_file = $upload_dir . '/trestle/custom.css';
-	if ( is_readable( $custom_css_file ) )
-		wp_enqueue_style( 'trestle-custom-css', '/' . $custom_css_file );
+	$custom_css_file = '/trestle/custom.css';
+	if ( is_readable( $upload_path . $custom_css_file ) )
+		wp_enqueue_style( 'trestle-custom-css', $upload_url . $custom_css_file );
 	
 	// Custom jQuery (if it exists)
-	$custom_js_file = $upload_dir . '/trestle/custom.js';
-	if ( is_readable( $custom_js_file ) )
-		wp_enqueue_script( 'trestle-custom-jquery', '/' . $custom_js_file, array( 'jquery' ), CHILD_THEME_VERSION, true );
+	$custom_js_file = '/trestle/custom.js';
+	if ( is_readable( $upload_path . $custom_js_file ) )
+		wp_enqueue_script( 'trestle-custom-jquery', $upload_url . $custom_js_file, array( 'jquery' ), CHILD_THEME_VERSION, true );
 
 	// Pass PHP variables to theme jQuery
 	$php_vars = array (
