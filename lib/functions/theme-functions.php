@@ -328,7 +328,7 @@ function trestle_update_revisions_number( $num ) {
  * @global object $post The current $post object.
  */
 function trestle_post_info_meta() {
-	if( in_the_loop() && genesis_get_option( 'trestle_manual_post_info_meta' ) ) {
+	if ( ! is_admin() && in_the_loop() && genesis_get_option( 'trestle_manual_post_info_meta' ) ) {
 
 		global $post;
 
@@ -353,11 +353,11 @@ function trestle_post_info_meta() {
 			$single_meta_option = 'trestle_post_meta_' . $post_type . '_single';
 		
 			// Post Info
-			if( genesis_get_option( $single_info_option ) )
+			if ( genesis_get_option( $single_info_option ) )
 				add_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 
 			// Post Meta
-			if( genesis_get_option( $single_meta_option ) )
+			if ( genesis_get_option( $single_meta_option ) )
 				add_action( 'genesis_entry_footer', 'genesis_post_meta' );
 		}
 
@@ -367,11 +367,11 @@ function trestle_post_info_meta() {
 			$archive_meta_option = 'trestle_post_meta_' . $post_type . '_archive';
 			
 			// Post Info
-			if( genesis_get_option( $archive_info_option ) )
+			if ( genesis_get_option( $archive_info_option ) )
 				add_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 
 			// Post Meta
-			if( genesis_get_option( $archive_meta_option ) )
+			if ( genesis_get_option( $archive_meta_option ) )
 				add_action( 'genesis_entry_footer', 'genesis_post_meta' );
 		}
 	

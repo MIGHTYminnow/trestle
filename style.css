@@ -44,8 +44,10 @@
 		- Simple Section Navigation
 		- Events Manager
 		- Simple Newsletter Signup
+		- WP Types & Views
 	- Site Header
 		- Title Area
+		- Logo
 		- Widget Area
 	- Site Navigation
 		- General Navigation
@@ -1232,6 +1234,30 @@ img#wpstats {
 
 .em-calendar-wrapper table.fullcalendar tr td a {
 	text-decoration: none;
+}
+
+/* WP Types & Views
+--------------------------------------------- */
+
+.wpv-sorting-indicator {
+	display: none !important;
+}
+
+th a.wpv-header-no-sort:after,
+th a.wpv-header-asc:after,
+th a.wpv-header-desc:after {
+	content: "\f0dd"; /* \f0a9 = circle arrow, \f061 = arrow, \f178 = long arrow, \f105 = angle, \f101 = double angle, \f0da = caret */
+	position: relative;
+	top: -0.4em;
+	display: inline-block;
+	margin-left: 0.5em;
+	font-family: FontAwesome;
+	font-size: 0.7em;
+}
+
+th a.wpv-header-desc:after {
+	content: "\f0de";
+	top: auto;
 }
 
 
