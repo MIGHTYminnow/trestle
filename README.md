@@ -3,7 +3,7 @@ Trestle
 
 ### A handy boilerplate child theme for serious Genesis developers.
 
-### [View Demo &rarr;](http://themes.mightyminnow.com/trestle/)
+### [View Demo &rarr;](http://demo.mightyminnow.com/theme/trestle/)
 
 #### Intro
 Trestle takes a lot of the grunt work out of building sites using the Genesis Framework, providing quick and easy-to-implement solutions to common problems and repetitive tasks. We’ve taken Genesis’ rock-solid foundation, integrated mobile-first CSS, responsive navigation, a full-featured settings panel, and much more. Download. Install. Enjoy.
