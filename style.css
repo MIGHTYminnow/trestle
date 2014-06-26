@@ -1399,7 +1399,7 @@ Site Navigation
 
 .genesis-nav-menu a:hover,
 .genesis-nav-menu .current_page_item > a,
-.genesis-nav-menu .sub-menu .current_page_item > a:hover {
+.nav-primary .genesis-nav-menu .sub-menu .current_page_item > a:hover {
 	color: #fff;
 }
 
@@ -1476,16 +1476,17 @@ Site Navigation
 	border-top: 1px solid #eee;
 }
 
-.site-header .menu a {
+.site-header .genesis-nav-menu a {
 	padding: 15px 10px;
 	padding: 1.5rem 1rem;
 	font-size: .8em;
 }
 
-.site-header .menu a:hover {
+.site-header .genesis-nav-menu a:hover,
+.site-header .genesis-nav-menu .current_page_item > a,
+.site-header .genesis-nav-menu .current_page_ancestor > a {
 	color: #333;
 }
-
 
 /* Primary / Mobile Navigation
 --------------------------------------------- */
