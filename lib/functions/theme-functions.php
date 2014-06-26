@@ -343,15 +343,7 @@ function trestle_post_info_meta() {
 		global $post;
 
 		// Get post type
-		$orig_post_type = '';
-		
 		$post_type = get_post_type( $post->ID );
-
-		// Override "page" post type to allow for Post Info & Meta (reset back to page below)
-		if ( 'page' == $post_type ) {
-			$orig_post_type = 'page';
-			set_post_type( $post->ID, 'post' );
-		}		
 				
 		// Remove all Post Info & Meta
 		remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
@@ -384,10 +376,6 @@ function trestle_post_info_meta() {
 			if ( genesis_get_option( $archive_meta_option ) )
 				add_action( 'genesis_entry_footer', 'genesis_post_meta' );
 		}
-	
-		// Reset post type back to page if need be
-		if ( ! empty( $orig_post_type ) && 'page' == $orig_post_type )
-			add_action( 'genesis_entry_footer', 'trestle_set_page_post_type' );
 	}
 }
 
@@ -412,18 +400,6 @@ function trestle_featured_image_fallback( $args ) {
 /*===========================================
  * General Actions & Filters
 ===========================================*/
-
-/**
- * Resets post type back to page once post info / meta functionality is done.
- *
- * @since 1.0.0
- *
- * @global object $post The current $post object.
- */
-function trestle_set_page_post_type() {
-	global $post;
-	set_post_type( $post->ID, 'page' );
-}
 
 /**
  * Displays custom Trestle "read more" text in place of WordPress default.

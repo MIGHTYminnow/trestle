@@ -100,8 +100,7 @@ function trestle_theme_setup() {
 	add_filter( 'wp_revisions_to_keep', 'trestle_update_revisions_number', 10, 2 );
 
 	// Manually control where Post Info & Meta display
-	/* @TODO: temporarily commented this line out because it's causing posts to randomly switch post type! */
-	//add_action( 'the_post', 'trestle_post_info_meta', 0 );
+	add_action( 'the_post', 'trestle_post_info_meta', 5 );
 
 	// Remove default featured image fallback of 'first-attached'
 	add_filter( 'genesis_get_image_default_args', 'trestle_featured_image_fallback' );

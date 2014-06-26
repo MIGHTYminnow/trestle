@@ -228,6 +228,12 @@ function trestle_settings_box() {
 				<?php
 				$post_types = get_post_types();
 				foreach ( $post_types as $post_type ) {
+					// Don't show this option for pages, since genesis_post_info/meta won't work for pages
+					if ( 'page' == $post_type ) {
+						continue;
+					}
+
+					// Otherwise generate post info settings
 					$post_type_object = get_post_type_object( $post_type );
 					$name = $post_type_object->labels->name;
 					$slug = $post_type_object->name;
@@ -248,6 +254,12 @@ function trestle_settings_box() {
 				<?php
 				$post_types = get_post_types();
 				foreach ( $post_types as $post_type ) {
+					// Don't show this option for pages, since genesis_post_info/meta won't work for pages
+					if ( 'page' == $post_type ) {
+						continue;
+					}
+
+					// Otherwise generate post meta settings
 					$post_type_object = get_post_type_object( $post_type );
 					$name = $post_type_object->labels->name;
 					$slug = $post_type_object->name;
