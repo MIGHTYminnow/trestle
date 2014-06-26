@@ -12,7 +12,7 @@ Trestle takes a lot of the grunt work out of building sites using the Genesis Fr
 Here are some of Trestle's many features, check out the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/) for a full list.
 * Responsive navigation menu
 * Mobile first CSS
-* Custom control over post info and meta
+* ~~Custom control over post info and meta~~ (temporarily absent while we fix a bug)
 * Multiple page layouts
 * Auto-generating primary navigation
 * Ability to auto-install your favorite plugins
