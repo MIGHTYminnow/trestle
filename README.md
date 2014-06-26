@@ -1,4 +1,4 @@
-Trestle
+Trestle (beta)
 =======
 
 ### A handy boilerplate child theme for serious Genesis developers.
