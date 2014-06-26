@@ -1,12 +1,14 @@
 Trestle (beta)
 =======
 
-## Important: If you're using a version of Trestle that is prior to the [commit e3db022b760254df95cc6e306ea53b3da46b6ed1](https://github.com/MickeyKay/trestle/commit/e3db022b760254df95cc6e306ea53b3da46b6ed1), please make sure to update your version of Trestle, or at least pull in the changes to:
+** Important: If you're using a version of Trestle that is prior to the [commit e3db022b760254df95cc6e306ea53b3da46b6ed1](https://github.com/MickeyKay/trestle/commit/e3db022b760254df95cc6e306ea53b3da46b6ed1), please make sure to update your version of Trestle, or at least pull in the changes to: **
 * functions.php
 * lib/functions/theme-functions.php
 * lib/admin/admin-functions.php
 
 This will ensure you avoid the bug in which posts spontaneously switch post_type when looping through a query.
+
+***
 
 ### A handy boilerplate child theme for serious Genesis developers.
 
