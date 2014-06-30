@@ -38,7 +38,7 @@ function trestle_theme_setup() {
 	// Child theme definitions (do not remove)
 	define( 'CHILD_THEME_NAME', 'Trestle' );
 	define( 'CHILD_THEME_URL', 'http://demo.mightyminnow.com/theme/trestle/' );
-	define( 'CHILD_THEME_VERSION', '1.0.0' );
+	define( 'CHILD_THEME_VERSION', '1.1.0' );
 
 	// Load theme text domain
 	load_theme_textdomain( 'trestle', get_stylesheet_directory() . '/languages' );
