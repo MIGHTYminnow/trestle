@@ -1488,6 +1488,15 @@ Site Navigation
 	color: #333;
 }
 
+.site-header .genesis-nav-menu > li {
+	display: inline-block;
+	border-top: none;
+}
+
+.site-header .genesis-nav-menu .sub-menu {
+	display: none;
+}
+
 /* Primary / Mobile Navigation
 --------------------------------------------- */
 
@@ -2076,6 +2085,10 @@ Media Queries
 
 	.site-header .genesis-nav-menu {
 		text-align: right;
+	}
+
+	.site-header .genesis-nav-menu .sub-menu {
+		display: block;
 	}
 
 	/* Content
