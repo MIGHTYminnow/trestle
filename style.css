@@ -1136,6 +1136,10 @@ img#wpstats {
 /* MapPress
 --------------------------------------------- */
 
+body .mapp-layout {
+	margin: 0;
+}
+
 .mapp-layout,
 .mapp-map-links {
 	border: none !important;
