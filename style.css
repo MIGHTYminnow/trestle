@@ -298,32 +298,33 @@ a img {
 	margin-bottom: -0.4rem;
 }
 
-.external-link-icons .external-link:after {
-	content: url(images/external.png);
-	margin: 0 0 0 4px;
+.external-link-icons .external-link:after,
+.email-link-icons .email-link:before,
+.pdf-link-icons .pdf-link:before,
+.doc-link-icons .doc-link:before {
+	margin: 0 4px;
 	white-space: nowrap;
+	font-family: FontAwesome;
+}
+
+.external-link-icons .external-link:after {
+	content: "\f08e";
+}
+
+.email-link-icons .email-link:before {
+	content: "\f003";
+}
+
+.pdf-link-icons .pdf-link:before {
+	content: "\f1c1";
+}
+
+.doc-link-icons .doc-link:before {
+	content: "\f1c2";
 }
 
 .menu .external-link:after {
 	display: none;
-}
-
-.email-link-icons .email-link:before {
-	content: url(images/email.png);
-	margin: 0 4px 0 0;
-	white-space: nowrap;
-}
-
-.pdf-link-icons .pdf-link:before {
-	content: url(images/pdf.png);
-	margin: 0 4px 0 0;
-	white-space: nowrap;
-}
-
-.doc-link-icons .doc-link:before {
-	content: url(images/doc.png);
-	margin: 0 4px 0 0;
-	white-space: nowrap;
 }
 
 .image-link,
