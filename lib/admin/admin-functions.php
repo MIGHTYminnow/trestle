@@ -170,8 +170,7 @@ function trestle_settings_box() {
 	
 	<h4><?php _e( 'Primary Navigation', 'trestle' ) ?></h4>
 	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_auto_nav' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Automatically generate nav menu', 'trestle' ); ?></label>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav_depth]"><?php _e( 'with a depth of', 'trestle' ) ?>: </label>
+		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_auto_nav' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Auto-generate primary navigation menu with published pages, to a depth of:', 'trestle' ); ?> </label>
 		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav_depth]" />
 			<option value="0" <?php selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), '0' ); ?> >Unlimited</option>
 			<?php

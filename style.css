@@ -254,8 +254,17 @@ blockquote::before {
 
 blockquote cite {
 	display: block;
-	margin-right: 10%;
-	text-align: right;
+	margin-top: 0.5em;
+	margin-left: 60%;
+}
+
+blockquote cite i,
+blockquote cite em {
+	display: block;
+	color: #959594;
+	font-size: 0.8em;
+	font-weight: normal;
+	font-style: italic;
 }
 
 .content code {
