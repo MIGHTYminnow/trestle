@@ -42,6 +42,7 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_nav_button_text' => '[icon name="icon-list-ul"]  ' . __( 'Navigation', 'trestle' ),
 		'trestle_read_more_text' => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'trestle_revisions_number' => 3,
+		'trestle_footer_widgets_number' => 3,
 		'trestle_equal_height_cols' => 1,
 		'trestle_equal_cols_breakpoint' => 768,
 	);

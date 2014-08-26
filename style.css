@@ -1517,7 +1517,7 @@ Site Navigation
 .nav-primary,
 .nav-secondary {
 	display: none;
-	margin: 0 20px;
+	margin: 5px 20px 0;
 	margin: 5px 2rem 0;
 	border-radius: 3px;
 	overflow: hidden;
