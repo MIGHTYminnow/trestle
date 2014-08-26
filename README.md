@@ -36,3 +36,8 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 #### Settings & Usage
 * The Trestle control panel is located at **Genesis &rarr; Theme Settings**, in the **Trestle** metabox.
 * Examples and usage can all be viewed on the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/)
+
+#### To Do
+* Add Grunt support for 
+  - CSSComb
+  - Sass (one day)
