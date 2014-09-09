@@ -216,6 +216,10 @@ ul {
 	margin-bottom: 2.6rem;
 }
 
+.content li {
+	margin-bottom: 0.5em;
+}
+
 .content ul li {
 	list-style-type: disc;
 }
