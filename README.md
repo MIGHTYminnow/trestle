@@ -38,6 +38,7 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 * Examples and usage can all be viewed on the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/)
 
 #### To Do
+* Add header for Github Updater plugin
 * Rework menu CSS for simplicity (general / primary / secondary / header)
 * Add Grunt support for 
   - CSSComb
