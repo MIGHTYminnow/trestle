@@ -1416,8 +1416,7 @@ Site Navigation
 }
 
 .genesis-nav-menu a:hover,
-.genesis-nav-menu .current_page_item > a,
-.nav-primary .genesis-nav-menu .sub-menu .current_page_item > a:hover {
+.genesis-nav-menu .current_page_item > a {
 	color: #fff;
 }
 
