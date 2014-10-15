@@ -1,5 +1,6 @@
 Trestle (beta)
 =======
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/MickeyKay/trestle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **IMPORTANT: If you're using a version of Trestle that is prior to the [commit e3db022b760254df95cc6e306ea53b3da46b6ed1](https://github.com/MickeyKay/trestle/commit/e3db022b760254df95cc6e306ea53b3da46b6ed1), please make sure to update your version of Trestle, or at least merge in the changes in this commit or a later commit, including changes to these files:**
 * functions.php
