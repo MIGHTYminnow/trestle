@@ -28,7 +28,7 @@ function trestle_theme_setup() {
 	require_once dirname( __FILE__ ) . '/includes/sidebars/sidebars.php';
 
 	// Plugin activation class
-	require_once dirname( __FILE__ ) . '/lib/classes/class-tgm-plugin-activation.php';
+	require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activation.php';
 
 
 	/*===========================================
