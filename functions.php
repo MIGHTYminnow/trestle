@@ -27,6 +27,9 @@ function trestle_theme_setup() {
 	// Additional sidebars
 	require_once dirname( __FILE__ ) . '/includes/sidebars/sidebars.php';
 
+	// Plugin activation class
+	require_once dirname( __FILE__ ) . '/lib/classes/class-tgm-plugin-activation.php';
+
 
 	/*===========================================
 	 * Theme Setup
@@ -45,5 +48,9 @@ function trestle_theme_setup() {
 
 	// Add viewport meta tag for mobile browsers
 	add_theme_support( 'genesis-responsive-viewport' );
+
+	// Add support for footer widgets if specified in Trestle settings
+	$trestle_footer_widgets_number = esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
+	add_theme_support( 'genesis-footer-widgets', $trestle_footer_widgets_number );
 
 }

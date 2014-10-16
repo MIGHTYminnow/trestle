@@ -1360,7 +1360,6 @@ Site Header
 
 .site-header .widget-area {
 	width: 100%;
-	padding: 20px;
 	background-color: #eee;
 	border: 1px solid #ddd;
 	border-width: 1px 0;
@@ -1381,13 +1380,16 @@ Site Header
 	text-align: right;
 }
 
+.site-header .toggle-button {
+	margin-left: 15px;
+}
+
 .site-header .toggle-button.open {
 	color: #f15123;
 }
 
 .site-header .toggle-button:before {
 	content: "\f002";
-	margin-left: .5em;
 	font-family: FontAwesome;
 	font-size: 24px;
 	font-size: 2.4rem;

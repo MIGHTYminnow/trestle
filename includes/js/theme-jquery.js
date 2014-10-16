@@ -48,19 +48,20 @@ jQuery(document).ready(function() {
         target.addClass('toggle-target-' + i );
     });
     
+    // Toggle widget areas and primary nav
     jQuery('.site-header .toggle-button').click( function( event ) {
         event.preventDefault();
 
         var button = jQuery(this);
-        var targetID = button.attr('id').match(/\d+/);
+        var target = jQuery( '.toggle-target-' + button.attr('id').match(/\d+/) );
 
         // Toggle buttons
         button.toggleClass('open');
         jQuery('.site-header .toggle-button').not(button).removeClass('open');
 
         // Toggle targets
-        jQuery('.toggle-target-' + targetID).toggleClass('open');
-        jQuery('[class*="toggle-target"]').not('.toggle-target-' + targetID).removeClass('open');
+        target.toggleClass('open');
+        jQuery('[class*="toggle-target"]').not(target).removeClass('open');
     });
 
     // Mobile navigation icons

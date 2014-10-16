@@ -50,21 +50,6 @@ function trestle_header_actions() {
 
 }
 
-
-/*===========================================
- * Widget Areas
-===========================================*/
-
-add_action( 'widgets_init', 'trestle_register_widget_areas' );
-/**
- * Register custom widget areas
- *
- * @since 1.0.0
- */
-function trestle_register_widget_areas() {
-
-}
-
 /*===========================================
  * Body Classes
 ===========================================*/
