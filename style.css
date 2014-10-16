@@ -1302,6 +1302,8 @@ Site Header
 --------------------------------------------- */
 
 .title-area {
+	float: left;
+	width: auto;
 	font-weight: 700;
 }
 
@@ -1375,8 +1377,12 @@ Site Header
 --------------------------------------------- */
 
 .site-header .toggle-buttons {
-	float: right;
 	font-size: 0;
+	text-align: right;
+}
+
+.site-header .toggle-button.open {
+	color: #f15123;
 }
 
 .site-header .toggle-button:before {
@@ -2089,10 +2095,6 @@ Media Queries
 
 	.header-image .site-header .wrap {
 		background-position: left top;
-	}
-
-	.title-area {
-		float: left;
 	}
 
 	.logo-mobile {

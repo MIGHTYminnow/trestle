@@ -62,20 +62,7 @@ add_action( 'widgets_init', 'trestle_register_widget_areas' );
  * @since 1.0.0
  */
 function trestle_register_widget_areas() {
-//* Register after post widget area
-genesis_register_sidebar( array(
-	'id'            => 'after-post',
-	'name'          => __( 'After Post', 'themename' ),
-	'description'   => __( 'This is a widget area that can be placed after the post', 'themename' ),
-) );
-add_action( 'genesis_header', 'sp_after_post_widget', 12 );
-	function sp_after_post_widget() {
-	if ( is_singular( 'post' ) )
-		genesis_widget_area( 'after-post', array(
-			'before' => '<div class="after-post widget-area">',
-			'after' => '</div>',
-	) );
-}
+
 }
 
 /*===========================================

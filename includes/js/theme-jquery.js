@@ -32,7 +32,7 @@ jQuery(document).ready(function() {
 	jQuery('ul, ol').parent('li').addClass('parent');
 
 	// Mobile header toggle buttons
-    jQuery('.site-header .wrap').prepend('<div class="toggle-buttons" />');
+    jQuery('.site-header .title-area').after('<div class="toggle-buttons" />');
     jQuery('.site-header .widget-area, .nav-primary').each(function(i) {
         var target = jQuery(this);
 
