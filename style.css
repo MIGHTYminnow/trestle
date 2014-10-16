@@ -1302,12 +1302,7 @@ Site Header
 --------------------------------------------- */
 
 .title-area {
-	float: left;
 	font-weight: 700;
-	margin-bottom: 16px;
-	margin-bottom: 1.6rem;
-	width: auto;
-	max-width: 50%;
 }
 
 .site-title {
@@ -1363,6 +1358,10 @@ Site Header
 
 .site-header .widget-area {
 	width: 100%;
+	padding: 20px;
+	background-color: #eee;
+	border: 1px solid #ddd;
+	border-width: 1px 0;
 }
 
 .site-header .search-form {
@@ -1408,10 +1407,6 @@ Site Header
 	    -ms-transition: opacity .5s ease;
 	     -o-transition: opacity .5s ease;
 	        transition: opacity .5s ease;
-}
-
-.site-header .widget-area {
-	background-color: #fff;
 }
 
 .site-container > .nav-primary {
@@ -2097,7 +2092,7 @@ Media Queries
 	}
 
 	.title-area {
-		margin-bottom: 0;
+		float: left;
 	}
 
 	.logo-mobile {
@@ -2106,6 +2101,11 @@ Media Queries
 
 	.logo-full {
 		display: inline-block;
+	}
+
+	.site-header .widget-area {
+		padding: 0;
+		border: none;
 	}
 
 	.header-image .site-header .widget-area {
