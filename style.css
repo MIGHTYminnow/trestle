@@ -889,7 +889,6 @@ img.alignright,
 
 .archive-description,
 .author-box {
-	overflow: auto;
 	background-color: #fff;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
@@ -1360,6 +1359,7 @@ Site Header
 
 .site-header .widget-area {
 	width: 100%;
+	padding: 20px;
 	background-color: #eee;
 	border: 1px solid #ddd;
 	border-width: 1px 0;

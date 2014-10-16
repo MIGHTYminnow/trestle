@@ -8,28 +8,33 @@
  * @package Trestle
  */
 
+/*===========================================
+ * Required Files
+===========================================*/
+
+// Theme functions
+require_once dirname( __FILE__ ) . '/includes/functions/theme-functions.php';
+
+// Admin functionality
+require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
+
+// Shortcodes
+require_once dirname( __FILE__ ) . '/includes/shortcodes/shortcodes.php';
+
+// Additional sidebars
+require_once dirname( __FILE__ ) . '/includes/sidebars/sidebars.php';
+
+// Plugin activation class
+require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activation.php';
+
+
 add_action( 'genesis_setup' ,'trestle_theme_setup', 15 );
+/**
+ * Initialize Trestle
+ *
+ * @since  1.0.0
+ */
 function trestle_theme_setup() {
-
-	/*===========================================
-	 * Required Files
-	===========================================*/
-	
-	// Theme functions
-	require_once dirname( __FILE__ ) . '/includes/functions/theme-functions.php';
-
-	// Admin functionality
-	require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
-	
-	// Shortcodes
-	require_once dirname( __FILE__ ) . '/includes/shortcodes/shortcodes.php';
-
-	// Additional sidebars
-	require_once dirname( __FILE__ ) . '/includes/sidebars/sidebars.php';
-
-	// Plugin activation class
-	require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activation.php';
-
 
 	/*===========================================
 	 * Theme Setup
