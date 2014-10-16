@@ -31,11 +31,36 @@ jQuery(document).ready(function() {
 	jQuery('li:first-child').addClass('first');
 	jQuery('ul, ol').parent('li').addClass('parent');
 
-	// Mobile navigation button
-	jQuery('#menu-button').click(function() {
-		var button = jQuery(this);
-		button.toggleClass('open');
-        jQuery('.nav-primary').slideToggle();
+	// Mobile header toggle buttons
+    jQuery('.site-header .wrap').prepend('<div class="toggle-buttons" />');
+    jQuery('.site-header .widget-area, .nav-primary').each(function(i) {
+        var target = jQuery(this);
+
+        var buttonClass = 'toggle-button';
+        if ( jQuery(this).is( 'nav' ) ) {
+            buttonClass += ' nav-toggle';
+        }
+
+        // Add toggle buttons to header
+        jQuery('.toggle-buttons').prepend('<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">Toggle</a>');
+
+        // Add target class to nav and widget areas
+        target.addClass('toggle-target-' + i );
+    });
+    
+    jQuery('.site-header .toggle-button').click( function( event ) {
+        event.preventDefault();
+
+        var button = jQuery(this);
+        var targetID = button.attr('id').match(/\d+/);
+
+        // Toggle buttons
+        button.toggleClass('open');
+        jQuery('.site-header .toggle-button').not(button).removeClass('open');
+
+        // Toggle targets
+        jQuery('.toggle-target-' + targetID).toggleClass('open');
+        jQuery('[class*="toggle-target"]').not('.toggle-target-' + targetID).removeClass('open');
     });
 
     // Mobile navigation icons
@@ -49,11 +74,18 @@ jQuery(document).ready(function() {
     jQuery('.sub-icon').click(function(event) {
         event.preventDefault();
         var icon = jQuery(this);
-		icon.next('ul').slideToggle().toggleClass('open');
-		if ( icon.text().indexOf( closedIcon ) !== -1 )
-			icon.text(openIcon);
-		else if ( icon.text().indexOf( openIcon ) !== -1 )
-			icon.text(closedIcon);
+        icon.next('ul').slideToggle().toggleClass('open');
+        if ( icon.text().indexOf( closedIcon ) !== -1 )
+            icon.text(openIcon);
+        else if ( icon.text().indexOf( openIcon ) !== -1 )
+            icon.text(closedIcon);
+    });
+    
+    jQuery('.widget-area-toggle').click(function(event) {
+        event.preventDefault();
+        var button = jQuery(this);
+        button.toggleClass('open');
+        button.next('.widget-area').slideToggle();
     });
 
 	// Equal height homepage cols
@@ -69,6 +101,8 @@ jQuery(document).ready(function() {
 jQuery(window).load(function() {
 
 });
+
+
 
 
 /**
@@ -92,39 +126,39 @@ jQuery(window).load(function() {
  * Example 4: jQuery(".cols").equalHeights(null, null,768); Only resize columns above 768px viewport
  * 
  */
-(function(jQuery) {
-     jQuery.fn.equalHeights = function(minHeight, maxHeight, breakPoint) {
-         var items = this;
-         breakPoint = breakPoint || 0;
- 
+ (function(jQuery) {
+   jQuery.fn.equalHeights = function(minHeight, maxHeight, breakPoint) {
+       var items = this;
+       breakPoint = breakPoint || 0;
+
          // Bind functionality to appropriate events
          jQuery(window).bind('load orientationchange resize', function() {
-             tallest = (minHeight) ? minHeight : 0;
-             items.each(function() {
-                 jQuery(this).height('auto');
-                 if(jQuery(this).outerHeight() > tallest) {
-                     tallest = jQuery(this).outerHeight();
-                 }
-             });
- 
+           tallest = (minHeight) ? minHeight : 0;
+           items.each(function() {
+               jQuery(this).height('auto');
+               if(jQuery(this).outerHeight() > tallest) {
+                   tallest = jQuery(this).outerHeight();
+               }
+           });
+
              // Get viewport width (taking scrollbars into account)
              var e = window;
              a = 'inner';
              if (!('innerWidth' in window )) {
-                 a = 'client';
-                 e = document.documentElement || document.body;
-             }
-             width = e[ a+'Width' ];
- 
+               a = 'client';
+               e = document.documentElement || document.body;
+           }
+           width = e[ a+'Width' ];
+
              // Equalize column heights if above the specified breakpoint
              if ( width >= breakPoint ) {
-                 if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
-                 console.log(tallest);
-                 return items.each(function() {
-                     jQuery(this).height(tallest);
-                 });
-             }
-         });
-     }
- 
- })(jQuery);
+               if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
+               console.log(tallest);
+               return items.each(function() {
+                   jQuery(this).height(tallest);
+               });
+           }
+       });
+}
+
+})(jQuery);

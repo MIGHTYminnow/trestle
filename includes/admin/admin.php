@@ -1,12 +1,13 @@
 <?php
 /**
- * Trestle admin functions
+ * Trestle admin functions.
  *
  * @since 1.0.0
  *
  * @package Trestle
  */
 
+add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
 /**
  * Loads admin scripts and styles.
  *
@@ -14,15 +15,16 @@
  */
 function trestle_admin_actions() {
 	// Add admin jQuery
-	wp_enqueue_script( 'trestle-admin-jquery', get_stylesheet_directory_uri() . '/lib/admin/admin.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'trestle-admin-jquery', get_stylesheet_directory_uri() . '/includes/admin/admin.js', array( 'jquery' ), '1.0.0', true );
 
 	// Add admin jQuery
-	wp_enqueue_style( 'trestle-admin', get_stylesheet_directory_uri() . '/lib/admin/admin.css' );
+	wp_enqueue_style( 'trestle-admin', get_stylesheet_directory_uri() . '/includes/admin/admin.css' );
 
 	// Add admin CSS
-    add_editor_style( get_stylesheet_directory_uri() . '/lib/admin/editor-style.css' );
+    add_editor_style( get_stylesheet_directory_uri() . '/includes/admin/editor-style.css' );
 }
 
+add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
 /**
  * Sets up Trestle default settings.
  *
@@ -35,6 +37,7 @@ function trestle_custom_defaults( $defaults ) {
  	// Trestle default key/value pairs
  	$trestle_defaults = array(
 		'trestle_layout' => 'solid',
+		'trestle_nav_primary_location' => 'full',
 		'trestle_auto_nav' => 0,
 		'trestle_auto_nav_depth' => 0,
 		'trestle_include_home_link' => 0,
@@ -65,6 +68,7 @@ function trestle_custom_defaults( $defaults ) {
 	return $defaults;
 }
 
+add_action( 'genesis_settings_sanitizer_init', 'trestle_register_social_sanitization_filters' );
 /**
  * Adds sanitization for various Trestle admin settings.
  *
@@ -106,6 +110,7 @@ function trestle_register_social_sanitization_filters() {
 		GENESIS_SETTINGS_FIELD,
 		array(
 			'trestle_layout',
+			'trestle_nav_primary_location'
 		)
 	);
 
@@ -123,7 +128,8 @@ function trestle_register_social_sanitization_filters() {
 		)
 	);
 }
- 
+
+add_action( 'genesis_theme_settings_metaboxes', 'trestle_register_settings_box' );
 /**
  * Registers Trestle admin settings box.
  *
@@ -171,9 +177,16 @@ function trestle_settings_box() {
 	
 	<h4><?php _e( 'Primary Navigation', 'trestle' ) ?></h4>
 	<p>
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_primary_location]"><?php _e( 'Menu style:', 'trestle' ); ?> </label><br/>
+		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_primary_location]" />
+			<option value="full" <?php selected( esc_attr( genesis_get_option( 'trestle_nav_primary_location' ) ), 'full' ); ?> ><?php _e( 'Full width', 'trestle' ); ?></option>
+			<option value="header" <?php selected( esc_attr( genesis_get_option( 'trestle_nav_primary_location' ) ), 'header' ); ?> ><?php _e( 'Header right', 'trestle' ); ?></option>
+		</select>
+	</p>
+	<p>
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_auto_nav' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Auto-generate primary navigation menu with published pages, to a depth of:', 'trestle' ); ?> </label>
 		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav_depth]" />
-			<option value="0" <?php selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), '0' ); ?> >Unlimited</option>
+			<option value="0" <?php selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), '0' ); ?> ><?php _e( 'Unlimited', 'trestle' ); ?></option>
 			<?php
 				for( $i=1; $i<=10; $i++ ) {
 					echo '<option value="' . $i . '" ' . selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), $i, false ) . '>' . $i . '</option>' . "\n";
@@ -307,6 +320,7 @@ function trestle_settings_box() {
 	<?php
 }
 
+add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
 /**
  * Loads required & recommended plugins.
  *
@@ -315,7 +329,7 @@ function trestle_settings_box() {
  *
  * @since 1.0.0
  *
- * @see tgmpa() in /lib/classes/class-tgm-plugin-activation.php
+ * @see tgmpa() in /includes/classes/class-tgm-plugin-activation.php
  */
 function trestle_register_required_plugins() {
 	$plugins = array(

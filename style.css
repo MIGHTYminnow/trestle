@@ -1285,6 +1285,7 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
+	position: relative;
 	background-color: #fff;
 }
 
@@ -1305,8 +1306,8 @@ Site Header
 	font-weight: 700;
 	margin-bottom: 16px;
 	margin-bottom: 1.6rem;
-	width: 100%;
-	text-align: center;
+	width: auto;
+	max-width: 50%;
 }
 
 .site-title {
@@ -1357,18 +1358,71 @@ Site Header
 }
 
 
-/* Widget Area
+/* Header Widget Areas
 --------------------------------------------- */
 
 .site-header .widget-area {
 	width: 100%;
-	text-align: center;
 }
 
 .site-header .search-form {
 	margin: 0 auto ;
 	margin: 0 auto;
 	text-align: center;
+}
+
+
+/* Header Toggle Styles
+--------------------------------------------- */
+
+.site-header .toggle-buttons {
+	float: right;
+	font-size: 0;
+}
+
+.site-header .toggle-button:before {
+	content: "\f002";
+	margin-left: .5em;
+	font-family: FontAwesome;
+	font-size: 24px;
+	font-size: 2.4rem;
+	line-height: 1;
+}
+
+.site-header .toggle-button.nav-toggle:before {
+	content: "\f0c9";
+}
+
+
+.nav-primary,
+.site-header .nav-primary,
+.site-header .widget-area {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	-webkit-transition: opacity .5s ease;
+	   -moz-transition: opacity .5s ease;
+	    -ms-transition: opacity .5s ease;
+	     -o-transition: opacity .5s ease;
+	        transition: opacity .5s ease;
+}
+
+.site-header .widget-area {
+	background-color: #fff;
+}
+
+.site-container > .nav-primary {
+	top: auto;
+}
+
+.nav-primary.open,
+.widget-area.open {
+	z-index: 50;
+	opacity: 1;
+	filter: alpha(opacity=100);
 }
 
 
@@ -1379,19 +1433,21 @@ Site Navigation
 /* General Navigation
 --------------------------------------------- */
 
-#menu-button {
+#menu-toggle {
+	display: block;
+	clear: both;
 	margin: 0 20px;
 	margin: 0 2rem;
 	text-align: center;
-	display: block;
+
 }
 
-.bubble #menu-button {
+.bubble #menu-toggle {
 	margin-top: 20px;
 	margin-top: 2rem;
 }
 
-.custom-background #menu-button {
+.custom-background #menu-toggle {
 	margin-top: 0;
 }
 
@@ -1404,23 +1460,29 @@ Site Navigation
 
 .genesis-nav-menu li {
 	position: relative;
-	display: inline-block;
+	display: block;
+	border-width: 1px 0;
+}
+
+.genesis-nav-menu li.first {
+	border-top: none;
+}
+
+.genesis-nav-menu a {
+	border: 0 solid #eee;
+	border-bottom-width: 1px;
 }
 
 .genesis-nav-menu a,
 .genesis-nav-menu > .right {
-	border-width: 0;
 	color: #999;
 	display: block;
 	position: relative;
 }
 
 .genesis-nav-menu a:hover,
-.genesis-nav-menu .current_page_item > a {
-	color: #fff;
-}
-
-.genesis-nav-menu ul .current_page_item > a {
+.genesis-nav-menu [class*="current-"] > a,
+.genesis-nav-menu [class*="current_"] > a {
 	color: #fff;
 }
 
@@ -1436,7 +1498,6 @@ Site Navigation
 /* Sub Navigation
 --------------------------------------------- */
 
-.genesis-nav-menu .sub-menu,
 .genesis-nav-menu ul {
 	display: none;
 	margin: 0;
@@ -1449,141 +1510,72 @@ Site Navigation
 	transition:         opacity .4s ease-in-out;
 }
 
-.genesis-nav-menu .current_page_item > ul,
-.genesis-nav-menu .current_page_parent > ul,
-.genesis-nav-menu .current_page_ancestor > ul {
+.genesis-nav-menu [class*="current-"] > ul,
+.genesis-nav-menu [class*="current_"] > ul {
 	display: block;
 }
 
-.genesis-nav-menu li .sub-menu,
 .genesis-nav-menu li ul {
 	border: 0 solid #eee;
-	border-top-width: 1px;
 }
 
-.genesis-nav-menu > li > .sub-menu,
 .genesis-nav-menu > li > ul {
-	border: 1px solid #eee;
 	font-size: 0.9em;
 }
 
-.genesis-nav-menu .sub-menu li,
 .genesis-nav-menu ul li {
 	padding-left: 15px;
 	padding-left: 1.5rem;
 }
 
-.genesis-nav-menu .sub-menu a,
 .genesis-nav-menu ul a {
 	position: relative;
 	padding: 10px 5px;
-	border: 0 solid #eee;
-	border-bottom-width: 1px;
 }
 
-.genesis-nav-menu .sub-menu li:last-child > a,
-.genesis-nav-menu ul li:last-child > a {
-	border-bottom-width: 0;
+.genesis-nav-menu ul a:hover,
+.genesis-nav-menu ul [class*="current-"] > a,
+.genesis-nav-menu ul [class*="current_"] > a {
+	color: #222;
 }
 
-/* Site Header Navigation
---------------------------------------------- */
-
-.site-header .sub-menu {
-	border-top: 1px solid #eee;
+.genesis-nav-menu .sub-icon,
+.genesis-nav-menu ul .sub-icon {
+	position: absolute;
+	z-index: 99;
+	top: 0;
+	right: 0;
+	width: 50px;
+	padding-left: 0;
+	padding-right: 0;
+	background-color: transparent;
+	border: none;
+	text-align: center;
 }
 
-.site-header .genesis-nav-menu a {
-	padding: 15px 10px;
-	padding: 1.5rem 1rem;
-	font-size: .8em;
-}
 
-.site-header .genesis-nav-menu a:hover,
-.site-header .genesis-nav-menu .current_page_item > a,
-.site-header .genesis-nav-menu .current_page_ancestor > a {
-	color: #333;
-}
-
-.site-header .genesis-nav-menu > li {
-	display: inline-block;
-	border-top: none;
-}
-
-.site-header .genesis-nav-menu .sub-menu {
-	display: none;
-}
-
-/* Primary / Mobile Navigation
+/* Primary Navigation
 --------------------------------------------- */
 
 .nav-primary,
 .nav-secondary {
-	display: none;
-	margin: 5px 20px 0;
-	margin: 5px 2rem 0;
-	border-radius: 3px;
 	overflow: hidden;
 	background-color: #333;
 }
 
-.genesis-nav-menu li {
-	display: block;
-}
-
-.genesis-nav-menu > li,
-.genesis-nav-menu > .right {
-	border-top: 1px solid #444;
-}
-
-.genesis-nav-menu > li.first {
-	border-top: none;
-}
-
-.genesis-nav-menu a,
-.genesis-nav-menu ul a {
+.nav-primary a {
 	padding-right: 50px;
 	padding-right: 5rem;
-}
-
-.genesis-nav-menu a:hover,
-.genesis-nav-menu .current_page_item > a,
-.genesis-nav-menu .current_page_ancestor > a {
-	color: #fff;
-}
-
-
-/* Secondary Navigation
---------------------------------------------- */
-
-.nav-secondary {
-	background-color: #fff;
-}
-
-.nav-secondary a:hover,
-.nav-secondary .current_page_item > a,
-.nav-secondary .current_page_ancestor > a,
-.nav-secondary ul .current_page_item > a {
-	color: #111;
-}
-
-.nav-secondary .current_page_item > a,
-.nav-secondary .current_page_ancestor > a {
-	font-weight: normal;
 }
 
 
 /* Navigation Extras
 --------------------------------------------- */
 
-.genesis-nav-menu > .right {
-	border-top-style: double;
-	border-width: 4px;
-}
-
 .genesis-nav-menu > .right > a {
 	display: inline;
 	padding: 0;
+	border: none;
 }
 
 .genesis-nav-menu > .right .button,
@@ -1602,7 +1594,6 @@ Site Navigation
 	float: none !important;
 	width: auto;
 	padding: 0.6em 1.2em;
-	border: none;
 }
 
 .genesis-nav-menu > .right .search-form {
@@ -1614,37 +1605,78 @@ Site Navigation
 	margin: 0 0 0 0.5em;
 }
 
-/* Sub Menus
+
+/* Secondary Navigation
 --------------------------------------------- */
 
-.genesis-nav-menu .sub-icon,
-.genesis-nav-menu ul .sub-icon {
-	position: absolute;
-	z-index: 99;
-	top: 0;
-	right: 0;
-	width: 50px;
-	padding-left: 0;
-	padding-right: 0;
-	background-color: transparent;
-	border: none;
-	text-align: center;
+.nav-secondary {
+	background-color: #fff;
 }
 
-.genesis-nav-menu ul a:hover,
-.genesis-nav-menu ul .current_page_item > a,
-.genesis-nav-menu ul .current_page_ancestor > a  {
-	color: #222;
+.nav-secondary a:hover,
+.nav-secondary [class*="current-"] > a,
+.nav-secondary [class*="current_"] > a {
+	color: #111;
 }
+
+
+/* Header Navigation
+--------------------------------------------- */
+
+.site-header .widget-area .menu a,
+.site-header .widget-area .menu .right {
+	padding: 15px 10px;
+	padding: 1.5rem 1rem;
+	font-size: .8em;
+	border-bottom-width: 0;
+}
+
+.site-header .widget-area .menu a:hover,
+.site-header .widget-area .menu [class*="current-"] > a,
+.site-header .widget-area .menu [class*="current_"] > a {
+	color: #333;
+}
+
+.site-header .widget-area .menu > li {
+	display: inline-block;
+	border-top: none;
+}
+
+.site-header .widget-area .menu li ul {
+	display: none;
+}
+
+
+/* Header Primary Navigation
+--------------------------------------------- */
+.site-header .nav-primary {
+	margin: 0;
+}
+
+.site-header .nav-primary .wrap {
+	padding: 0;
+}
+
+.site-header .nav-primary a:hover,
+.site-header .nav-primary [class*="current-"] > a,
+.site-header .nav-primary [class*="current_"] > a {
+	color: #333;
+}
+
+.site-header .right {
+	padding-right: 0;
+}
+
+
 
 /* Non jQuery Styles
 --------------------------------------------- */
 
-.no-jquery #menu-button {
-	margin-bottom: 0;
+.no-jquery #menu-toggle {
+	display: none;
 }
 
-.no-jquery #menu-button:hover + .genesis-nav-menu,
+.no-jquery #menu-toggle:hover + .genesis-nav-menu,
 .no-jquery a:hover + ul,
 .no-jquery ul:hover {
 	display: block;
@@ -2065,9 +2097,7 @@ Media Queries
 	}
 
 	.title-area {
-		width: auto;
 		margin-bottom: 0;
-		text-align: left;
 	}
 
 	.logo-mobile {
@@ -2088,6 +2118,7 @@ Media Queries
 		clear: right;
 	}
 
+	.site-header .menu > .last,
 	.site-header .menu > .last a {
 		padding-right: 0;
 	}
@@ -2100,13 +2131,36 @@ Media Queries
 		width: auto;
 	}
 
-	.site-header .genesis-nav-menu {
+	.site-header .widget-area .menu {
 		text-align: right;
 	}
 
-	.site-header .genesis-nav-menu .sub-menu {
+	.site-header .widget-area .menu ul {
 		display: block;
 	}
+
+	/* Header Toggle Styles
+	--------------------------------------------- */
+	.nav-primary,
+	.site-header .nav-primary,
+	.site-header .widget-area {
+		position: static;
+		top: auto;
+		right: auto;
+		left: auto;
+		opacity: 1;
+		filter: alpha(opacity=100);
+	}
+
+	.site-header .nav-primary,
+	.site-header .widget-area {
+		background-color: transparent;
+	}
+
+	.site-header .toggle-button {
+		display: none;
+	}
+
 
 	/* Content
 	--------------------------------------------- */
@@ -2286,7 +2340,8 @@ Media Queries
 
 	/* Non-Mobile Navigation
 	--------------------------------------------- */
-	#menu-button {
+	#menu-toggle,
+	.widget-area-toggle {
 		display: none;
 	}
 
@@ -2307,7 +2362,6 @@ Media Queries
 		border-top-width: 0;
 	}
 
-	.genesis-nav-menu .sub-menu,
 	.genesis-nav-menu ul {
 		display: block;
 		left: -9999px;
@@ -2326,7 +2380,17 @@ Media Queries
 	.genesis-nav-menu > .right {
 		padding: 16px 20px;
 		padding: 1.6rem 2rem;
+		border-bottom-width: 0;
 	}
+
+
+	/* Primary Navigation
+	--------------------------------------------- */
+	.nav-primary a {
+		padding-right: 20px;
+		padding-right: 2rem;
+	}
+
 
 	/* Navigation Extras
 	--------------------------------------------- */
@@ -2353,17 +2417,14 @@ Media Queries
 	/* Sub Menus
 	--------------------------------------------- */
 
-	.genesis-nav-menu li .sub-menu,
 	.genesis-nav-menu li ul {
 		border-width: 0 0 1px;
 	}
 
-	.genesis-nav-menu .sub-menu li,
 	.genesis-nav-menu ul li {
 		padding-left: 0;
 	}
 
-	.genesis-nav-menu .sub-menu a, 
 	.genesis-nav-menu ul a {
 		position: relative;
 		width: 200px;
@@ -2405,6 +2466,18 @@ Media Queries
 		left: 100%;
 		margin-left: -1px;
 	}
+
+	/* Header Primary Navigation
+	--------------------------------------------- */
+	.site-header .nav-primary {
+		background-color: transparent;
+		text-align: right;
+	}
+
+	.site-header .nav-primary .menu > li > a {
+		padding: 0.6em 1.2em;
+	}
+
 
 	/* Plugins
 	--------------------------------------------- */

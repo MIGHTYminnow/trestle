@@ -10,33 +10,22 @@
  */
 
 /*===========================================
- * Widget Areas
-===========================================*/
-
-/**
- * Register custom widget areas
- *
- * @since 1.0.0
- */
-function trestle_register_widget_areas() {
-
-}
-
-/*===========================================
  * Head Styles & Scripts
 ===========================================*/
 
+add_action( 'wp_enqueue_scripts', 'trestle_header_actions' );
 /**
  * Loads theme scripts and styles.
  *
  * @since  1.0.0
  */
 function trestle_header_actions() {
+	
 	// Google fonts
 	wp_enqueue_style( 'theme-google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
 
 	// Theme jQuery
-	wp_enqueue_script( 'theme-jquery', get_stylesheet_directory_uri() . '/lib/js/theme-jquery.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+	wp_enqueue_script( 'theme-jquery', get_stylesheet_directory_uri() . '/includes/js/theme-jquery.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 
 	// Get WP uploads directory
 	$upload_dir = wp_upload_dir();
@@ -58,13 +47,42 @@ function trestle_header_actions() {
 		'trestle_equal_cols_breakpoint' => genesis_get_option( 'trestle_equal_cols_breakpoint' ),
 	);
 	wp_localize_script( 'theme-jquery', 'php_vars', $php_vars );
+
 }
 
+
+/*===========================================
+ * Widget Areas
+===========================================*/
+
+add_action( 'widgets_init', 'trestle_register_widget_areas' );
+/**
+ * Register custom widget areas
+ *
+ * @since 1.0.0
+ */
+function trestle_register_widget_areas() {
+//* Register after post widget area
+genesis_register_sidebar( array(
+	'id'            => 'after-post',
+	'name'          => __( 'After Post', 'themename' ),
+	'description'   => __( 'This is a widget area that can be placed after the post', 'themename' ),
+) );
+add_action( 'genesis_header', 'sp_after_post_widget', 12 );
+	function sp_after_post_widget() {
+	if ( is_singular( 'post' ) )
+		genesis_widget_area( 'after-post', array(
+			'before' => '<div class="after-post widget-area">',
+			'after' => '</div>',
+	) );
+}
+}
 
 /*===========================================
  * Body Classes
 ===========================================*/
 
+add_filter( 'body_class', 'trestle_body_classes' );
 /**
  * Adds custom classes to the <body> element for styling purposes.
  *
@@ -74,6 +92,7 @@ function trestle_header_actions() {
  * @return array 		 Updated body classes.
  */
 function trestle_body_classes( $classes ) {
+	
 	// Add 'no-jquery' class to be removed by jQuery if enabled
 	$classes[] = 'no-jquery';
 
@@ -91,6 +110,10 @@ function trestle_body_classes( $classes ) {
 	if ( genesis_get_option( 'trestle_doc_link_icons' ) )
 		$classes[] = 'doc-link-icons';
 
+	// Add menu style class
+	if ( genesis_get_option( 'trestle_nav_primary_location' ) )
+		$classes[] = 'nav-primary-location-' . esc_attr( genesis_get_option( 'trestle_nav_primary_location' ) );
+	
 	// Add footer widget number class
 	if ( genesis_get_option( 'trestle_footer_widgets_number' ) )
 		$classes[] = 'footer-widgets-number-' . esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
@@ -104,12 +127,15 @@ function trestle_body_classes( $classes ) {
 		$classes[] = 'has-logo';
 	
 	return $classes;
+
 }
+
 
 /*===========================================
  * Header
 ===========================================*/
 
+add_filter( 'genesis_seo_title', 'trestle_do_logos', 10, 3 );
 /**
  * Output logos.
  *
@@ -172,9 +198,10 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 
 
 /*===========================================
- * Auto & Mobile Navigation
+ * Navigation
 ===========================================*/
 
+add_action( 'init', 'trestle_nav_modifications' );
 /**
  * Performs modifications to the primary navigation menu
  *
@@ -191,12 +218,10 @@ function trestle_nav_modifications() {
 	// Set title for Trestle placeholder navigation menu
 	$trestle_nav_title = __( 'Trestle Auto Nav Placeholder', 'trestle' );
 
-	// Add mobile nav button
-	add_action( 'genesis_after_header', 'trestle_add_mobile_nav', 0 );
-
 	// Auto-generate nav if Genesis theme setting is checked
-	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) )
+	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) ) {
 		add_filter( 'wp_nav_menu_items', 'trestle_auto_nav_items', 9, 2 );
+	}
 
 	// Do custom nav extras
 	if ( 1 == genesis_get_option( 'trestle_custom_nav_extras' ) ) {
@@ -211,15 +236,19 @@ function trestle_nav_modifications() {
 	trestle_nav_placeholder();
 }
 
+add_action( 'init', 'trestle_nav_primary_location' );
 /**
- * Adds button to open primary mobile navigation menu.
+ * Move primary navigation into the header if need be.
  *
- * @since 1.0.0
+ * @since  1.2.0
  */
-function trestle_add_mobile_nav() {
-	// Only add the button if there is a primary menu
-	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) || has_nav_menu( 'primary' ) )
-		echo '<a id="menu-button" class="button" href="javascript:void(0)">' . do_shortcode( genesis_get_option( 'trestle_nav_button_text' ) ) . '</a>';
+function trestle_nav_primary_location() {
+
+	if ( 'header' == genesis_get_option( 'trestle_nav_primary_location' ) ) {
+		remove_action( 'genesis_after_header', 'genesis_do_nav' );
+		add_action( 'genesis_header', 'genesis_do_nav', 12 );
+	}
+
 }
 
 /**
@@ -312,6 +341,7 @@ function trestle_nav_placeholder() {
  * Posts & Pages
 ===========================================*/
 
+add_filter( 'wp_revisions_to_keep', 'trestle_update_revisions_number', 10, 2 );
 /**
  * Sets the number of post revisions. 
  *
@@ -337,6 +367,7 @@ function trestle_update_revisions_number( $num ) {
  * @see trestle_set_page_post_type()
  * @global object $post The current $post object.
  */
+add_action( 'the_post', 'trestle_post_info_meta', 5 );
 function trestle_post_info_meta() {
 	if ( ! is_admin() && in_the_loop() && genesis_get_option( 'trestle_manual_post_info_meta' ) ) {
 
@@ -379,6 +410,7 @@ function trestle_post_info_meta() {
 	}
 }
 
+add_filter( 'genesis_get_image_default_args', 'trestle_featured_image_fallback' );
 /**
  * Unset Genesis default featured image fallback of 'first-attached'
  *
@@ -401,6 +433,9 @@ function trestle_featured_image_fallback( $args ) {
  * General Actions & Filters
 ===========================================*/
 
+add_filter( 'excerpt_more', 'trestle_read_more_link' );
+add_filter( 'get_the_content_more_link', 'trestle_read_more_link' );
+add_filter( 'the_content_more_link', 'trestle_read_more_link' );
 /**
  * Displays custom Trestle "read more" text in place of WordPress default.
  *
