@@ -22,7 +22,7 @@ require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
 require_once dirname( __FILE__ ) . '/includes/shortcodes/shortcodes.php';
 
 // Additional sidebars
-require_once dirname( __FILE__ ) . '/includes/sidebars/sidebars.php';
+require_once dirname( __FILE__ ) . '/includes/widget-areas/widget-areas.php';
 
 // Plugin activation class
 require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activation.php';
