@@ -2362,6 +2362,7 @@ Media Queries
 	}
 
 	.genesis-nav-menu > li {
+		float: left;
 		border-top-width: 0;
 	}
 
