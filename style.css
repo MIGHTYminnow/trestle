@@ -1406,6 +1406,7 @@ Site Header
 	right: 0;
 	max-height: 0;
 	opacity: 0;
+	box-shadow: 0 4px 8px 1px rgba(0,0,0,0.4);
 	filter: alpha(opacity=0);
 	-webkit-transition: all .5s ease;
 	   -moz-transition: all .5s ease;
@@ -2153,6 +2154,7 @@ Media Queries
 		max-height: 9999px;
 		opacity: 1;
 		filter: alpha(opacity=100);
+		box-shadow: none;
 	}
 
 	.site-header .nav-primary,
