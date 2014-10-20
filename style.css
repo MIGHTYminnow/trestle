@@ -306,11 +306,6 @@ a:hover {
 	border: none;
 }
 
-a img {
-	margin-bottom: -4px;
-	margin-bottom: -0.4rem;
-}
-
 .external-link-icons .external-link:after,
 .email-link-icons .email-link:before,
 .pdf-link-icons .pdf-link:before,
@@ -1391,8 +1386,8 @@ Site Header
 .site-header .toggle-button:before {
 	content: "\f002";
 	font-family: FontAwesome;
-	font-size: 24px;
-	font-size: 2.4rem;
+	font-size: 28px;
+	font-size: 2.8rem;
 	line-height: 1;
 }
 
@@ -1408,13 +1403,14 @@ Site Header
 	top: 100%;
 	left: 0;
 	right: 0;
+	max-height: 0;
 	opacity: 0;
 	filter: alpha(opacity=0);
-	-webkit-transition: opacity .5s ease;
-	   -moz-transition: opacity .5s ease;
-	    -ms-transition: opacity .5s ease;
-	     -o-transition: opacity .5s ease;
-	        transition: opacity .5s ease;
+	-webkit-transition: all .5s ease;
+	   -moz-transition: all .5s ease;
+	    -ms-transition: all .5s ease;
+	     -o-transition: all .5s ease;
+	        transition: all .5s ease;
 }
 
 .site-container > .nav-primary {
@@ -1424,6 +1420,7 @@ Site Header
 .nav-primary.open,
 .widget-area.open {
 	z-index: 50;
+	max-height: 9999px;
 	opacity: 1;
 	filter: alpha(opacity=100);
 }
@@ -2152,6 +2149,7 @@ Media Queries
 		top: auto;
 		right: auto;
 		left: auto;
+		max-height: 9999px;
 		opacity: 1;
 		filter: alpha(opacity=100);
 	}
