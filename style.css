@@ -1331,12 +1331,6 @@ Site Header
 	top: -9999px;
 }
 
-/* Full width header, no widgets */
-
-.header-full-width .title-area,
-.header-full-width .site-title {
-	width: 100%;
-}
 
 /* Logo
 --------------------------------------------- */
