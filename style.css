@@ -2422,12 +2422,12 @@ Media Queries
 	}
 
 	.genesis-nav-menu ul li {
+		width: 100%;
 		padding-left: 0;
 	}
 
 	.genesis-nav-menu ul a {
 		position: relative;
-		width: 200px;
 		padding: 10px 20px;
 		padding: 1rem 2rem;
 		border-width: 1px 1px 0 1px;
