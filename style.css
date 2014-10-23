@@ -2459,6 +2459,7 @@ Media Queries
 	.genesis-nav-menu li:hover > ul {
 		left: auto;
 		opacity: 1;
+		display: block !important;
 	}
 
 	.genesis-nav-menu ul li:hover > ul {
