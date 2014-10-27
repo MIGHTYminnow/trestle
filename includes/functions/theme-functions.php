@@ -331,6 +331,7 @@ function trestle_update_revisions_number( $num ) {
 	return $num;
 }
 
+add_action( 'the_post', 'trestle_post_info_meta', 5 );
 /**
  * Manually controls display of post info/meta for all post types.
  *
@@ -339,7 +340,6 @@ function trestle_update_revisions_number( $num ) {
  * @see trestle_set_page_post_type()
  * @global object $post The current $post object.
  */
-add_action( 'the_post', 'trestle_post_info_meta', 5 );
 function trestle_post_info_meta() {
 	if ( ! is_admin() && in_the_loop() && genesis_get_option( 'trestle_manual_post_info_meta' ) ) {
 
