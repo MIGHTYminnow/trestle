@@ -420,6 +420,10 @@ img {
 	width: auto; /* IE8 */
 }
 
+.wp-caption img {
+	display: block;
+}
+
 /* Forms & Buttons
 --------------------------------------------- */
 
