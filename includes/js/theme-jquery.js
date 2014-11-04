@@ -133,7 +133,7 @@ jQuery(window).load(function() {
        breakPoint = breakPoint || 0;
 
          // Bind functionality to appropriate events
-         jQuery(window).bind('load orientationchange resize', function() {
+         jQuery(window).on('load orientationchange resize equalheights', function() {
            tallest = (minHeight) ? minHeight : 0;
            items.each(function() {
                jQuery(this).height('auto');
