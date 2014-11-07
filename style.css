@@ -2079,6 +2079,63 @@ Media Queries
 	
 }
 
+/* Responsive Tables CSS
+--------------------------------------------- */
+@media (max-width: 600px) {
+	
+	table {
+		clear: both;
+	}
+
+	tr {
+		padding: 0.5em; 
+	}
+
+	th,
+	td {
+		padding: 0;
+	}
+
+	table tbody td {
+		vertical-align: top;
+	}
+
+	table thead {
+		display: none;
+	}
+
+	table tbody {
+		line-height: 1.2;
+	}
+
+	table tbody tr {
+		margin-top: 0.5em;
+		border: 1px solid #CCC;
+	}
+
+	table tbody tr,
+	table tbody td {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	table tbody td {
+		display: block;
+		border: none;
+	}
+
+	table ul {
+		margin: 5px 0px 10px 20px;
+		margin: 0.5rem 0 1rem 2rem;
+	}
+
+	table li {
+		margin-bottom: .5em;
+	}
+
+}
+
 @media (min-width: 768px) {
 
 	/* General
