@@ -2347,7 +2347,6 @@ Media Queries
 	.one-third,
 	.two-sixths,
 	.sidebar-primary,
-	.title-area,
 	.footer-widgets-number-3 .footer-widgets .widget-area  {
 		width: 31.623931623931625%;
 	}
@@ -2534,6 +2533,12 @@ Media Queries
 	.site-header .nav-primary {
 		background-color: transparent;
 		text-align: right;
+	}
+
+	.site-header .nav-primary .wrap,
+	.site-header .nav-primary .wrap .menu { /* Required for IE8 */
+		float: right;
+		width: auto;
 	}
 
 	.site-header .nav-primary .menu > li > a {
