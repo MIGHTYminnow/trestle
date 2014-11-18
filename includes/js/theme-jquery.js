@@ -32,13 +32,20 @@ jQuery(document).ready(function() {
 	jQuery('ul, ol').parent('li').addClass('parent');
 
 	// Mobile header toggle buttons
-    jQuery('.site-header .title-area').after('<div class="toggle-buttons" />');
-    jQuery('.site-header .widget-area, .nav-primary').each(function(i) {
-        var target = jQuery(this);
+	jQuery('.site-header .title-area').after('<div class="toggle-buttons" />');
+	jQuery('.site-header .widget-area, .nav-primary').each(function(i) {
+		var target = jQuery(this);
 
-        var buttonClass = 'toggle-button';
+		var buttonClass = 'toggle-button';
+
+        // Add classes of target element
+        var targetClass = target.attr('class').split(/\s+/);
+        jQuery.each(targetClass, function(index,value) {
+        	buttonClass += ' targets-' + value;
+        });
+        
         if ( jQuery(this).is( 'nav' ) ) {
-            buttonClass += ' nav-toggle';
+        	buttonClass += ' nav-toggle';
         }
 
         // Add toggle buttons to header
@@ -47,13 +54,13 @@ jQuery(document).ready(function() {
         // Add target class to nav and widget areas
         target.addClass('toggle-target-' + i );
     });
-    
+	
     // Toggle widget areas and primary nav
     jQuery('.site-header .toggle-button').click( function( event ) {
-        event.preventDefault();
+    	event.preventDefault();
 
-        var button = jQuery(this);
-        var target = jQuery( '.toggle-target-' + button.attr('id').match(/\d+/) );
+    	var button = jQuery(this);
+    	var target = jQuery( '.toggle-target-' + button.attr('id').match(/\d+/) );
 
         // Toggle buttons
         button.toggleClass('open');
@@ -73,28 +80,28 @@ jQuery(document).ready(function() {
     
     // Mobile navigation expand/contract functionality
     jQuery('.sub-icon').click(function(event) {
-        event.preventDefault();
-        var icon = jQuery(this);
-        icon.next('ul').slideToggle().toggleClass('open');
-        if ( icon.text().indexOf( closedIcon ) !== -1 )
-            icon.text(openIcon);
-        else if ( icon.text().indexOf( openIcon ) !== -1 )
-            icon.text(closedIcon);
+    	event.preventDefault();
+    	var icon = jQuery(this);
+    	icon.next('ul').slideToggle().toggleClass('open');
+    	if ( icon.text().indexOf( closedIcon ) !== -1 )
+    		icon.text(openIcon);
+    	else if ( icon.text().indexOf( openIcon ) !== -1 )
+    		icon.text(closedIcon);
     });
     
     jQuery('.widget-area-toggle').click(function(event) {
-        event.preventDefault();
-        var button = jQuery(this);
-        button.toggleClass('open');
-        button.next('.widget-area').slideToggle();
+    	event.preventDefault();
+    	var button = jQuery(this);
+    	button.toggleClass('open');
+    	button.next('.widget-area').slideToggle();
     });
 
 	// Equal height homepage cols
-    jQuery('.equal-height-genesis-extender-cols .ez-home-container-area').each(function() {
-    	jQuery(this).children('.widget-area').equalHeights(null,null,trestleEqualColsBreakpoint);
-    });
+	jQuery('.equal-height-genesis-extender-cols .ez-home-container-area').each(function() {
+		jQuery(this).children('.widget-area').equalHeights(null,null,trestleEqualColsBreakpoint);
+	});
 
-    
+	
 }); /* end of as page load scripts */
 
 
@@ -128,38 +135,38 @@ jQuery(window).load(function() {
  * 
  */
  (function(jQuery) {
-   jQuery.fn.equalHeights = function(minHeight, maxHeight, breakPoint) {
-       var items = this;
-       breakPoint = breakPoint || 0;
+ 	jQuery.fn.equalHeights = function(minHeight, maxHeight, breakPoint) {
+ 		var items = this;
+ 		breakPoint = breakPoint || 0;
 
          // Bind functionality to appropriate events
          jQuery(window).on('load orientationchange resize equalheights', function() {
-           tallest = (minHeight) ? minHeight : 0;
-           items.each(function() {
-               jQuery(this).height('auto');
-               if(jQuery(this).outerHeight() > tallest) {
-                   tallest = jQuery(this).outerHeight();
-               }
-           });
+         	tallest = (minHeight) ? minHeight : 0;
+         	items.each(function() {
+         		jQuery(this).height('auto');
+         		if(jQuery(this).outerHeight() > tallest) {
+         			tallest = jQuery(this).outerHeight();
+         		}
+         	});
 
              // Get viewport width (taking scrollbars into account)
              var e = window;
              a = 'inner';
              if (!('innerWidth' in window )) {
-               a = 'client';
-               e = document.documentElement || document.body;
-           }
-           width = e[ a+'Width' ];
+             	a = 'client';
+             	e = document.documentElement || document.body;
+             }
+             width = e[ a+'Width' ];
 
              // Equalize column heights if above the specified breakpoint
              if ( width >= breakPoint ) {
-               if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
-               console.log(tallest);
-               return items.each(function() {
-                   jQuery(this).height(tallest);
-               });
-           }
-       });
-}
+             	if((maxHeight) && tallest > maxHeight) tallest = maxHeight;
+             	console.log(tallest);
+             	return items.each(function() {
+             		jQuery(this).height(tallest);
+             	});
+             }
+         });
+     }
 
-})(jQuery);
+ })(jQuery);
