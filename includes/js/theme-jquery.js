@@ -10,8 +10,8 @@
 jQuery(document).ready(function() {
 
 	// Get PHP vars passed via wp_localize_script()
-	trestleEqualColsBreakpoint = php_vars.trestle_equal_cols_breakpoint;
-	trestleEqualHeightCols = php_vars.trestle_equal_height_cols
+	trestleEqualColsBreakpoint = trestle_vars.trestle_equal_cols_breakpoint;
+	trestleEqualHeightCols = trestle_vars.trestle_equal_height_cols;
 
 	// Remove .no-jquery body class
 	jQuery('body').removeClass('no-jquery');

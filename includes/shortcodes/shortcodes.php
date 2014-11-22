@@ -62,20 +62,18 @@ function trestle_button( $atts, $content = null ) {
 add_shortcode( 'button', 'trestle_button' );
 
 /**
- * Blockquote
+ * Buttons
  * 
  * Example:
- * [blockquote name="Speaker" sub_text="Position, Company"]Contents[/blockquote]
+ * [button href="url" title="title" target="target" class="class"]Text[/button]
  */
-function trestle_blockquote( $atts, $content = null ) {
+function trestle_button( $atts, $content = null ) {
     extract( shortcode_atts( array(
-        'name' => '',
-        'sub_text' => '',
+        'href' => '#',
+        'target' => '',
+        'title' => '',
+        'class' => '',
     ), $atts ) );
-    
-    $sub_text_html = $sub_text ? '<em>' . $sub_text . '</em>' : '';
-    $cite = $name ? '<cite>' . $name . $sub_text_html . '</cite>' : '';
-
-    return '<blockquote><p>' . $content . $cite . '</p></blockquote>';
+    return '<a class="button ' . $class . '" href="' . $href . '" title="' . $title . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
 }
-add_shortcode( 'blockquote', 'trestle_blockquote' );
+add_shortcode( 'button', 'trestle_button' );

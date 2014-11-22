@@ -46,7 +46,7 @@ function trestle_header_actions() {
 	$php_vars = array (
 		'trestle_equal_cols_breakpoint' => genesis_get_option( 'trestle_equal_cols_breakpoint' ),
 	);
-	wp_localize_script( 'theme-jquery', 'php_vars', $php_vars );
+	wp_localize_script( 'theme-jquery', 'trestle_vars', $php_vars );
 
 }
 
