@@ -18,7 +18,7 @@ function trestle_shortcode_empty_paragraph_fix($content)
         '<p>[' => '[', 
         ']</p>' => ']', 
         ']<br />' => ']'
-    );
+        );
 
     $content = strtr($content, $array);
 
@@ -40,7 +40,7 @@ add_filter('the_content', 'trestle_shortcode_empty_paragraph_fix');
 function trestle_column( $atts, $content = null ) {
     extract( shortcode_atts( array(
         'class' => '',
-    ), $atts ) );
+        ), $atts ) );
     return '<div class="col ' . $class . '">' . do_shortcode( $content ) . '</div>';
 }
 add_shortcode( 'col', 'trestle_column' );
@@ -56,13 +56,13 @@ function trestle_button( $atts, $content = null ) {
         'href'  => '#',
         'title' => '',
         'class' => '',
-    ), $atts ) );
+        ), $atts ) );
     return '<a class="button ' . $class . '" href="' . $href . '" title="' . $title . '">' . do_shortcode( $content ) . '</a>';
 }
 add_shortcode( 'button', 'trestle_button' );
 
 /**
- * Buttons
+ * Button
  * 
  * Example:
  * [button href="url" title="title" target="target" class="class"]Text[/button]
@@ -73,7 +73,26 @@ function trestle_button( $atts, $content = null ) {
         'target' => '',
         'title' => '',
         'class' => '',
-    ), $atts ) );
+        ), $atts ) );
     return '<a class="button ' . $class . '" href="' . $href . '" title="' . $title . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
 }
 add_shortcode( 'button', 'trestle_button' );
+
+/**
+ * Date
+ *
+ * Example: [date format="M d, Y"]
+ * 
+ */
+function trestle_date( $atts ) {
+    extract( shortcode_atts( array(
+        'format' => 'M d, Y',
+    ), $format ) );
+
+    if ( ! $format ) {
+        $format = 'M d, Y'; 
+    }
+
+    return date( $format );
+}
+add_shortcode( 'date', 'trestle_date' );
