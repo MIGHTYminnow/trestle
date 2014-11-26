@@ -36,17 +36,19 @@ add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
 function trestle_custom_defaults( $defaults ) {
  	// Trestle default key/value pairs
  	$trestle_defaults = array(
-		'trestle_layout' => 'solid',
-		'trestle_nav_primary_location' => 'full',
-		'trestle_auto_nav' => 0,
-		'trestle_auto_nav_depth' => 0,
-		'trestle_include_home_link' => 0,
-		'trestle_home_link_text' => __( 'Home', 'trestle' ),
-		'trestle_nav_button_text' => '[icon name="icon-list-ul"]  ' . __( 'Navigation', 'trestle' ),
-		'trestle_read_more_text' => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
-		'trestle_revisions_number' => 3,
+		'trestle_layout'                => 'solid',
+		'trestle_logo_url'              => '',
+		'trestle_logo_url_mobile'       => '',
+		'trestle_nav_primary_location'  => 'full',
+		'trestle_auto_nav'              => 0,
+		'trestle_auto_nav_depth'        => 0,
+		'trestle_include_home_link'     => 0,
+		'trestle_home_link_text'        => __( 'Home', 'trestle' ),
+		'trestle_nav_button_text'       => '[icon name="icon-list-ul"]  ' . __( 'Navigation', 'trestle' ),
+		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
+		'trestle_revisions_number'      => 3,
 		'trestle_footer_widgets_number' => 3,
-		'trestle_equal_height_cols' => 1,
+		'trestle_equal_height_cols'     => 1,
 		'trestle_equal_cols_breakpoint' => 768,
 	);
 
