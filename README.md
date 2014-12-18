@@ -36,3 +36,12 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 #### Settings & Usage
 * The Trestle control panel is located at **Genesis &rarr; Theme Settings**, in the **Trestle** metabox.
 * Examples and usage can all be viewed on the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/)
+
+#### To Do
+* Convert non-theme functionality to separate Genesis-dependant plugin
+* Add in Grunt support for:
+    * Sass
+    * Auto-ordering of CSS
+    * Translation
+    * Check other themes for other ideas. . .
+* Switch to customizer for theme options instead of Genesis panel (pros? cons?)
