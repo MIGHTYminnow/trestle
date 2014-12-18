@@ -35,3 +35,4 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
     * Translation
     * Check other themes for other ideas. . .
 * Switch to customizer for theme options instead of Genesis panel (pros? cons?)
+* Remove custom background CSS that doesn't make sense (different max-widths, etc)
