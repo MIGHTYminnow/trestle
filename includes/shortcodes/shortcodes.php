@@ -46,22 +46,6 @@ function trestle_column( $atts, $content = null ) {
 add_shortcode( 'col', 'trestle_column' );
 
 /**
- * Buttons
- * 
- * Example:
- * [button href="url" class="class"]Text[/button]
- */
-function trestle_button( $atts, $content = null ) {
-    extract( shortcode_atts( array(
-        'href'  => '#',
-        'title' => '',
-        'class' => '',
-        ), $atts ) );
-    return '<a class="button ' . $class . '" href="' . $href . '" title="' . $title . '">' . do_shortcode( $content ) . '</a>';
-}
-add_shortcode( 'button', 'trestle_button' );
-
-/**
  * Button
  * 
  * Example:
