@@ -1379,6 +1379,7 @@ Site Header
 
 .site-header .toggle-button {
 	margin-left: 15px;
+	outline: none;
 }
 
 .site-header .toggle-button.open {

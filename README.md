@@ -29,8 +29,13 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 * Examples and usage can all be viewed on the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/)
 
 #### To Do
-* Add header for Github Updater plugin
 * Rework menu CSS for simplicity (general / primary / secondary / header)
-* Add Grunt support for 
-  - CSSComb
-  - Sass (one day)
+* Convert non-theme functionality to separate Genesis-dependant plugin
+* Add in Grunt support for:
+    * Sass
+    * Auto-ordering of CSS (CSSComb)
+    * Translation
+    * Check other themes for other ideas. . .
+* Switch to customizer for theme options instead of Genesis panel (pros? cons?)
+* Remove custom background CSS that doesn't make sense (different max-widths, etc)
+* Weird extra icons on accordions on demo site.
