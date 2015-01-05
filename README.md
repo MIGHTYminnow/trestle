@@ -29,6 +29,7 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 * Examples and usage can all be viewed on the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/)
 
 #### To Do
+* Add ability to click off of mobile menu/search to hide menu/search.
 * Rework menu CSS for simplicity (general / primary / secondary / header)
 * Convert non-theme functionality to separate Genesis-dependant plugin
 * Add in Grunt support for:
