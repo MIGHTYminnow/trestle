@@ -331,6 +331,10 @@ a:hover {
 	content: "\f1c1";
 }
 
+.pdf-link-icons .pdf-link:after {
+	display: none;
+}
+
 .doc-link-icons .doc-link:before {
 	content: "\f1c2";
 }
@@ -511,7 +515,7 @@ input:hover[type="button"],
 input:hover[type="reset"],
 input:hover[type="submit"],
 body .button:hover,
-.genesis-nav-menu input[type="submit"] {
+	.genesis-nav-menu input[type="submit"] {
 	background-color: #f15123;
 	border-color: #f15123;
 	color: #fff;
