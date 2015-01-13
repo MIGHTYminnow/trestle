@@ -374,8 +374,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'FancyBox for WordPress',
-			'slug' 		=> 'fancybox-for-wordpress',
+			'name' 		=> 'Easy Fancybox',
+			'slug' 		=> 'easy-fancybox',
 			'required'  => false,
 		),
 
