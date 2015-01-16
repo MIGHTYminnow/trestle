@@ -15,7 +15,7 @@ jQuery( document ).ready( function( $ ) {
 
 	// Remove .no-jquery body class
 	$( 'body' ).removeClass( 'no-jquery' );
-	
+
 	// External Links
 	var h = window.location.host.toLowerCase();
 	$( '[href^="http"]' ).not( '[href*="' + h + '"]' ).addClass( 'external-link' ).attr( "target", "_blank" );
@@ -42,7 +42,7 @@ jQuery( document ).ready( function( $ ) {
         $.each( targetClass, function( index, value ) {
         	buttonClass += ' targets-' + value;
         });
-        
+
         if ( $( this ).is( 'nav' ) ) {
         	buttonClass += ' nav-toggle';
         }
@@ -53,13 +53,13 @@ jQuery( document ).ready( function( $ ) {
         // Add target class to nav and widget areas
         $target.addClass( 'toggle-target-' + i );
     });
-	
+
     // Toggle widget areas and primary nav
     $( '.site-header .toggle-button' ).click( function( event ) {
     	event.preventDefault();
 
     	var $button = $( this );
-    	var $target = $( '.toggle-target-' + button.attr( 'id' ).match( /\d+/ ) );
+    	var $target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
 
         // Toggle buttons
         $button.toggleClass( 'open' );
@@ -80,7 +80,7 @@ jQuery( document ).ready( function( $ ) {
     $( '.nav-primary' )
     	.find( '.genesis-nav-menu .parent.current-menu-item > a, .genesis-nav-menu .parent.current_page_item > a, .genesis-nav-menu .parent.current_page_parent > a, .genesis-nav-menu .parent.current_page_ancestor > a' )
     	.after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
-    
+
     // Mobile navigation expand/contract functionality
     $( '.sub-icon' ).click( function( event ) {
     	event.preventDefault();
@@ -91,7 +91,7 @@ jQuery( document ).ready( function( $ ) {
     	else if ( $icon.text().indexOf( openIcon ) !== -1 )
     		$icon.text( closedIcon );
     });
-    
+
     $( '.widget-area-toggle' ).click( function( event ) {
     	event.preventDefault();
     	var $button = $( this );
@@ -104,7 +104,7 @@ jQuery( document ).ready( function( $ ) {
 		$( this ).children( '.widget-area' ).equalHeights( null, null, trestleEqualColsBreakpoint );
 	});
 
-	
+
 }); /* end of as page load scripts */
 
 
@@ -116,7 +116,7 @@ jQuery( window ).load( function( $ ) {
 
 /**
  * Equal Heights Plugin
- * 
+ *
  * Equalize the heights of elements. Great for columns or any elements
  * that need to be the same size (floats, etc).
  *
@@ -127,13 +127,13 @@ jQuery( window ).load( function( $ ) {
  *  - binds the script to run on load, orientation change (for mobile), and when resizing the window
  *
  * Usage: jQuery(object).equalHeights([minHeight], [maxHeight], [breakPoint]);
- * 
+ *
  * Example 1: jQuery( ".cols" ).equalHeights(); Sets all columns to the same height.
  * Example 2: jQuery( ".cols" ).equalHeights( 400 ); Sets all cols to at least 400px tall.
  * Example 3: jQuery( ".cols" ).equalHeights( 100, 300 ); Cols are at least 100 but no more
  * than 300 pixels tall. Elements with too much content will gain a scrollbar.
  * Example 4: jQuery( ".cols" ).equalHeights( null, null,768 ); Only resize columns above 768px viewport
- * 
+ *
  */
  ( function( $ ) {
  	$.fn.equalHeights = function( minHeight, maxHeight, breakPoint ) {
