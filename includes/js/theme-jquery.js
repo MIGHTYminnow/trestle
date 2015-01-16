@@ -99,19 +99,17 @@ jQuery( document ).ready( function( $ ) {
     	$button.next( '.widget-area' ).slideToggle();
     });
 
-	// Equal height homepage cols
-	$( '.equal-height-genesis-extender-cols .ez-home-container-area' ).each( function() {
-		$( this ).children( '.widget-area' ).equalHeights( null, null, trestleEqualColsBreakpoint );
-	});
+    // Executes when complete page is fully loaded, including all frames, objects, and images
+    $( window ).on( 'load', function() {
 
+        // Equal height homepage cols
+        $( '.equal-height-genesis-extender-cols .ez-home-container-area' ).each( function() {
+            $( this ).children( '.widget-area' ).equalHeights( null, null, trestleEqualColsBreakpoint );
+        });
 
-}); /* end of as page load scripts */
+    });
 
-
-// Executes when complete page is fully loaded, including all frames, objects, and images
-jQuery( window ).load( function( $ ) {
-
-});
+}); /* end of page load scripts */
 
 
 /**
@@ -135,39 +133,62 @@ jQuery( window ).load( function( $ ) {
  * Example 4: jQuery( ".cols" ).equalHeights( null, null,768 ); Only resize columns above 768px viewport
  *
  */
- ( function( $ ) {
- 	$.fn.equalHeights = function( minHeight, maxHeight, breakPoint ) {
- 		var $items = this;
- 		breakPoint = breakPoint || 0;
+( function( $ ) {
 
-         // Bind functionality to appropriate events
-         $( window ).on( 'load orientationchange resize equalheights', function() {
-         	tallest = ( minHeight ) ? minHeight : 0;
-         	$items.each( function() {
-         		$( this ).height( 'auto' );
-         		if( $( this ).outerHeight() > tallest ) {
-         			tallest = $( this ).outerHeight();
-         		}
-         	});
+    $.fn.equalHeights = function( minHeight, maxHeight, breakPoint ) {
 
-             // Get viewport width (taking scrollbars into account)
-             var e = window;
-             a = 'inner';
-             if ( !( 'innerWidth' in window ) ) {
-             	a = 'client';
-             	e = document.documentElement || document.body;
-             }
-             width = e[ a+'Width' ];
+        /**
+         * Unbind all plugin events so that we can call this function again
+         * to reset it without creating multiple handlers for the same events.
+         * This allows us to manually retrigger if we have added new elements
+         * into the DOM using ajax or .clone().
+         */
+        $( window ).off( '.equalheights', equalHeightsInit );
 
-             // Equalize column heights if above the specified breakpoint
-             if ( width >= breakPoint ) {
-             	if( ( maxHeight ) && tallest > maxHeight ) tallest = maxHeight;
-             	//console.log( tallest );
-             	return items.each( function() {
-             		$( this ).height( tallest );
-             	});
-             }
-         });
-     }
+        // Scope our local variables
+        var $items, breakPoint;
 
- })(jQuery);
+        // Store the jQuery objects upon which this function has been called
+        $items = this;
+
+        // Store the breakPoint arg if it was passsed in
+        breakPoint = breakPoint || 0;
+
+        // Actual logic for this plugin
+        var equalHeightsInit = function() {
+
+            // Calculate the tallest
+            tallest = ( minHeight ) ? minHeight : 0;
+            $items.each( function() {
+                $( this ).height( 'auto' );
+                if( $( this ).outerHeight() > tallest ) {
+                    tallest = $( this ).outerHeight();
+                }
+            });
+
+            // Get viewport width (taking scrollbars into account)
+            var e = window;
+            a = 'inner';
+            if ( !( 'innerWidth' in window ) ) {
+                a = 'client';
+                e = document.documentElement || document.body;
+            }
+            width = e[ a+'Width' ];
+
+            // Equalize heights if viewport width is above the specified breakpoint
+            if ( width >= breakPoint ) {
+                if( ( maxHeight ) && tallest > maxHeight ) tallest = maxHeight;
+                return $items.each( function() {
+                    $( this ).height( tallest );
+                });
+            }
+        }
+
+        // Trigger the main plugin function
+        equalHeightsInit();
+
+        // Bind appropriate events for the first time this plugin is run
+        $( window ).on( 'orientationchange.equalheights resize.equalheights equalheights.equalheights', equalHeightsInit );
+    }
+
+})( jQuery );
