@@ -10,7 +10,7 @@
  */
 
 /*===========================================
- * Head Styles & Scripts
+ * Header
 ===========================================*/
 
 add_action( 'wp_enqueue_scripts', 'trestle_header_actions' );
@@ -48,6 +48,20 @@ function trestle_header_actions() {
 	);
 	wp_localize_script( 'theme-jquery', 'trestle_vars', $php_vars );
 
+}
+
+add_filter( 'genesis_pre_load_favicon', 'trestle_do_custom_favicon' );
+/**
+ * Output custom favicon if specified in the theme options.
+ *
+ * @since   1.0.0
+ *
+ * @param   string  $favicon_url  Default favicon URL.
+ *
+ * @return  string  Custom favicon URL (if specified), or the default URL.
+ */
+function trestle_do_custom_favicon( $favicon_url ) {
+	return genesis_get_option( 'trestle_favicon_url' ) ? genesis_get_option( 'trestle_favicon_url' ) : $favicon_url;
 }
 
 /*===========================================
@@ -420,8 +434,9 @@ function trestle_read_more_link( $default_text ) {
 	// Get Trestle custom "read more" link text
 	$custom_text = esc_attr( genesis_get_option( 'trestle_read_more_text' ) );
 
-	if ( $custom_text )	
+	if ( $custom_text )	{
 		return '&hellip;&nbsp;<a class="more-link" title="' . $custom_text . '" href="' . get_permalink() . '">' . $custom_text . '</a>';
-	else
+	} else {
 		return $default_text;
+	}
 }

@@ -39,6 +39,7 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_layout'                => 'solid',
 		'trestle_logo_url'              => '',
 		'trestle_logo_url_mobile'       => '',
+		'trestle_favicon_url'           => '',
 		'trestle_nav_primary_location'  => 'full',
 		'trestle_auto_nav'              => 0,
 		'trestle_auto_nav_depth'        => 0,
@@ -123,6 +124,7 @@ function trestle_register_social_sanitization_filters() {
 		array(
 			'trestle_logo_url',
 			'trestle_logo_url_mobile',
+			'trestle_favicon_url',
 			'trestle_home_link_text',
 			'trestle_nav_button_text',
 			'trestle_custom_nav_extras_text',
@@ -167,7 +169,7 @@ function trestle_settings_box() {
 		<input type="radio" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_layout]" value="bubble" <?php checked( esc_attr( genesis_get_option( 'trestle_layout' ) ), 'bubble' ); ?> />
 	</p>
 
-	<h4><?php _e( 'Header', 'trestle' ) ?></h4>
+	<h4><?php _e( 'Logos & Favicon', 'trestle' ) ?></h4>
 	<p>
 		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]"><?php _e( 'Logo URL', 'trestle' ); ?></label><br />
 		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url' ) ); ?>" />
@@ -175,6 +177,11 @@ function trestle_settings_box() {
 	<p>
 		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]"><?php _e( 'Mobile Logo URL', 'trestle' ); ?></label><br />
 		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url_mobile' ) ); ?>" />
+	</p>
+	<p>
+		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]"><?php _e( 'Favicon URL', 'trestle' ); ?></label><br />
+		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]" value="<?php echo esc_attr( genesis_get_option( 'trestle_favicon_url' ) ); ?>" />
+		<span class="description"><?php _e( 'Defaults to <i>/wp-content/themes/trestle/images/favicon.ico</i> if not specified.', 'trestle' ); ?></span>
 	</p>
 	
 	<h4><?php _e( 'Primary Navigation', 'trestle' ) ?></h4>
