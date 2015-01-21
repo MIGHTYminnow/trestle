@@ -57,9 +57,16 @@ jQuery(document).ready(function( $ ) {
 	
     // Toggle widget areas and primary nav
     $('.site-header .toggle-button').click( function( event ) {
-    	event.preventDefault();
+    	
+        // Prevent default behavior
+        event.preventDefault();
 
+        // Get toggle button that was clicked
     	var button = $(this);
+
+        // Remove focus
+        button.blur();
+
     	var target = $( '.toggle-target-' + button.attr('id').match(/\d+/) );
 
         // Toggle buttons
@@ -69,6 +76,7 @@ jQuery(document).ready(function( $ ) {
         // Toggle targets
         target.toggleClass('open');
         $('[class*="toggle-target"]').not(target).removeClass('open');
+
     });
 
     // Mobile navigation icons
@@ -80,8 +88,16 @@ jQuery(document).ready(function( $ ) {
     
     // Mobile navigation expand/contract functionality
     $('.sub-icon').click(function(event) {
-    	event.preventDefault();
-    	var icon = $(this);
+    	
+        // Prevent default behavior
+        event.preventDefault();
+    	
+        // Get icon clicked
+        var icon = $(this);
+
+        // Remove focus
+        icon.blur();
+
     	icon.next('ul').slideToggle().toggleClass('open');
     	if ( icon.text().indexOf( closedIcon ) !== -1 )
     		icon.text(openIcon);
@@ -90,8 +106,16 @@ jQuery(document).ready(function( $ ) {
     });
     
     $('.widget-area-toggle').click(function(event) {
-    	event.preventDefault();
+    	
+        // Prevent default behavior
+        event.preventDefault();
+
+        // Get button clicked
     	var button = $(this);
+
+        // Remove focus
+        button.blur();
+
     	button.toggleClass('open');
     	button.next('.widget-area').slideToggle();
     });
