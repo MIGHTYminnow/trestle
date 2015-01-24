@@ -118,11 +118,14 @@ jQuery( document ).ready( function( $ ) {
  * Equalize the heights of elements. Great for columns or any elements
  * that need to be the same size (floats, etc).
  *
+ * Must be first triggered on either ready (if only text) or load (if images are included)
+ *
  * Based on Rob Glazebrook's (cssnewbie.com) script
  *
  * Additions
  *  - ability to include a break point (the minimum viewport width at which the script does anything)
- *  - binds the script to run on load, orientation change (for mobile), and when resizing the window
+ *  - binds to window resize events (resize and orientationchange), unbinds and rebinds if called again
+ *  - can be called multiple times to reset or handle DOM changes via ajax or .clone()
  *
  * Usage: jQuery(object).equalHeights([minHeight], [maxHeight], [breakPoint]);
  *
@@ -190,7 +193,6 @@ jQuery( document ).ready( function( $ ) {
         // Attach doEqualHeights as an event handler to the window resize events
         // We're using $.proxy() to pass in the right $items to keep our context correct
         $( window ).on( 'orientationchange.equalheights resize.equalheights equalheights.equalheights', $.proxy( doEqualHeights, null, $items ) );
-
     }
 
 })( jQuery );
