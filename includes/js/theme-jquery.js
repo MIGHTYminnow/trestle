@@ -56,9 +56,16 @@ jQuery( document ).ready( function( $ ) {
 
     // Toggle widget areas and primary nav
     $( '.site-header .toggle-button' ).click( function( event ) {
+
+	// Prevent default behavior
     	event.preventDefault();
 
+	// Get toggle button that was clicked
     	var $button = $( this );
+    	
+    	//Remove focus
+    	$button.blur();
+    	
     	var $target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
 
         // Toggle buttons
@@ -68,6 +75,7 @@ jQuery( document ).ready( function( $ ) {
         // Toggle targets
         $target.toggleClass( 'open' );
         $( '[class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
+
     });
 
     // Mobile navigation icons
@@ -83,8 +91,16 @@ jQuery( document ).ready( function( $ ) {
 
     // Mobile navigation expand/contract functionality
     $( '.sub-icon' ).click( function( event ) {
+    	
+    	// Prevent default behavior
     	event.preventDefault();
+    	
+    	// Get icon click
     	var $icon = $( this );
+    	
+    	// Remove focus
+    	$icon.blur();
+    	
     	$icon.next( 'ul' ).slideToggle().toggleClass( 'open' );
     	if ( $icon.text().indexOf( closedIcon ) !== -1 )
     		$icon.text( openIcon );
@@ -93,8 +109,16 @@ jQuery( document ).ready( function( $ ) {
     });
 
     $( '.widget-area-toggle' ).click( function( event ) {
+    	
+    	// Prevent default behavior
     	event.preventDefault();
+    	
+    	// Get button clicked
     	var $button = $( this );
+    	
+    	// Remove focus
+    	$button.blur();
+    	
     	$button.toggleClass( 'open' );
     	$button.next( '.widget-area' ).slideToggle();
     });
@@ -118,14 +142,12 @@ jQuery( document ).ready( function( $ ) {
  * Equalize the heights of elements. Great for columns or any elements
  * that need to be the same size (floats, etc).
  *
- * Must be first triggered on either ready (if only text) or load (if images are included)
- *
  * Based on Rob Glazebrook's (cssnewbie.com) script
  *
  * Additions
  *  - ability to include a break point (the minimum viewport width at which the script does anything)
  *  - binds to window resize events (resize and orientationchange), unbinds and rebinds if called again
- *  - can be called multiple times to reset or handle DOM changes via ajax or .clone()
+ *  - can be called multiple times to handle DOM changes via ajax or .clone()
  *
  * Usage: jQuery(object).equalHeights([minHeight], [maxHeight], [breakPoint]);
  *
