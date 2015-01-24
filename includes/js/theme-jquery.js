@@ -143,7 +143,7 @@ jQuery( document ).ready( function( $ ) {
          * This allows us to manually retrigger if we have added new elements
          * into the DOM using ajax or .clone().
          */
-        $( window ).off( '.equalheights', equalHeightsInit );
+        $( window ).off( '.equalheights', doEqualHeights );
 
         // Scope our local variables
         var $items, breakPoint;
@@ -155,7 +155,7 @@ jQuery( document ).ready( function( $ ) {
         breakPoint = breakPoint || 0;
 
         // Actual logic for this plugin
-        var equalHeightsInit = function() {
+        function doEqualHeights( $items ) {
 
             // Calculate the tallest
             tallest = ( minHeight ) ? minHeight : 0;
@@ -185,10 +185,12 @@ jQuery( document ).ready( function( $ ) {
         }
 
         // Trigger the main plugin function
-        equalHeightsInit();
+        doEqualHeights( $items );
 
-        // Bind appropriate events for the first time this plugin is run
-        $( window ).on( 'orientationchange.equalheights resize.equalheights equalheights.equalheights', equalHeightsInit );
+        // Attach doEqualHeights as an event handler to the window resize events
+        // We're using $.proxy() to pass in the right $items to keep our context correct
+        $( window ).on( 'orientationchange.equalheights resize.equalheights equalheights.equalheights', $.proxy( doEqualHeights, null, $items ) );
+
     }
 
 })( jQuery );
