@@ -34,21 +34,29 @@ jQuery( document ).ready( function( $ ) {
 	// Mobile header toggle buttons
 	$( '.site-header .title-area' ).after( '<div class="toggle-buttons" />' );
 	$( '.site-header .widget-area, .nav-primary' ).each( function( i ) {
-		var $target = $( this );
-		var buttonClass = 'toggle-button';
 
-        // Add classes of target element
-        var targetClass = $target.attr( 'class' ).split( /\s+/ );
+        // Store target
+        $target = $( this );
+
+        // Scope variables
+        var $target, buttonClass, targetClass;
+
+        // Setup classes
+        buttonClass = 'toggle-button';
+        targetClass = $target.attr( 'class' ).split( /\s+/ );
+
+        // Add targets-[] class to buttonClass
         $.each( targetClass, function( index, value ) {
         	buttonClass += ' targets-' + value;
         });
 
-        if ( $( this ).is( 'nav' ) ) {
+        // Add nav-toggle class to buttonClass if the button is for the nav
+        if ( $target.is( 'nav' ) ) {
         	buttonClass += ' nav-toggle';
         }
 
         // Add toggle buttons to header
-        $( '.toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">Toggle</a>' );
+        $( '.toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">Toggle</a>');
 
         // Add target class to nav and widget areas
         $target.addClass( 'toggle-target-' + i );
@@ -57,16 +65,20 @@ jQuery( document ).ready( function( $ ) {
     // Toggle widget areas and primary nav
     $( '.site-header .toggle-button' ).click( function( event ) {
 
-	// Prevent default behavior
+        // Prevent default behavior
     	event.preventDefault();
 
-	// Get toggle button that was clicked
-    	var $button = $( this );
-    	
+        // Scope our variables
+        var $button, $target;
+
+        // Get toggle button that was clicked
+    	$button = $( this );
+
     	//Remove focus
     	$button.blur();
-    	
-    	var $target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
+
+        // Match the button to the right target
+    	$target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
 
         // Toggle buttons
         $button.toggleClass( 'open' );
@@ -75,52 +87,52 @@ jQuery( document ).ready( function( $ ) {
         // Toggle targets
         $target.toggleClass( 'open' );
         $( '[class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
-
     });
 
     // Mobile navigation icons
     var closedIcon = '+';
     var openIcon = '-';
 
-    $( '.nav-primary' )
-    	.find( '.genesis-nav-menu .parent:not(.current-menu-item, .current_page_item, .current_page_parent, .current_page_ancestor) > a' )
-    	.after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
-    $( '.nav-primary' )
-    	.find( '.genesis-nav-menu .parent.current-menu-item > a, .genesis-nav-menu .parent.current_page_item > a, .genesis-nav-menu .parent.current_page_parent > a, .genesis-nav-menu .parent.current_page_ancestor > a' )
-    	.after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
+    // Insert the icons into the nav where appropriate
+    $( '.nav-primary' ).find( '.genesis-nav-menu .parent:not( .current-menu-item, .current_page_item, .current_page_parent, .current_page_ancestor) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
+    $( '.nav-primary' ).find( '.genesis-nav-menu .parent.current-menu-item > a, .genesis-nav-menu .parent.current_page_item > a, .genesis-nav-menu .parent.current_page_parent > a, .genesis-nav-menu .parent.current_page_ancestor > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
 
     // Mobile navigation expand/contract functionality
     $( '.sub-icon' ).click( function( event ) {
-    	
+
     	// Prevent default behavior
     	event.preventDefault();
-    	
+
     	// Get icon click
     	var $icon = $( this );
-    	
+
     	// Remove focus
     	$icon.blur();
-    	
+
+        // Expand/contract
     	$icon.next( 'ul' ).slideToggle().toggleClass( 'open' );
-    	if ( $icon.text().indexOf( closedIcon ) !== -1 )
+
+        // Change the icon to indicate open/closed
+        if ( $icon.text().indexOf( closedIcon ) !== -1 )
     		$icon.text( openIcon );
     	else if ( $icon.text().indexOf( openIcon ) !== -1 )
     		$icon.text( closedIcon );
     });
 
+    // Header widget area expand/contract functionality
     $( '.widget-area-toggle' ).click( function( event ) {
-    	
+
     	// Prevent default behavior
     	event.preventDefault();
-    	
+
     	// Get button clicked
     	var $button = $( this );
-    	
+
     	// Remove focus
     	$button.blur();
-    	
-    	$button.toggleClass( 'open' );
-    	$button.next( '.widget-area' ).slideToggle();
+
+        // Expand/contract
+    	$button.toggleClass( 'open' ).next( '.widget-area' ).slideToggle();
     });
 
     // Executes when complete page is fully loaded, including all frames, objects, and images
@@ -179,7 +191,7 @@ jQuery( document ).ready( function( $ ) {
         // Store the breakPoint arg if it was passsed in
         breakPoint = breakPoint || 0;
 
-        // Actual logic for this plugin
+        // Equalize the heights
         function doEqualHeights( $items ) {
 
             // Calculate the tallest
@@ -209,12 +221,14 @@ jQuery( document ).ready( function( $ ) {
             }
         }
 
-        // Trigger the main plugin function
+        // Start the equalizing
         doEqualHeights( $items );
 
         // Attach doEqualHeights as an event handler to the window resize events
-        // We're using $.proxy() to pass in the right $items to keep our context correct
-        $( window ).on( 'orientationchange.equalheights resize.equalheights equalheights.equalheights', $.proxy( doEqualHeights, null, $items ) );
+        // Use $.proxy() to pass in the right $items to keep the context correct
+        // when dealing with more than one collection of $items
+        $( window ).on( 'orientationchange.equalheights resize.equalheights equalheights.equalheights',
+                  $.proxy( doEqualHeights, null, $items ) );
     }
 
 })( jQuery );
