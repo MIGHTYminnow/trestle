@@ -56,7 +56,7 @@ jQuery( document ).ready( function( $ ) {
         }
 
         // Add toggle buttons to header
-        $( '.toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">Toggle</a>');
+        $( '.toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">Toggle</a>' );
 
         // Add target class to nav and widget areas
         $target.addClass( 'toggle-target-' + i );
