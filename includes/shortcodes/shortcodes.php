@@ -102,7 +102,7 @@ function trestle_date( $atts ) {
     return date( $format );
 }
 
-add_shortcode( 'blockquote', 'igg_blockquote_shortcode' );
+add_shortcode( 'blockquote', 'trestle_blockquote_shortcode' );
 /**
  * Blockquote
  * 
@@ -114,7 +114,7 @@ add_shortcode( 'blockquote', 'igg_blockquote_shortcode' );
  *
  * @return  string        Shortcode output.
  */
-function igg_blockquote_shortcode( $atts, $content = null ) {
+function trestle_blockquote_shortcode( $atts, $content = null ) {
          
    $atts = shortcode_atts( array(
       'citation'      => '',
