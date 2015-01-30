@@ -22,8 +22,8 @@ jQuery( document ).ready( function( $ ) {
 
 	// Add classes to different types of links
 	$( 'a[href^="mailto:"]' ).addClass( 'email-link' );
-	$( 'a[href*=".pdf"]' ).attr({ "target":"_blank" }).addClass( 'pdf-link' );
-	$( 'a[href*=".doc"]' ).attr({ "target":"_blank" }).addClass( 'doc-link' );
+	$( 'a[href$=".pdf"]' ).attr({ "target":"_blank" }).addClass( 'pdf-link' );
+	$( 'a[href$=".doc"]' ).attr({ "target":"_blank" }).addClass( 'doc-link' );
 	$( 'a' ).has( 'img' ).addClass( 'image-link' );
 
 	// Add classes to parts of lists
@@ -86,7 +86,7 @@ jQuery( document ).ready( function( $ ) {
 
         // Toggle targets
         $target.toggleClass( 'open' );
-        $( '[class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
+        $( '[class^="toggle-target"]' ).not( $target ).removeClass( 'open' );
     });
 
     // Mobile navigation icons
@@ -147,7 +147,6 @@ jQuery( document ).ready( function( $ ) {
 
 }); /* end of page load scripts */
 
-
 /**
  * Equal Heights Plugin
  *
@@ -156,45 +155,66 @@ jQuery( document ).ready( function( $ ) {
  *
  * Based on Rob Glazebrook's (cssnewbie.com) script
  *
- * Additions
+ * Features
  *  - ability to include a break point (the minimum viewport width at which the script does anything)
- *  - binds to window resize events (resize and orientationchange), unbinds and rebinds if called again
- *  - can be called multiple times to handle DOM changes via ajax or .clone()
+ *  - binds to window resize events (resize and orientationchange)
+ *  - will automatically detect new elements added to the DOM
+ *  - can be called multiple times without duplicating any events
  *
- * Usage: jQuery(object).equalHeights([minHeight], [maxHeight], [breakPoint]);
+ * Usage: jQuery( object ).equalHeights( [minHeight], [maxHeight], [breakPoint] );
  *
  * Example 1: jQuery( ".cols" ).equalHeights(); Sets all columns to the same height.
  * Example 2: jQuery( ".cols" ).equalHeights( 400 ); Sets all cols to at least 400px tall.
  * Example 3: jQuery( ".cols" ).equalHeights( 100, 300 ); Cols are at least 100 but no more
  * than 300 pixels tall. Elements with too much content will gain a scrollbar.
- * Example 4: jQuery( ".cols" ).equalHeights( null, null,768 ); Only resize columns above 768px viewport
- *
+ * Example 4: jQuery( ".cols" ).equalHeights( null, null, 768 ); Only resize columns above 768px viewport
  */
 ( function( $ ) {
 
     $.fn.equalHeights = function( minHeight, maxHeight, breakPoint ) {
 
-        /**
-         * Unbind all plugin events so that we can call this function again
-         * to reset it without creating multiple handlers for the same events.
-         * This allows us to manually retrigger if we have added new elements
-         * into the DOM using ajax or .clone().
-         */
-        $( window ).off( '.equalheights', doEqualHeights );
+    	// Scope our variables
+        var selector, args, eventData, resizeSet;
 
-        // Scope our local variables
-        var $items, breakPoint;
+        // Get the selector used to call equalHeights
+        selector = this.selector;
 
-        // Store the jQuery objects upon which this function has been called
-        $items = this;
-
-        // Store the breakPoint arg if it was passsed in
+        // Use the args that were passed in or use the defaults
+        minHeight = minHeight || null;
+        maxHeight = maxHeight || null;
         breakPoint = breakPoint || 0;
 
-        // Equalize the heights
-        function doEqualHeights( $items ) {
+        // Combine args into an array
+        args = [ minHeight, maxHeight, breakPoint ];
 
-            // Calculate the tallest
+        // Check if our global already exists
+        if ( window.equalHeightsItems ) {
+
+    		// It does, so add or overwrite the current object in it
+    		window.equalHeightsItems[selector] = args;
+
+        } else {
+
+        	// It doesn't, so create the global and store the current object in it
+        	window.equalHeightsItems = {};
+        	window.equalHeightsItems[selector] = args;
+        }
+
+        // Function to do the equalizing of the heights
+        function doEqualHeights( selector, args ) {
+
+        	// Scope our variables
+        	var $items, tallest, e, a, width;
+
+        	// Grab the collection of items fresh from the DOM
+        	$items = $( selector );
+
+        	// Store the passed in args
+        	minHeight = args[0];
+        	maxHeight = args[1];
+        	breakPoint = args[2];
+
+            // Calculate the tallest item
             tallest = ( minHeight ) ? minHeight : 0;
             $items.each( function() {
                 $( this ).height( 'auto' );
@@ -204,7 +224,7 @@ jQuery( document ).ready( function( $ ) {
             });
 
             // Get viewport width (taking scrollbars into account)
-            var e = window;
+            e = window;
             a = 'inner';
             if ( !( 'innerWidth' in window ) ) {
                 a = 'client';
@@ -212,7 +232,7 @@ jQuery( document ).ready( function( $ ) {
             }
             width = e[ a+'Width' ];
 
-            // Equalize heights if viewport width is above the specified breakpoint
+            // Equalize heights if viewport width is above the breakpoint
             if ( width >= breakPoint ) {
                 if( ( maxHeight ) && tallest > maxHeight ) tallest = maxHeight;
                 return $items.each( function() {
@@ -221,14 +241,39 @@ jQuery( document ).ready( function( $ ) {
             }
         }
 
-        // Start the equalizing
-        doEqualHeights( $items );
+        // Function to trigger the equalizing
+        function triggerEqualHeights() {
 
-        // Attach doEqualHeights as an event handler to the window resize events
-        // Use $.proxy() to pass in the right $items to keep the context correct
-        // when dealing with more than one collection of $items
-        $( window ).on( 'orientationchange.equalheights resize.equalheights equalheights.equalheights',
-                  $.proxy( doEqualHeights, null, $items ) );
+        	// Loop through each object in our global
+        	$.each( window.equalHeightsItems, function( selector, args ) {
+
+        		// Call doEqualHeights and pass in the current object
+        		doEqualHeights( selector, args );
+        	});
+        }
+
+        // Grab the event data from the window object
+		eventData = $( window ).data('events');
+
+		// Check if the window has the smartresize event
+		if ( eventData.resize ) {
+
+			// Check if the smartresize event has our namespace
+			$( eventData.resize ).each( function() {
+
+				// It does, so store this information in a variable
+				if( this.namespace == 'equalheights' ) { resizeSet = true; }
+			});
+		}
+
+		// Bind the window smartresize event to our trigger function if we
+		// haven't already done so
+        if ( ! resizeSet ) {
+        	$( window ).on( 'resize.equalheights', triggerEqualHeights );
+        }
+
+        // Trigger the first equalizing
+        triggerEqualHeights();
     }
 
 })( jQuery );
