@@ -348,12 +348,6 @@ function trestle_register_required_plugins() {
 	$plugins = array(
 		// Required plugins
 		array(
-			'name' 		=> 'Better Font Awesome',
-			'slug' 		=> 'better-font-awesome',
-			'required' 	=> true,
-		),
-
-		array(
 			'name' 		=> 'Respond.js',
 			'slug' 		=> 'respondjs',
 			'required' 	=> true,
