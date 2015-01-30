@@ -1,0 +1,56 @@
+/**
+ * Better Font Awesome admin styles
+ *
+ * @package   Better Font Awesome Library
+ * @author    MIGHTYminnow & Mickey Kay <mickey@mickeykaycreative.com>
+ * @license   GPL-2.0+
+ * @link      https://github.com/MickeyKay/better-font-awesome-library
+ * @copyright 2014 MIGHTYminnow & Mickey Kay
+ */
+
+/**	
+ * TinyMCE
+ */
+
+/* Override TinyMCE rules blocking these native Font Awesome styles */
+#menu_content_content_bfaSelect_menu .icon-fw,
+#menu_content_content_bfaSelect_menu .fa-fw,
+.mce-stack-layout-item .icon-fw,
+.mce-stack-layout-item .fa-fw {
+	display: inline-block;
+	width: 1.2857142857142858em;
+	text-align: center;
+}
+
+/* Override TinyMCE icon font family */
+.fa {
+	font-family: FontAwesome !important;
+}
+
+/* BFA select icon (for versions < TinyMCE 4) */
+[id*="bfaSelect_text"]:before {
+	content: "\f024";
+	margin-right: .5em;
+	font-family: FontAwesome;
+}
+
+/**
+ * Settings page
+ */
+
+.bfa-usage-text {
+	padding: 20px;
+	background-color: #fff;
+	border: 1px solid #efefef;
+}
+
+.bfa-usage-text h3 {
+	margin-top: 0;
+}
+
+.bfa-usage-text .fa,
+.bfa-usage-text .icon {
+	width: 40px;
+	text-align: center;
+	box-sizing: border-box;
+}
