@@ -51,6 +51,10 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_footer_widgets_number' => 3,
 		'trestle_equal_height_cols'     => 1,
 		'trestle_equal_cols_breakpoint' => 768,
+		'trestle_external_link_icons'   => 1,
+		'trestle_email_link_icons'      => 1,
+		'trestle_pdf_link_icons'        => 1,
+		'trestle_doc_link_icons'        => 1,
 	);
 
 	// Populate Trestle settings with default values if they don't yet exist
