@@ -331,6 +331,6 @@ jQuery( document ).ready( function( $ ) {
 				$( this ).height( tallest );
 			});
 		}
-    }
+    	}
 
 })( jQuery );
