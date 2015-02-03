@@ -207,34 +207,34 @@ jQuery( document ).ready( function( $ ) {
 	// Main plugin function
 	$.fn.equalHeights = function( minHeight, maxHeight, breakPoint ) {
 
-    	// Scope our variables
-        var selector, minHeight, maxHeight, breakPoint, eventData,
-            ourEvents, eventName, eventSet;
-
-        // Get the selector used to call equalHeights
-        selector = this.selector;
-
-        // Use the args that were passed in or use the defaults
-        minHeight = minHeight || null;
-        maxHeight = maxHeight || null;
-        breakPoint = breakPoint || 0;
-
-        // Combine args into an object
-        args = { minHeight: minHeight, maxHeight: maxHeight, breakPoint: breakPoint };
-
-        // Check if our global already exists
-        if ( window.equalHeightsItems ) {
-
-    		// It does, so add or overwrite the current object in it
-    		window.equalHeightsItems[selector] = args;
-        } else {
-
-        	// It doesn't, so create the global and store the current object in it
-        	window.equalHeightsItems = {};
-        	window.equalHeightsItems[selector] = args;
-        }
-
-	    // Grab the current event data from the window object
+	    	// Scope our variables
+	        var selector, minHeight, maxHeight, breakPoint, eventData,
+	            ourEvents, eventName, eventSet;
+	
+	        // Get the selector used to call equalHeights
+	        selector = this.selector;
+	
+	        // Use the args that were passed in or use the defaults
+	        minHeight = minHeight || null;
+	        maxHeight = maxHeight || null;
+	        breakPoint = breakPoint || 0;
+	
+	        // Combine args into an object
+	        args = { minHeight: minHeight, maxHeight: maxHeight, breakPoint: breakPoint };
+	
+	        // Check if our global already exists
+	        if ( window.equalHeightsItems ) {
+	
+	    		// It does, so add or overwrite the current object in it
+	    		window.equalHeightsItems[selector] = args;
+	        } else {
+	
+	        	// It doesn't, so create the global and store the current object in it
+	        	window.equalHeightsItems = {};
+	        	window.equalHeightsItems[selector] = args;
+	        }
+	
+	    	// Grab the current event data from the window object
 		eventData = $( window ).data( 'events' );
 
 		// Store the events that will retrigger doEqualHeights()
@@ -271,12 +271,12 @@ jQuery( document ).ready( function( $ ) {
 			if ( ! eventSet ) {
 
 				// Namespace it and debounce it to be safe
-	        	$( window ).on( eventName, debounce( triggerEqualHeights ) );
-		    }
+	        		$( window ).on( eventName, debounce( triggerEqualHeights ) );
+		    	}
 		});
-
-	    // Trigger the first equalizing
-	    triggerEqualHeights();
+	
+		// Trigger the first equalizing
+		triggerEqualHeights();
 	};
 
 	// Function to trigger the equalizing
