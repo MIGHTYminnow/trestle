@@ -48,8 +48,6 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'trestle_revisions_number'      => 3,
 		'trestle_footer_widgets_number' => 3,
-		'trestle_equal_height_cols'     => 1,
-		'trestle_equal_cols_breakpoint' => 768,
 	);
 
 	// Populate Trestle settings with default values if they don't yet exist
@@ -102,7 +100,6 @@ function trestle_register_social_sanitization_filters() {
 			'trestle_auto_nav_depth',
 			'trestle_revisions_number',
 			'trestle_footer_widgets_number',
-			'trestle_equal_cols_breakpoint',
 		)
 	);
 
@@ -303,15 +300,6 @@ function trestle_settings_box() {
 			?>
 		</select>
 	</p>
-
-	<h4><?php _e( 'Genesis Extender Plugin', 'trestle' ) ?></h4>
-	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_equal_height_cols' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]"><?php _e( 'Automatically equalize height of Genesis Extender homepage columns', 'trestle' ); ?></label>
-	</p>
-	<p class="trestle-equal-columns-breakpoint">
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]"><?php _e( 'Implement at', 'trestle' ); ?><input type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" value="<?php echo esc_attr( genesis_get_option( 'trestle_equal_cols_breakpoint' ) ); ?>" size="4"/>px&nbsp;<?php _e( 'and wider (should match main CSS breakpoint)', 'trestle' ); ?></label> 
-	</p>
-
 	<h4><?php _e( 'Link Icons', 'trestle' ) ?></h4>
 	<p>
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_external_link_icons' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]"><?php _e( 'Add icons to external links', 'trestle' ); ?></label><br />
