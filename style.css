@@ -177,7 +177,7 @@ textarea:focus,
 	-ms-transition:     all 0.1s ease-in-out;
 	-o-transition:      all 0.1s ease-in-out;
 	transition:         all 0.1s ease-in-out;
-	
+
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
@@ -467,6 +467,7 @@ textarea {
 }
 
 input[type="radio"],
+input[type="radio"],
 input[type="checkbox"] {
 	width: auto;
 }
@@ -587,7 +588,7 @@ body .red:hover {
 
 .genesis-nav-menu .button:hover {
 	background-color: #555;
-	border-color: #555;	
+	border-color: #555;
 }
 
 body .blue {
@@ -1167,7 +1168,7 @@ body .mapp-layout {
 
 .simple-section-nav .current_page_item > a,
 .simple-section-nav .current_page_ancestor > a {
-	
+
 }
 
 .simple-section-nav .current_page_item > a,
@@ -2082,19 +2083,19 @@ Media Queries
 		font-size: 16px;
 		font-size: 1.6rem;
 	}
-	
+
 }
 
 /* Responsive Tables CSS
 --------------------------------------------- */
 @media (max-width: 600px) {
-	
+
 	table {
 		clear: both;
 	}
 
 	tr {
-		padding: 0.5em; 
+		padding: 0.5em;
 	}
 
 	th,
@@ -2385,7 +2386,7 @@ Media Queries
 	.five-sixths {
 		width: 82.90598290598291%;
 	}
-	
+
 	.first,
 	.footer-widgets .footer-widgets-1 {
 		clear: both;
@@ -2554,7 +2555,7 @@ Media Queries
 
 	/* Plugins
 	--------------------------------------------- */
-	
+
 	/* Events Manager */
 	.em-calendar-wrapper .fullcalendar tr {
 		display: table-row !important;
