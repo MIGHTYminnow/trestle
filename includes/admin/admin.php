@@ -39,7 +39,6 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_layout'                => 'solid',
 		'trestle_logo_url'              => '',
 		'trestle_logo_url_mobile'       => '',
-		'trestle_favicon_url'           => '',
 		'trestle_nav_primary_location'  => 'full',
 		'trestle_auto_nav'              => 0,
 		'trestle_auto_nav_depth'        => 0,
@@ -49,12 +48,6 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'trestle_revisions_number'      => 3,
 		'trestle_footer_widgets_number' => 3,
-		'trestle_equal_height_cols'     => 1,
-		'trestle_equal_cols_breakpoint' => 768,
-		'trestle_external_link_icons'   => 1,
-		'trestle_email_link_icons'      => 1,
-		'trestle_pdf_link_icons'        => 1,
-		'trestle_doc_link_icons'        => 1,
 	);
 
 	// Populate Trestle settings with default values if they don't yet exist
@@ -107,7 +100,6 @@ function trestle_register_social_sanitization_filters() {
 			'trestle_auto_nav_depth',
 			'trestle_revisions_number',
 			'trestle_footer_widgets_number',
-			'trestle_equal_cols_breakpoint',
 		)
 	);
 
@@ -128,7 +120,6 @@ function trestle_register_social_sanitization_filters() {
 		array(
 			'trestle_logo_url',
 			'trestle_logo_url_mobile',
-			'trestle_favicon_url',
 			'trestle_home_link_text',
 			'trestle_nav_button_text',
 			'trestle_custom_nav_extras_text',
@@ -173,7 +164,7 @@ function trestle_settings_box() {
 		<input type="radio" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_layout]" value="bubble" <?php checked( esc_attr( genesis_get_option( 'trestle_layout' ) ), 'bubble' ); ?> />
 	</p>
 
-	<h4><?php _e( 'Logos & Favicon', 'trestle' ) ?></h4>
+	<h4><?php _e( 'Header', 'trestle' ) ?></h4>
 	<p>
 		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]"><?php _e( 'Logo URL', 'trestle' ); ?></label><br />
 		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url' ) ); ?>" />
@@ -181,11 +172,6 @@ function trestle_settings_box() {
 	<p>
 		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]"><?php _e( 'Mobile Logo URL', 'trestle' ); ?></label><br />
 		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url_mobile' ) ); ?>" />
-	</p>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]"><?php _e( 'Favicon URL', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]" value="<?php echo esc_attr( genesis_get_option( 'trestle_favicon_url' ) ); ?>" />
-		<span class="description"><?php _e( 'Defaults to <i>/wp-content/themes/trestle/images/favicon.ico</i> if not specified.', 'trestle' ); ?></span>
 	</p>
 	
 	<h4><?php _e( 'Primary Navigation', 'trestle' ) ?></h4>
@@ -314,15 +300,6 @@ function trestle_settings_box() {
 			?>
 		</select>
 	</p>
-
-	<h4><?php _e( 'Genesis Extender Plugin', 'trestle' ) ?></h4>
-	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_equal_height_cols' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]"><?php _e( 'Automatically equalize height of Genesis Extender homepage columns', 'trestle' ); ?></label>
-	</p>
-	<p class="trestle-equal-columns-breakpoint">
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]"><?php _e( 'Implement at', 'trestle' ); ?><input type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" value="<?php echo esc_attr( genesis_get_option( 'trestle_equal_cols_breakpoint' ) ); ?>" size="4"/>px&nbsp;<?php _e( 'and wider (should match main CSS breakpoint)', 'trestle' ); ?></label> 
-	</p>
-
 	<h4><?php _e( 'Link Icons', 'trestle' ) ?></h4>
 	<p>
 		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_external_link_icons' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]"><?php _e( 'Add icons to external links', 'trestle' ); ?></label><br />
@@ -347,6 +324,12 @@ add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
 function trestle_register_required_plugins() {
 	$plugins = array(
 		// Required plugins
+		array(
+			'name' 		=> 'Better Font Awesome',
+			'slug' 		=> 'better-font-awesome',
+			'required' 	=> true,
+		),
+
 		array(
 			'name' 		=> 'Respond.js',
 			'slug' 		=> 'respondjs',
@@ -379,8 +362,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Easy Fancybox',
-			'slug' 		=> 'easy-fancybox',
+			'name' 		=> 'FancyBox for WordPress',
+			'slug' 		=> 'fancybox-for-wordpress',
 			'required'  => false,
 		),
 
