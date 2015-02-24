@@ -42,12 +42,6 @@ function trestle_header_actions() {
 	if ( is_readable( $upload_path . $custom_js_file ) )
 		wp_enqueue_script( 'trestle-custom-jquery', $upload_url . $custom_js_file, array( 'jquery' ), CHILD_THEME_VERSION, true );
 
-	// Pass PHP variables to theme jQuery
-	$php_vars = array (
-		'trestle_equal_cols_breakpoint' => genesis_get_option( 'trestle_equal_cols_breakpoint' ),
-	);
-	wp_localize_script( 'theme-jquery', 'trestle_vars', $php_vars );
-
 }
 
 /*===========================================
