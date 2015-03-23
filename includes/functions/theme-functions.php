@@ -203,6 +203,45 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 
 
 /*===========================================
+ * Navigation
+===========================================*/
+
+add_action( 'init', 'trestle_nav_primary_location' );
+/**
+ * Move primary navigation into the header if need be.
+ *
+ * @since  1.2.0
+ */
+function trestle_nav_primary_location() {
+
+	if ( 'header' == genesis_get_option( 'trestle_nav_primary_location' ) ) {
+		remove_action( 'genesis_after_header', 'genesis_do_nav' );
+		add_action( 'genesis_header', 'genesis_do_nav', 12 );
+	}
+
+}
+
+add_filter( 'wp_nav_menu_items', 'trestle_custom_nav_extras', 10, 2 );
+/**
+ * Add custom nav extras.
+ *
+ * @since 1.0.0
+ *
+ * @param  string   $nav_items <li> list of menu items.
+ * @param  stdClass $menu_args Arguments for the menu.
+ * @return string   <li> list of menu items with custom navigation extras <li> appended.
+ */
+function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
+
+	if ( 'primary' == $menu_args->theme_location && genesis_get_option( 'trestle_custom_nav_extras_text' ) ) {
+		return $nav_items . '<li class="right custom">' . get_search_form( false ) . '</li>';
+	}
+
+	return $nav_items;
+}
+
+
+/*===========================================
  * Posts & Pages
 ===========================================*/
 

@@ -79,7 +79,7 @@
 	wp.customize( 'genesis-settings[trestle_read_more_text]', function( value )  {
 		value.bind( function( value ) {
 
-			$( 'a.more-link' ).text( value );
+			$( 'a.more-link' ).html( value );
 
 		});
 	});

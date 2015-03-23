@@ -161,6 +161,26 @@ function trestle_customizer_controls( $wp_customize ) {
         )
     );
 
+    // Primary nav extras
+    $wp_customize->add_setting(
+		'genesis-settings[trestle_custom_nav_extras_text]',
+		array(
+			'default'		=> genesis_get_option( 'trestle_custom_nav_extras_text' ),
+			'type'			=> 'option',
+			'transport' 	=> 'postMessage',
+			'capability'	=> 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+        'trestle_custom_nav_extras_text_control',
+        array(
+            'section'   => 'trestle_settings_section',
+            'settings'  => 'genesis-settings[trestle_custom_nav_extras_text]',
+            'label'     => __( 'Add search to mobile navigation', 'trestle' ),
+            'type'		=> 'checkbox',
+        )
+    );
+
     // Blog post custom read more link text
     $wp_customize->add_setting(
 		'genesis-settings[trestle_read_more_text]',
