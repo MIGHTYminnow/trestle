@@ -1368,15 +1368,11 @@ Site Header
 
 .site-header .widget-area {
 	width: 100%;
+	padding: 20px;
 	background-color: #eee;
 	border: 1px solid #ddd;
-	border-width: 0;
-	overflow: hidden;
-}
-
-.site-header .widget-area.open {
-	padding: 20px;
 	border-width: 1px 0;
+	overflow: hidden;
 }
 
 .site-header .search-form {
@@ -1414,23 +1410,21 @@ Site Header
 	content: "\f0c9";
 }
 
-
 .nav-primary,
-/*.site-header .nav-primary,*/
 .site-header .widget-area {
 	position: absolute;
+	z-index: -999;
 	top: 100%;
 	left: 0;
 	right: 0;
-	max-height: 0;
 	opacity: 0;
+	filter: alpha(opacity=0);
 	box-shadow: 0 4px 8px 1px rgba(0,0,0,0.4);
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	-webkit-transition: all .5s ease, padding 0s .5s;
-	   -moz-transition: all .5s ease, padding 0s .5s;
-	    -ms-transition: all .5s ease, padding 0s .5s;
-	     -o-transition: all .5s ease, padding 0s .5s;
-	        transition: all .5s ease, padding 0s .5s;
+	-webkit-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	   -moz-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	    -ms-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	     -o-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	        transition: opacity 0.25s ease, z-index 0s 0.25s;
 }
 
 .site-container > .nav-primary {
@@ -1440,14 +1434,13 @@ Site Header
 .nav-primary.open,
 .widget-area.open {
 	z-index: 50;
-	max-height: 9999px;
 	opacity: 1;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	-webkit-transition: opacity .5s ease, padding 0s 0s;
-	   -moz-transition: opacity .5s ease, padding 0s 0s;
-	    -ms-transition: opacity .5s ease, padding 0s 0s;
-	     -o-transition: opacity .5s ease, padding 0s 0s;
-	        transition: opacity .5s ease, padding 0s 0s;
+	filter: alpha(opacity=100);
+	-webkit-transition: z-index 0s ease, opacity 0.25s 0s;
+	   -moz-transition: z-index 0s ease, opacity 0.25s 0s;
+	    -ms-transition: z-index 0s ease, opacity 0.25s 0s;
+	     -o-transition: z-index 0s ease, opacity 0.25s 0s;
+	        transition: z-index 0s ease, opacity 0.25s 0s;
 }
 
 
