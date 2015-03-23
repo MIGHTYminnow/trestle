@@ -462,11 +462,7 @@ function trestle_read_more_link( $default_text ) {
 	// Get Trestle custom "read more" link text
 	$custom_text = esc_attr( genesis_get_option( 'trestle_read_more_text' ) );
 
-<<<<<<< HEAD
-	if ( $custom_text )	{
-=======
-	if ( $custom_text )
->>>>>>> 9de3310f116bb4f7dd5323ca40b16f2fe4160dcd
+	if ( $custom_text ) {
 		return '&hellip;&nbsp;<a class="more-link" title="' . $custom_text . '" href="' . get_permalink() . '">' . $custom_text . '</a>';
 	} else {
 		return $default_text;
