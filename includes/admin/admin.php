@@ -14,26 +14,22 @@ add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
  * @since 1.0.0
  */
 function trestle_admin_actions() {
-	// Add admin jQuery
-	wp_enqueue_script( 'trestle-admin-jquery', get_stylesheet_directory_uri() . '/includes/admin/admin.js', array( 'jquery' ), '1.0.0', true );
 
-	// Add admin jQuery
-	wp_enqueue_style( 'trestle-admin', get_stylesheet_directory_uri() . '/includes/admin/admin.css' );
-
-	// Add admin CSS
-    add_editor_style( get_stylesheet_directory_uri() . '/includes/admin/editor-style.css' );
+	// Include the main stylesheet in the editor
+	add_editor_style( get_stylesheet_uri() );
 }
 
 add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
 /**
  * Sets up Trestle default settings.
  *
- * @since 1.0.0
+ * @since  1.0.0
  *
- * @param array $defaults Genesis default settings.
- * @return array Genesis settings updated to include Trestle defaults.
+ * @param  array  $defaults  Genesis default settings.
+ * @return  array  Genesis settings updated to include Trestle defaults.
  */
 function trestle_custom_defaults( $defaults ) {
+
  	// Trestle default key/value pairs
  	$trestle_defaults = array(
 		'trestle_layout'                => 'solid',
@@ -41,303 +37,35 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_logo_url_mobile'       => '',
 		'trestle_favicon_url'           => '',
 		'trestle_nav_primary_location'  => 'full',
-		'trestle_auto_nav'              => 0,
-		'trestle_auto_nav_depth'        => 0,
-		'trestle_include_home_link'     => 0,
-		'trestle_home_link_text'        => __( 'Home', 'trestle' ),
-		'trestle_nav_button_text'       => '[icon name="icon-list-ul"]  ' . __( 'Navigation', 'trestle' ),
 		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'trestle_revisions_number'      => 3,
 		'trestle_footer_widgets_number' => 3,
-		'trestle_equal_height_cols'     => 1,
-		'trestle_equal_cols_breakpoint' => 768,
-		'trestle_external_link_icons'   => 1,
-		'trestle_email_link_icons'      => 1,
-		'trestle_pdf_link_icons'        => 1,
-		'trestle_doc_link_icons'        => 1,
 	);
 
 	// Populate Trestle settings with default values if they don't yet exist
 	$options = get_option( GENESIS_SETTINGS_FIELD );
 
 	foreach ( $trestle_defaults as $k => $v ) {
+
 		// Add defaults to Genesis default settings array
 		$defaults[$k] = $v;
 
 		// Update actual options if they don't yet exist
-		if ( $options && ! array_key_exists( $k, $options ) ) 
+		if ( $options && ! array_key_exists( $k, $options ) )
 			$options[$k] = $v;
 	}
 
 	// Update options with defaults
 	update_option( GENESIS_SETTINGS_FIELD, $options );
- 					
+
 	return $defaults;
-}
-
-add_action( 'genesis_settings_sanitizer_init', 'trestle_register_social_sanitization_filters' );
-/**
- * Adds sanitization for various Trestle admin settings.
- *
- * @since 1.0.0
- */
-function trestle_register_social_sanitization_filters() {
-	// 1 or 0
-	genesis_add_option_filter( 
-		'one_zero', 
-		GENESIS_SETTINGS_FIELD,
-		array(
-			'trestle_auto_nav',
-			'trestle_include_home_link',
-			'trestle_custom_nav_extras',
-			'trestle_manual_post_info_meta',
-			'trestle_equal_height_cols',
-			'trestle_external_link_icons',
-			'trestle_email_link_icons',
-			'trestle_pdf_link_icons',
-			'trestle_doc_link_icons',
-		)
-	);
-
-	// Integer
-	genesis_add_option_filter( 
-		'absint', 
-		GENESIS_SETTINGS_FIELD,
-		array(
-			'trestle_auto_nav_depth',
-			'trestle_revisions_number',
-			'trestle_footer_widgets_number',
-			'trestle_equal_cols_breakpoint',
-		)
-	);
-
-	// No HTML
-	genesis_add_option_filter( 
-		'no_html', 
-		GENESIS_SETTINGS_FIELD,
-		array(
-			'trestle_layout',
-			'trestle_nav_primary_location'
-		)
-	);
-
-	// Safe HTML
-	genesis_add_option_filter( 
-		'safe_html', 
-		GENESIS_SETTINGS_FIELD,
-		array(
-			'trestle_logo_url',
-			'trestle_logo_url_mobile',
-			'trestle_favicon_url',
-			'trestle_home_link_text',
-			'trestle_nav_button_text',
-			'trestle_custom_nav_extras_text',
-			'trestle_read_more_text'
-		)
-	);
-}
-
-add_action( 'genesis_theme_settings_metaboxes', 'trestle_register_settings_box' );
-/**
- * Registers Trestle admin settings box.
- *
- * @since 1.0.0
- *
- * @global array $_genesis_admin_settings Genesis admin settings.
- *
- * @param string $_genesis_theme_settings_pagehook Hook for main Genesis settings page in admin.
- */
-function trestle_register_settings_box( $_genesis_theme_settings_pagehook ) {
-	global $_genesis_admin_settings;
-
-    // Create Trestle settings metabox
-    $settings_box_title = __( 'Trestle Settings <small>by</small>', 'trestle' ) . ' <a href="http://mightyminnow.com" target="_blank">MIGHTYminnow</a>';
-	add_meta_box( 'trestle-settings', $settings_box_title, 'trestle_settings_box', $_genesis_theme_settings_pagehook, 'main', 'high' );
-}
-
-/**
- * Outputs contents of Trestle admin settings box on Genesis settings page.
- *
- * @since 1.0.0
- */
-function trestle_settings_box() {
-	// Set path for image radio inputs
-	$img_path = get_stylesheet_directory_uri() . '/images/admin/';
-
-	?>
-	<h4><?php _e( 'Layout', 'trestle' ) ?></h4>
-	<p class="trestle-layout">
-		<img src="<?php echo $img_path; ?>icon-solid.gif" width="200" height="160" <?php echo 'solid' == genesis_get_option( 'trestle_layout' ) ? 'class="checked"' : '' ?> />
-		<input type="radio" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_layout]" value="solid" <?php checked( esc_attr( genesis_get_option( 'trestle_layout' ) ), 'solid' ); ?> />
-		<img src="<?php echo $img_path; ?>icon-bubble.gif" width="200" height="160" <?php echo 'bubble' == genesis_get_option( 'trestle_layout' ) ? 'class="checked"' : '' ?> />
-		<input type="radio" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_layout]" value="bubble" <?php checked( esc_attr( genesis_get_option( 'trestle_layout' ) ), 'bubble' ); ?> />
-	</p>
-
-	<h4><?php _e( 'Logos & Favicon', 'trestle' ) ?></h4>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]"><?php _e( 'Logo URL', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url' ) ); ?>" />
-	</p>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]"><?php _e( 'Mobile Logo URL', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_logo_url_mobile]" value="<?php echo esc_attr( genesis_get_option( 'trestle_logo_url_mobile' ) ); ?>" />
-	</p>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]"><?php _e( 'Favicon URL', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_favicon_url]" value="<?php echo esc_attr( genesis_get_option( 'trestle_favicon_url' ) ); ?>" />
-		<span class="description"><?php _e( 'Defaults to <i>/wp-content/themes/trestle/images/favicon.ico</i> if not specified.', 'trestle' ); ?></span>
-	</p>
-	
-	<h4><?php _e( 'Primary Navigation', 'trestle' ) ?></h4>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_primary_location]"><?php _e( 'Menu style:', 'trestle' ); ?> </label><br/>
-		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_primary_location]" />
-			<option value="full" <?php selected( esc_attr( genesis_get_option( 'trestle_nav_primary_location' ) ), 'full' ); ?> ><?php _e( 'Full width', 'trestle' ); ?></option>
-			<option value="header" <?php selected( esc_attr( genesis_get_option( 'trestle_nav_primary_location' ) ), 'header' ); ?> ><?php _e( 'Header right', 'trestle' ); ?></option>
-		</select>
-	</p>
-	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_auto_nav' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav]"><?php _e( 'Auto-generate primary navigation menu with published pages, to a depth of:', 'trestle' ); ?> </label>
-		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_auto_nav_depth]" />
-			<option value="0" <?php selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), '0' ); ?> ><?php _e( 'Unlimited', 'trestle' ); ?></option>
-			<?php
-				for( $i=1; $i<=10; $i++ ) {
-					echo '<option value="' . $i . '" ' . selected( esc_attr( genesis_get_option( 'trestle_auto_nav_depth' ) ), $i, false ) . '>' . $i . '</option>' . "\n";
-				}
-			?>
-		</select><br />
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_include_home_link' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_include_home_link]"><?php _e( 'Include home link', 'trestle' ); ?></label>
-	</p>
-	
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]"><?php _e( 'Home link text (shortcodes can be included):', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_home_link_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_home_link_text' ) ); ?>" />
-	</p>
-	
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]"><?php _e( 'Text for mobile navigation button (shortcodes can be included):', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_nav_button_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_nav_button_text' ) ); ?>" /> 
-	</p>
-	
-	<h4><?php _e( 'Primary Navigation Extras', 'trestle' ) ?></h4>
-	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_custom_nav_extras' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras]"><?php _e( 'Display custom navigation extras content (overrides standard Genesis navigation extras)', 'trestle' ); ?></label>
-	</p>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]"><?php _e( 'Custom navigation extras text:', 'trestle' ); ?></label><br />
-		<input class="widefat" type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_custom_nav_extras_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_custom_nav_extras_text' ) ); ?>" /> 
-	</p>
-	
-	<h4><?php _e( 'Blog/Posts', 'trestle' ) ?></h4>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_read_more_text]"><?php _e( 'Custom read more link text', 'trestle' ); ?></label>: <input type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_read_more_text]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_read_more_text]" value="<?php echo esc_attr( genesis_get_option( 'trestle_read_more_text' ) ); ?>" />
-	</p>
-	<p>
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_revisions_number]"><?php _e( 'Number of post revisions', 'trestle' ) ?>: </label>
-		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_revisions_number]" />
-			<option value="-1" <?php selected( esc_attr( genesis_get_option( 'trestle_revisions_number' ) ), '-1' ); ?> >Unlimited</option>
-			<?php
-				for( $i=0; $i<=10; $i++ ) {
-					echo '<option value="' . $i . '" ' . selected( esc_attr( genesis_get_option( 'trestle_revisions_number' ) ), $i, false ) . '>' . $i . '</option>' . "\n";
-				}
-			?>
-		</select>
-	</p>
-	
-	<h4><?php _e( 'Post Info & Meta', 'trestle' ) ?></h4>
-	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_manual_post_info_meta' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_manual_post_info_meta]"><?php _e( 'Manually select where to show Post Info & Meta', 'trestle' ); ?></label>
-	</p>
-	<div class="trestle-post-info-meta">
-		<div class="one-half first">
-			<b><?php _e( 'Show Post Info on:', 'trestle' ) ?></b>
-				<?php
-				$post_types = get_post_types();
-				foreach ( $post_types as $post_type ) {
-					// Don't show this option for pages, since genesis_post_info/meta won't work for pages
-					if ( 'page' == $post_type ) {
-						continue;
-					}
-
-					// Otherwise generate post info settings
-					$post_type_object = get_post_type_object( $post_type );
-					$name = $post_type_object->labels->name;
-					$slug = $post_type_object->name;
-				?>
-				<hr />
-				<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_info_<?php echo $slug ?>_single]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_info_<?php echo $slug ?>_single]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_post_info_' . $slug . '_single' ) ), 1); ?> /> 
-				<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_info_<?php echo $slug ?>_single]"><?php printf( __( '%s (single)', 'trestle' ), $name ); ?></label><br />
-
-				<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_info_<?php echo $slug ?>_archive]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_info_<?php echo $slug ?>_archive]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_post_info_' . $slug . '_archive' ) ), 1); ?> /> 
-				<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_info_<?php echo $slug ?>_archive]"><?php printf( __( '%s (archive)', 'trestle' ), $name ); ?></label>
-				<?php
-				}
-				?>
-			<br /><br />
-		</div>
-		<div class="one-half">
-			<b><?php _e( 'Show Post Meta on:', 'trestle' ) ?></b>
-				<?php
-				$post_types = get_post_types();
-				foreach ( $post_types as $post_type ) {
-					// Don't show this option for pages, since genesis_post_info/meta won't work for pages
-					if ( 'page' == $post_type ) {
-						continue;
-					}
-
-					// Otherwise generate post meta settings
-					$post_type_object = get_post_type_object( $post_type );
-					$name = $post_type_object->labels->name;
-					$slug = $post_type_object->name;
-				?>
-				<hr />
-				<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_meta_<?php echo $slug ?>_single]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_meta_<?php echo $slug ?>_single]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_post_meta_' . $slug . '_single' ) ), 1); ?> /> 
-				<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_meta_<?php echo $slug ?>_single]"><?php printf( __( '%s (single)', 'trestle' ), $name ); ?></label><br />
-
-				<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_meta_<?php echo $slug ?>_archive]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_meta_<?php echo $slug ?>_archive]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_post_meta_' . $slug . '_archive' ) ), 1); ?> /> 
-				<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_post_meta_<?php echo $slug ?>_archive]"><?php printf( __( '%s (archive)', 'trestle' ), $name ); ?></label>
-				<?php
-				}
-				?>
-			<br /><br />
-		</div>
-	</div>
-			
-	<h4><?php _e( 'Footer Widgets', 'trestle' ) ?></h4>
-	<p class="trestle-layout">
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_footer_widgets_number]"><?php _e( 'Number', 'trestle' ); ?>: </label>
-		<select name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_footer_widgets_number]" />
-			<?php
-				for( $i=0; $i<=6; $i++ ) {
-					echo '<option value="' . $i . '" ' . selected( esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) ), $i, false ) . '>' . $i . '</option>' . "\n";
-				}
-			?>
-		</select>
-	</p>
-
-	<h4><?php _e( 'Genesis Extender Plugin', 'trestle' ) ?></h4>
-	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_equal_height_cols' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_height_cols]"><?php _e( 'Automatically equalize height of Genesis Extender homepage columns', 'trestle' ); ?></label>
-	</p>
-	<p class="trestle-equal-columns-breakpoint">
-		<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]"><?php _e( 'Implement at', 'trestle' ); ?><input type="text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_equal_cols_breakpoint]" value="<?php echo esc_attr( genesis_get_option( 'trestle_equal_cols_breakpoint' ) ); ?>" size="4"/>px&nbsp;<?php _e( 'and wider (should match main CSS breakpoint)', 'trestle' ); ?></label> 
-	</p>
-
-	<h4><?php _e( 'Link Icons', 'trestle' ) ?></h4>
-	<p>
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_external_link_icons' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_external_link_icons]"><?php _e( 'Add icons to external links', 'trestle' ); ?></label><br />
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_email_link_icons]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_email_link_icons]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_email_link_icons' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_email_link_icons]"><?php _e( 'Add icons to email links', 'trestle' ); ?></label><br />
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_pdf_link_icons]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_pdf_link_icons]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_pdf_link_icons' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_pdf_link_icons]"><?php _e( 'Add icons to .pdf links', 'trestle' ); ?></label><br />
-		<input type="checkbox" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_document_link_icons]" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_doc_link_icons]" value="1" <?php checked( esc_attr( genesis_get_option( 'trestle_doc_link_icons' ) ), 1); ?> /> <label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[trestle_document_link_icons]"><?php _e( 'Add icons to .doc links', 'trestle' ); ?></label>
-	</p>
-	<?php
 }
 
 add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
 /**
  * Loads required & recommended plugins.
  *
- * Utilizes TGM Plugin Activation class: 
+ * Utilizes TGM Plugin Activation class:
  * https://github.com/thomasgriffin/TGM-Plugin-Activation
  *
  * @since 1.0.0
@@ -345,8 +73,15 @@ add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
  * @see tgmpa() in /includes/classes/class-tgm-plugin-activation.php
  */
 function trestle_register_required_plugins() {
+
 	$plugins = array(
 		// Required plugins
+		array(
+			'name' 		=> 'Better Font Awesome',
+			'slug' 		=> 'better-font-awesome',
+			'required' 	=> true,
+		),
+
 		array(
 			'name' 		=> 'Respond.js',
 			'slug' 		=> 'respondjs',
@@ -379,8 +114,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Easy Fancybox',
-			'slug' 		=> 'easy-fancybox',
+			'name' 		=> 'FancyBox for WordPress',
+			'slug' 		=> 'fancybox-for-wordpress',
 			'required'  => false,
 		),
 
