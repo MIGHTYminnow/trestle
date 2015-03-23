@@ -151,6 +151,10 @@ body {
 	line-height: 1.625;
 }
 
+body.mce-content-body {
+	width: 100%; /* Used in the editor */
+}
+
 body.bubble {
 	background-color: #f5f5f5;
 }
@@ -213,7 +217,9 @@ ul {
 }
 
 .site-inner ol,
-.site-inner ul {
+.site-inner ul,
+.mce-content-body ol, /* Used in the editor */
+.mce-content-body ul { /* used in the editor */
 	margin-left: 40px;
 	margin-left: 4rem;
 	margin-bottom: 26px;
@@ -296,12 +302,14 @@ a:hover {
 	color: #333;
 }
 
-.site-inner a {
+.site-inner a,
+.mce-content-body a { /* Used in the Editor */
 	border-bottom: 1px solid #ddd;
 	color: #f15123;
 }
 
-.site-inner a:hover {
+.site-inner a:hover,
+.mce-content-body a:hover { /* Used in the Editor */
 	color: #333;
 }
 
@@ -467,8 +475,8 @@ textarea {
 }
 
 input[type="radio"],
-input[type="radio"],
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="image"] {
 	width: auto;
 }
 
@@ -1360,9 +1368,14 @@ Site Header
 
 .site-header .widget-area {
 	width: 100%;
-	padding: 20px;
 	background-color: #eee;
 	border: 1px solid #ddd;
+	border-width: 0;
+	overflow: hidden;
+}
+
+.site-header .widget-area.open {
+	padding: 20px;
 	border-width: 1px 0;
 }
 
@@ -1403,7 +1416,7 @@ Site Header
 
 
 .nav-primary,
-.site-header .nav-primary,
+/*.site-header .nav-primary,*/
 .site-header .widget-area {
 	position: absolute;
 	top: 100%;
@@ -1413,11 +1426,11 @@ Site Header
 	opacity: 0;
 	box-shadow: 0 4px 8px 1px rgba(0,0,0,0.4);
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	-webkit-transition: all .5s ease;
-	   -moz-transition: all .5s ease;
-	    -ms-transition: all .5s ease;
-	     -o-transition: all .5s ease;
-	        transition: all .5s ease;
+	-webkit-transition: all .5s ease, padding 0s .5s;
+	   -moz-transition: all .5s ease, padding 0s .5s;
+	    -ms-transition: all .5s ease, padding 0s .5s;
+	     -o-transition: all .5s ease, padding 0s .5s;
+	        transition: all .5s ease, padding 0s .5s;
 }
 
 .site-container > .nav-primary {
@@ -1429,7 +1442,12 @@ Site Header
 	z-index: 50;
 	max-height: 9999px;
 	opacity: 1;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	-webkit-transition: opacity .5s ease, padding 0s 0s;
+	   -moz-transition: opacity .5s ease, padding 0s 0s;
+	    -ms-transition: opacity .5s ease, padding 0s 0s;
+	     -o-transition: opacity .5s ease, padding 0s 0s;
+	        transition: opacity .5s ease, padding 0s 0s;
 }
 
 

@@ -2,9 +2,9 @@
 
 /**
  * Theme functionality
- *  
+ *
  * @since  1.0.0
- * 
+ *
  * @package Trestle
  */
 
@@ -17,6 +17,9 @@ require_once dirname( __FILE__ ) . '/includes/functions/theme-functions.php';
 
 // Admin functionality
 require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
+
+// Customizer controls
+require_once dirname( __FILE__ ) . '/includes/admin/customizer.php';
 
 // Shortcodes
 require_once dirname( __FILE__ ) . '/includes/shortcodes/shortcodes.php';
@@ -60,5 +63,4 @@ function trestle_theme_setup() {
 	// Add support for footer widgets if specified in Trestle settings
 	$trestle_footer_widgets_number = esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
 	add_theme_support( 'genesis-footer-widgets', $trestle_footer_widgets_number );
-
 }
