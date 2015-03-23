@@ -35,6 +35,7 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_layout'                => 'solid',
 		'trestle_logo_url'              => '',
 		'trestle_logo_url_mobile'       => '',
+		'trestle_favicon_url'           => '',
 		'trestle_nav_primary_location'  => 'full',
 		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'trestle_revisions_number'      => 3,

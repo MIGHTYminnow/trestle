@@ -108,9 +108,31 @@ function trestle_customizer_controls( $wp_customize ) {
             $wp_customize,
             'trestle_mobile_logo_control',
             array(
-               'label'      => __( 'Upload a logo for mobile', 'trestle' ),
+               'label'      => __( 'Upload a mobile logo', 'trestle' ),
                'section'    => 'trestle_settings_section',
                'settings'   => 'genesis-settings[trestle_logo_url_mobile]',
+            )
+        )
+    );
+
+    // Upload a mobile logo
+    $wp_customize->add_setting(
+        'genesis-settings[trestle_favicon_url]',
+        array(
+            'default'     	=> genesis_get_option( 'trestle_favicon_url' ),
+            'type'        	=> 'option',
+            'transport'   	=> 'postMessage',
+            'capability'	=> 'edit_theme_options',
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'trestle_favicon_control',
+            array(
+               'label'      => __( 'Upload a favicon', 'trestle' ),
+               'section'    => 'trestle_settings_section',
+               'settings'   => 'genesis-settings[trestle_favicon_url]',
             )
         )
     );

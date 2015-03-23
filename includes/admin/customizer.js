@@ -42,6 +42,16 @@
 	    });
 	});
 
+	// Favicon
+	wp.customize( 'genesis-settings[trestle_favicon_url]', function( value ) {
+	    value.bind( function( url ) {
+
+	    	var $faviconElem = $( 'link[rel="Shortcut Icon"]' );
+	    	$faviconElem.attr( 'href', url );
+
+	    });
+	});
+
 	// Primary Nav Location
 	wp.customize( 'genesis-settings[trestle_nav_primary_location]', function( value ) {
 	    value.bind( function( value ) {
