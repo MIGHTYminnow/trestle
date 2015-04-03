@@ -96,6 +96,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'Equal Height Columns',
+			'slug' 		=> 'equal-height-columns',
+			'required' 	=> false,
+		),
+
+		array(
 			'name' 		=> 'Events Manager',
 			'slug' 		=> 'events-manager',
 			'required' 	=> false,
