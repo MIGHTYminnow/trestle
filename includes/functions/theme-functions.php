@@ -10,7 +10,35 @@
  */
 
 /*===========================================
- * Head Styles & Scripts
+ * 3rd Party Libraries
+===========================================*/
+
+add_action( 'init', 'trestle_load_bfa' );
+/**
+ * Initialize the Better Font Awesome Library.
+ *
+ * @since  2.0.0
+ */
+function trestle_load_bfa() {
+
+    // Set the library initialization args
+    $args = array(
+			'version'             => 'latest',
+			'minified'            => true,
+			'remove_existing_fa'  => false,
+			'load_styles'         => true,
+			'load_admin_styles'   => true,
+			'load_shortcode'      => true,
+			'load_tinymce_plugin' => true,
+    );
+
+    // Initialize the Better Font Awesome Library.
+    Better_Font_Awesome_Library::get_instance( $args );
+
+}
+
+/*===========================================
+ * Header
 ===========================================*/
 
 add_action( 'wp_enqueue_scripts', 'trestle_header_actions' );
@@ -42,6 +70,20 @@ function trestle_header_actions() {
 	if ( is_readable( $upload_path . $custom_js_file ) )
 		wp_enqueue_script( 'trestle-custom-jquery', $upload_url . $custom_js_file, array( 'jquery' ), CHILD_THEME_VERSION, true );
 
+}
+
+add_filter( 'genesis_pre_load_favicon', 'trestle_do_custom_favicon' );
+/**
+ * Output custom favicon if specified in the theme options.
+ *
+ * @since   1.0.0
+ *
+ * @param   string  $favicon_url  Default favicon URL.
+ *
+ * @return  string  Custom favicon URL (if specified), or the default URL.
+ */
+function trestle_do_custom_favicon( $favicon_url ) {
+	return genesis_get_option( 'trestle_favicon_url' ) ? genesis_get_option( 'trestle_favicon_url' ) : $favicon_url;
 }
 
 /*===========================================
@@ -164,42 +206,6 @@ function trestle_do_logos( $title, $inside, $wrap ) {
  * Navigation
 ===========================================*/
 
-add_action( 'init', 'trestle_nav_modifications' );
-/**
- * Performs modifications to the primary navigation menu
- *
- * @since  1.0.0
- *
- * @see trestle_add_mobile_nav()
- * @see trestle_auto_nav_items()
- * @see trestle_custom_nav_extras()
- * @see trestle_nav_placeholder()
- */
-function trestle_nav_modifications() {
-
-	global $trestle_nav_title;
-
-	// Set title for Trestle placeholder navigation menu
-	$trestle_nav_title = __( 'Trestle Auto Nav Placeholder', 'trestle' );
-
-	// Auto-generate nav if Genesis theme setting is checked
-	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) ) {
-		add_filter( 'wp_nav_menu_items', 'trestle_auto_nav_items', 9, 2 );
-	}
-
-	// Do custom nav extras
-	if ( 1 == genesis_get_option( 'trestle_custom_nav_extras' ) ) {
-		// Remove default nav extras
-		remove_filter( 'wp_nav_menu_items', 'genesis_nav_right' );
-
-		// Add custom nav extras
-		add_filter( 'wp_nav_menu_items', 'trestle_custom_nav_extras', 10, 2 );
-	}
-
-	// Create placeholder navigation menu object if needed
-	trestle_nav_placeholder();
-}
-
 add_action( 'init', 'trestle_nav_primary_location' );
 /**
  * Move primary navigation into the header if need be.
@@ -215,92 +221,23 @@ function trestle_nav_primary_location() {
 
 }
 
+add_filter( 'wp_nav_menu_items', 'trestle_custom_nav_extras', 10, 2 );
 /**
- * Auto-generates list of pages for use in the primary navigation menu.
+ * Add custom nav extras.
  *
  * @since 1.0.0
  *
- * @param string   $nav_items <li> list of navigation menu items.
- * @param stdClass $menu_args Arguments for the menu.
- * @return string  <li> list of (modified) navigation menu items.
- */
-function trestle_auto_nav_items( $nav_items, stdClass $menu_args ) {
-
-	if ( 'primary' == $menu_args->theme_location ) {
-		$args = array(
-			'depth'          => genesis_get_option( 'trestle_auto_nav_depth' ) ? genesis_get_option( 'trestle_auto_nav_depth' ) : 0,
-			'echo'           => false,
-			'show_home'      => ( genesis_get_option( 'trestle_include_home_link' ) && genesis_get_option( 'trestle_home_link_text' ) ) ? do_shortcode( genesis_get_option( 'trestle_home_link_text' ) ): genesis_get_option( 'trestle_include_home_link' ),
-			'menu_class'     => 'auto-menu'
-		);
-
-		$ul_class = 'menu genesis-nav-menu menu-primary';
-
-		$menu_args = new stdClass();
-
-		$menu_args->theme_location = 'primary';
-
-		$nav_items = wp_page_menu( $args );
-
-		// Remove opening <div class="auto-nav"><ul>
-		$nav_items = preg_replace( '/<div\s*.*auto-menu[^>]*>\s*<ul>/', '', $nav_items );
-
-		// Remove closing </ul></div>
-		$nav_items = preg_replace( '/<\/ul>\s*<\/div>/', '', $nav_items );
-	}
-
-	return $nav_items;
-}
-
-/**
- * Replaces standard Genesis navigation extras with custom input navigation extras.
- *
- * @since 1.0.0
- *
- * @param string   $nav_items <li> list of menu items.
- * @param stdClass $menu_args Arguments for the menu.
+ * @param  string   $nav_items <li> list of menu items.
+ * @param  stdClass $menu_args Arguments for the menu.
  * @return string   <li> list of menu items with custom navigation extras <li> appended.
  */
 function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
 
-	if ( 'primary' == $menu_args->theme_location ) {
-		$custom_text = esc_attr( genesis_get_option( 'trestle_custom_nav_extras_text' ) );
-		return $nav_items . '<li class="right custom">' . do_shortcode( genesis_get_option( 'trestle_custom_nav_extras_text' ) ) . '</li>';
+	if ( 'primary' == $menu_args->theme_location && genesis_get_option( 'trestle_custom_nav_extras_text' ) ) {
+		return $nav_items . '<li class="right custom">' . get_search_form( false ) . '</li>';
 	}
 
 	return $nav_items;
-}
-
-/**
- * Generates a placeholder navigation menu object.
- *
- * When using Trestle's auto-generated navigation feature,
- * it is necessary to ensure that some nav menu object is
- * selected as primary otherwise no navigation will be generated.
- *
- * @since 1.0.0
- */
-function trestle_nav_placeholder() {
-
-	global $trestle_nav_title;
-
-	// Create placeholder menu for 'primary' spot if auto-nav is selected - this ensures that nav extras can be used even when no custom menu is formally set to primary
-	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) && ! wp_get_nav_menu_object( $trestle_nav_title ) ) {
-		wp_create_nav_menu( $trestle_nav_title );
-	}
-
-	// Assign placeholder menu to 'primary' if auto-nav is selected and there is no current primary menu
-	if ( 1 == genesis_get_option( 'trestle_auto_nav' ) && ! wp_get_nav_menu_object( $trestle_nav_title ) && ! has_nav_menu( 'primary' ) ) {
-		$menu_locations = get_theme_mod( 'nav_menu_locations' );
-		$menu_locations['primary'] = wp_get_nav_menu_object( $trestle_nav_title )->term_id;
-		set_theme_mod( 'nav_menu_locations', $menu_locations );
-	}
-
-	// Remove placeholder menu if auto-nav is disabled
-	$menus = get_registered_nav_menus();
-
-	if ( 1 != genesis_get_option( 'trestle_auto_nav' ) && wp_get_nav_menu_object( $trestle_nav_title ) && $trestle_nav_title != $menus['primary'] )
-		wp_delete_nav_menu( $trestle_nav_title );
 }
 
 
@@ -420,8 +357,9 @@ function trestle_read_more_link( $default_text ) {
 	// Get Trestle custom "read more" link text
 	$custom_text = esc_attr( genesis_get_option( 'trestle_read_more_text' ) );
 
-	if ( $custom_text )
+	if ( $custom_text ) {
 		return '&hellip;&nbsp;<a class="more-link" title="' . $custom_text . '" href="' . get_permalink() . '">' . $custom_text . '</a>';
-	else
+	} else {
 		return $default_text;
+	}
 }

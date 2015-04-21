@@ -35,6 +35,7 @@ function trestle_custom_defaults( $defaults ) {
 		'trestle_layout'                => 'solid',
 		'trestle_logo_url'              => '',
 		'trestle_logo_url_mobile'       => '',
+		'trestle_favicon_url'           => '',
 		'trestle_nav_primary_location'  => 'full',
 		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'trestle_revisions_number'      => 3,
@@ -95,6 +96,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'Equal Height Columns',
+			'slug' 		=> 'equal-height-columns',
+			'required' 	=> false,
+		),
+
+		array(
 			'name' 		=> 'Events Manager',
 			'slug' 		=> 'events-manager',
 			'required' 	=> false,
@@ -113,8 +120,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'FancyBox for WordPress',
-			'slug' 		=> 'fancybox-for-wordpress',
+			'name' 		=> 'Easy FancyBox',
+			'slug' 		=> 'easy-fancybox',
 			'required'  => false,
 		),
 

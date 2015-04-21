@@ -40,6 +40,7 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 * Switch to customizer for theme options instead of Genesis panel (pros? cons?)
 * Remove custom background CSS that doesn't make sense (different max-widths, etc)
 * Weird extra icons on accordions on demo site.
+* Add checkbox to control author box (along with post info/meta) output (see ES: esw-custom.php)
 * Mobile menu button setting - either:
    * Remove (currently controlled from JS), or
    * Pass icon/text as params to jQuery

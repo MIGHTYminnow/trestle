@@ -27,7 +27,7 @@ jQuery( document ).ready( function( $ ) {
     $( 'li:first-child' ).addClass( 'first' );
     $( 'ul, ol' ).parent( 'li' ).addClass( 'parent' );
 
-    // Mobile header toggle buttons
+    // Create mobile header toggle buttons
     $( '.site-header .title-area' ).after( '<div class="toggle-buttons" />' );
     $( '.site-header .widget-area, .nav-primary' ).each( function( i ) {
 
@@ -58,7 +58,7 @@ jQuery( document ).ready( function( $ ) {
         $target.addClass( 'toggle-target-' + i );
     });
 
-    // Toggle widget areas and primary nav
+    // A widget areas and primary nav mobile toggle functionality
     $( '.site-header .toggle-button' ).click( function( event ) {
 
         // Prevent default behavior
@@ -70,11 +70,9 @@ jQuery( document ).ready( function( $ ) {
         // Get toggle button that was clicked
         $button = $( this );
 
-        //Remove focus
-        $button.blur();
-
         // Match the button to the right target
         $target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
+        console.log( 'Target: ' + $target.attr('class'));
 
         // Toggle buttons
         $button.toggleClass( 'open' );
@@ -82,7 +80,11 @@ jQuery( document ).ready( function( $ ) {
 
         // Toggle targets
         $target.toggleClass( 'open' );
-        $( '[class^="toggle-target"]' ).not( $target ).removeClass( 'open' );
+        $( '[class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
+
+        // Remove focus
+        $button.blur();
+
     });
 
     // Mobile navigation icons
