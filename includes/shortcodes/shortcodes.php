@@ -111,9 +111,8 @@ add_shortcode( 'blockquote', 'trestle_blockquote_shortcode' );
  * @return  string        Shortcode output.
  */
 function trestle_blockquote_shortcode( $atts, $content = null ) {
-
     $atts = shortcode_atts( array(
-    'citation'      => '',
+        'citation'      => '',
     ), $atts );
 
     ob_start(); ?>
