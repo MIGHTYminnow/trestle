@@ -31,19 +31,19 @@ function trestle_settings_defaults() {
 
 	// Trestle default key/value pairs.
 	$trestle_defaults = array(
-		'layout'                => 'solid',
-		'logo_url'              => '',
-		'logo_url_mobile'       => '',
-		'favicon_url' 			=> '',
-		'nav_primary_location'  => 'full',
-		'search_in_nav' 		=> '',
-		'read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
-		'revisions_number'      => 3,
-		'footer_widgets_number' => 3,
-		'external_link_icons'   => 0,
-		'email_link_icons' 		=> 0,
-		'pdf_link_icons' 		=> 0,
-		'doc_link_icons' 		=> 0,
+		'layout'				=> 'solid',
+		'logo_url'				=> '',
+		'logo_url_mobile'		=> '',
+		'favicon_url'			=> '',
+		'nav_primary_location'	=> 'full',
+		'search_in_nav'			=> '',
+		'read_more_text'		=> __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
+		'revisions_number'		=> 3,
+		'footer_widgets_number'	=> 3,
+		'external_link_icons'	=> 0,
+		'email_link_icons'		=> 0,
+		'pdf_link_icons'		=> 0,
+		'doc_link_icons'		=> 0,
 	);
 
 	// Populate Trestle settings with default values if they don't yet exist.

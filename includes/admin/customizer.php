@@ -175,7 +175,7 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 	$wp_customize->add_control(
-		'trestle_custom_nav_extras_text_control',
+		'trestle_search_in_nav_control',
 		array(
 			'section'   => 'trestle_settings_section',
 			'settings'  => 'trestle-settings[search_in_nav]',
