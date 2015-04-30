@@ -21,8 +21,8 @@ add_action( 'init', 'trestle_load_bfa' );
  */
 function trestle_load_bfa() {
 
-    // Set the library initialization args.
-    $args = array(
+	// Set the library initialization args.
+	$args = array(
 			'version'             => 'latest',
 			'minified'            => true,
 			'remove_existing_fa'  => false,
@@ -30,10 +30,10 @@ function trestle_load_bfa() {
 			'load_admin_styles'   => true,
 			'load_shortcode'      => true,
 			'load_tinymce_plugin' => true,
-    );
+	);
 
-    // Initialize the Better Font Awesome Library.
-    Better_Font_Awesome_Library::get_instance( $args );
+	// Initialize the Better Font Awesome Library.
+	Better_Font_Awesome_Library::get_instance( $args );
 
 }
 
