@@ -29,7 +29,7 @@ function trestle_admin_actions() {
  */
 function trestle_settings_defaults() {
 
-	// Trestle default key/value pairs
+	// Trestle default key/value pairs.
 	$trestle_defaults = array(
 		'layout'                => 'solid',
 		'logo_url'              => '',
@@ -46,23 +46,30 @@ function trestle_settings_defaults() {
 		'doc_link_icons' 		=> 0,
 	);
 
-	// Populate Trestle settings with default values if they don't yet exist
+	// Populate Trestle settings with default values if they don't yet exist.
 	$options = get_option( TRESTLE_SETTINGS_FIELD );
 
-	foreach ( $trestle_defaults as $k => $v ) {
-
-		// Add defaults to trestle_settings array
-		$defaults[$k] = $v;
-
-		// Update actual options if they don't yet exist
-		if ( $options && ! array_key_exists( $k, $options ) )
-			$options[$k] = $v;
+	// Set up an empty array if we're running for the first time.
+	if ( ! $options ) {
+		$options = array();
 	}
 
-	// Update options with defaults
-	update_option( TRESTLE_SETTINGS_FIELD, $options );
+	// Bail early if the settings match the defaults.
+	if ( $options === $trestle_defaults ) {
+		return;
+	}
 
-	return $defaults;
+	// Populate any defaults that are missing.
+	foreach ( $trestle_defaults as $k => $v ) {
+
+		// Check each key to only add the missing settings.
+		if ( ! array_key_exists( $k, $options ) ) {
+			$options[$k] = $v;
+		}
+	}
+
+	// Update options with defaults.
+	update_option( TRESTLE_SETTINGS_FIELD, $options );
 }
 
 add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
@@ -226,7 +233,7 @@ function trestle_register_required_plugins() {
 		),
 	);
 
-	// Change this to your theme text domain, used for internationalising strings
+	// Change this to your theme text domain, used for internationalising strings.
 	$theme_text_domain = 'mightyminnow';
 
 	/**
