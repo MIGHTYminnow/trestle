@@ -1,6 +1,6 @@
 <?php
 /**
- * Trestle Customizer Controls
+ * Trestle Customizer Controls.
  *
  * @since  1.0.0
  *
@@ -9,7 +9,7 @@
 
 add_action( 'customize_preview_init', 'trestle_customizer_preview_js' );
 /**
- * Enqueue scripts for the site preview iframe on the customizer screen
+ * Enqueue scripts for the site preview iframe on the customizer screen.
  *
  * @since  1.0.0
  */
@@ -26,19 +26,19 @@ function trestle_customizer_preview_js() {
 
 add_action( 'customize_register', 'trestle_customizer_controls' );
 /**
- * Register Trestle's controls
+ * Register Trestle's controls.
  *
  * @since  1.0.0
  *
- * @param  $wp_customize  The Customizer Object
+ * @param  $wp_customize  The Customizer Object.
  */
 function trestle_customizer_controls( $wp_customize ) {
 
 	/**
-	 * Trestle Settings Section
+	 * Trestle Settings Section.
 	 */
 
-	// Add the section
+	// Add the section.
 	$wp_customize->add_section(
 		'trestle_settings_section',
 		array(
@@ -47,11 +47,11 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
-	// Layout
+	// Layout.
 	$wp_customize->add_setting(
-		'genesis-settings[trestle_layout]',
+		'trestle-settings[layout]',
 		array(
-			'default'		=> '',
+			'default'		=> genesis_get_option( 'layout', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability'	=> 'edit_theme_options',
@@ -61,7 +61,7 @@ function trestle_customizer_controls( $wp_customize ) {
         'trestle_layout_control',
         array(
             'section'   => 'trestle_settings_section',
-            'settings'  => 'genesis-settings[trestle_layout]',
+            'settings'  => 'trestle-settings[layout]',
             'label'     => __( 'Layout', 'trestle' ),
             'type'      => 'radio',
             'choices'   => array(
@@ -71,11 +71,11 @@ function trestle_customizer_controls( $wp_customize ) {
         )
     );
 
-	// Upload a logo
+	// Upload a logo.
     $wp_customize->add_setting(
-        'genesis-settings[trestle_logo_url]',
+        'trestle-settings[logo_url]',
         array(
-            'default'     	=> genesis_get_option( 'trestle_logo_url' ),
+            'default'     	=> genesis_get_option( 'logo_url', 'trestle-settings' ),
             'type'        	=> 'option',
             'transport'   	=> 'postMessage',
             'capability'	=> 'edit_theme_options',
@@ -88,16 +88,16 @@ function trestle_customizer_controls( $wp_customize ) {
             array(
                 'label'      => __( 'Upload a logo', 'trestle' ),
                 'section'    => 'trestle_settings_section',
-                'settings'   => 'genesis-settings[trestle_logo_url]',
+                'settings'   => 'trestle-settings[logo_url]',
             )
         )
     );
 
-    // Upload a mobile logo
+    // Upload a mobile logo.
     $wp_customize->add_setting(
-        'genesis-settings[trestle_logo_url_mobile]',
+        'trestle-settings[logo_url_mobile]',
         array(
-            'default'     	=> genesis_get_option( 'trestle_logo_url_mobile' ),
+            'default'     	=> genesis_get_option( 'logo_url_mobile', 'trestle-settings' ),
             'type'        	=> 'option',
             'transport'   	=> 'postMessage',
             'capability'	=> 'edit_theme_options',
@@ -110,16 +110,16 @@ function trestle_customizer_controls( $wp_customize ) {
             array(
                'label'      => __( 'Upload a mobile logo', 'trestle' ),
                'section'    => 'trestle_settings_section',
-               'settings'   => 'genesis-settings[trestle_logo_url_mobile]',
+               'settings'   => 'trestle-settings[logo_url_mobile]',
             )
         )
     );
 
-    // Upload a mobile logo
+    // Upload a mobile logo.
     $wp_customize->add_setting(
-        'genesis-settings[trestle_favicon_url]',
+        'trestle-settings[favicon_url]',
         array(
-            'default'     	=> genesis_get_option( 'trestle_favicon_url' ),
+            'default'     	=> genesis_get_option( 'favicon_url', 'trestle-settings' ),
             'type'        	=> 'option',
             'transport'   	=> 'postMessage',
             'capability'	=> 'edit_theme_options',
@@ -132,16 +132,16 @@ function trestle_customizer_controls( $wp_customize ) {
             array(
                'label'      => __( 'Upload a favicon', 'trestle' ),
                'section'    => 'trestle_settings_section',
-               'settings'   => 'genesis-settings[trestle_favicon_url]',
+               'settings'   => 'trestle-settings[favicon_url]',
             )
         )
     );
 
-    // Primary nav style
+    // Primary nav style.
     $wp_customize->add_setting(
-		'genesis-settings[trestle_nav_primary_location]',
+		'trestle-settings[nav_primary_location]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_nav_primary_location' ),
+			'default'		=> genesis_get_option( 'nav_primary_location', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability'	=> 'edit_theme_options',
@@ -151,7 +151,7 @@ function trestle_customizer_controls( $wp_customize ) {
         'trestle_nav_primary_location_control',
         array(
             'section'   => 'trestle_settings_section',
-            'settings'  => 'genesis-settings[trestle_nav_primary_location]',
+            'settings'  => 'trestle-settings[nav_primary_location]',
             'label'     => __( 'Menu style', 'trestle' ),
             'type'      => 'select',
             'choices'   => array(
@@ -161,11 +161,11 @@ function trestle_customizer_controls( $wp_customize ) {
         )
     );
 
-    // Primary nav extras
+    // Primary nav extras.
     $wp_customize->add_setting(
-		'genesis-settings[trestle_custom_nav_extras_text]',
+		'trestle-settings[custom_nav_extras_text]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_custom_nav_extras_text' ),
+			'default'		=> genesis_get_option( 'custom_nav_extras_text', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability'	=> 'edit_theme_options',
@@ -175,17 +175,17 @@ function trestle_customizer_controls( $wp_customize ) {
         'trestle_custom_nav_extras_text_control',
         array(
             'section'   => 'trestle_settings_section',
-            'settings'  => 'genesis-settings[trestle_custom_nav_extras_text]',
+            'settings'  => 'trestle-settings[custom_nav_extras_text]',
             'label'     => __( 'Add search to mobile navigation', 'trestle' ),
             'type'		=> 'checkbox',
         )
     );
 
-    // Blog post custom read more link text
+    // Blog post custom read more link text.
     $wp_customize->add_setting(
-		'genesis-settings[trestle_read_more_text]',
+		'trestle-settings[read_more_text]',
 		array(
-			'default'			=> genesis_get_option( 'trestle_read_more_text' ),
+			'default'			=> genesis_get_option( 'read_more_text', 'trestle-settings' ),
 			'type'				=> 'option',
 			'transport' 		=> 'postMessage',
 			'capability'     	=> 'edit_theme_options',
@@ -196,16 +196,16 @@ function trestle_customizer_controls( $wp_customize ) {
         'trestle_read_more_text_control',
         array(
             'section'   => 'trestle_settings_section',
-            'settings'  => 'genesis-settings[trestle_read_more_text]',
+            'settings'  => 'trestle-settings[read_more_text]',
             'label'     => __( 'Custom read more link text', 'trestle' ),
         )
     );
 
-    // Post revisions number
+    // Post revisions number.
     $wp_customize->add_setting(
-		'genesis-settings[trestle_revisions_number]',
+		'trestle-settings[revisions_number]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_revisions_number' ),
+			'default'		=> genesis_get_option( 'revisions_number', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability'	=> 'edit_theme_options',
@@ -215,7 +215,7 @@ function trestle_customizer_controls( $wp_customize ) {
         'trestle_revisions_number_control',
         array(
             'section'   => 'trestle_settings_section',
-            'settings'  => 'genesis-settings[trestle_revisions_number]',
+            'settings'  => 'trestle-settings[revisions_number]',
             'label'     => __( 'Number of post revisions', 'trestle' ),
             'type'      => 'select',
             'choices'   => array(
@@ -235,11 +235,11 @@ function trestle_customizer_controls( $wp_customize ) {
         )
     );
 
-    // Footer Widget Areas
+    // Footer Widget Areas.
     $wp_customize->add_setting(
-		'genesis-settings[trestle_footer_widgets_number]',
+		'trestle-settings[footer_widgets_number]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_footer_widgets_number' ),
+			'default'		=> genesis_get_option( 'footer_widgets_number', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability' 	=> 'edit_theme_options',
@@ -249,7 +249,7 @@ function trestle_customizer_controls( $wp_customize ) {
         'trestle_footer_widgets_number_control',
         array(
             'section'   => 'trestle_settings_section',
-            'settings'  => 'genesis-settings[trestle_footer_widgets_number]',
+            'settings'  => 'trestle-settings[footer_widgets_number]',
             'label'     => __( 'Number of footer widgets', 'trestle' ),
             'type'      => 'select',
             'choices'   => array(
@@ -264,11 +264,11 @@ function trestle_customizer_controls( $wp_customize ) {
         )
     );
 
-	// Add a label for the link icons
+	// Add a label for the link icons.
     $wp_customize->add_setting(
-		'genesis-settings[trestle_link_icons_title]',
+		'trestle-settings[link_icons_title]',
 		array(
-			'default'		=> '',
+			'default'		=> genesis_get_option( 'link_icons_title', 'trestle-settings' ),
 			'type'			=> 'option',
 			'capability'	=> 'edit_theme_options',
 		)
@@ -277,17 +277,17 @@ function trestle_customizer_controls( $wp_customize ) {
 		'trestle_link_icons_title',
 		array(
 			'section'	=> 'trestle_settings_section',
-			'settings'	=> 'genesis-settings[trestle_link_icons_title]',
+			'settings'	=> 'trestle-settings[link_icons_title]',
 			'label'		=> __( 'Icon links', 'trestle' ),
 			'type'		=> 'hidden',
 		)
 	);
 
-	// External Link Icons
+	// External Link Icons.
 	$wp_customize->add_setting(
-		'genesis-settings[trestle_external_link_icons]',
+		'trestle-settings[external_link_icons]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_external_link_icons' ),
+			'default'		=> genesis_get_option( 'external_link_icons', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability'	=> 'edit_theme_options',
@@ -297,17 +297,17 @@ function trestle_customizer_controls( $wp_customize ) {
 		'trestle_external_link_icons',
 		array(
 			'section'	=> 'trestle_settings_section',
-			'settings'	=> 'genesis-settings[trestle_external_link_icons]',
+			'settings'	=> 'trestle-settings[external_link_icons]',
 			'label'		=> __( 'Add icons to external links', 'trestle' ),
 			'type'		=> 'checkbox',
 		)
 	);
 
-	// E-mail Link Icons
+	// E-mail Link Icons.
 	$wp_customize->add_setting(
-		'genesis-settings[trestle_email_link_icons]',
+		'trestle-settings[email_link_icons]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_email_link_icons' ),
+			'default'		=> genesis_get_option( 'email_link_icons', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability'	=> 'edit_theme_options',
@@ -317,17 +317,17 @@ function trestle_customizer_controls( $wp_customize ) {
 		'trestle_email_link_icons',
 		array(
 			'section'	=> 'trestle_settings_section',
-			'settings'	=> 'genesis-settings[trestle_email_link_icons]',
+			'settings'	=> 'trestle-settings[email_link_icons]',
 			'label'		=> __( 'Add icons to email links', 'trestle' ),
 			'type'		=> 'checkbox',
 		)
 	);
 
-	// PDF Link Icons
+	// PDF Link Icons.
 	$wp_customize->add_setting(
-		'genesis-settings[trestle_pdf_link_icons]',
+		'trestle-settings[pdf_link_icons]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_pdf_link_icons' ),
+			'default'		=> genesis_get_option( 'pdf_link_icons', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability'	=> 'edit_theme_options',
@@ -337,17 +337,17 @@ function trestle_customizer_controls( $wp_customize ) {
 		'trestle_pdf_link_icons',
 		array(
 			'section'	=> 'trestle_settings_section',
-			'settings'	=> 'genesis-settings[trestle_pdf_link_icons]',
+			'settings'	=> 'trestle-settings[pdf_link_icons]',
 			'label'		=> __( 'Add icons to .pdf links', 'trestle' ),
 			'type'		=> 'checkbox',
 		)
 	);
 
-	// Doc Link Icons
+	// Doc Link Icons.
 	$wp_customize->add_setting(
-		'genesis-settings[trestle_doc_link_icons]',
+		'trestle-settings[doc_link_icons]',
 		array(
-			'default'		=> genesis_get_option( 'trestle_doc_link_icons' ),
+			'default'		=> genesis_get_option( 'doc_link_icons', 'trestle-settings' ),
 			'type'			=> 'option',
 			'transport' 	=> 'postMessage',
 			'capability' 	=> 'edit_theme_options',
@@ -357,7 +357,7 @@ function trestle_customizer_controls( $wp_customize ) {
 		'trestle_doc_link_icons',
 		array(
 			'section'	=> 'trestle_settings_section',
-			'settings'	=> 'genesis-settings[trestle_doc_link_icons]',
+			'settings'	=> 'trestle-settings[doc_link_icons]',
 			'label'		=> __( 'Add icons to .doc links', 'trestle' ),
 			'type'		=> 'checkbox',
 		)

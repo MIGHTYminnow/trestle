@@ -19,35 +19,39 @@ function trestle_admin_actions() {
 	add_editor_style( get_stylesheet_uri() );
 }
 
-add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
+//add_filter( 'after_setup_theme', 'trestle_settings_defaults' );
 /**
  * Sets up Trestle default settings.
  *
  * @since  1.0.0
  *
- * @param  array  $defaults  Genesis default settings.
  * @return  array  Genesis settings updated to include Trestle defaults.
  */
-function trestle_custom_defaults( $defaults ) {
+function trestle_settings_defaults() {
 
- 	// Trestle default key/value pairs
- 	$trestle_defaults = array(
-		'trestle_layout'                => 'solid',
-		'trestle_logo_url'              => '',
-		'trestle_logo_url_mobile'       => '',
-		'trestle_favicon_url'           => '',
-		'trestle_nav_primary_location'  => 'full',
-		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
-		'trestle_revisions_number'      => 3,
-		'trestle_footer_widgets_number' => 3,
+	// Trestle default key/value pairs
+	$trestle_defaults = array(
+		'layout'                => 'solid',
+		'logo_url'              => '',
+		'logo_url_mobile'       => '',
+		'favicon_url' 			=> '',
+		'nav_primary_location'  => 'full',
+		'custom_nav_extras_text' => '',
+		'read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
+		'revisions_number'      => 3,
+		'footer_widgets_number' => 3,
+		'external_link_icons'   => 0,
+		'email_link_icons' 		=> 0,
+		'pdf_link_icons' 		=> 0,
+		'doc_link_icons' 		=> 0,
 	);
 
 	// Populate Trestle settings with default values if they don't yet exist
-	$options = get_option( GENESIS_SETTINGS_FIELD );
+	$options = get_option( TRESTLE_SETTINGS_FIELD );
 
 	foreach ( $trestle_defaults as $k => $v ) {
 
-		// Add defaults to Genesis default settings array
+		// Add defaults to trestle_settings array
 		$defaults[$k] = $v;
 
 		// Update actual options if they don't yet exist
@@ -56,7 +60,7 @@ function trestle_custom_defaults( $defaults ) {
 	}
 
 	// Update options with defaults
-	update_option( GENESIS_SETTINGS_FIELD, $options );
+	update_option( TRESTLE_SETTINGS_FIELD, $options );
 
 	return $defaults;
 }

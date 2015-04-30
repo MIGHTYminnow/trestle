@@ -6,8 +6,8 @@
 
 ( function( $ ) {
 
-	// Layout
-	wp.customize( 'genesis-settings[trestle_layout]', function( value ) {
+	// Layout.
+	wp.customize( 'trestle-settings[layout]', function( value ) {
 	    value.bind( function( value ) {
 
 	    	var $body = $( 'body' );
@@ -24,8 +24,8 @@
 	    });
 	});
 
-	// Custom logo
-	wp.customize( 'genesis-settings[trestle_logo_url]', function( value ) {
+	// Custom logo.
+	wp.customize( 'trestle-settings[logo_url]', function( value ) {
 	    value.bind( function( url ) {
 
 	    	var $body = $( 'body' );
@@ -42,8 +42,8 @@
 	    });
 	});
 
-	// Favicon
-	wp.customize( 'genesis-settings[trestle_favicon_url]', function( value ) {
+	// Favicon.
+	wp.customize( 'trestle-settings[favicon_url]', function( value ) {
 	    value.bind( function( url ) {
 
 	    	var $faviconElem = $( 'link[rel="Shortcut Icon"]' );
@@ -52,8 +52,8 @@
 	    });
 	});
 
-	// Primary Nav Location
-	wp.customize( 'genesis-settings[trestle_nav_primary_location]', function( value ) {
+	// Primary Nav Location.
+	wp.customize( 'trestle-settings[nav_primary_location]', function( value ) {
 	    value.bind( function( value ) {
 
 	    	var $body = $( 'body' );
@@ -75,8 +75,8 @@
 	    });
 	});
 
-	// Custom Read More Link Text
-	wp.customize( 'genesis-settings[trestle_read_more_text]', function( value )  {
+	// Custom Read More Link Text.
+	wp.customize( 'trestle-settings[read_more_text]', function( value )  {
 		value.bind( function( value ) {
 
 			$( 'a.more-link' ).html( value );
@@ -84,8 +84,8 @@
 		});
 	});
 
-	// External Links
-	wp.customize( 'genesis-settings[trestle_external_link_icons]', function( value )  {
+	// External Links.
+	wp.customize( 'trestle-settings[external_link_icons]', function( value )  {
 		value.bind( function( value ) {
 
 			var $body = $( 'body' );
@@ -99,8 +99,8 @@
 		});
 	});
 
-	// Email Links
-	wp.customize( 'genesis-settings[trestle_email_link_icons]', function( value )  {
+	// Email Links.
+	wp.customize( 'trestle-settings[email_link_icons]', function( value )  {
 		value.bind( function( value ) {
 
 			var $body = $( 'body' );
@@ -114,8 +114,8 @@
 		});
 	});
 
-	// PDF Links
-	wp.customize( 'genesis-settings[trestle_pdf_link_icons]', function( value )  {
+	// PDF Links.
+	wp.customize( 'trestle-settings[pdf_link_icons]', function( value )  {
 		value.bind( function( value ) {
 
 			var $body = $( 'body' );
@@ -129,8 +129,8 @@
 		});
 	});
 
-	// Doc Links
-	wp.customize( 'genesis-settings[trestle_doc_link_icons]', function( value )  {
+	// Doc Links.
+	wp.customize( 'trestle-settings[doc_link_icons]', function( value )  {
 		value.bind( function( value ) {
 
 			var $body = $( 'body' );

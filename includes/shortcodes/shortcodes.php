@@ -1,6 +1,6 @@
 <?php
 /**
- * Trestle shortcodes
+ * Trestle shortcodes.
  *
  * @since 1.0.0
  *
@@ -11,9 +11,9 @@
  * Shortcodes
 ===========================================*/
 
-add_filter('the_content', 'trestle_shortcode_empty_paragraph_fix');
+add_filter( 'the_content', 'trestle_shortcode_empty_paragraph_fix' );
 /**
- * Fix for empty <p> tags around shortcodes
+ * Fix for empty <p> tags around shortcodes.
  *
  * @since  1.0.0
  *
@@ -28,14 +28,14 @@ function trestle_shortcode_empty_paragraph_fix( $content ) {
         ']<br />' => ']'
         );
 
-    $content = strtr($content, $array);
+    $content = strtr( $content, $array );
 
     return $content;
 }
 
 add_shortcode( 'col', 'trestle_column' );
 /**
- * Columns
+ * Columns.
  *
  * Example:
  * [col class="one-half first no-list-margin"] Contents [/col]
@@ -58,7 +58,7 @@ function trestle_column( $atts, $content = null ) {
 
 add_shortcode( 'button', 'trestle_button' );
 /**
- * Button
+ * Button.
  *
  * Example: [button href="url" title="title" target="target" class="class"]Text[/button]
  *
@@ -78,7 +78,7 @@ function trestle_button( $atts, $content = null ) {
 
 add_shortcode( 'date', 'trestle_date' );
 /**
- * Date
+ * Date.
  *
  * Example: [date format="M d, Y"]
  *
@@ -100,7 +100,7 @@ function trestle_date( $atts ) {
 
 add_shortcode( 'blockquote', 'trestle_blockquote_shortcode' );
 /**
- * Blockquote
+ * Blockquote.
  *
  * Example: [blockquote citation=""]Content[/blockquote]
  *
