@@ -33,8 +33,7 @@ require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activatio
 // Better Font Awesome Library
 require_once dirname( __FILE__ ) . '/lib/better-font-awesome-library/better-font-awesome-library.php';
 
-
-add_action( 'genesis_setup' ,'trestle_theme_setup', 15 );
+add_action( 'genesis_setup', 'trestle_theme_setup', 15 );
 /**
  * Initialize Trestle
  *
@@ -63,4 +62,5 @@ function trestle_theme_setup() {
 	// Add support for footer widgets if specified in Trestle settings
 	$trestle_footer_widgets_number = esc_attr( genesis_get_option( 'trestle_footer_widgets_number' ) );
 	add_theme_support( 'genesis-footer-widgets', $trestle_footer_widgets_number );
+	
 }
