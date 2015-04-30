@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Trestle shortcodes
  *
@@ -21,11 +21,10 @@ add_filter('the_content', 'trestle_shortcode_empty_paragraph_fix');
  *
  * @return  string            Updated content.
  */
-function trestle_shortcode_empty_paragraph_fix( $content )
-{   
+function trestle_shortcode_empty_paragraph_fix( $content ) {
     $array = array (
-        '<p>[' => '[', 
-        ']</p>' => ']', 
+        '<p>[' => '[',
+        ']</p>' => ']',
         ']<br />' => ']'
         );
 
@@ -37,7 +36,7 @@ function trestle_shortcode_empty_paragraph_fix( $content )
 add_shortcode( 'col', 'trestle_column' );
 /**
  * Columns
- * 
+ *
  * Example:
  * [col class="one-half first no-list-margin"] Contents [/col]
  *
@@ -57,12 +56,10 @@ function trestle_column( $atts, $content = null ) {
     return '<div class="col ' . $class . '">' . do_shortcode( $content ) . '</div>';
 }
 
-
-
 add_shortcode( 'button', 'trestle_button' );
 /**
  * Button
- * 
+ *
  * Example: [button href="url" title="title" target="target" class="class"]Text[/button]
  *
  * @param   array  $atts  Shortcode attributes.
@@ -79,7 +76,6 @@ function trestle_button( $atts, $content = null ) {
     return '<a class="button ' . $class . '" href="' . $href . '" title="' . $title . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
 }
 
-
 add_shortcode( 'date', 'trestle_date' );
 /**
  * Date
@@ -93,10 +89,10 @@ add_shortcode( 'date', 'trestle_date' );
 function trestle_date( $atts ) {
     extract( shortcode_atts( array(
         'format' => 'M d, Y',
-    ), $format ) );
+    ), $atts ) );
 
     if ( ! $format ) {
-        $format = 'M d, Y'; 
+        $format = 'M d, Y';
     }
 
     return date( $format );
@@ -105,7 +101,7 @@ function trestle_date( $atts ) {
 add_shortcode( 'blockquote', 'trestle_blockquote_shortcode' );
 /**
  * Blockquote
- * 
+ *
  * Example: [blockquote citation=""]Content[/blockquote]
  *
  * @since   1.2.0
@@ -115,28 +111,27 @@ add_shortcode( 'blockquote', 'trestle_blockquote_shortcode' );
  * @return  string        Shortcode output.
  */
 function trestle_blockquote_shortcode( $atts, $content = null ) {
-         
-   $atts = shortcode_atts( array(
-      'citation'      => '',
-   ), $atts );
-         
-   ob_start(); ?>
-   
-   <blockquote>
-   
-   <?php if ( $content ) : ?>
-      <?php echo $content; ?>
-   <?php endif; ?>
-   
-   <?php if ( $atts['citation'] ) : ?>
-      <cite>- <?php echo $atts['citation']; ?></cite>
-   <?php endif; ?>
+    $atts = shortcode_atts( array(
+        'citation'      => '',
+    ), $atts );
 
-   </blockquote>
-   
-   <?php
-   
-   $output = ob_get_clean();
+    ob_start(); ?>
 
-   return $output;
+        <blockquote>
+
+        <?php if ( $content ) : ?>
+            <?php echo $content; ?>
+        <?php endif; ?>
+
+        <?php if ( $atts['citation'] ) : ?>
+            <cite>- <?php echo $atts['citation']; ?></cite>
+        <?php endif; ?>
+
+        </blockquote>
+
+    <?php
+
+    $output = ob_get_clean();
+
+    return $output;
 }
