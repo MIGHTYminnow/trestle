@@ -233,7 +233,7 @@ add_filter( 'wp_nav_menu_items', 'trestle_custom_nav_extras', 10, 2 );
  */
 function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
 
-	if ( 'primary' == $menu_args->theme_location && genesis_get_option( 'custom_nav_extras_text', 'trestle-settings' ) ) {
+	if ( 'primary' == $menu_args->theme_location && genesis_get_option( 'search_in_nav', 'trestle-settings' ) ) {
 		return $nav_items . '<li class="right custom">' . get_search_form( false ) . '</li>';
 	}
 

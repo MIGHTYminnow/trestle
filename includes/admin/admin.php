@@ -36,7 +36,7 @@ function trestle_settings_defaults() {
 		'logo_url_mobile'       => '',
 		'favicon_url' 			=> '',
 		'nav_primary_location'  => 'full',
-		'custom_nav_extras_text' => '',
+		'search_in_nav' 		=> '',
 		'read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'revisions_number'      => 3,
 		'footer_widgets_number' => 3,
