@@ -7,6 +7,76 @@
  * @package Trestle
  */
 
+/**
+ * Set up Trestle default settings.
+ *
+ * @since  2.0.0
+ *
+ * @return  array  Genesis settings updated to include Trestle defaults.
+ */
+function trestle_settings_defaults() {
+
+	// Trestle default key/value pairs.
+	$trestle_defaults = array(
+		'layout'				=> 'solid',
+		'logo_url'				=> '',
+		'logo_url_mobile'		=> '',
+		'favicon_url'			=> '',
+		'nav_primary_location'	=> 'full',
+		'search_in_nav'			=> '',
+		'read_more_text'		=> __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
+		'revisions_number'		=> 3,
+		'footer_widgets_number'	=> 3,
+		'external_link_icons'	=> 0,
+		'email_link_icons'		=> 0,
+		'pdf_link_icons'		=> 0,
+		'doc_link_icons'		=> 0,
+	);
+
+	// Populate Trestle settings with default values if they don't yet exist.
+	$options = get_option( TRESTLE_SETTINGS_FIELD );
+
+	// Set up an empty array if we're running for the first time.
+	if ( ! $options ) {
+		$options = array();
+	}
+
+	// Bail early if the settings match the defaults.
+	if ( $options === $trestle_defaults ) {
+		return;
+	}
+
+	// Populate any defaults that are missing.
+	foreach ( $trestle_defaults as $k => $v ) {
+
+		// Check each key to only add the missing settings.
+		if ( ! array_key_exists( $k, $options ) ) {
+			$options[$k] = $v;
+		}
+	}
+
+	// Update options with defaults.
+	update_option( TRESTLE_SETTINGS_FIELD, $options );
+
+}
+
+/**
+ * Wrapper function to get Trestle options.
+ *
+ * @since   2.0.0
+ * @uses    genesis_get_option()
+ *
+ * @return  mixed    Trestle option value.
+ */
+function trestle_get_option( $key, $setting = null, $use_cache = true ) {
+
+	// Set default to TRESTLE_SETTINGS_FIELD.
+	$setting = $setting ? $setting : TRESTLE_SETTINGS_FIELD;
+
+	return genesis_get_option( $key, $setting, false );
+
+}
+
 add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
 /**
  * Loads admin scripts and styles.
@@ -17,48 +87,7 @@ function trestle_admin_actions() {
 
 	// Include the main stylesheet in the editor
 	add_editor_style( get_stylesheet_uri() );
-}
 
-add_filter( 'genesis_theme_settings_defaults', 'trestle_custom_defaults' );
-/**
- * Sets up Trestle default settings.
- *
- * @since  1.0.0
- *
- * @param  array  $defaults  Genesis default settings.
- * @return  array  Genesis settings updated to include Trestle defaults.
- */
-function trestle_custom_defaults( $defaults ) {
-
- 	// Trestle default key/value pairs
- 	$trestle_defaults = array(
-		'trestle_layout'                => 'solid',
-		'trestle_logo_url'              => '',
-		'trestle_logo_url_mobile'       => '',
-		'trestle_favicon_url'           => '',
-		'trestle_nav_primary_location'  => 'full',
-		'trestle_read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
-		'trestle_revisions_number'      => 3,
-		'trestle_footer_widgets_number' => 3,
-	);
-
-	// Populate Trestle settings with default values if they don't yet exist
-	$options = get_option( GENESIS_SETTINGS_FIELD );
-
-	foreach ( $trestle_defaults as $k => $v ) {
-
-		// Add defaults to Genesis default settings array
-		$defaults[$k] = $v;
-
-		// Update actual options if they don't yet exist
-		if ( $options && ! array_key_exists( $k, $options ) )
-			$options[$k] = $v;
-	}
-
-	// Update options with defaults
-	update_option( GENESIS_SETTINGS_FIELD, $options );
-
-	return $defaults;
 }
 
 add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
@@ -222,7 +251,7 @@ function trestle_register_required_plugins() {
 		),
 	);
 
-	// Change this to your theme text domain, used for internationalising strings
+	// Change this to your theme text domain, used for internationalising strings.
 	$theme_text_domain = 'mightyminnow';
 
 	/**
