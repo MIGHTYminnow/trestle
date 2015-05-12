@@ -27,24 +27,3 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 #### Settings & Usage
 * All Trestle settings can be accessed via the **Customizer**.
 * Examples and usage can all be viewed on the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/)
-
-#### To Do
-* Convert non-theme functionality to separate Genesis-dependant plugin
-* Add in Grunt support for:
-    * Sass
-    * Auto-ordering of CSS
-* Add ability to click off of mobile menu/search to hide menu/search.
-* Rework menu CSS for simplicity (general / primary / secondary / header)
-* Convert non-theme functionality to separate Genesis-dependant plugin
-* Add in Grunt support for:
-    * Sass
-    * Auto-ordering of CSS (CSSComb)
-    * Translation
-    * Check other themes for other ideas. . .
-* Switch to customizer for theme options instead of Genesis panel (pros? cons?)
-* Remove custom background CSS that doesn't make sense (different max-widths, etc)
-* Weird extra icons on accordions on demo site.
-* Add checkbox to control author box (along with post info/meta) output (see ES: esw-custom.php)
-* Mobile menu button setting - either:
-   * Remove (currently controlled from JS), or
-   * Pass icon/text as params to jQuery
