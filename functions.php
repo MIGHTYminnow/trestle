@@ -9,7 +9,7 @@
  */
 
 /*===========================================
- * Required Files
+ * Required Files - test comment
 ===========================================*/
 
 // Theme functions.
