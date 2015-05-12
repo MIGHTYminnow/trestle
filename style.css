@@ -1962,6 +1962,19 @@ Site Footer
 General Components
 ---------------------------------------------------------------------------------------------------- */
 
+/* jQuery UI
+--------------------------------------------- */
+
+/* Datepicker */
+
+table.ui-datepicker-calendar {
+	line-height: 1;
+}
+
+.ui-datepicker select {
+	width: auto;
+}
+
 /* Search Form
 --------------------------------------------- */
 
