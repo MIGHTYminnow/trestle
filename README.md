@@ -25,7 +25,7 @@ Here are some of Trestle's many features, check out the [Trestle Demo](http://de
 * And more!
 
 #### Settings & Usage
-* The Trestle control panel is located at **Genesis &rarr; Theme Settings**, in the **Trestle** metabox.
+* All Trestle settings can be accessed via the **Customizer**.
 * Examples and usage can all be viewed on the [Trestle Demo](http://demo.mightyminnow.com/theme/trestle/)
 
 #### To Do
