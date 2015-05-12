@@ -7,23 +7,10 @@
  * @package Trestle
  */
 
-add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
 /**
- * Loads admin scripts and styles.
+ * Set up Trestle default settings.
  *
- * @since 1.0.0
- */
-function trestle_admin_actions() {
-
-	// Include the main stylesheet in the editor
-	add_editor_style( get_stylesheet_uri() );
-}
-
-//add_filter( 'after_setup_theme', 'trestle_settings_defaults' );
-/**
- * Sets up Trestle default settings.
- *
- * @since  1.0.0
+ * @since  2.0.0
  *
  * @return  array  Genesis settings updated to include Trestle defaults.
  */
@@ -70,6 +57,37 @@ function trestle_settings_defaults() {
 
 	// Update options with defaults.
 	update_option( TRESTLE_SETTINGS_FIELD, $options );
+
+}
+
+/**
+ * Wrapper function to get Trestle options.
+ *
+ * @since   2.0.0
+ * @uses    genesis_get_option()
+ *
+ * @return  mixed    Trestle option value.
+ */
+function trestle_get_option( $key, $setting = null, $use_cache = true ) {
+
+	// Set default to TRESTLE_SETTINGS_FIELD.
+	$setting = $setting ? $setting : TRESTLE_SETTINGS_FIELD;
+
+	return genesis_get_option( $key, $setting, false );
+
+}
+
+add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
+/**
+ * Loads admin scripts and styles.
+ *
+ * @since 1.0.0
+ */
+function trestle_admin_actions() {
+
+	// Include the main stylesheet in the editor
+	add_editor_style( get_stylesheet_uri() );
+
 }
 
 add_action( 'tgmpa_register', 'trestle_register_required_plugins' );

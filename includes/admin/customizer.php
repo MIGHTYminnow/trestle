@@ -2,33 +2,16 @@
 /**
  * Trestle Customizer Controls.
  *
- * @since  1.0.0
+ * @since  2.0.0
  *
  * @package  Trestle
  */
-
-add_action( 'customize_preview_init', 'trestle_customizer_preview_js' );
-/**
- * Enqueue scripts for the site preview iframe on the customizer screen.
- *
- * @since  1.0.0
- */
-function trestle_customizer_preview_js() {
-
-	wp_enqueue_script(
-		'trestle_customizer',
-		get_stylesheet_directory_uri() . '/includes/admin/customizer.js',
-		array( 'jquery', 'customize-preview' ), // Dependencies
-		null, // Version
-		true // Load in Footer
-	);
-}
 
 add_action( 'customize_register', 'trestle_customizer_controls' );
 /**
  * Register Trestle's controls.
  *
- * @since  1.0.0
+ * @since  2.0.0
  *
  * @param  $wp_customize  The Customizer Object.
  */
@@ -51,9 +34,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[layout]',
 		array(
-			'default'			=> genesis_get_option( 'layout', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'layout' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 		)
 	);
@@ -75,9 +57,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[logo_url]',
 		array(
-			'default'     		=> genesis_get_option( 'logo_url', 'trestle-settings' ),
+			'default'     		=> trestle_get_option( 'logo_url' ),
 			'type'        		=> 'option',
-			'transport'   		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback'	=> 'esc_url_raw',
 		)
@@ -98,9 +79,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[logo_url_mobile]',
 		array(
-			'default'     		=> genesis_get_option( 'logo_url_mobile', 'trestle-settings' ),
+			'default'     		=> trestle_get_option( 'logo_url_mobile' ),
 			'type'        		=> 'option',
-			'transport'   		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback'	=> 'esc_url_raw',
 		)
@@ -121,9 +101,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[favicon_url]',
 		array(
-			'default'     		=> genesis_get_option( 'favicon_url', 'trestle-settings' ),
+			'default'     		=> trestle_get_option( 'favicon_url' ),
 			'type'        		=> 'option',
-			'transport'   		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback'	=> 'esc_url_raw',
 		)
@@ -144,9 +123,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[nav_primary_location]',
 		array(
-			'default'			=> genesis_get_option( 'nav_primary_location', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'nav_primary_location' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 		)
 	);
@@ -168,9 +146,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[search_in_nav]',
 		array(
-			'default'			=> genesis_get_option( 'search_in_nav', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'search_in_nav' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 		)
 	);
@@ -188,9 +165,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[read_more_text]',
 		array(
-			'default'			=> genesis_get_option( 'read_more_text', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'read_more_text' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'     	=> 'edit_theme_options',
 			'sanitize_callback'	=> 'wp_kses_post',
 		)
@@ -208,9 +184,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[revisions_number]',
 		array(
-			'default'			=> genesis_get_option( 'revisions_number', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'revisions_number' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 		)
 	);
@@ -242,9 +217,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[footer_widgets_number]',
 		array(
-			'default'			=> genesis_get_option( 'footer_widgets_number', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'footer_widgets_number' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability' 		=> 'edit_theme_options',
 		)
 	);
@@ -289,9 +263,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[external_link_icons]',
 		array(
-			'default'			=> genesis_get_option( 'external_link_icons', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'external_link_icons' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 		)
 	);
@@ -309,9 +282,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[email_link_icons]',
 		array(
-			'default'			=> genesis_get_option( 'email_link_icons', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'email_link_icons' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 		)
 	);
@@ -329,9 +301,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[pdf_link_icons]',
 		array(
-			'default'			=> genesis_get_option( 'pdf_link_icons', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'pdf_link_icons' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability'		=> 'edit_theme_options',
 		)
 	);
@@ -349,9 +320,8 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_setting(
 		'trestle-settings[doc_link_icons]',
 		array(
-			'default'			=> genesis_get_option( 'doc_link_icons', 'trestle-settings' ),
+			'default'			=> trestle_get_option( 'doc_link_icons' ),
 			'type'				=> 'option',
-			'transport' 		=> 'postMessage',
 			'capability' 		=> 'edit_theme_options',
 		)
 	);

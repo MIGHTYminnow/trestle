@@ -10,6 +10,28 @@
  */
 
 /*===========================================
+ * Theme Setup
+===========================================*/
+add_action( 'after_setup_theme', 'trestle_add_theme_support' );
+/**
+ * Initialize Trestle defaults and theme options.
+ *
+ * @since    2.0.0
+ */
+function trestle_add_theme_support() {
+
+	// Add HTML5 markup structure.
+	add_theme_support( 'html5' );
+
+	// Add viewport meta tag for mobile browsers.
+	add_theme_support( 'genesis-responsive-viewport' );
+
+	// Add support for footer widgets if specified in Trestle settings.
+	add_theme_support( 'genesis-footer-widgets', trestle_get_option( 'footer_widgets_number' ) );
+
+}
+
+/*===========================================
  * 3rd Party Libraries
 ===========================================*/
 
@@ -53,7 +75,7 @@ function trestle_header_actions() {
 	wp_enqueue_style( 'theme-google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
 
 	// Theme jQuery.
-	wp_enqueue_script( 'theme-jquery', get_stylesheet_directory_uri() . '/includes/js/theme-jquery.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+	wp_enqueue_script( 'theme-jquery', get_stylesheet_directory_uri() . '/includes/js/theme-jquery.js', array( 'jquery' ), TRESTLE_THEME_VERSION, true );
 
 	// Get WP uploads directory.
 	$upload_dir = wp_upload_dir();
@@ -68,7 +90,7 @@ function trestle_header_actions() {
 	// Custom jQuery (if it exists).
 	$custom_js_file = '/trestle/custom.js';
 	if ( is_readable( $upload_path . $custom_js_file ) )
-		wp_enqueue_script( 'trestle-custom-jquery', $upload_url . $custom_js_file, array( 'jquery' ), CHILD_THEME_VERSION, true );
+		wp_enqueue_script( 'trestle-custom-jquery', $upload_url . $custom_js_file, array( 'jquery' ), TRESTLE_THEME_VERSION, true );
 
 }
 
@@ -83,7 +105,9 @@ add_filter( 'genesis_pre_load_favicon', 'trestle_do_custom_favicon' );
  * @return  string  Custom favicon URL (if specified), or the default URL.
  */
 function trestle_do_custom_favicon( $favicon_url ) {
-	return genesis_get_option( 'favicon_url', 'trestle-settings' ) ? genesis_get_option( 'favicon_url', 'trestle-settings' ) : $favicon_url;
+
+	$trestle_favicon_url = trestle_get_option( 'favicon_url' );
+	return $trestle_favicon_url ? $trestle_favicon_url : $favicon_url;
 }
 
 /*===========================================
@@ -105,30 +129,45 @@ function trestle_body_classes( $classes ) {
 	$classes[] = 'no-jquery';
 
 	// Add 'bubble' class.
-	if ( 'bubble' == genesis_get_option( 'layout', 'trestle-settings' ) )
+	if ( 'bubble' == trestle_get_option( 'layout' ) )
 		$classes[] = 'bubble';
 
-	// Add link icon classes.
-	if ( genesis_get_option( 'external_link_icons', 'trestle-settings' ) )
+	/**
+	 * Add link icon classes.
+	 */
+
+	if ( trestle_get_option( 'external_link_icons' ) ) {
 		$classes[] = 'external-link-icons';
-	if ( genesis_get_option( 'email_link_icons', 'trestle-settings' ) )
+	}
+
+	if ( trestle_get_option( 'email_link_icons' ) ) {
 		$classes[] = 'email-link-icons';
-	if ( genesis_get_option( 'pdf_link_icons', 'trestle-settings' ) )
+	}
+
+	if ( trestle_get_option( 'pdf_link_icons' ) ) {
 		$classes[] = 'pdf-link-icons';
-	if ( genesis_get_option( 'doc_link_icons', 'trestle-settings' ) )
+	}
+
+	if ( trestle_get_option( 'doc_link_icons' ) ) {
 		$classes[] = 'doc-link-icons';
+	}
 
 	// Add menu style class.
-	if ( genesis_get_option( 'nav_primary_location', 'trestle-settings' ) )
-		$classes[] = 'nav-primary-location-' . esc_attr( genesis_get_option( 'nav_primary_location', 'trestle-settings' ) );
+	$nav_primary_location = esc_attr( trestle_get_option( 'nav_primary_location' ) );
+	if ( $nav_primary_location ) {
+		$classes[] = 'nav-primary-location-' . $nav_primary_location;
+	}
 
 	// Add footer widget number class.
-	if ( genesis_get_option( 'footer_widgets_number', 'trestle-settings' ) )
-		$classes[] = 'footer-widgets-number-' . esc_attr( genesis_get_option( 'footer_widgets_number', 'trestle-settings' ) );
+	$footer_widgets_number = esc_attr( trestle_get_option( 'footer_widgets_number' ) );
+	if ( $footer_widgets_number ) {
+		$classes[] = 'footer-widgets-number-' . $footer_widgets_number;
+	}
 
 	// Add logo class.
-	if ( genesis_get_option( 'logo_url', 'trestle-settings' ) || genesis_get_option( 'logo_url_mobile', 'trestle-settings' ) )
+	if ( trestle_get_option( 'logo_url' ) || trestle_get_option( 'logo_url_mobile' ) ) {
 		$classes[] = 'has-logo';
+	}
 
 	return $classes;
 
@@ -147,8 +186,8 @@ add_filter( 'genesis_seo_title', 'trestle_do_logos', 10, 3 );
  */
 function trestle_do_logos( $title, $inside, $wrap ) {
 
-	$logo_url = genesis_get_option( 'logo_url', 'trestle-settings' );
-	$logo_url_mobile = genesis_get_option( 'logo_url_mobile', 'trestle-settings' );
+	$logo_url = trestle_get_option( 'logo_url' );
+	$logo_url_mobile = trestle_get_option( 'logo_url_mobile' );
 	$logo_html = '';
 
 	// Regular logo.
@@ -199,6 +238,7 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 
 	// Echo (filtered).
 	return $title;
+
 }
 
 
@@ -206,15 +246,18 @@ function trestle_do_logos( $title, $inside, $wrap ) {
  * Navigation
 ===========================================*/
 
-add_action( 'init', 'trestle_nav_primary_location' );
+add_action( 'wp_loaded', 'trestle_nav_primary_location' );
 /**
  * Move primary navigation into the header if need be.
+ *
+ * This is hooked on wp_loaded instead of init because for some reason init
+ * won't fire on the customizer preview.
  *
  * @since  1.2.0
  */
 function trestle_nav_primary_location() {
 
-	if ( 'header' == genesis_get_option( 'nav_primary_location', 'trestle-settings' ) ) {
+	if ( 'header' == trestle_get_option( 'nav_primary_location' ) ) {
 		remove_action( 'genesis_after_header', 'genesis_do_nav' );
 		add_action( 'genesis_header', 'genesis_do_nav', 12 );
 	}
@@ -233,7 +276,7 @@ add_filter( 'wp_nav_menu_items', 'trestle_custom_nav_extras', 10, 2 );
  */
 function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
 
-	if ( 'primary' == $menu_args->theme_location && genesis_get_option( 'search_in_nav', 'trestle-settings' ) ) {
+	if ( 'primary' == $menu_args->theme_location && trestle_get_option( 'search_in_nav' ) ) {
 		return $nav_items . '<li class="right custom">' . get_search_form( false ) . '</li>';
 	}
 
@@ -256,10 +299,11 @@ add_filter( 'wp_revisions_to_keep', 'trestle_update_revisions_number', 10, 2 );
  */
 function trestle_update_revisions_number( $num ) {
 
-	$trestle_revisions_number = esc_attr( genesis_get_option( 'revisions_number', 'trestle-settings' ) );
+	$trestle_revisions_number = esc_attr( trestle_get_option( 'revisions_number' ) );
 
-	if ( isset( $trestle_revisions_number ) )
+	if ( isset( $trestle_revisions_number ) ) {
 		return $trestle_revisions_number;
+	}
 
 	return $num;
 }
@@ -303,7 +347,7 @@ add_filter( 'the_content_more_link', 'trestle_read_more_link' );
 function trestle_read_more_link( $default_text ) {
 
 	// Get Trestle custom "read more" link text.
-	$custom_text = esc_attr( genesis_get_option( 'read_more_text', 'trestle-settings' ) );
+	$custom_text = esc_attr( trestle_get_option( 'read_more_text' ) );
 
 	if ( $custom_text ) {
 		return '&hellip;&nbsp;<a class="more-link" title="' . $custom_text . '" href="' . get_permalink() . '">' . $custom_text . '</a>';
