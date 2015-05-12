@@ -1,9 +1,5 @@
 Trestle
-<<<<<<< HEAD
 ---------------------
-=======
-=======
->>>>>>> dev
 
 ### A handy boilerplate child theme for serious Genesis developers.
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/MickeyKay/trestle?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
