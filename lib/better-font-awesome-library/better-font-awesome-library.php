@@ -308,6 +308,9 @@ class Better_Font_Awesome_Library {
 		// Parse the initialization args with the defaults.
 		$this->parse_args( $args );
 
+		// Setup root URL, which differs for plugins vs. themes.
+		$this->setup_root_url();
+
 		// Set fallback stylesheet directory URL and path.
 		$this->setup_fallback_data();
 
@@ -346,6 +349,45 @@ class Better_Font_Awesome_Library {
 	}
 
 	/**
+	 * Set up root URL for library, which differs for plugins vs. themes.
+	 *
+	 * @since  1.0.4
+	 */
+	function setup_root_url() {
+
+		// Get BFA directory and theme root directory paths.	
+		$bfa_directory = dirname(__FILE__);
+		$theme_directory = get_stylesheet_directory();
+		$plugin_dir = plugin_dir_url( __FILE__ );
+
+		/**
+		 * Check if we're inside a theme or plugin.
+		 *
+		 * If we're in a theme, than plugin_dir_url() will return a
+		 * funky URL that includes the actual file path (e.g.
+		 * /srv/www/site_name/wp-content/...)
+		 */
+		$is_theme = false;
+		if ( strpos( $plugin_dir, $bfa_directory ) !== false ) {
+			$is_theme = true;
+		}
+
+		// First check if we're inside a theme.
+		if ( $is_theme ) {
+
+			// Get relative BFA directory by removing theme root directory path.
+			$bfa_rel_path = str_replace( $theme_directory, '', $bfa_directory );
+			$this->root_url = trailingslashit( get_stylesheet_directory_uri() . $bfa_rel_path );
+
+		} else { // Otherwise we're inside a plugin.
+
+			$this->root_url = trailingslashit( plugin_dir_url( __FILE__ ) );
+
+		}	
+				
+	}
+
+	/**
 	 * Set up data for the local fallback version of Font Awesome.
 	 *
 	 * @since  1.0.0
@@ -366,7 +408,7 @@ class Better_Font_Awesome_Library {
 
 		// Set fallback path and URL.
 		$this->fallback_data['path'] = $directory_path . 'css/font-awesome' . $this->get_min_suffix() . '.css';
-		$this->fallback_data['url'] = plugins_url( $this->fallback_data['directory'] . 'css/font-awesome' . $this->get_min_suffix() . '.css', dirname( $directory_path ) );
+		$this->fallback_data['url'] = $this->root_url . $this->fallback_data['directory'] . 'css/font-awesome' . $this->get_min_suffix() . '.css';
 
 		// Get the fallback version based on package.json.
 		$fallback_json_file_path = $directory_path . 'package.json';
@@ -965,9 +1007,9 @@ class Better_Font_Awesome_Library {
 		 * being used.
 		 */
 		if ( version_compare( $tinymce_version, '4000', '>=' ) ) {
-			$plugin_array['bfa_plugin'] = plugins_url( 'js/tinymce-icons.js', __FILE__ );
+			$plugin_array['bfa_plugin'] = $this->root_url . 'js/tinymce-icons.js';
 		} else {
-			$plugin_array['bfa_plugin'] = plugins_url( 'js/tinymce-icons-old.js', __FILE__ );
+			$plugin_array['bfa_plugin'] = $this->root_url . 'js/tinymce-icons-old.js';
 		}
 
 		return $plugin_array;
@@ -1013,7 +1055,7 @@ class Better_Font_Awesome_Library {
 	 * @since  1.0.0
 	 */
 	public function register_custom_admin_css() {
-		wp_enqueue_style( self::SLUG . '-admin-styles', plugins_url( 'css/admin-styles.css', __FILE__ ) );
+		wp_enqueue_style( self::SLUG . '-admin-styles', $this->root_url . 'css/admin-styles.css' );
 	}
 
 	/**
