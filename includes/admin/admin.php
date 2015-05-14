@@ -85,7 +85,11 @@ add_action( 'admin_enqueue_scripts', 'trestle_admin_actions' );
  */
 function trestle_admin_actions() {
 
-	// Include the main stylesheet in the editor
+	// Google fonts.
+	$font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
+	add_editor_style( $font_url );
+
+	// Include the main stylesheet in the editor.
 	add_editor_style( get_stylesheet_uri() );
 
 }
