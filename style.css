@@ -151,8 +151,11 @@ body {
 	line-height: 1.625;
 }
 
+/* Used in the editor */
 body.mce-content-body {
-	width: 100%; /* Used in the editor */
+	width: auto;
+	margin: 10px;
+	float: none;
 }
 
 body.bubble {
