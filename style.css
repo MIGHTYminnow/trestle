@@ -156,6 +156,8 @@ body.mce-content-body {
 	width: auto;
 	margin: 10px;
 	float: none;
+	-webkit-font-smoothing: auto !important;
+	font-smoothing: auto !important;
 }
 
 body.bubble {
