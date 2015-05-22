@@ -61,7 +61,7 @@ jQuery( document ).ready( function( $ ) {
 		}
 
 		// Allow the use of custom text when using the 'big-button' mobile nav style.
-		if ( $target.is( 'nav' ) && $( 'body' ).hasClass( 'big-button-nav-toggle' ) ) {
+		if ( $target.is( 'nav' ) && $body.hasClass( 'big-button-nav-toggle' ) ) {
 			navText = trestle_vars['mobile_nav_text'];
 		} else {
 			navText = 'Toggle';
