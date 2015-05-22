@@ -678,6 +678,10 @@ Structure and Layout
 /* Site Containers
 --------------------------------------------- */
 
+.site-container {
+	position: relative;
+}
+
 .site-inner,
 .wrap {
 	margin: 0 auto;
@@ -1390,20 +1394,20 @@ Site Header
 /* Header Toggle Styles
 --------------------------------------------- */
 
-.site-header .toggle-buttons {
+.header-toggle-buttons {
 	font-size: 0;
 	text-align: right;
 }
 
-.site-header .toggle-button {
+.header-toggle-buttons .toggle-button {
 	margin-left: 15px;
 }
 
-.site-header .toggle-button.open {
+.header-toggle-buttons .toggle-button.open {
 	color: #f15123;
 }
 
-.site-header .toggle-button:before {
+.header-toggle-buttons .toggle-button:before {
 	content: "\f002";
 	font-family: FontAwesome;
 	font-size: 28px;
@@ -1411,8 +1415,49 @@ Site Header
 	line-height: 1;
 }
 
-.site-header .toggle-button.nav-toggle:before {
+.header-toggle-buttons .toggle-button.nav-toggle:before {
 	content: "\f0c9";
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	-webkit-font-smoothing: antialiased;
+}
+
+.big-button-nav-toggle .header-toggle-buttons .nav-toggle {
+	display: block;
+	background-color: #333;
+	color: #fff;
+	margin-left: 0;
+	font-size: 16px;
+	font-size: 1.6rem;
+	padding: 15px 26px;
+	padding: 1.5rem 2.6rem;
+	margin: 0 20px;
+	margin: 0 2rem;
+	text-align: center;
+	border-radius: 3px;
+	text-transform: uppercase;
+	-webkit-transition: all 0s;
+	   -moz-transition: all 0s;
+	    -ms-transition: all 0s;
+	     -o-transition: all 0s;
+		    transition: all 0s;
+}
+
+.big-button-nav-toggle .header-toggle-buttons .nav-toggle:before {
+	content: "\f0ca";
+	margin-right: 8px;
+	font-size: 16px;
+	font-size: 1.6rem;
+}
+
+.big-button-nav-toggle .header-toggle-buttons .targets-widget-area {
+	position: absolute;
+	right: 20px;
+	right: 2rem;
+	top: 20px;
+	top: 2rem;
 }
 
 .nav-primary,
@@ -1447,7 +1492,6 @@ Site Header
 	     -o-transition: z-index 0s ease, opacity 0.25s 0s;
 	        transition: z-index 0s ease, opacity 0.25s 0s;
 }
-
 
 /*
 Site Navigation
@@ -1591,6 +1635,12 @@ Site Navigation
 	padding-right: 5rem;
 }
 
+.big-button-nav-toggle .nav-primary {
+	margin: 4px 20px 0;
+	margin: 0.4rem 2rem 0;
+	border-radius: 3px;
+	box-shadow: none;
+}
 
 /* Navigation Extras
 --------------------------------------------- */
@@ -1620,8 +1670,10 @@ Site Navigation
 }
 
 .genesis-nav-menu > .right .search-form {
-	display: inline-block;
-	padding: 8px 0;
+	display: block;
+	padding: 0;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .genesis-nav-menu > .right input[type="submit"] {
@@ -1672,6 +1724,7 @@ Site Navigation
 
 /* Header Primary Navigation
 --------------------------------------------- */
+
 .site-header .nav-primary {
 	margin: 0;
 }
@@ -1683,8 +1736,6 @@ Site Navigation
 .site-header .right {
 	padding-right: 0;
 }
-
-
 
 /* Non jQuery Styles
 --------------------------------------------- */
@@ -2229,6 +2280,7 @@ Media Queries
 
 	/* Header Toggle Styles
 	--------------------------------------------- */
+
 	.nav-primary,
 	.site-header .nav-primary,
 	.site-header .widget-area {
@@ -2247,10 +2299,10 @@ Media Queries
 		background-color: transparent;
 	}
 
-	.site-header .toggle-button {
+	.header-toggle-buttons .toggle-button,
+	.big-button-nav-toggle .header-toggle-buttons .toggle-button.nav-toggle {
 		display: none;
 	}
-
 
 	/* Content
 	--------------------------------------------- */
@@ -2500,6 +2552,11 @@ Media Queries
 		display: inline-block;
 	}
 
+	.genesis-nav-menu > .right .search-form {
+		display: inline-block;
+		padding: 8px 0;
+	}
+
 	/* Sub Menus
 	--------------------------------------------- */
 
@@ -2554,8 +2611,17 @@ Media Queries
 		margin-left: -1px;
 	}
 
+	/* Primary Navigation
+	--------------------------------------------- */
+
+	.big-button-nav-toggle .nav-primary {
+		margin: 0;
+		border-radius: 0;
+	}
+
 	/* Header Primary Navigation
 	--------------------------------------------- */
+
 	.site-header .nav-primary {
 		background-color: transparent;
 		text-align: right;

@@ -6,137 +6,152 @@
  * @package Trestle
  */
 
-// Executes when the document is ready
+// Executes when the document is ready.
 jQuery( document ).ready( function( $ ) {
 
-    // Remove .no-jquery body class
-    $( 'body' ).removeClass( 'no-jquery' );
+	// Store selectors we use multiple times.
+	$body = $( 'body' );
 
-    // External Links
-    var h = window.location.host.toLowerCase();
-    $( '[href^="http"]' ).not( '[href*="' + h + '"]' ).addClass( 'external-link' ).attr( "target", "_blank" );
+	// Remove .no-jquery body class.
+	$body.removeClass( 'no-jquery' );
 
-    // Add classes to different types of links
-    $( 'a[href^="mailto:"]' ).addClass( 'email-link' );
-    $( 'a[href$=".pdf"]' ).attr({ "target":"_blank" }).addClass( 'pdf-link' );
-    $( 'a[href$=".doc"]' ).attr({ "target":"_blank" }).addClass( 'doc-link' );
-    $( 'a' ).has( 'img' ).addClass( 'image-link' );
+	// External Links.
+	var h = window.location.host.toLowerCase();
+	$( '[href^="http"]' ).not( '[href*="' + h + '"]' ).addClass( 'external-link' ).attr( "target", "_blank" );
 
-    // Add classes to parts of lists
-    $( 'li:last-child' ).addClass( 'last' );
-    $( 'li:first-child' ).addClass( 'first' );
-    $( 'ul, ol' ).parent( 'li' ).addClass( 'parent' );
+	// Add classes to different types of links.
+	$( 'a[href^="mailto:"]' ).addClass( 'email-link' );
+	$( 'a[href$=".pdf"]' ).attr({ "target":"_blank" }).addClass( 'pdf-link' );
+	$( 'a[href$=".doc"]' ).attr({ "target":"_blank" }).addClass( 'doc-link' );
+	$( 'a' ).has( 'img' ).addClass( 'image-link' );
 
-    // Create mobile header toggle buttons
-    $( '.site-header .title-area' ).after( '<div class="toggle-buttons" />' );
-    $( '.site-header .widget-area, .nav-primary' ).each( function( i ) {
+	// Add classes to parts of lists.
+	$( 'li:last-child' ).addClass( 'last' );
+	$( 'li:first-child' ).addClass( 'first' );
+	$( 'ul, ol' ).parent( 'li' ).addClass( 'parent' );
 
-        // Store target
-        $target = $( this );
+	// Create container for toggle buttons.
+	if ( $body.hasClass( 'big-button-nav-toggle' ) ) {
+		$( '.site-header' ).after( '<div class="header-toggle-buttons" />' );
+	} else {
+		$( '.site-header .title-area' ).after( '<div class="header-toggle-buttons" />' );
+	}
 
-        // Scope variables
-        var $target, buttonClass, targetClass;
+	// Add either small icon toggles or big button toggle.
+	$( '.site-header .widget-area, .nav-primary' ).each( function( i ) {
 
-        // Setup classes
-        buttonClass = 'toggle-button';
-        targetClass = $target.attr( 'class' ).split( /\s+/ );
+		// Store target.
+		$target = $( this );
 
-        // Add targets-[] class to buttonClass
-        $.each( targetClass, function( index, value ) {
-            buttonClass += ' targets-' + value;
-        });
+		// Scope variables.
+		var $target, buttonClass, targetClass;
 
-        // Add nav-toggle class to buttonClass if the button is for the nav
-        if ( $target.is( 'nav' ) ) {
-            buttonClass += ' nav-toggle';
-        }
+		// Setup classes.
+		buttonClass = 'toggle-button';
+		targetClass = $target.attr( 'class' ).split( /\s+/ );
 
-        // Add toggle buttons to header
-        $( '.toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">Toggle</a>' );
+		// Add targets-[] class to buttonClass.
+		$.each( targetClass, function( index, value ) {
+			buttonClass += ' targets-' + value;
+		});
 
-        // Add target class to nav and widget areas
-        $target.addClass( 'toggle-target-' + i );
-    });
+		// Add nav-toggle class to buttonClass if the button is for the nav.
+		if ( $target.is( 'nav' ) ) {
+			buttonClass += ' nav-toggle';
+		}
 
-    // A widget areas and primary nav mobile toggle functionality
-    $( '.site-header .toggle-button' ).click( function( event ) {
+		// Allow the use of custom text when using the 'big-button' mobile nav style.
+		if ( $target.is( 'nav' ) && $( 'body' ).hasClass( 'big-button-nav-toggle' ) ) {
+			navText = trestle_vars['mobile_nav_text'];
+		} else {
+			navText = 'Toggle';
+		}
 
-        // Prevent default behavior
-        event.preventDefault();
+		// Add toggle buttons to header.
+		$( '.header-toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">' + navText + '</a>' );
 
-        // Scope our variables
-        var $button, $target;
+		// Add target class to nav and widget areas.
+		$target.addClass( 'toggle-target-' + i );
+	});
 
-        // Get toggle button that was clicked
-        $button = $( this );
+	// A widget areas and primary nav mobile toggle functionality.
+	$( '.header-toggle-buttons .toggle-button' ).click( function( event ) {
 
-        // Match the button to the right target
-        $target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
-        console.log( 'Target: ' + $target.attr('class'));
+		// Prevent default behavior.
+		event.preventDefault();
 
-        // Toggle buttons
-        $button.toggleClass( 'open' );
-        $( '.site-header .toggle-button' ).not( $button ).removeClass( 'open' );
+		// Scope our variables.
+		var $button, $target;
 
-        // Toggle targets
-        $target.toggleClass( 'open' );
-        $( '[class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
+		// Get toggle button that was clicked.
+		$button = $( this );
 
-        // Remove focus
-        $button.blur();
+		// Match the button to the right target.
+		$target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
 
-    });
+		// Toggle buttons.
+		$button.toggleClass( 'open' );
+		$( '.header-toggle-buttons .toggle-button' ).not( $button ).removeClass( 'open' );
 
-    // Mobile navigation icons
-    var closedIcon = '+';
-    var openIcon = '-';
+		// Toggle targets.
+		$target.toggleClass( 'open' );
+		$( '[class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
 
-    // Insert the icons into the nav where appropriate
-    $( '.nav-primary' ).find( '.genesis-nav-menu .parent:not( .current-menu-item, .current_page_item, .current_page_parent, .current_page_ancestor) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
-    $( '.nav-primary' ).find( '.genesis-nav-menu .parent.current-menu-item > a, .genesis-nav-menu .parent.current_page_item > a, .genesis-nav-menu .parent.current_page_parent > a, .genesis-nav-menu .parent.current_page_ancestor > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
+		// Remove focus.
+		$button.blur();
 
-    // Mobile navigation expand/contract functionality
-    $( '.sub-icon' ).click( function( event ) {
+	});
 
-        // Prevent default behavior
-        event.preventDefault();
+	// Mobile navigation icons.
+	var closedIcon = '+';
+	var openIcon = '-';
 
-        // Get icon click
-        var $icon = $( this );
+	// Insert the icons into the nav where appropriate.
+	$( '.nav-primary' ).find( '.genesis-nav-menu .parent:not( .current-menu-item, .current_page_item, .current_page_parent, .current_page_ancestor) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
+	$( '.nav-primary' ).find( '.genesis-nav-menu .parent.current-menu-item > a, .genesis-nav-menu .parent.current_page_item > a, .genesis-nav-menu .parent.current_page_parent > a, .genesis-nav-menu .parent.current_page_ancestor > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
 
-        // Remove focus
-        $icon.blur();
+	// Mobile navigation expand/contract functionality.
+	$( '.sub-icon' ).click( function( event ) {
 
-        // Expand/contract
-        $icon.next( 'ul' ).slideToggle().toggleClass( 'open' );
+		// Prevent default behavior.
+		event.preventDefault();
 
-        // Change the icon to indicate open/closed
-        if ( $icon.text().indexOf( closedIcon ) !== -1 ) {
-            $icon.text( openIcon );
-        } else if ( $icon.text().indexOf( openIcon ) !== -1 ) {
-            $icon.text( closedIcon );
-        }
-    });
+		// Get icon click.
+		var $icon = $( this );
 
-    // Header widget area expand/contract functionality
-    $( '.widget-area-toggle' ).click( function( event ) {
+		// Remove focus.
+		$icon.blur();
 
-        // Prevent default behavior
-        event.preventDefault();
+		// Expand/contract.
+		$icon.next( 'ul' ).slideToggle().toggleClass( 'open' );
 
-        // Get button clicked
-        var $button = $( this );
+		// Change the icon to indicate open/closed.
+		if ( $icon.text().indexOf( closedIcon ) !== -1 ) {
+			$icon.text( openIcon );
+		} else if ( $icon.text().indexOf( openIcon ) !== -1 ) {
+			$icon.text( closedIcon );
+		}
+	});
 
-        // Remove focus
-        $button.blur();
+	// Header widget area expand/contract functionality.
+	$( '.widget-area-toggle' ).click( function( event ) {
 
-        // Expand/contract
-        $button.toggleClass( 'open' ).next( '.widget-area' ).slideToggle();
-    });
+		// Prevent default behavior.
+		event.preventDefault();
 
-    // Executes when complete page is fully loaded, including all frames, objects, and images
-    $( window ).on( 'load', function() {
+		// Get button clicked.
+		var $button = $( this );
 
-    });
+		// Remove focus.
+		$button.blur();
+
+		// Expand/contract.
+		$button.toggleClass( 'open' ).next( '.widget-area' ).slideToggle();
+	});
+
+	// Executes when complete page is fully loaded, including all frames, objects, and images.
+	$( window ).on( 'load', function() {
+
+	});
 
 }); /* end of page load scripts */

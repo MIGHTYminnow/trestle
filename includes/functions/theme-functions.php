@@ -77,6 +77,16 @@ function trestle_header_actions() {
 	// Theme jQuery.
 	wp_enqueue_script( 'theme-jquery', get_stylesheet_directory_uri() . '/includes/js/theme-jquery.js', array( 'jquery' ), TRESTLE_THEME_VERSION, true );
 
+	// Prepare and include some necessary variables.
+	$mobile_nav_text = apply_filters( 'trestle_mobile_nav_text', __( 'Navigation', 'trestle' ) );
+	wp_localize_script(
+		'theme-jquery',
+		'trestle_vars',
+		array(
+			'mobile_nav_text' => esc_attr( $mobile_nav_text ),
+		)
+	);
+
 	// Get WP uploads directory.
 	$upload_dir = wp_upload_dir();
 	$upload_path = $upload_dir['basedir'];
@@ -132,22 +142,16 @@ function trestle_body_classes( $classes ) {
 	if ( 'bubble' == trestle_get_option( 'layout' ) )
 		$classes[] = 'bubble';
 
-	/**
-	 * Add link icon classes.
-	 */
-
+	// Add link icon classes.
 	if ( trestle_get_option( 'external_link_icons' ) ) {
 		$classes[] = 'external-link-icons';
 	}
-
 	if ( trestle_get_option( 'email_link_icons' ) ) {
 		$classes[] = 'email-link-icons';
 	}
-
 	if ( trestle_get_option( 'pdf_link_icons' ) ) {
 		$classes[] = 'pdf-link-icons';
 	}
-
 	if ( trestle_get_option( 'doc_link_icons' ) ) {
 		$classes[] = 'doc-link-icons';
 	}
@@ -156,6 +160,14 @@ function trestle_body_classes( $classes ) {
 	$nav_primary_location = esc_attr( trestle_get_option( 'nav_primary_location' ) );
 	if ( $nav_primary_location ) {
 		$classes[] = 'nav-primary-location-' . $nav_primary_location;
+	}
+
+	// Add mobile menu toggle class.
+	$mobile_nav_toggle = esc_attr( trestle_get_option( 'mobile_nav_toggle' ) );
+	if ( 'big-button' == $mobile_nav_toggle ) {
+		$classes[] = 'big-button-nav-toggle';
+	} elseif ( 'small-icon' == $mobile_nav_toggle ) {
+		$classes[] = 'small-icon-nav-toggle';
 	}
 
 	// Add footer widget number class.

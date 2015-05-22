@@ -142,6 +142,29 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	// Mobile nav toggle.
+	$wp_customize->add_setting(
+		'trestle-settings[mobile_nav_toggle]',
+		array(
+			'default'			=> trestle_get_option( 'mobile_nav_toggle' ),
+			'type'				=> 'option',
+			'capability'		=> 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+		'trestle_mobile_nav_toggle_control',
+		array(
+			'section'   => 'trestle_settings_section',
+			'settings'  => 'trestle-settings[mobile_nav_toggle]',
+			'label'     => __( 'Mobile Menu Toggle', 'trestle' ),
+			'type'      => 'select',
+			'choices'   => array(
+				'small-icon'  	=> __( 'Small Icon', 'trestle' ),
+				'big-button'   	=> __( 'Big Button', 'trestle' ),
+			)
+		)
+	);
+
 	// Primary nav extras.
 	$wp_customize->add_setting(
 		'trestle-settings[search_in_nav]',
