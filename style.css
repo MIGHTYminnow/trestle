@@ -1410,6 +1410,11 @@ Site Header
 .header-toggle-buttons .toggle-button:before {
 	content: "\f002";
 	font-family: FontAwesome;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	-webkit-font-smoothing: antialiased;
 	font-size: 28px;
 	font-size: 2.8rem;
 	line-height: 1;
@@ -1417,11 +1422,6 @@ Site Header
 
 .header-toggle-buttons .toggle-button.nav-toggle:before {
 	content: "\f0c9";
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	font-variant: normal;
-	-webkit-font-smoothing: antialiased;
 }
 
 .big-button-nav-toggle .header-toggle-buttons .nav-toggle {
