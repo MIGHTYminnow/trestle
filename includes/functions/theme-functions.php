@@ -31,6 +31,18 @@ function trestle_add_theme_support() {
 
 }
 
+add_action( 'after_setup_theme', 'trestle_remove_genesis_css_enqueue' );
+/**
+ * Stop Genesis from enqueuing the child theme stylesheet in the usual way.
+ *
+ * @since    2.1.0
+ */
+function trestle_remove_genesis_css_enqueue() {
+
+	remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
+
+}
+
 /*===========================================
  * 3rd Party Libraries
 ===========================================*/
@@ -63,13 +75,16 @@ function trestle_load_bfa() {
  * Header
 ===========================================*/
 
-add_action( 'wp_enqueue_scripts', 'trestle_header_actions' );
+add_action( 'wp_enqueue_scripts', 'trestle_header_actions', 15 );
 /**
  * Loads theme scripts and styles.
  *
  * @since  1.0.0
  */
 function trestle_header_actions() {
+
+	// Our main stylesheet.
+	wp_enqueue_style( 'trestle', get_stylesheet_uri(), array(), TRESTLE_THEME_VERSION );
 
 	// Google fonts.
 	wp_enqueue_style( 'theme-google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
