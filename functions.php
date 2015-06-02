@@ -33,6 +33,9 @@ require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activatio
 // Better Font Awesome Library.
 require_once dirname( __FILE__ ) . '/lib/better-font-awesome-library/better-font-awesome-library.php';
 
+// Utility functions.
+require_once dirname( __FILE__ ) . '/includes/functions/utilities.php';
+
 
 add_action( 'genesis_setup', 'trestle_theme_setup', 15 );
 /**
