@@ -130,38 +130,20 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Equal Height Columns',
-			'slug' 		=> 'equal-height-columns',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'Events Manager',
-			'slug' 		=> 'events-manager',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'Exclude Pages',
-			'slug' 		=> 'exclude-pages',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'Facebook Open Graph Meta Tags for WordPress',
-			'slug' 		=> 'wonderm00ns-simple-facebook-open-graph-tags',
-			'required'  => false,
-		),
-
-		array(
 			'name' 		=> 'Easy FancyBox',
 			'slug' 		=> 'easy-fancybox',
 			'required'  => false,
 		),
 
 		array(
-			'name' 		=> 'Genesis Featured Widget Amplified',
-			'slug' 		=> 'genesis-featured-widget-amplified',
+			'name' 		=> 'Equal Height Columns',
+			'slug' 		=> 'equal-height-columns',
+			'required' 	=> false,
+		),
+
+		array(
+			'name' 		=> 'Exclude Pages',
+			'slug' 		=> 'exclude-pages',
 			'required' 	=> false,
 		),
 
@@ -178,26 +160,8 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'Jetpack by WordPress.com',
-			'slug' 		=> 'jetpack',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'MapPress Easy Google Maps',
-			'slug' 		=> 'mappress-google-maps-for-wordpress',
-			'required' 	=> false,
-		),
-
-		array(
 			'name' 		=> 'My Page Order',
 			'slug' 		=> 'my-page-order',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'NextGen Gallery',
-			'slug' 		=> 'nextgen-gallery',
 			'required' 	=> false,
 		),
 
@@ -216,12 +180,6 @@ function trestle_register_required_plugins() {
 		array(
 			'name' 		=> 'Responsive Video Embeds',
 			'slug' 		=> 'responsive-video-embeds',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'Social Media Widget',
-			'slug' 		=> 'social-media-widget',
 			'required' 	=> false,
 		),
 
@@ -250,14 +208,15 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'WP Hotkeys',
-			'slug' 		=> 'wp-hotkeys',
+			'name' 		=> 'WordPress SEO by Yoast',
+			'slug' 		=> 'wordpress-seo',
 			'required' 	=> false,
 		),
+
 	);
 
 	// Change this to your theme text domain, used for internationalising strings.
-	$theme_text_domain = 'mightyminnow';
+	$theme_text_domain = 'trestle';
 
 	/**
 	 * Array of configuration settings. Amend each line as needed.
