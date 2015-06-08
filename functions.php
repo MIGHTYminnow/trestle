@@ -33,7 +33,7 @@ require_once dirname( __FILE__ ) . '/includes/classes/class-tgm-plugin-activatio
 // Better Font Awesome Library.
 require_once dirname( __FILE__ ) . '/lib/better-font-awesome-library/better-font-awesome-library.php';
 
-// Utility functions.
+// Dev utility functions.
 require_once dirname( __FILE__ ) . '/includes/functions/utilities.php';
 
 

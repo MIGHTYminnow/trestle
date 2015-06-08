@@ -1,6 +1,6 @@
 <?php
 /**
- * Utility functions.
+ * Development utility functions.
  *
  * @since  2.1.0
  *
