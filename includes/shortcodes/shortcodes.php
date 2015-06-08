@@ -50,10 +50,13 @@ add_shortcode( 'col', 'trestle_column' );
  * @return  string        Shortcode output.
  */
 function trestle_column( $atts, $content = null ) {
-    extract( shortcode_atts( array(
+
+    $atts =shortcode_atts( array(
         'class' => '',
-        ), $atts ) );
-    return '<div class="col ' . $class . '">' . do_shortcode( $content ) . '</div>';
+    ), $atts );
+
+    return '<div class="col ' . $atts['class'] . '">' . do_shortcode( $content ) . '</div>';
+
 }
 
 add_shortcode( 'button', 'trestle_button' );
@@ -67,13 +70,16 @@ add_shortcode( 'button', 'trestle_button' );
  * @return  string        Shortcode output.
  */
 function trestle_button( $atts, $content = null ) {
-    extract( shortcode_atts( array(
+
+    $atts = shortcode_atts( array(
         'href' => '#',
         'target' => '',
         'title' => '',
         'class' => '',
-        ), $atts ) );
-    return '<a class="button ' . $class . '" href="' . $href . '" title="' . $title . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
+    ), $atts );
+
+    return '<a class="button ' . $atts['class'] . '" href="' . $atts['href'] . '" title="' . $atts['title'] . '" target="' . $atts['target'] . '">' . do_shortcode( $content ) . '</a>';
+
 }
 
 add_shortcode( 'date', 'trestle_date' );
@@ -87,15 +93,17 @@ add_shortcode( 'date', 'trestle_date' );
  * @return  string        Shortcode output.
  */
 function trestle_date( $atts ) {
-    extract( shortcode_atts( array(
-        'format' => 'M d, Y',
-    ), $atts ) );
 
-    if ( ! $format ) {
-        $format = 'M d, Y';
+    $atts = shortcode_atts( array(
+        'format' => 'M d, Y',
+    ), $atts );
+
+    if ( ! $atts['format'] ) {
+        $atts['format'] = 'M d, Y';
     }
 
-    return date( $format );
+    return date( $atts['format'] );
+
 }
 
 add_shortcode( 'blockquote', 'trestle_blockquote_shortcode' );
@@ -111,6 +119,7 @@ add_shortcode( 'blockquote', 'trestle_blockquote_shortcode' );
  * @return  string        Shortcode output.
  */
 function trestle_blockquote_shortcode( $atts, $content = null ) {
+
     $atts = shortcode_atts( array(
         'citation'      => '',
     ), $atts );
@@ -134,4 +143,5 @@ function trestle_blockquote_shortcode( $atts, $content = null ) {
     $output = ob_get_clean();
 
     return $output;
+
 }
