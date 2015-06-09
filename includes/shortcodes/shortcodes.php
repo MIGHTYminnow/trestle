@@ -51,7 +51,7 @@ add_shortcode( 'col', 'trestle_column' );
  */
 function trestle_column( $atts, $content = null ) {
 
-    $atts =shortcode_atts( array(
+    $atts = shortcode_atts( array(
         'class' => '',
     ), $atts );
 
