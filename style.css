@@ -2142,7 +2142,7 @@ Media Queries
 
 }
 
-@media (min-width: 480px) {
+@media (min-width: 481px) {
 
 	h1 {
 		font-size: 36px;
@@ -2178,7 +2178,7 @@ Media Queries
 
 /* Responsive Tables CSS
 --------------------------------------------- */
-@media (max-width: 600px) {
+@media (max-width: 601px) {
 
 	table {
 		clear: both;
@@ -2233,7 +2233,7 @@ Media Queries
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 
 	/* General
 	--------------------------------------------- */
@@ -2704,7 +2704,7 @@ Media Queries
 
 }
 
-@media (min-width: 1140px) {
+@media (min-width: 1141px) {
 
 	.custom-background .site-inner {
 		margin: 20px auto;
