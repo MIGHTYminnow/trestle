@@ -330,6 +330,11 @@ a:hover {
 	margin: 0 4px;
 	white-space: nowrap;
 	font-family: FontAwesome;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	-webkit-font-smoothing: antialiased;
 }
 
 .external-link-icons .external-link:after {
@@ -624,18 +629,24 @@ body .green:hover {
 	border-color: #333;
 }
 
-.arrow-right:after {
+.arrow-right:after,
+.arrow-left:before {
 	display: inline-block;
-	content: "\00a0\00a0\f0a9";
 	font-family: FontAwesome;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
 	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.arrow-right:after {
+	content: "\00a0\00a0\f0a9";
 }
 
 .arrow-left:before {
-	display: inline-block;
 	content: "\f0a8\00a0\00a0";
-	font-family: FontAwesome;
-	line-height: 1;
 }
 
 /* Tables
@@ -1295,6 +1306,11 @@ th a.wpv-header-desc:after {
 	margin-left: 0.5em;
 	font-family: FontAwesome;
 	font-size: 0.7em;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	-webkit-font-smoothing: antialiased;
 }
 
 th a.wpv-header-desc:after {
@@ -2583,6 +2599,11 @@ Media Queries
 		margin-left: 8px;
 		font-family: FontAwesome;
 		font-size: .6em;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		font-variant: normal;
+		-webkit-font-smoothing: antialiased;
 	}
 
 	.genesis-nav-menu ul .parent > a:after {
@@ -2592,6 +2613,11 @@ Media Queries
 		margin: 0;
 		font-family: FontAwesome;
 		font-size: .8em;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		font-variant: normal;
+		-webkit-font-smoothing: antialiased;
 		line-height: 1.5;
 	}
 
