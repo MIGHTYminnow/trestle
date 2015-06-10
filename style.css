@@ -609,46 +609,6 @@ body .red:hover {
 	border-color: #555;
 }
 
-body .blue {
-	background-color: #0971b2;
-	border-color: #0971b2;
-}
-
-body .blue:hover {
-	background-color: #333;
-	border-color: #333;
-}
-
-body .green {
-	background-color: #00a476;
-	border-color: #00a476;
-}
-
-body .green:hover {
-	background-color: #333;
-	border-color: #333;
-}
-
-.arrow-right:after,
-.arrow-left:before {
-	display: inline-block;
-	font-family: FontAwesome;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	font-variant: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-}
-
-.arrow-right:after {
-	content: "\00a0\00a0\f0a9";
-}
-
-.arrow-left:before {
-	content: "\f0a8\00a0\00a0";
-}
-
 /* Tables
 --------------------------------------------- */
 
