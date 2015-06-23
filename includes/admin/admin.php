@@ -99,7 +99,7 @@ add_filter( 'tiny_mce_before_init', 'trestle_tiny_mce_before_init' );
 /**
  * Add custom classes to the body of TinyMCE previews.
  *
- * @since  2.1.0
+ * @since  2.2.0
  */
 function trestle_tiny_mce_before_init( $init_array ) {
 
