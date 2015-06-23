@@ -56,7 +56,7 @@ add_action( 'init', 'trestle_load_bfa' );
 function trestle_load_bfa() {
 
 	// Better Font Awesome Library
-	require_once get_stylesheet_directory() . '/lib/better-font-awesome-library/better-font-awesome-library.php';
+	require_once trailingslashit( get_stylesheet_directory() ) . 'lib/better-font-awesome-library/better-font-awesome-library.php';
 
 	// Set the library initialization args.
 	$args = array(
