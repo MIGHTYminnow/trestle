@@ -315,6 +315,26 @@ function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
  * Posts & Pages
 ===========================================*/
 
+add_filter( 'post_class', 'trestle_post_classes' );
+/**
+ * Add extra classes to posts in certain situations.
+ *
+ * @since  2.2.0
+ *
+ * @param array $classes Post classes.
+ * @return array 		 Updated post classes.
+ */
+function trestle_post_classes( $classes ) {
+
+	// If post doesn't have a featured image.
+	if ( ! has_post_thumbnail() ) {
+		$classes[] = 'no-featured-image';
+	}
+
+	return $classes;
+
+}
+
 add_filter( 'wp_revisions_to_keep', 'trestle_update_revisions_number', 10, 2 );
 /**
  * Sets the number of post revisions.
