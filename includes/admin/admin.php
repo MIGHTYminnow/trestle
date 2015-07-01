@@ -211,6 +211,12 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
+			'name' 		=> 'RICG Responsive Images',
+			'slug' 		=> 'ricg-responsive-images',
+			'required' 	=> false,
+		),
+
+		array(
 			'name' 		=> 'Widget Context',
 			'slug' 		=> 'widget-context',
 			'required' 	=> false,
