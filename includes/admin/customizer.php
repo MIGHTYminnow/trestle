@@ -55,44 +55,44 @@ function trestle_customizer_controls( $wp_customize ) {
 
 	// Upload a logo.
 	$wp_customize->add_setting(
-		'trestle-settings[logo_url]',
+		'trestle-settings[logo_id]',
 		array(
-			'default'     		=> trestle_get_option( 'logo_url' ),
+			'default'     		=> trestle_get_option( 'logo_id' ),
 			'type'        		=> 'option',
 			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'esc_url_raw',
+			'sanitize_callback'	=> 'absint',
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Image_Control(
+		new WP_Customize_Media_Control(
 			$wp_customize,
 			'trestle_logo_control',
 			array(
 				'label'      => __( 'Upload a logo', 'trestle' ),
 				'section'    => 'trestle_settings_section',
-				'settings'   => 'trestle-settings[logo_url]',
+				'settings'   => 'trestle-settings[logo_id]',
 			)
 		)
 	);
 
 	// Upload a mobile logo.
 	$wp_customize->add_setting(
-		'trestle-settings[logo_url_mobile]',
+		'trestle-settings[logo_id_mobile]',
 		array(
-			'default'     		=> trestle_get_option( 'logo_url_mobile' ),
+			'default'     		=> trestle_get_option( 'logo_id_mobile' ),
 			'type'        		=> 'option',
 			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'esc_url_raw',
+			'sanitize_callback'	=> 'absint',
 		)
 	);
 	$wp_customize->add_control(
-		new WP_Customize_Image_Control(
+		new WP_Customize_Media_Control(
 			$wp_customize,
 			'trestle_mobile_logo_control',
 			array(
 			   'label'      => __( 'Upload a mobile logo', 'trestle' ),
 			   'section'    => 'trestle_settings_section',
-			   'settings'   => 'trestle-settings[logo_url_mobile]',
+			   'settings'   => 'trestle-settings[logo_id_mobile]',
 			)
 		)
 	);
