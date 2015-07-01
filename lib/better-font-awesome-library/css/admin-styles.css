@@ -8,49 +8,53 @@
  * @copyright 2014 MIGHTYminnow & Mickey Kay
  */
 
-/**	
- * TinyMCE
- */
-
-/* Override TinyMCE rules blocking these native Font Awesome styles */
-#menu_content_content_bfaSelect_menu .icon-fw,
-#menu_content_content_bfaSelect_menu .fa-fw,
-.mce-stack-layout-item .icon-fw,
-.mce-stack-layout-item .fa-fw {
-	display: inline-block;
-	width: 1.2857142857142858em;
-	text-align: center;
-}
-
-/* Override TinyMCE icon font family */
-.fa {
-	font-family: FontAwesome !important;
-}
-
-/* BFA select icon (for versions < TinyMCE 4) */
-[id*="bfaSelect_text"]:before {
-	content: "\f024";
-	margin-right: .5em;
-	font-family: FontAwesome;
-}
-
 /**
- * Settings page
+ * TinyMCE Button & Popup
  */
 
-.bfa-usage-text {
-	padding: 20px;
+.bfa-iconpicker .iconpicker-popover {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	list-style: none;
+	font-size: 14px;
 	background-color: #fff;
-	border: 1px solid #efefef;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	background-clip: padding-box;
 }
 
-.bfa-usage-text h3 {
-	margin-top: 0;
+.bfa-iconpicker .iconpicker-popover .arrow {
+	display: none !important;
 }
 
-.bfa-usage-text .fa,
-.bfa-usage-text .icon {
-	width: 40px;
-	text-align: center;
-	box-sizing: border-box;
+.bfa-iconpicker .iconpicker-item {
+	/* Override some unfortunate WP default admin mobile styles */
+	width: 14px !important;
+	height: 14px !important;
+	padding: 14px !important;
+	font-size: 14px !important;
+	line-height: 1 !important;
+	box-shadow: 0 0 0 1px #ddd !important;
+}
+
+.bfa-iconpicker input[type="search"] {
+	width: 100%;
+}
+
+.bfa-iconpicker .iconpicker-popover.popover {
+	width: 253px;
+}
+
+.bfa-iconpicker .iconpicker-component i {
+	display: none;
 }
