@@ -216,42 +216,55 @@ add_filter( 'genesis_seo_title', 'trestle_do_logos', 10, 3 );
  */
 function trestle_do_logos( $title, $inside, $wrap ) {
 
-	$logo_url = trestle_get_option( 'logo_url' );
-	$logo_url_mobile = trestle_get_option( 'logo_url_mobile' );
+	$logo_id = trestle_get_option( 'logo_id' );
+	$logo_id_mobile = trestle_get_option( 'logo_id_mobile' );
 	$logo_html = '';
 
 	// Regular logo.
-	if ( $logo_url ) {
+	if ( $logo_id ) {
 
-		// Default logo class.
-		$classes = array('logo-full');
+		// Default logo classes.
+		$classes = array(
+			'logo',
+			'logo-full'
+		);
 
 		// If no mobile logo is specified, make regular logo act as mobile logo too.
-		if( ! $logo_url_mobile )
+		if( ! $logo_id_mobile ) {
 			$classes[] = 'show';
+		}
 
-		$logo_html .= sprintf( '<img class="logo %s" alt="%s" src="%s" />',
-			implode(' ', $classes),
-			esc_attr( get_bloginfo( 'name' ) ),
-			$logo_url
+		// Prepare the classes.
+		$logo_attr = array(
+			'class'	=> implode( $classes, ' ' ),
 		);
+
+		// Build the <img> tag.
+		$logo_html .= wp_get_attachment_image( $logo_id, 'full', false, $logo_attr );
+
 	}
 
 	// Mobile logo.
-	if ( $logo_url_mobile ) {
+	if ( $logo_id_mobile ) {
 
 		// Default mobile logo class.
-		$classes = array('logo-mobile');
+		$classes = array(
+			'logo',
+			'logo-mobile'
+		);
 
 		// If no regular logo is specified, make mobile logo act as regular logo too.
-		if( ! $logo_url )
+		if( ! $logo_id )
 			$classes[] = 'show';
 
-		$logo_html .= sprintf( '<img class="logo %s" alt="%s" src="%s" />',
-			implode(' ', $classes),
-			esc_attr( get_bloginfo( 'name' ) ),
-			$logo_url_mobile
+		// Prepare the classes.
+		$logo_attr = array(
+			'class'	=> implode( $classes, ' ' ),
 		);
+
+		// Build the <img> tag.
+		$logo_html .= wp_get_attachment_image( $logo_id_mobile, 'full', false, $logo_attr );
+
 	}
 
 	if ( $logo_html ) {

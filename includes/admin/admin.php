@@ -19,8 +19,8 @@ function trestle_settings_defaults() {
 	// Trestle default key/value pairs.
 	$trestle_defaults = array(
 		'layout'				=> 'solid',
-		'logo_url'				=> '',
-		'logo_url_mobile'		=> '',
+		'logo_id'				=> '',
+		'logo_id_mobile'		=> '',
 		'favicon_url'			=> '',
 		'nav_primary_location'	=> 'full',
 		'mobile_nav_toggle'		=> 'small-icon',
@@ -207,6 +207,12 @@ function trestle_register_required_plugins() {
 		array(
 			'name' 		=> 'Responsive Video Embeds',
 			'slug' 		=> 'responsive-video-embeds',
+			'required' 	=> false,
+		),
+
+		array(
+			'name' 		=> 'RICG Responsive Images',
+			'slug' 		=> 'ricg-responsive-images',
 			'required' 	=> false,
 		),
 
