@@ -268,7 +268,7 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 	}
 
 	if ( $logo_html ) {
-		$inside .= sprintf( '<a href="%s" title="%s">%s</a>',
+		$inside .= sprintf( '<a href="%s" title="%s" class="logos">%s</a>',
 			trailingslashit( home_url() ),
 			esc_attr( get_bloginfo( 'name' ) ),
 			$logo_html
