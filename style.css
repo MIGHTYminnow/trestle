@@ -158,6 +158,7 @@ body.mce-content-body {
 	float: none;
 	-webkit-font-smoothing: auto !important;
 	font-smoothing: auto !important;
+	backround: #fff;
 }
 
 body.bubble {
