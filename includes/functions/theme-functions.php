@@ -195,7 +195,7 @@ function trestle_body_classes( $classes ) {
 	}
 
 	// Add logo class.
-	if ( trestle_get_option( 'logo_url' ) || trestle_get_option( 'logo_url_mobile' ) ) {
+	if ( trestle_get_option( 'logo_id' ) || trestle_get_option( 'logo_id_mobile' ) ) {
 		$classes[] = 'has-logo';
 	}
 
