@@ -107,8 +107,8 @@ jQuery( document ).ready( function( $ ) {
 	var openIcon = '-';
 
 	// Insert the icons into the nav where appropriate.
-	$( '.nav-primary' ).find( '.genesis-nav-menu .parent:not( .current-menu-item, .current_page_item, .current_page_parent, .current_page_ancestor) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
-	$( '.nav-primary' ).find( '.genesis-nav-menu .parent.current-menu-item > a, .genesis-nav-menu .parent.current_page_item > a, .genesis-nav-menu .parent.current_page_parent > a, .genesis-nav-menu .parent.current_page_ancestor > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
+	$( '.nav-primary' ).find( '.genesis-nav-menu .parent:not( [class*="current"] ) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
+    $( '.nav-primary' ).find( '.genesis-nav-menu .parent[class*="current"] > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
 
 	// Mobile navigation expand/contract functionality.
 	$( '.sub-icon' ).click( function( event ) {
