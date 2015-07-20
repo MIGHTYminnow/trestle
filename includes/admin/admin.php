@@ -19,8 +19,8 @@ function trestle_settings_defaults() {
 	// Trestle default key/value pairs.
 	$trestle_defaults = array(
 		'layout'				=> 'solid',
-		'logo_url'				=> '',
-		'logo_url_mobile'		=> '',
+		'logo_id'				=> '',
+		'logo_id_mobile'		=> '',
 		'favicon_url'			=> '',
 		'nav_primary_location'	=> 'full',
 		'mobile_nav_toggle'		=> 'small-icon',
@@ -93,6 +93,33 @@ function trestle_admin_actions() {
 	// Include the main stylesheet in the editor.
 	add_editor_style( get_stylesheet_uri() );
 
+}
+
+add_filter( 'tiny_mce_before_init', 'trestle_tiny_mce_before_init' );
+/**
+ * Add custom classes to the body of TinyMCE previews.
+ *
+ * @since  2.2.0
+ */
+function trestle_tiny_mce_before_init( $init_array ) {
+
+	global $post;
+
+	$screen = get_current_screen();
+
+	// If we're on an edit screen, add an appropriate 'post-id-XX' or 'page-id-XX'.
+	if ( 'edit' == $screen->parent_base ) {
+
+		// Custom post types always use 'post', so we only need to handle pages.
+		$post_type = ( 'page' == $post->post_type ) ? 'page' : 'post';
+
+		$init_array['body_class'] .= sprintf( ' %s-id-%s',
+			$post_type,
+			$post->ID
+		);
+	}
+
+	return $init_array;
 }
 
 add_action( 'tgmpa_register', 'trestle_register_required_plugins' );
@@ -180,6 +207,12 @@ function trestle_register_required_plugins() {
 		array(
 			'name' 		=> 'Responsive Video Embeds',
 			'slug' 		=> 'responsive-video-embeds',
+			'required' 	=> false,
+		),
+
+		array(
+			'name' 		=> 'RICG Responsive Images',
+			'slug' 		=> 'ricg-responsive-images',
 			'required' 	=> false,
 		),
 

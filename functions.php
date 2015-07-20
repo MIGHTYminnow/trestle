@@ -30,9 +30,6 @@ require_once dirname( __FILE__ ) . '/includes/widget-areas/widget-areas.php';
 // Plugin activation class.
 require_once dirname( __FILE__ ) . '/lib/class-tgm-plugin-activation.php';
 
-// Better Font Awesome Library.
-require_once dirname( __FILE__ ) . '/lib/better-font-awesome-library/better-font-awesome-library.php';
-
 // Dev utility functions.
 require_once dirname( __FILE__ ) . '/includes/utilities/utilities.php';
 

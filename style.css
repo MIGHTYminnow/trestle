@@ -151,6 +151,10 @@ body {
 	line-height: 1.625;
 }
 
+body.bubble {
+	background-color: #f5f5f5;
+}
+
 /* Used in the editor */
 body.mce-content-body {
 	width: auto;
@@ -158,10 +162,7 @@ body.mce-content-body {
 	float: none;
 	-webkit-font-smoothing: auto !important;
 	font-smoothing: auto !important;
-}
-
-body.bubble {
-	background-color: #f5f5f5;
+	background: #fff;
 }
 
 a,
@@ -609,46 +610,6 @@ body .red:hover {
 	border-color: #555;
 }
 
-body .blue {
-	background-color: #0971b2;
-	border-color: #0971b2;
-}
-
-body .blue:hover {
-	background-color: #333;
-	border-color: #333;
-}
-
-body .green {
-	background-color: #00a476;
-	border-color: #00a476;
-}
-
-body .green:hover {
-	background-color: #333;
-	border-color: #333;
-}
-
-.arrow-right:after,
-.arrow-left:before {
-	display: inline-block;
-	font-family: FontAwesome;
-	font-weight: normal;
-	font-stretch: normal;
-	font-style: normal;
-	font-variant: normal;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-}
-
-.arrow-right:after {
-	content: "\00a0\00a0\f0a9";
-}
-
-.arrow-left:before {
-	content: "\f0a8\00a0\00a0";
-}
-
 /* Tables
 --------------------------------------------- */
 
@@ -906,6 +867,35 @@ img.alignright,
 .widget_calendar td,
 .widget_calendar th {
 	text-align: center;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
 }
 
 /* Genesis
