@@ -432,7 +432,7 @@ function trestle_read_more_link( $default_text ) {
  * @param int $image_id ID of image to check.
  * @param string $image_size Slug of image size to check for.
  *
- * @return [type] [description]
+ * @return true|false Whether or not the image has the specified size generated.
  */
 function trestle_image_has_size( $image_id, $image_size = null ) {
 
