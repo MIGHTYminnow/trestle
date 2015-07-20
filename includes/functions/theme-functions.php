@@ -418,3 +418,42 @@ function trestle_read_more_link( $default_text ) {
 		return $default_text;
 	}
 }
+
+
+/*===========================================
+ * Helper Functions
+===========================================*/
+
+/**
+ * Check if image has specified image size.
+ *
+ * @since 2.2.0
+ *
+ * @param int $image_id ID of image to check.
+ * @param string $image_size Slug of image size to check for.
+ *
+ * @return [type] [description]
+ */
+function trestle_image_has_size( $image_id, $image_size = null ) {
+
+	global $_wp_additional_image_sizes;
+
+	// Return with error if no image_size is specified.
+	if ( ! $image_size ) {
+		return new WP_Error( 'no_image_size_specified', __( 'Please specify an image size.', 'trestle' ) );
+	}
+
+	// Get the attributes for the specified image size.
+	$image_size_atts = $_wp_additional_image_sizes[ $image_size ];
+
+	// Get data for specified image ID and size.
+	$img_data = wp_get_attachment_image_src( $image_id, $image_size );
+
+	// Check if the dimensions match.
+	if ( $img_data[1] == $image_size_atts['width'] && $img_data[2] == $image_size_atts['height'] ) {
+		return true;
+	}
+
+	return false;
+
+}
