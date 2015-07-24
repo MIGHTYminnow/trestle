@@ -470,16 +470,16 @@ function trestle_image_has_size( $image_id, $image_size = null ) {
  */
 function trestle_is_current_or_descendant_post( $post_id = '', $target_id = '' ) {
 
-    // If the current post is the target post, return true.
-    if ( $post_id == $target_id ) {
-        return true;
-    }
+	// If the current post is the target post, return true.
+	if ( $post_id == $target_id ) {
+		return true;
+	}
 
-    // If the current post is a descendant of the target post.
-    if ( in_array( $target_id, get_post_ancestors( $post_id ) ) ) {
-        return true;
-    }
+	// If the current post is a descendant of the target post.
+	if ( in_array( $target_id, get_post_ancestors( $post_id ) ) ) {
+		return true;
+	}
 
-    return false;
+	return false;
 
 }
