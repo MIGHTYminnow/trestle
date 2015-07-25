@@ -1,348 +1,517 @@
+# Copyright (C) 2015 MIGHTYminnow
+# This file is distributed under the same license as the Trestle package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Trestle\n"
-"POT-Creation-Date: 2014-01-16 11:55-0800\n"
-"PO-Revision-Date: 2014-01-16 11:55-0800\n"
-"Last-Translator: Mickey <mickey@mightyminnow.com>\n"
-"Language-Team: MIGHTYminnow <info@mightyminnow.com>\n"
-"Language: en\n"
+"Project-Id-Version: Trestle 2.2.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
+"POT-Creation-Date: 2015-07-25 00:14:21+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
-"X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e;_x;_n\n"
-"X-Poedit-SearchPath-0: ..\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.2\n"
 
-#: ../includes/admin/admin-functions.php:38
-msgid "Navigation"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:39
+#: includes/admin/admin.php:28
 msgid "Read&nbsp;More&nbsp;&raquo;"
 msgstr ""
 
-#: ../includes/admin/admin-functions.php:121
-msgid "Trestle Settings <small>by</small>"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:135
-msgid "Layout"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:143
-msgid "Primary Navigation"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:145
-msgid ""
-"Automatically generate nav menu (replaces custom/manual menu with auto-"
-"generated menu)"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:146
-msgid "Include home link"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:149
-msgid "Text for mobile navigation button (shortcodes can be included):"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:153
-msgid "Primary Navigation Extras"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:154
-msgid ""
-"Display custom navigation extras content (overrides standard Genesis "
-"navigation extras)"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:156
-msgid "Custom navigation extras text:"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:160
-msgid "Blog/Posts"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:162
-msgid "Custom read more link text"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:165
-msgid "Number of post revisions"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:176
-msgid "Post Info & Meta"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:177
-msgid "Manually select where to show Post Info & Meta"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:180
-msgid "Show Post Info on:"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:190 ../includes/admin/admin-functions.php:210
-#, php-format
-msgid "%s (single)"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:193 ../includes/admin/admin-functions.php:213
-#, php-format
-msgid "%s (archive)"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:200
-msgid "Show Post Meta on:"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:221
-msgid "Footer Widgets"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:223
-msgid "Number"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:233
-msgid "Link Icons"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:235
-msgid "Add icons to external links"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:236
-msgid "Add icons to email links"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:237
-msgid "Add icons to .pdf links"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:238
-msgid "Add icons to .doc links"
-msgstr ""
-
-#: ../includes/admin/admin-functions.php:398
-#: ../includes/classes/class-tgm-plugin-activation.php:155
+#: includes/admin/admin.php:271 lib/class-tgm-plugin-activation.php:161
 msgid "Install Required Plugins"
 msgstr ""
 
-#: ../includes/admin/admin-functions.php:399
-#: ../includes/classes/class-tgm-plugin-activation.php:156
+#: includes/admin/admin.php:272 lib/class-tgm-plugin-activation.php:162
 msgid "Install Plugins"
 msgstr ""
 
-#: ../includes/admin/admin-functions.php:400
-#: ../includes/classes/class-tgm-plugin-activation.php:157
-#, php-format
+#: includes/admin/admin.php:273 lib/class-tgm-plugin-activation.php:163
 msgid "Installing Plugin: %s"
 msgstr ""
 
-#: ../includes/admin/admin-functions.php:401
+#: includes/admin/admin.php:274
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
-#: ../includes/admin/admin-functions.php:412
-#: ../includes/classes/class-tgm-plugin-activation.php:169
+#: includes/admin/admin.php:275 lib/class-tgm-plugin-activation.php:165
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:276
+msgid "Recommended plugin: %1$s."
+msgid_plural "Recommended plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:277 lib/class-tgm-plugin-activation.php:167
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:278 lib/class-tgm-plugin-activation.php:168
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:279 lib/class-tgm-plugin-activation.php:169
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:280 lib/class-tgm-plugin-activation.php:170
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:281 lib/class-tgm-plugin-activation.php:171
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:282 lib/class-tgm-plugin-activation.php:172
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:283 lib/class-tgm-plugin-activation.php:173
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:284
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/admin.php:285 lib/class-tgm-plugin-activation.php:175
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: ../includes/admin/admin-functions.php:413
-#: ../includes/classes/class-tgm-plugin-activation.php:171
-#: ../includes/classes/class-tgm-plugin-activation.php:1840
+#: includes/admin/admin.php:286 lib/class-tgm-plugin-activation.php:177
+#: lib/class-tgm-plugin-activation.php:1956
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: ../includes/admin/admin-functions.php:414
-#, php-format
+#: includes/admin/admin.php:287
 msgid "All plugins installed and activated successfully. %s"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:158
+#: includes/admin/customizer.php:28
+msgid "Trestle Settings"
+msgstr ""
+
+#: includes/admin/customizer.php:47
+msgid "Layout"
+msgstr ""
+
+#: includes/admin/customizer.php:50
+msgid "Bubble"
+msgstr ""
+
+#: includes/admin/customizer.php:51
+msgid "Solid"
+msgstr ""
+
+#: includes/admin/customizer.php:71
+msgid "Upload a logo"
+msgstr ""
+
+#: includes/admin/customizer.php:94
+msgid "Upload a mobile logo"
+msgstr ""
+
+#: includes/admin/customizer.php:117
+msgid "Upload a favicon"
+msgstr ""
+
+#: includes/admin/customizer.php:138
+msgid "Menu style"
+msgstr ""
+
+#: includes/admin/customizer.php:141
+msgid "Full Width"
+msgstr ""
+
+#: includes/admin/customizer.php:142
+msgid "Header Right"
+msgstr ""
+
+#: includes/admin/customizer.php:161
+msgid "Mobile Menu Toggle"
+msgstr ""
+
+#: includes/admin/customizer.php:164
+msgid "Small Icon"
+msgstr ""
+
+#: includes/admin/customizer.php:165
+msgid "Big Button"
+msgstr ""
+
+#: includes/admin/customizer.php:184
+msgid "Add search to mobile navigation"
+msgstr ""
+
+#: includes/admin/customizer.php:204
+msgid "Custom read more link text"
+msgstr ""
+
+#: includes/admin/customizer.php:223
+msgid "Number of post revisions"
+msgstr ""
+
+#: includes/admin/customizer.php:226
+msgid "Unlimited"
+msgstr ""
+
+#: includes/admin/customizer.php:256
+msgid "Number of footer widgets"
+msgstr ""
+
+#: includes/admin/customizer.php:283
+msgid "Icon links"
+msgstr ""
+
+#: includes/admin/customizer.php:302
+msgid "Add icons to external links"
+msgstr ""
+
+#: includes/admin/customizer.php:321
+msgid "Add icons to email links"
+msgstr ""
+
+#: includes/admin/customizer.php:340
+msgid "Add icons to .pdf links"
+msgstr ""
+
+#: includes/admin/customizer.php:359
+msgid "Add icons to .doc links"
+msgstr ""
+
+#: includes/functions/theme-functions.php:99
+msgid "Navigation"
+msgstr ""
+
+#: includes/functions/theme-functions.php:443
+msgid "Please specify an image size."
+msgstr ""
+
+#: includes/widget-areas/widget-areas.php:20
+msgid "Sample Widget Area"
+msgstr ""
+
+#: includes/widget-areas/widget-areas.php:21
+msgid "This is the sample widget area"
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:493
+msgid "The jsDelivr API servers appear to be temporarily unavailable."
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1042
+msgid "Insert Icon"
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1062
+msgid "Better Font Awesome"
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1068
+msgid "API Error"
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1070
+msgid ""
+"The attempt to reach the jsDelivr API server failed with the following "
+"error: %s"
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1080
+msgid "Remote CSS Error"
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1082
+msgid ""
+"The attempt to fetch the remote Font Awesome stylesheet failed with the "
+"following error: %s %s The embedded fallback Font Awesome will be used "
+"instead (version: %s)."
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1092
+msgid ""
+"<b>Don't worry! Better Font Awesome will still render using the included "
+"fallback version:</b> "
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1096
+msgid "Solution"
+msgstr ""
+
+#: lib/better-font-awesome-library/better-font-awesome-library.php:1098
+msgid ""
+"This may be the result of a temporary server or connectivity issue which "
+"will resolve shortly. However if the problem persists please file a support "
+"ticket on the %splugin forum%s, citing the errors listed above. "
+msgstr ""
+
+#: lib/class-tgm-plugin-activation.php:164
 msgid "Something went wrong."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:170
+#: lib/class-tgm-plugin-activation.php:166
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-tgm-plugin-activation.php:174
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-tgm-plugin-activation.php:176
 msgid "Return to the dashboard"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:172
-#: ../includes/classes/class-tgm-plugin-activation.php:1538
+#: lib/class-tgm-plugin-activation.php:178
+#: lib/class-tgm-plugin-activation.php:1644
 msgid "The following plugin was activated successfully:"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:173
-#, php-format
+#: lib/class-tgm-plugin-activation.php:179
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:174
+#: lib/class-tgm-plugin-activation.php:180
 msgid "Dismiss this notice"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1085
-msgid "External Link"
+#: lib/class-tgm-plugin-activation.php:532
+#: lib/class-tgm-plugin-activation.php:2173
+msgid "Return to the Dashboard"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1090
+#: lib/class-tgm-plugin-activation.php:1167
+#: lib/class-tgm-plugin-activation.php:1348
 msgid "Private Repository"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1093
+#: lib/class-tgm-plugin-activation.php:1170
+#: lib/class-tgm-plugin-activation.php:1351
 msgid "Pre-Packaged"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1097
+#: lib/class-tgm-plugin-activation.php:1175
 msgid "WordPress Repository"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1100
+#: lib/class-tgm-plugin-activation.php:1178
 msgid "Required"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1100
+#: lib/class-tgm-plugin-activation.php:1178
 msgid "Recommended"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1103
+#: lib/class-tgm-plugin-activation.php:1181
 msgid "Not Installed"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1105
+#: lib/class-tgm-plugin-activation.php:1183
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1275
-#, php-format
+#: lib/class-tgm-plugin-activation.php:1288
+#: lib/class-tgm-plugin-activation.php:1409
+msgid "Install"
+msgstr ""
+
+#: lib/class-tgm-plugin-activation.php:1312
+#: lib/class-tgm-plugin-activation.php:1410
+msgid "Activate"
+msgstr ""
+
+#: lib/class-tgm-plugin-activation.php:1372
 msgid ""
 "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
 "Dashboard\">Return to the Dashboard</a>"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1291
+#: lib/class-tgm-plugin-activation.php:1388
 msgid "Plugin"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1292
+#: lib/class-tgm-plugin-activation.php:1389
 msgid "Source"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1293
+#: lib/class-tgm-plugin-activation.php:1390
 msgid "Type"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1294
+#: lib/class-tgm-plugin-activation.php:1391
 msgid "Status"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1312
-msgid "Install"
-msgstr ""
-
-#: ../includes/classes/class-tgm-plugin-activation.php:1313
-msgid "Activate"
-msgstr ""
-
-#: ../includes/classes/class-tgm-plugin-activation.php:1823
+#: lib/class-tgm-plugin-activation.php:1939
 msgid "Install package not available."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1824
-#, php-format
+#: lib/class-tgm-plugin-activation.php:1940
 msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1825
+#: lib/class-tgm-plugin-activation.php:1941
 msgid "Unpacking the package&#8230;"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1826
+#: lib/class-tgm-plugin-activation.php:1942
 msgid "Installing the plugin&#8230;"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1827
+#: lib/class-tgm-plugin-activation.php:1943
 msgid "Plugin install failed."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1828
+#: lib/class-tgm-plugin-activation.php:1944
 msgid "Plugin installed successfully."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1839
+#: lib/class-tgm-plugin-activation.php:1955
 msgid "Plugin activation failed."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1949
+#: lib/class-tgm-plugin-activation.php:2069
 msgid ""
-"The installation and activation process is starting. This process may take a "
-"while on some hosts, so please be patient."
+"The installation and activation process is starting. This process may take "
+"a while on some hosts, so please be patient."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1950
-#, php-format
+#: lib/class-tgm-plugin-activation.php:2070
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1950
-#: ../includes/classes/class-tgm-plugin-activation.php:1959
+#: lib/class-tgm-plugin-activation.php:2070
+#: lib/class-tgm-plugin-activation.php:2079
 msgid "Show Details"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1950
-#: ../includes/classes/class-tgm-plugin-activation.php:1959
+#: lib/class-tgm-plugin-activation.php:2070
+#: lib/class-tgm-plugin-activation.php:2079
 msgid "Hide Details"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1951
+#: lib/class-tgm-plugin-activation.php:2071
 msgid "All installations and activations have been completed."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1952
-#, php-format
+#: lib/class-tgm-plugin-activation.php:2072
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1956
+#: lib/class-tgm-plugin-activation.php:2076
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1957
-#, php-format
+#: lib/class-tgm-plugin-activation.php:2077
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1958
-#, php-format
+#: lib/class-tgm-plugin-activation.php:2078
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1959
-#, php-format
+#: lib/class-tgm-plugin-activation.php:2079
 msgid "%1$s installed successfully."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1960
+#: lib/class-tgm-plugin-activation.php:2080
 msgid "All installations have been completed."
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:1961
-#, php-format
+#: lib/class-tgm-plugin-activation.php:2081
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../includes/classes/class-tgm-plugin-activation.php:2052
-msgid "Return to the Dashboard"
+#: page_archive_all_pages.php:35
+msgid "Pages:"
 msgstr ""
 
-#: ../includes/functions/theme-functions.php:136
-msgid "Trestle Auto Nav Placeholder"
+#: page_archive_all_pages.php:40
+msgid "Categories:"
+msgstr ""
+
+#: page_archive_all_pages.php:45
+msgid "Authors:"
+msgstr ""
+
+#: page_archive_all_pages.php:50
+msgid "Monthly:"
+msgstr ""
+
+#: page_archive_all_pages.php:55
+msgid "Recent Posts:"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Trestle"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://demo.mightyminnow.com/theme/trestle"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Trestle is a Genesis child theme for developers based on the default <a "
+"href=\"http://www.genesisframework.com/\">Genesis 2.0 Sample Theme</a>. It "
+"features mobile first CSS, helpful theme options, and lots more tools to "
+"support your development process."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "MIGHTYminnow"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.mightyminnow.com/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Archive - All Pages"
 msgstr ""

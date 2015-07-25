@@ -1,0 +1,20 @@
+{
+  "title": "Trestle",
+  "description": "A handy boilerplate child theme for serious Genesis developers.",
+  "version": "2.2.0",
+  "homepage": "https://github.com/MIGHTYminnow/trestle",
+  "author": {
+    "name": "MIGHTYminnow Web Studio & School",
+    "email": "info@mightyminnow.com",
+    "url": "http://mightyminnow.com/plugin-landing-page?utm_source=trestle&utm_medium=theme&utm_campaign=Trestle"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "load-grunt-tasks": "latest",
+    "grunt-dev-update": "latest",
+    "grunt-prompt": "latest",
+    "grunt-text-replace": "latest",
+    "grunt-wp-i18n": "latest",
+    "grunt-wp-css": "latest"
+  }
+}
