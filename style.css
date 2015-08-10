@@ -1100,7 +1100,7 @@ div.gform_wrapper form .gfield_checkbox li {
 	margin: 0;
 }
 
-div.gform_wrapper ul.gfield_radio li { /* Prevent radio optoin from being cut off by default GF CSS */
+div.gform_wrapper ul.gfield_radio li { /* Prevent radio option from being cut off by default GF CSS */
 	padding-left: 1px !important;
 }
 
