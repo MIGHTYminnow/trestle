@@ -32,8 +32,8 @@ class Better_Font_Awesome_Library {
 	/**
 	 * Better Font Awesome Library slug.
 	 *
-	 * @since  1.0.0 
-	 * 
+	 * @since  1.0.0
+	 *
 	 * @var    string
 	 */
 	const SLUG = 'bfa';
@@ -42,25 +42,25 @@ class Better_Font_Awesome_Library {
 	 * Better Font Awesome Library version slug.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.4.0';
 
 	/**
 	 * jsDelivr API URL for Font Awesome version info.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	const JSDELIVR_API_URL = 'http://api.jsdelivr.com/v1/jsdelivr/libraries/fontawesome/?fields=versions,lastversion';
-	
+
 	/**
 	 * Initialization args.
 	 *
-	 * @since  1.0.0 
-	 * 
+	 * @since  1.0.0
+	 *
 	 * @var    array
 	 */
 	private $args;
@@ -69,7 +69,7 @@ class Better_Font_Awesome_Library {
 	 * Default args to use if any $arg isn't specified.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    array
 	 */
 	private $default_args = array(
@@ -83,6 +83,15 @@ class Better_Font_Awesome_Library {
 	);
 
 	/**
+	 * Root URL of the library.
+	 *
+	 * @since  1.0.4
+	 *
+	 * @var    string
+	 */
+	private $root_url;
+
+	/**
 	 * Args for wp_remote_get() calls.
 	 *
 	 * @since  1.0.0
@@ -90,14 +99,15 @@ class Better_Font_Awesome_Library {
 	 * @var    array
 	 */
 	private $wp_remote_get_args = array(
-		'timeout' => 10
+		'timeout'   => 10,
+		'sslverify' => false,
 	);
 
 	/**
 	 * Array to hold the jsDelivr API data.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	private $api_data = array();
@@ -106,7 +116,7 @@ class Better_Font_Awesome_Library {
 	 * Version of Font Awesome being used.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	private $font_awesome_version;
@@ -115,7 +125,7 @@ class Better_Font_Awesome_Library {
 	 * Font Awesome stylesheet URL.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	private $stylesheet_url;
@@ -124,7 +134,7 @@ class Better_Font_Awesome_Library {
 	 * Font Awesome CSS.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	private $css;
@@ -133,7 +143,7 @@ class Better_Font_Awesome_Library {
 	 * Data associated with the local fallback version of Font Awesome.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	private $fallback_data = array(
@@ -148,7 +158,7 @@ class Better_Font_Awesome_Library {
 	 * Array of available Font Awesome icon slugs.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	private $icons = array();
@@ -157,7 +167,7 @@ class Better_Font_Awesome_Library {
 	 * Font Awesome prefix to be used ('icon' or 'fa').
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    string
 	 */
 	private $prefix;
@@ -166,7 +176,7 @@ class Better_Font_Awesome_Library {
 	 * Array to track errors and wp_remote_get() failures.
 	 *
 	 * @since  1.0.0
-	 * 
+	 *
 	 * @var    array
 	 */
 	private $errors = array();
@@ -189,7 +199,7 @@ class Better_Font_Awesome_Library {
 	 * @return  Better_Font_Awesome_Library  The BFAL object.
 	 */
 	public static function get_instance( $args = array() ) {
-		
+
 		// If the single instance hasn't been set, set it now.
 		if ( null == self::$instance ) {
 			self::$instance = new self( $args );
@@ -238,6 +248,12 @@ class Better_Font_Awesome_Library {
 		// Get stylesheet and generate list of available icons in Font Awesome stylesheet.
 		$this->setup_stylesheet_data();
 
+		// Add Font Awesome and/or custom CSS to the editor.
+		$this->add_editor_styles();
+
+		// Output any necessary admin notices.
+		add_action( 'admin_notices', array( $this, 'do_admin_notice' ) );
+
 		/**
 		 * Remove existing Font Awesome CSS and shortcodes if needed.
 		 *
@@ -247,9 +263,9 @@ class Better_Font_Awesome_Library {
 		 * remove them.
 		 */
 		if ( $this->args['remove_existing_fa'] ) {
-			
+
 			add_action( 'wp_enqueue_scripts', array( $this, 'remove_font_awesome_css' ), 15 );
-			add_action( 'init', array( $this, 'remove_icon_shortcode' ), 15 );
+			add_action( 'init', array( $this, 'remove_icon_shortcode' ), 20 );
 
 		}
 
@@ -278,23 +294,18 @@ class Better_Font_Awesome_Library {
 		 * Awesome CSS and shortcodes.
 		 */
 		if ( $this->args['load_shortcode'] || $this->args['load_tinymce_plugin'] ) {
-			add_action( 'init', array( $this, 'add_icon_shortcode' ), 15 );
+			add_action( 'init', array( $this, 'add_icon_shortcode' ), 20 );
 		}
-
-		// Add Font Awesome and/or custom CSS to the editor.
-		add_action( 'init', array( $this, 'add_editor_styles' ) );
 
 		// Load TinyMCE functionality.
 		if ( $this->args['load_tinymce_plugin'] ) {
-		
-			add_action( 'admin_init', array( $this, 'add_tinymce_components' ) );
-			add_action( 'admin_head', array( $this, 'output_admin_head_variables' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'register_custom_admin_css' ), 15 );
+
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+
+			// Add shortcode insertion button.
+        	add_action( 'media_buttons', array( $this, 'add_insert_shortcode_button' ), 99 );
 
 		}
-
-		// Output any necessary admin notices.
-		add_action( 'admin_notices', array( $this, 'do_admin_notice' ) );
 
 	}
 
@@ -355,7 +366,7 @@ class Better_Font_Awesome_Library {
 	 */
 	function setup_root_url() {
 
-		// Get BFA directory and theme root directory paths.	
+		// Get BFA directory and theme root directory paths.
 		$bfa_directory = dirname(__FILE__);
 		$theme_directory = get_stylesheet_directory();
 		$plugin_dir = plugin_dir_url( __FILE__ );
@@ -383,8 +394,8 @@ class Better_Font_Awesome_Library {
 
 			$this->root_url = trailingslashit( plugin_dir_url( __FILE__ ) );
 
-		}	
-				
+		}
+
 	}
 
 	/**
@@ -446,11 +457,11 @@ class Better_Font_Awesome_Library {
 	private function fetch_api_data( $url ) {
 
 		if ( false === ( $response = get_transient( self::SLUG . '-api-versions' ) ) ) {
-			
+
 			$response = wp_remote_get( $url, $this->wp_remote_get_args );
 
 			if ( 200 == wp_remote_retrieve_response_code( $response ) ) {
-				
+
 				// Decode the API data and grab the versions info.
 				$json_data = json_decode( wp_remote_retrieve_body( $response ) );
 				$response = $json_data[0];
@@ -473,7 +484,7 @@ class Better_Font_Awesome_Library {
 				$response = '';
 
 			} elseif ( isset( $response['response'] ) ) { // Check for 404 and other non-WP_ERROR codes
-				
+
 				$this->set_error( 'api', $response['response']['code'], $response['response']['message'] . " (URL: $url)" );
 				$response = '';
 
@@ -538,9 +549,9 @@ class Better_Font_Awesome_Library {
 
 		$css_transient_latest_version = $this->get_css_transient_latest_version();
 
-		if ( version_compare( $css_transient_latest_version, $this->fallback_data['version'], '>' ) ) { 
+		if ( version_compare( $css_transient_latest_version, $this->fallback_data['version'], '>' ) ) {
 			return $css_transient_latest_version;
-		} else { 
+		} else {
 			return $this->fallback_data['version'];
 		}
 
@@ -557,7 +568,7 @@ class Better_Font_Awesome_Library {
 	private function get_css_transient_latest_version() {
 
 		$transient_css_array = get_transient( self::SLUG . '-css' );
-		
+
 		if ( ! empty( $transient_css_array ) ) {
 			return max( array_keys( $transient_css_array ) );
 		} else {
@@ -606,14 +617,14 @@ class Better_Font_Awesome_Library {
 	 *
 	 * @return  string  $response  Font Awesome CSS, from either:
 	 *                             1. transient,
-	 *                             2. wp_remote_get(), or 
+	 *                             2. wp_remote_get(), or
 	 *                             3. fallback CSS.
 	 */
 	private function get_css( $url, $version ) {
-		
+
 		// First try getting the transient CSS.
 		$response = $this->get_transient_css( $version );
-		
+
 		// Next, try fetching the CSS from the remote jsDelivr CDN.
 		if ( ! $response ) {
 			$response = $this->get_remote_css( $url, $version );
@@ -663,7 +674,7 @@ class Better_Font_Awesome_Library {
 	 * @return  string  		  Transient CSS if it exists, otherwise null.
 	 */
 	private function get_transient_css( $version ) {
-		
+
 		$transient_css_array = get_transient( self::SLUG . '-css' );
 		return isset( $transient_css_array[ $version ] ) ? $transient_css_array[ $version ] : '';
 
@@ -685,13 +696,13 @@ class Better_Font_Awesome_Library {
 		// Get the remote Font Awesome CSS.
 		$url = set_url_scheme( $url );
 		$response = wp_remote_get( $url, $this->wp_remote_get_args );
-		
+
 		/**
 		 * If fetch was successful, return the remote CSS, and set the CSS
 		 * transient for this version. Otherwise, return a WP_Error object.
 		 */
 		if ( 200 == wp_remote_retrieve_response_code( $response ) ) {
-			
+
 			$response = wp_remote_retrieve_body( $response );
 			$this->set_css_transient( $version, $response );
 
@@ -723,7 +734,7 @@ class Better_Font_Awesome_Library {
 		 * Awesome version.
 		 */
 		$transient_css_array = get_transient( self::SLUG . '-css' );
-		
+
 		// Set the new value for the specified Font Awesome version.
 		$transient_css_array[ $version ] = $value;
 
@@ -735,7 +746,7 @@ class Better_Font_Awesome_Library {
 		 * @param  int  Expiration for the CSS transient.
 		 */
 		$transient_expiration = apply_filters( 'bfa_css_transient_expiration', 30 * DAY_IN_SECONDS );
-		
+
 		// Set the new CSS array transient.
 		set_transient( self::SLUG . '-css', $transient_css_array, $transient_expiration );
 
@@ -762,7 +773,7 @@ class Better_Font_Awesome_Library {
 	 * @return  array   	  All available icon names (e.g. adjust, car, pencil).
 	 */
 	private function setup_icon_array( $css ) {
-		
+
 		$icons = array();
 		$hex_codes = array();
 
@@ -784,7 +795,7 @@ class Better_Font_Awesome_Library {
 		 * Filter the array of available icons.
 		 *
 		 * @since   1.0.0
-		 * 
+		 *
 		 * @param   array  $icons  Array of all available icons.
 		 */
 		$icons = apply_filters( 'bfa_icon_list', $icons );
@@ -829,12 +840,12 @@ class Better_Font_Awesome_Library {
 	 * @since  1.0.0
 	 */
 	public function remove_font_awesome_css() {
-		
+
 		global $wp_styles;
 
 		// Loop through all registered styles and remove any that appear to be Font Awesome.
 		foreach ( $wp_styles->registered as $script => $details ) {
-			
+
 			if ( false !== strpos( $script, 'fontawesome' ) || false !== strpos( $script, 'font-awesome' ) ) {
 				wp_dequeue_style( $script );
 			}
@@ -874,15 +885,15 @@ class Better_Font_Awesome_Library {
 	 * @return  string  $output  Icon HTML (e.g. <i class="fa fa-car"></i>).
 	 */
 	public function render_shortcode( $atts ) {
-		
+
 		extract( shortcode_atts( array(
-					'name' => '',
-					'class' => '',
+					'name'             => '',
+					'class'            => '',
 					'unprefixed_class' => '',
-					'title'     => '', /* For compatibility with other plugins */
-					'size'      => '', /* For compatibility with other plugins */
-					'space'     => '',
-				), $atts )
+					'title'            => '', /* For compatibility with other plugins */
+					'size'             => '', /* For compatibility with other plugins */
+					'space'            => '',
+			), $atts )
 		);
 
 		/**
@@ -898,19 +909,27 @@ class Better_Font_Awesome_Library {
 		// This helps both:
 		//  1. Incorrect shortcodes (when user includes full class name including prefix)
 		//  2. Old shortcodes from other plugins that required prefixes
-		
+
 		/**
-		 * Strip 'icon-' and 'fa-' from $name.
-		 * 
+		 * Strip 'icon-' and 'fa-' from the BEGINNING of $name.
+		 *
 		 * This corrects for:
 		 * 	1. Incorrect shortcodes (when user includes full class name including prefix)
 		 *  2. Old shortcodes from other plugins that required prefixes
 		 */
-		$name = str_replace( 'icon-', '', $name );
+		$prefixes = array( 'icon-', 'fa-' );
+		foreach ( $prefixes as $prefix ) {
+
+			if ( substr( $name, 0, strlen( $prefix ) ) == $prefix ) {
+				$name = substr( $name, strlen( $prefix ) );
+			}
+
+		}
+
 		$name = str_replace( 'fa-', '', $name );
 
-		// Add the version-specific prefix back on to $name.
-		$icon_name = $this->prefix . '-' . $name;
+		// Add the version-specific prefix back on to $name, if it exists.
+		$icon_name = $this->prefix ? $this->prefix . '-' . $name : $name;
 
 		// Remove "icon-" and "fa-" from the icon class.
 		$class = str_replace( 'icon-', '', $class );
@@ -921,7 +940,11 @@ class Better_Font_Awesome_Library {
 		$class = preg_replace( '/\s{3,}/', ' ', $class );
 
 		// Add the version-specific prefix back on to each class.
-		$class = $class ? ' ' . $this->prefix . '-' . str_replace( ' ', ' ' . $this->prefix . '-', $class ) : '';
+		$class_array = explode( ' ', $class );
+		foreach ( $class_array as $index => $class ) {
+			$class_array[ $index ] = $this->prefix ? $this->prefix . '-' . $class : $class;
+		}
+		$class = implode( ' ', $class_array );
 
 		// Add unprefixed classes.
 		$class .= $unprefixed_class ? ' ' . $unprefixed_class : '';
@@ -936,9 +959,11 @@ class Better_Font_Awesome_Library {
 		$class = apply_filters( 'bfa_icon_class', $class, $name );
 
 		// Generate the HTML <i> icon element output.
-		$output = sprintf( '<i class="%s %s" %s>%s</i>',
+		$output = sprintf( '<i class="%s %s %s %s" %s>%s</i>',
 			$this->prefix,
-			$icon_name . $class . $size,
+			$icon_name,
+			$class,
+			$size,
 			$title,
 			$space
 		);
@@ -974,88 +999,53 @@ class Better_Font_Awesome_Library {
 	}
 
 	/**
-	 * Add TinyMCE button functionality.
-	 *
-	 * @since  1.0.0
-	 */
-	function add_tinymce_components() {
-		
-		if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
-			return;
-		}
-
-		if ( get_user_option( 'rich_editing' ) == 'true' ) {
-			
-			add_filter( 'mce_external_plugins', array( $this, 'register_tinymce_plugin' ) );
-			add_filter( 'mce_buttons', array( $this, 'add_tinymce_buttons' ) );
-
-		}
-
-	}
-
-	/**
-	 * Load TinyMCE Font Awesome dropdown plugin.
-	 *
-	 * @since  1.0.0
-	 */
-	function register_tinymce_plugin( $plugin_array ) {
-		
-		global $tinymce_version;
-
-		/**
-		 * Register the correct TinyMCE plugin based on the version of TinyMCE
-		 * being used.
-		 */
-		if ( version_compare( $tinymce_version, '4000', '>=' ) ) {
-			$plugin_array['bfa_plugin'] = $this->root_url . 'js/tinymce-icons.js';
-		} else {
-			$plugin_array['bfa_plugin'] = $this->root_url . 'js/tinymce-icons-old.js';
-		}
-
-		return $plugin_array;
-
-	}
-
-	/**
-     * Add the TinyMCE button(s).
-     *
-     * @since  1.0.0
-     */
-	function add_tinymce_buttons( $buttons ) {
-		
-		array_push( $buttons, 'bfaSelect' );
-		return $buttons;
-
-	}
-
-	/**
-	 * Add PHP variables in HTML <head> for use by TinyMCE JavaScript.
-	 *
-	 * @since  1.0.0
-	 */
-	function output_admin_head_variables() {
-			
-		$icon_list = implode( ",", $this->icons );
-		?>
-		<!-- Better Font Awesome PHP variables for use by TinyMCE JavaScript -->
-		<script type='text/javascript'>
-		var bfa_vars = {
-		    'fa_prefix': '<?php echo $this->prefix; ?>',
-		    'fa_icons': '<?php echo $icon_list; ?>',
-		};
-		</script>
-		<!-- End Better Font Awesome PHP variables for use by TinyMCE JavaScript -->
-	    <?php
-
-	}
-
-	/**
 	 * Load admin CSS.
 	 *
 	 * @since  1.0.0
 	 */
-	public function register_custom_admin_css() {
-		wp_enqueue_style( self::SLUG . '-admin-styles', $this->root_url . 'css/admin-styles.css' );
+	public function enqueue_admin_scripts() {
+
+		// Check whether to get minified or non-minified files.
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		// Custom admin CSS.
+		wp_enqueue_style( self::SLUG . '-admin', $this->root_url . 'css/admin-styles.css' );
+
+		// Custom admin JS.
+		wp_enqueue_script( self::SLUG . '-admin', $this->root_url . 'js/admin.js' );
+
+		// Icon picker JS and CSS.
+		wp_enqueue_style( 'fontawesome-iconpicker', $this->root_url . 'lib/fontawesome-iconpicker/css/fontawesome-iconpicker' . $suffix . '.css' );
+		wp_enqueue_script( 'fontawesome-iconpicker', $this->root_url . 'lib/fontawesome-iconpicker/js/fontawesome-iconpicker' . $suffix . '.js' );
+
+		// Output PHP variables to JS.
+		$bfa_vars = array(
+			'fa_prefix'   => $this->prefix,
+		    'fa_icons'    => $this->get_icons(),
+		);
+		wp_localize_script( self::SLUG . '-admin', 'bfa_vars', $bfa_vars );
+
+	}
+
+	/**
+	 * [add_insert_shortcode_button description]
+	 *
+	 * @since  1.3.0
+	 */
+	public function add_insert_shortcode_button() {
+
+		ob_start();
+		?>
+		<span class="bfa-iconpicker fontawesome-iconpicker" data-selected="fa-flag">
+			<a href="#" class="button button-secondary iconpicker-component">
+				<span class="fa icon fa-flag icon-flag"></span>&nbsp;
+				<?php esc_html_e( 'Insert Icon', 'better-font-awesome' ); ?>
+				<i class="change-icon-placeholder"></i>
+			</a>
+		</span>
+		<?php
+		echo ob_get_clean();
+
 	}
 
 	/**
@@ -1063,7 +1053,7 @@ class Better_Font_Awesome_Library {
 	 *
 	 * @since  1.0.0
 	 */
-	public function do_admin_notice() { 
+	public function do_admin_notice() {
 
 		if ( ! empty( $this->errors ) && apply_filters( 'bfa_show_errors', true ) ) :
 			?>
@@ -1071,13 +1061,13 @@ class Better_Font_Awesome_Library {
 		    	<p>
 		    		<b><?php _e( 'Better Font Awesome', 'better-font-awesome' ); ?></b>
 		    	</p>
-	        	
+
 	        	<!-- API Error -->
 	        	<?php if ( is_wp_error ( $this->get_error('api') ) ) : ?>
 		        	<p>
 		        		<b><?php _e( 'API Error', 'better-font-awesome' ); ?></b><br />
-		        		<?php 
-		        		printf( __( 'The attempt to reach the jsDelivr API server failed with the following error: %s', 'better-font-awesome' ), 
+		        		<?php
+		        		printf( __( 'The attempt to reach the jsDelivr API server failed with the following error: %s', 'better-font-awesome' ),
 		        			'<code>' . $this->get_error('api')->get_error_code() . ': ' . $this->get_error('api')->get_error_message() . '</code>'
 		        		);
 		        		?>
@@ -1088,8 +1078,8 @@ class Better_Font_Awesome_Library {
 	        	<?php if ( is_wp_error ( $this->get_error('css') ) ) : ?>
 		        	<p>
 		        		<b><?php _e( 'Remote CSS Error', 'better-font-awesome' ); ?></b><br />
-		        		<?php 
-		        		printf( __( 'The attempt to fetch the remote Font Awesome stylesheet failed with the following error: %s %s The embedded fallback Font Awesome will be used instead (version: %s).', 'better-font-awesome' ), 
+		        		<?php
+		        		printf( __( 'The attempt to fetch the remote Font Awesome stylesheet failed with the following error: %s %s The embedded fallback Font Awesome will be used instead (version: %s).', 'better-font-awesome' ),
 		        			'<code>' . $this->get_error('css')->get_error_code() . ': ' . $this->get_error('css')->get_error_message() . '</code>',
 		        			'<br />',
 		        			'<code>' . $this->font_awesome_version . '</code>'
@@ -1130,7 +1120,7 @@ class Better_Font_Awesome_Library {
 	 * @return  string  $contents   Content of local file.
 	 */
 	private function get_local_file_contents( $file_path ) {
-		
+
 		ob_start();
 		include $file_path;
 	    $contents = ob_get_clean();
@@ -1159,7 +1149,7 @@ class Better_Font_Awesome_Library {
 	 * @param  string  $error_type  Type of error (api, css, etc).
 	 * @param  string  $code        Error code.
 	 * @param  string  $message     Error message.
-	 */	
+	 */
 	private function set_error( $error_type, $code, $message ) {
 		$this->errors[ $error_type ] = new WP_Error( $code, $message );
 	}
@@ -1189,7 +1179,7 @@ class Better_Font_Awesome_Library {
 		if ( $this->api_data ) {
 			return true;
 		} else {
-			return false;	
+			return false;
 		}
 
 	}
@@ -1204,7 +1194,7 @@ class Better_Font_Awesome_Library {
 	 * @return  mixed   $value  Value associated with specified key.
 	 */
 	public function get_api_value( $key ) {
-		
+
 		if ( $this->api_data ) {
 			$value = $this->api_data->$key;
 		} else {

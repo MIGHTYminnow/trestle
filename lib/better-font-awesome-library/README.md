@@ -32,54 +32,50 @@ The Better Font Awesome Library contains a [Git submodule](http://git-scm.com/bo
 git clone --recursive https://github.com/MickeyKay/better-font-awesome-library.git
 ```
 
-Alternately, if you've already cloned the repo and need to add the submodules, you can run the following commands:
+Alternately, if you've already cloned the repo and need to add the submodules, you can run the following command:
 ```
-// Initialize all submodules.
-git submodule init
-
-// Pull in updated copies of all submodules.
-git submodule update
+// Initialize and update all submodules.
+git submodule update --init --recursive
 ```
 
 ## Usage ##
 1. Copy the /better-font-awesome-library folder into your project.
 
 2. Add the following code to your main plugin file or your theme's functions.php file.
-   ```
-   	// Include the main library file. Make sure to modify the path to match your directory structure.
-	require_once ( dirname( __FILE__ ) . '/better-font-awesome-library/better-font-awesome-library.php' );
-
-	add_action( 'plugins_loaded', 'my_prefix_load_bfa' );
+   ```php
+	add_action( 'init', 'my_prefix_load_bfa' );
 	/**	
 	 * Initialize the Better Font Awesome Library.
 	 *
 	 * (see usage notes below on proper hook priority)
 	 */
 	function my_prefix_load_bfa() {
+	
+		// Include the main library file. Make sure to modify the path to match your directory structure.
+		require_once ( dirname( __FILE__ ) . '/better-font-awesome-library/better-font-awesome-library.php' );
 
 		// Set the library initialization args (defaults shown).
 		$args = array(
-				'version' => 'latest',
-				'minified' => true,
-				'remove_existing_fa' => false,
-				'load_styles'             => true,
-				'load_admin_styles'       => true,
-				'load_shortcode'          => true,
-				'load_tinymce_plugin'     => true,
+				'version'             => 'latest',
+				'minified'            => true,
+				'remove_existing_fa'  => false,
+				'load_styles'         => true,
+				'load_admin_styles'   => true,
+				'load_shortcode'      => true,
+				'load_tinymce_plugin' => true,
 		);
 		
 		// Initialize the Better Font Awesome Library.
 		Better_Font_Awesome_Library::get_instance( $args );
-
 	}
 ```
 
 3. If desired, use the [Better Font Awesome Library object](#the-better-font-awesome-library-object) to manually include Font Awesome CSS, output lists of available icons, create your own shortcodes, and much more.
 
 #### Usage Notes ####
-The Better Font Awesome Library is designed to work in conjunction with the [Better Font Awesome](https://wordpress.org/plugins/better-font-awesome/) WordPress plugin. The plugin initializes this library (with its initialization args) on the `plugins_loaded` hook, priority `5`. When using the Better Font Awesome Library in your project, you have two options:
+The Better Font Awesome Library is designed to work in conjunction with the [Better Font Awesome](https://wordpress.org/plugins/better-font-awesome/) WordPress plugin. The plugin initializes this library (with its initialization args) on the `init` hook, priority `5`. When using the Better Font Awesome Library in your project, you have two options:
 
-1. Initialize later, to ensure that any Better Font Awesome plugin settings override yours.
+1. Initialize later, to ensure that any Better Font Awesome plugin settings override yours (this is the default behavior, shown above by initializing the library on the `init` hook with default priority `10`.
 1. Initialize earlier, to "take over" and prevent Better Font Awesome settings from having an effect.
 
 ## Initialization Parameters ($args) ##
@@ -171,7 +167,7 @@ The object has the following public methods:
 (array) Returns all library errors, including API and CDN fetch failures.
 
 #### Example: ####
-```
+```php
 // Initialize the library with custom args.
 Better_Font_Awesome_Library::get_instance( $args );
 
