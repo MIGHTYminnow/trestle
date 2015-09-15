@@ -55,6 +55,9 @@ add_action( 'init', 'trestle_load_bfa' );
  */
 function trestle_load_bfa() {
 
+	// Better Font Awesome Library
+	require_once trailingslashit( get_stylesheet_directory() ) . 'lib/better-font-awesome-library/better-font-awesome-library.php';
+
 	// Set the library initialization args.
 	$args = array(
 			'version'             => 'latest',
@@ -192,7 +195,7 @@ function trestle_body_classes( $classes ) {
 	}
 
 	// Add logo class.
-	if ( trestle_get_option( 'logo_url' ) || trestle_get_option( 'logo_url_mobile' ) ) {
+	if ( trestle_get_option( 'logo_id' ) || trestle_get_option( 'logo_id_mobile' ) ) {
 		$classes[] = 'has-logo';
 	}
 
@@ -213,46 +216,59 @@ add_filter( 'genesis_seo_title', 'trestle_do_logos', 10, 3 );
  */
 function trestle_do_logos( $title, $inside, $wrap ) {
 
-	$logo_url = trestle_get_option( 'logo_url' );
-	$logo_url_mobile = trestle_get_option( 'logo_url_mobile' );
+	$logo_id = trestle_get_option( 'logo_id' );
+	$logo_id_mobile = trestle_get_option( 'logo_id_mobile' );
 	$logo_html = '';
 
 	// Regular logo.
-	if ( $logo_url ) {
+	if ( $logo_id ) {
 
-		// Default logo class.
-		$classes = array('logo-full');
+		// Default logo classes.
+		$classes = array(
+			'logo',
+			'logo-full'
+		);
 
 		// If no mobile logo is specified, make regular logo act as mobile logo too.
-		if( ! $logo_url_mobile )
+		if( ! $logo_id_mobile ) {
 			$classes[] = 'show';
+		}
 
-		$logo_html .= sprintf( '<img class="logo %s" alt="%s" src="%s" />',
-			implode(' ', $classes),
-			esc_attr( get_bloginfo( 'name' ) ),
-			$logo_url
+		// Prepare the classes.
+		$logo_attr = array(
+			'class'	=> implode( $classes, ' ' ),
 		);
+
+		// Build the <img> tag.
+		$logo_html .= wp_get_attachment_image( $logo_id, 'full', false, $logo_attr );
+
 	}
 
 	// Mobile logo.
-	if ( $logo_url_mobile ) {
+	if ( $logo_id_mobile ) {
 
 		// Default mobile logo class.
-		$classes = array('logo-mobile');
+		$classes = array(
+			'logo',
+			'logo-mobile'
+		);
 
 		// If no regular logo is specified, make mobile logo act as regular logo too.
-		if( ! $logo_url )
+		if( ! $logo_id )
 			$classes[] = 'show';
 
-		$logo_html .= sprintf( '<img class="logo %s" alt="%s" src="%s" />',
-			implode(' ', $classes),
-			esc_attr( get_bloginfo( 'name' ) ),
-			$logo_url_mobile
+		// Prepare the classes.
+		$logo_attr = array(
+			'class'	=> implode( $classes, ' ' ),
 		);
+
+		// Build the <img> tag.
+		$logo_html .= wp_get_attachment_image( $logo_id_mobile, 'full', false, $logo_attr );
+
 	}
 
 	if ( $logo_html ) {
-		$inside .= sprintf( '<a href="%s" title="%s">%s</a>',
+		$inside .= sprintf( '<a href="%s" title="%s" class="logos">%s</a>',
 			trailingslashit( home_url() ),
 			esc_attr( get_bloginfo( 'name' ) ),
 			$logo_html
@@ -314,6 +330,26 @@ function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
 /*===========================================
  * Posts & Pages
 ===========================================*/
+
+add_filter( 'post_class', 'trestle_post_classes' );
+/**
+ * Add extra classes to posts in certain situations.
+ *
+ * @since  2.2.0
+ *
+ * @param array $classes Post classes.
+ * @return array 		 Updated post classes.
+ */
+function trestle_post_classes( $classes ) {
+
+	// If post doesn't have a featured image.
+	if ( ! has_post_thumbnail() ) {
+		$classes[] = 'no-featured-image';
+	}
+
+	return $classes;
+
+}
 
 add_filter( 'wp_revisions_to_keep', 'trestle_update_revisions_number', 10, 2 );
 /**
@@ -381,4 +417,69 @@ function trestle_read_more_link( $default_text ) {
 	} else {
 		return $default_text;
 	}
+}
+
+
+/*===========================================
+ * Helper Functions
+===========================================*/
+
+/**
+ * Check if image has specified image size.
+ *
+ * @since 2.2.0
+ *
+ * @param int $image_id ID of image to check.
+ * @param string $image_size Slug of image size to check for.
+ *
+ * @return true|false Whether or not the image has the specified size generated.
+ */
+function trestle_image_has_size( $image_id, $image_size = null ) {
+
+	global $_wp_additional_image_sizes;
+
+	// Return with error if no image_size is specified.
+	if ( ! $image_size ) {
+		return new WP_Error( 'no_image_size_specified', __( 'Please specify an image size.', 'trestle' ) );
+	}
+
+	// Get the attributes for the specified image size.
+	$image_size_atts = $_wp_additional_image_sizes[ $image_size ];
+
+	// Get data for specified image ID and size.
+	$img_data = wp_get_attachment_image_src( $image_id, $image_size );
+
+	// Check if the dimensions match.
+	if ( $img_data[1] == $image_size_atts['width'] && $img_data[2] == $image_size_atts['height'] ) {
+		return true;
+	}
+
+	return false;
+
+}
+
+/**
+ * Check if post is, or is a child of, a target post.
+ *
+ * @since 1.0.0
+ *
+ * @param string $post_id   Post ID to check.
+ * @param string $target_id Target post ID to check against.
+ *
+ * @return true|false
+ */
+function trestle_is_current_or_descendant_post( $post_id = '', $target_id = '' ) {
+
+	// If the current post is the target post, return true.
+	if ( $post_id == $target_id ) {
+		return true;
+	}
+
+	// If the current post is a descendant of the target post.
+	if ( in_array( $target_id, get_post_ancestors( $post_id ) ) ) {
+		return true;
+	}
+
+	return false;
+
 }
