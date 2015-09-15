@@ -30,9 +30,6 @@ require_once dirname( __FILE__ ) . '/includes/widget-areas/widget-areas.php';
 // Plugin activation class.
 require_once dirname( __FILE__ ) . '/lib/class-tgm-plugin-activation.php';
 
-// Better Font Awesome Library.
-require_once dirname( __FILE__ ) . '/lib/better-font-awesome-library/better-font-awesome-library.php';
-
 // Dev utility functions.
 require_once dirname( __FILE__ ) . '/includes/utilities/utilities.php';
 
@@ -52,7 +49,7 @@ function trestle_theme_setup() {
 	// Child theme definitions (do not remove).
 	define( 'TRESTLE_THEME_NAME', 'Trestle' );
 	define( 'TRESTLE_THEME_URL', 'http://demo.mightyminnow.com/theme/trestle/' );
-	define( 'TRESTLE_THEME_VERSION', '2.1.1' );
+	define( 'TRESTLE_THEME_VERSION', '2.2.0' );
 	define( 'TRESTLE_SETTINGS_FIELD', 'trestle-settings' );
 
 	// Setup default theme settings.
