@@ -187,12 +187,6 @@ function trestle_register_required_plugins() {
 		),
 
 		array(
-			'name' 		=> 'My Page Order',
-			'slug' 		=> 'my-page-order',
-			'required' 	=> false,
-		),
-
-		array(
 			'name' 		=> 'Post Thumbnail Editor',
 			'slug' 		=> 'post-thumbnail-editor',
 			'required' 	=> false,
