@@ -45,7 +45,7 @@ class Better_Font_Awesome_Library {
 	 *
 	 * @var    string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.4.0';
 
 	/**
 	 * jsDelivr API URL for Font Awesome version info.

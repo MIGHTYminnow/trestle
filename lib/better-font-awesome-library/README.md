@@ -42,7 +42,7 @@ git submodule update --init --recursive
 1. Copy the /better-font-awesome-library folder into your project.
 
 2. Add the following code to your main plugin file or your theme's functions.php file.
-   ```
+   ```php
 	add_action( 'init', 'my_prefix_load_bfa' );
 	/**	
 	 * Initialize the Better Font Awesome Library.
@@ -56,18 +56,17 @@ git submodule update --init --recursive
 
 		// Set the library initialization args (defaults shown).
 		$args = array(
-				'version' => 'latest',
-				'minified' => true,
-				'remove_existing_fa' => false,
-				'load_styles'             => true,
-				'load_admin_styles'       => true,
-				'load_shortcode'          => true,
-				'load_tinymce_plugin'     => true,
+				'version'             => 'latest',
+				'minified'            => true,
+				'remove_existing_fa'  => false,
+				'load_styles'         => true,
+				'load_admin_styles'   => true,
+				'load_shortcode'      => true,
+				'load_tinymce_plugin' => true,
 		);
 		
 		// Initialize the Better Font Awesome Library.
 		Better_Font_Awesome_Library::get_instance( $args );
-
 	}
 ```
 
@@ -168,7 +167,7 @@ The object has the following public methods:
 (array) Returns all library errors, including API and CDN fetch failures.
 
 #### Example: ####
-```
+```php
 // Initialize the library with custom args.
 Better_Font_Awesome_Library::get_instance( $args );
 
