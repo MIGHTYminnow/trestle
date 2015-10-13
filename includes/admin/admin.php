@@ -22,6 +22,7 @@ function trestle_settings_defaults() {
 		'logo_id'               => '',
 		'logo_id_mobile'        => '',
 		'favicon_url'           => '',
+		'header_style'          => 'left',
 		'nav_primary_location'  => 'full',
 		'mobile_nav_toggle'     => 'small-icon',
 		'search_in_nav'         => '',
@@ -183,12 +184,6 @@ function trestle_register_required_plugins() {
 		array(
 			'name' 		=> 'Google Analytics for WordPress',
 			'slug' 		=> 'google-analytics-for-wordpress',
-			'required' 	=> false,
-		),
-
-		array(
-			'name' 		=> 'My Page Order',
-			'slug' 		=> 'my-page-order',
 			'required' 	=> false,
 		),
 

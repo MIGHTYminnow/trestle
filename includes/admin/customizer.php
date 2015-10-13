@@ -121,6 +121,30 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	// Header style.
+	$wp_customize->add_setting(
+		'trestle-settings[header_style]',
+		array(
+			'default'    => trestle_get_option( 'header_style' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+		'trestle_header_style_control',
+		array(
+			'section'  => 'trestle_settings_section',
+			'settings' => 'trestle-settings[header_style]',
+			'label'    => __( 'Header style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				'left'   => __( 'Header Left', 'trestle' ),
+				'center' => __( 'Header Center', 'trestle' ),
+				'right'  => __( 'Header Right', 'trestle' ),
+			)
+		)
+	);
+
 	// Primary nav style.
 	$wp_customize->add_setting(
 		'trestle-settings[nav_primary_location]',

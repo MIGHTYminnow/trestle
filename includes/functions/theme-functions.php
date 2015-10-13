@@ -174,6 +174,13 @@ function trestle_body_classes( $classes ) {
 		$classes[] = 'doc-link-icons';
 	}
 
+	// Add header style class.
+	$header_style_class = esc_attr( trestle_get_option( 'header_style' ) );
+
+	if ( $header_style_class ) {
+		$classes[] = 'header-style-' . $header_style_class;
+	}
+
 	// Add menu style class.
 	$nav_primary_location = esc_attr( trestle_get_option( 'nav_primary_location' ) );
 	if ( $nav_primary_location ) {
