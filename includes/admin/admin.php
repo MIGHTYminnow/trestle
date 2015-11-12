@@ -105,10 +105,7 @@ function trestle_tiny_mce_before_init( $init_array ) {
 
 	global $post;
 
-	$screen = get_current_screen();
-
-	// If we're on an edit screen, add an appropriate 'post-id-XX' or 'page-id-XX'.
-	if ( is_object( $screen ) && 'edit' == $screen->parent_base ) {
+	if ( $post ) {
 
 		// Custom post types always use 'post', so we only need to handle pages.
 		$post_type = ( 'page' == $post->post_type ) ? 'page' : 'post';
@@ -117,6 +114,7 @@ function trestle_tiny_mce_before_init( $init_array ) {
 			$post_type,
 			$post->ID
 		);
+
 	}
 
 	return $init_array;
