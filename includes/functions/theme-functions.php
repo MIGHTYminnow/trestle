@@ -29,6 +29,9 @@ function trestle_add_theme_support() {
 	// Add support for footer widgets if specified in Trestle settings.
 	add_theme_support( 'genesis-footer-widgets', trestle_get_option( 'footer_widgets_number' ) );
 
+	//* Add Accessibility support
+	add_theme_support( 'genesis-accessibility', array( 'headings', 'drop-down-menu',  'search-form', 'skip-links', 'rems' ) );
+
 }
 
 add_action( 'after_setup_theme', 'trestle_remove_genesis_css_enqueue' );
