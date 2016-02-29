@@ -25,6 +25,8 @@
 		- Forms & Buttons
 		- Tables
 		- Screen Reader Text
+		- Skip Links
+		- Accessible Menu
 	- Structure and Layout
 		- Site Containers
 		- Bubble Layout
@@ -642,7 +644,7 @@ td {
 	padding: 0.6rem 0;
 }
 
-/* ## Screen reader text
+/* Screen reader text
 --------------------------------------------- */
 
 .screen-reader-text,
@@ -678,7 +680,7 @@ td {
     position: relative;
 }
 
-/* # Skip Links
+/* Skip Links
 ---------------------------------------------------------------------------------------------------- */
 .genesis-skip-link li {
 	height: 0;
@@ -686,7 +688,7 @@ td {
 	list-style: none;
 }
 
-/* ## Accessible Menu
+/* Accessible Menu
 --------------------------------------------- */
 
 .menu .menu-item:focus {
