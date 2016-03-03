@@ -24,6 +24,9 @@
 		- Objects
 		- Forms & Buttons
 		- Tables
+		- Screen Reader Text
+		- Skip Links
+		- Accessible Menu
 	- Structure and Layout
 		- Site Containers
 		- Bubble Layout
@@ -639,6 +642,81 @@ td {
 	border-top: 1px solid #ddd;
 	padding: 6px 0;
 	padding: 0.6rem 0;
+}
+
+/* Screen reader text
+--------------------------------------------- */
+
+.screen-reader-text,
+.screen-reader-text span,
+.screen-reader-shortcut {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+	color: #333;
+	background: #fff;
+}
+
+.screen-reader-text:focus,
+.screen-reader-shortcut:focus,
+.genesis-nav-menu .search input[type="submit"]:focus,
+.widget_search input[type="submit"]:focus  {
+	clip: auto !important;
+	height: auto;
+	width: auto;
+	display: block;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 15px 23px 14px;
+	z-index: 100000; /* Above WP toolbar. */
+	text-decoration: none;
+	box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+}
+
+.more-link {
+    position: relative;
+}
+
+/* Skip Links
+---------------------------------------------------------------------------------------------------- */
+.genesis-skip-link li {
+	height: 0;
+	width: 0;
+	list-style: none;
+}
+
+/* Accessible Menu
+--------------------------------------------- */
+
+.menu .menu-item:focus {
+	position: static;
+}
+
+.menu .menu-item > a:focus + ul.sub-menu,
+.menu .menu-item.sfHover > ul.sub-menu {
+	left: auto;
+	opacity: 1;
+}
+
+/* hide sub-menus */
+ul.sub-menu,
+.genesis-nav-menu [class*="current-"] > ul.sub-menu.open,
+.genesis-nav-menu [class*="current_"] > ul.sub-menu.open {
+	display: none !important;
+}
+
+.genesis-nav-menu ul.sub-menu.open,
+.genesis-nav-menu ul.sub-menu.open {
+	display: block !important;
+}
+
+
+/* hide arrow indicators */
+span.sf-sub-indicator {
+   display: none;
 }
 
 /*
@@ -2210,6 +2288,13 @@ Media Queries
 	.wrap {
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	/* show sub-menus */
+	ul.sub-menu,
+	.genesis-nav-menu ul.sub-menu.open,
+	.genesis-nav-menu ul.sub-menu.open {
+	   display: block !important;
 	}
 
 	/* Header
