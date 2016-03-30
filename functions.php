@@ -49,7 +49,7 @@ function trestle_theme_setup() {
 	// Child theme definitions (do not remove).
 	define( 'TRESTLE_THEME_NAME', 'Trestle' );
 	define( 'TRESTLE_THEME_URL', 'http://demo.mightyminnow.com/theme/trestle/' );
-	define( 'TRESTLE_THEME_VERSION', '2.2.0' );
+	define( 'TRESTLE_THEME_VERSION', '2.2.1' );
 	define( 'TRESTLE_SETTINGS_FIELD', 'trestle-settings' );
 
 	// Setup default theme settings.
