@@ -701,6 +701,16 @@ td {
 	opacity: 1;
 }
 
+.menu .menu-item.sfHover ul.sub-menu ul.sub-menu {
+	left: 100% !important;
+	top: 0;
+}
+
+.menu .menu-item.sfHover ul.sub-menu ul.sub-menu {
+	left: 100% !important;
+	top: 0;
+}
+
 /* hide sub-menus */
 ul.sub-menu,
 .genesis-nav-menu [class*="current-"] > ul.sub-menu.open,
