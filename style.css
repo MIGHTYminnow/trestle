@@ -537,10 +537,15 @@ body .button {
 }
 
 button:hover,
+button:focus,
+input:focus[type="button"],
+input:focus[type="reset"],
+input:focus[type="submit"],
 input:hover[type="button"],
 input:hover[type="reset"],
 input:hover[type="submit"],
 body .button:hover,
+body .button:focus,
 	.genesis-nav-menu input[type="submit"] {
 	background-color: #f15123;
 	border-color: #f15123;
