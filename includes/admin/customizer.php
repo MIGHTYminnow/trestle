@@ -18,6 +18,199 @@ add_action( 'customize_register', 'trestle_customizer_controls' );
 function trestle_customizer_controls( $wp_customize ) {
 
 	/**
+	 *  Colors Section
+	 */
+
+	$wp_customize->add_setting(
+	'trestle-settings[body_bg_color]',
+		array(
+			'default'    => trestle_get_option( 'body_bg_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_body_bg_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[body_bg_color]',
+				'label'      => __( 'Body Background Color (Bubble)', 'trestle' ),
+			)
+		)
+	);
+
+    $wp_customize->add_setting(
+		'trestle-settings[body_text_color]',
+		array(
+			'default'    => trestle_get_option( 'body_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_body_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[body_text_color]',
+				'label'      => __( 'Body Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[header_bg_color]',
+		array(
+			'default'    => trestle_get_option( 'header_bg_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_header_bg_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[header_bg_color]',
+				'label'      => __( 'Header Background Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[menu_bg_color]',
+		array(
+			'default'    => trestle_get_option( 'menu_bg_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_menu_bg_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[menu_bg_color]',
+				'label'      => __( 'Menu Background Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[menu_text_color]',
+		array(
+			'default'    => trestle_get_option( 'menu_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_menu_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[menu_text_color]',
+				'label'      => __( 'Menu Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[sub_menu_bg_color]',
+		array(
+			'default'    => trestle_get_option( 'sub_menu_bg_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_sub_menu_bg_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[sub_menu_bg_color]',
+				'label'      => __( 'Sub-menu Background Color', 'trestle' ),
+			)
+		)
+	);
+
+    $wp_customize->add_setting(
+		'trestle-settings[sub_menu_text_color]',
+		array(
+			'default'    => trestle_get_option( 'sub_menu_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_sub_menu_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[sub_menu_text_color]',
+				'label'      => __( 'Sub-menu Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[footer_bg_color]',
+		array(
+			'default'    => trestle_get_option( 'footer_bg_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_footer_bg_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[footer_bg_color]',
+				'label'      => __( 'Footer Background Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[footer_text_color]',
+		array(
+			'default'    => trestle_get_option( 'footer_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_footer_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[footer_text_color]',
+				'label'      => __( 'Footer Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	/**
 	 * Trestle Settings Section.
 	 */
 

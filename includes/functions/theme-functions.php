@@ -125,6 +125,67 @@ function trestle_header_actions() {
 
 }
 
+add_action( 'wp_head', 'trestle_output_styles');
+/**
+ * Output the style element that contains all Customizer CSS.
+ *
+ * @since  2.0.0
+ */
+function trestle_output_styles() {
+
+	$styles = array();
+
+	if ( ! empty( trestle_get_option( 'body_bg_color' ) ) ) {
+		$styles[] = 'body.bubble { background-color: ' . trestle_get_option( 'body_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'body_text_color' ) ) ) {
+		$styles[] = 'body { color: ' . trestle_get_option( 'body_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'header_bg_color' ) ) ) {
+		$styles[] = '.site-header { background-color: ' . trestle_get_option( 'header_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'menu_bg_color' ) ) ) {
+		$styles[] = '.nav-primary, .nav-secondary { background-color: ' . trestle_get_option( 'menu_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'menu_text_color' ) ) ) {
+		$styles[] = '.nav-primary a, .nav-secondary a { color: ' . trestle_get_option( 'menu_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sub_menu_bg_color' ) ) ) {
+		$styles[] = '.nav-primary .sub-menu { background-color: ' . trestle_get_option( 'sub_menu_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sub_menu_text_color' ) ) ) {
+		$styles[] = '.nav-primary .sub-menu a { color: ' . trestle_get_option( 'sub_menu_text_color' ) . '; border-color: ' . trestle_get_option( 'sub_menu_text_color' ) . '; }';
+		$styles[] = '.nav-primary .sub-menu-toggle .sub-menu-toggle-span { background-color: ' . trestle_get_option( 'sub_menu_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sidebar_bg_color' ) ) ) {
+		$styles[] = '.primary-sidebar { background-color: ' . trestle_get_option( 'sidebar_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sidebar_text_color' ) ) ) {
+		$styles[] = '.primary-sidebar, .primary-sidebar h1, .primary-sidebar h2, .primary-sidebar h3, .primary-sidebar h4, .primary-sidebar h5, .primary-sidebar h6 { color: ' . trestle_get_option( 'sidebar_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'footer_bg_color' ) ) ) {
+		$styles[] = '.site-footer { background-color: ' . trestle_get_option( 'footer_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'footer_text_color' ) ) ) {
+		$styles[] = '.site-footer { color: ' . trestle_get_option( 'footer_text_color' ) . '; }';
+	}
+
+	printf(
+	'<style type="text/css">%s</style>',
+	esc_attr( implode( ' ', $styles ) )
+	);
+}
+
 add_filter( 'genesis_pre_load_favicon', 'trestle_do_custom_favicon' );
 /**
  * Output custom favicon if specified in the theme options.

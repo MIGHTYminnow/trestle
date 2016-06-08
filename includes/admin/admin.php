@@ -32,6 +32,15 @@ function trestle_settings_defaults() {
 		'email_link_icons'      => 0,
 		'pdf_link_icons'        => 0,
 		'doc_link_icons'        => 0,
+		'body_bg_color'         => '#F5F5F6',
+		'body_text_color'       => '#666666',
+		'header_bg_color'       => '#ffffff',
+		'menu_bg_color'         => '#333333',
+		'menu_text_color'       => '#999999',
+		'sub_menu_bg_color'     => '#ffffff',
+		'sub_menu_text_color'   => '#999999',
+		'footer_bg_color'       => '#ffffff',
+		'footer_text_color'     => '#999999',
 	);
 
 	// Populate Trestle settings with default values if they don't yet exist.
