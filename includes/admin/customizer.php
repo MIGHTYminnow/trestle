@@ -210,6 +210,554 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'trestle-settings[h1_text_color]',
+		array(
+			'default'    => trestle_get_option( 'h1_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_h1_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[h1_text_color]',
+				'label'      => __( 'h1 Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h2_text_color]',
+		array(
+			'default'    => trestle_get_option( 'h2_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_h2_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[h2_text_color]',
+				'label'      => __( 'h2 Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h3_text_color]',
+		array(
+			'default'    => trestle_get_option( 'h3_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_h3_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[h3_text_color]',
+				'label'      => __( 'h3 Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h4_text_color]',
+		array(
+			'default'    => trestle_get_option( 'h4_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_h4_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[h4_text_color]',
+				'label'      => __( 'h4 Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h5_text_color]',
+		array(
+			'default'    => trestle_get_option( 'h5_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_h5_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[h5_text_color]',
+				'label'      => __( 'h5 Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h6_text_color]',
+		array(
+			'default'    => trestle_get_option( 'h6_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_h6_text_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[h6_text_color]',
+				'label'      => __( 'h6 Text Color', 'trestle' ),
+			)
+		)
+	);
+
+
+	/**
+	 * Font Settings Section.
+	 */
+
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_fonts_section',
+		array(
+			'title'    => __( 'Fonts', 'trestle' ),
+			'priority' => 60,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h1_font_size]',
+		array(
+			'default'    => trestle_get_option( 'h1_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h1_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h1_font_size]',
+			'label'    => __( 'h1 Font Size', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h1_text_decoration]',
+		array(
+			'default'    => trestle_get_option( 'h1_text_decoration' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h1_text_decoration_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h1_text_decoration]',
+			'label'    => __( 'h1 Text Decoration', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''             => 'None',
+				'line-through' => 'Line-through',
+				'overline'     => 'Overline',
+				'underline'    => 'Underline',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h1_text_style]',
+		array(
+			'default'    => trestle_get_option( 'h1_text_style' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h1_text_style_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h1_text_style]',
+			'label'    => __( 'h1 Text Style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''           => 'None',
+				'capitalize' => 'Capitalize',
+				'lowercase'  => 'Lowercase',
+				'uppercase'  => 'Uppercase',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h2_font_size]',
+		array(
+			'default'    => trestle_get_option( 'h2_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h2_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h2_font_size]',
+			'label'    => __( 'h2 Font Size', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h2_text_decoration]',
+		array(
+			'default'    => trestle_get_option( 'h2_text_decoration' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h2_text_decoration_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h2_text_decoration]',
+			'label'    => __( 'h2 Text Decoration', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''             => 'None',
+				'line-through' => 'Line-through',
+				'overline'     => 'Overline',
+				'underline'    => 'Underline',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h2_text_style]',
+		array(
+			'default'    => trestle_get_option( 'h2_text_style' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h2_text_style_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h2_text_style]',
+			'label'    => __( 'h2 Text Style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''           => 'None',
+				'capitalize' => 'Capitalize',
+				'lowercase'  => 'Lowercase',
+				'uppercase'  => 'Uppercase',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h3_font_size]',
+		array(
+			'default'    => trestle_get_option( 'h3_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h3_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h3_font_size]',
+			'label'    => __( 'h3 Font Size', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h3_text_decoration]',
+		array(
+			'default'    => trestle_get_option( 'h3_text_decoration' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h3_text_decoration_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h3_text_decoration]',
+			'label'    => __( 'h3 Text Decoration', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''             => 'None',
+				'line-through' => 'Line-through',
+				'overline'     => 'Overline',
+				'underline'    => 'Underline',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h3_text_style]',
+		array(
+			'default'    => trestle_get_option( 'h3_text_style' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h3_text_style_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h3_text_style]',
+			'label'    => __( 'h3 Text Style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''           => 'None',
+				'capitalize' => 'Capitalize',
+				'lowercase'  => 'Lowercase',
+				'uppercase'  => 'Uppercase',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h4_font_size]',
+		array(
+			'default'    => trestle_get_option( 'h4_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h4_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h4_font_size]',
+			'label'    => __( 'h4 Font Size', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h4_text_decoration]',
+		array(
+			'default'    => trestle_get_option( 'h4_text_decoration' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h4_text_decoration_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h4_text_decoration]',
+			'label'    => __( 'h4 Text Decoration', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''             => 'None',
+				'line-through' => 'Line-through',
+				'overline'     => 'Overline',
+				'underline'    => 'Underline',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h4_text_style]',
+		array(
+			'default'    => trestle_get_option( 'h4_text_style' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h4_text_style_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h4_text_style]',
+			'label'    => __( 'h4 Text Style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''           => 'None',
+				'capitalize' => 'Capitalize',
+				'lowercase'  => 'Lowercase',
+				'uppercase'  => 'Uppercase',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h5_font_size]',
+		array(
+			'default'    => trestle_get_option( 'h5_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h5_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h5_font_size]',
+			'label'    => __( 'h5 Font Size', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h5_text_decoration]',
+		array(
+			'default'    => trestle_get_option( 'h5_text_decoration' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h5_text_decoration_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h5_text_decoration]',
+			'label'    => __( 'h5 Text Decoration', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''             => 'None',
+				'line-through' => 'Line-through',
+				'overline'     => 'Overline',
+				'underline'    => 'Underline',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h5_text_style]',
+		array(
+			'default'    => trestle_get_option( 'h5_text_style' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h5_text_style_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h5_text_style]',
+			'label'    => __( 'h5 Text Style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''           => 'None',
+				'capitalize' => 'Capitalize',
+				'lowercase'  => 'Lowercase',
+				'uppercase'  => 'Uppercase',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h6_font_size]',
+		array(
+			'default'    => trestle_get_option( 'h6_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h6_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h6_font_size]',
+			'label'    => __( 'h6 Font Size', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h6_text_decoration]',
+		array(
+			'default'    => trestle_get_option( 'h6_text_decoration' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h6_text_decoration_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h6_text_decoration]',
+			'label'    => __( 'h6 Text Decoration', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''             => 'None',
+				'line-through' => 'Line-through',
+				'overline'     => 'Overline',
+				'underline'    => 'Underline',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[h6_text_style]',
+		array(
+			'default'    => trestle_get_option( 'h6_text_style' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_h6_text_style_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[h6_text_style]',
+			'label'    => __( 'h6 Text Style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''           => 'None',
+				'capitalize' => 'Capitalize',
+				'lowercase'  => 'Lowercase',
+				'uppercase'  => 'Uppercase',
+			)
+		)
+	);
+
 	/**
 	 * Trestle Settings Section.
 	 */

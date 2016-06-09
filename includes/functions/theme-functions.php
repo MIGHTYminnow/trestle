@@ -180,6 +180,106 @@ function trestle_output_styles() {
 		$styles[] = '.site-footer { color: ' . trestle_get_option( 'footer_text_color' ) . '; }';
 	}
 
+	if ( ! empty( trestle_get_option( 'h1_text_color' ) ) ) {
+		$styles[] = 'h1 { color: ' . trestle_get_option( 'h1_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_text_color' ) ) ) {
+		$styles[] = 'h2 { color: ' . trestle_get_option( 'h2_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_text_color' ) ) ) {
+		$styles[] = 'h3 { color: ' . trestle_get_option( 'h3_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_text_color' ) ) ) {
+		$styles[] = 'h4 { color: ' . trestle_get_option( 'h4_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_text_color' ) ) ) {
+		$styles[] = 'h5 { color: ' . trestle_get_option( 'h5_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_text_color' ) ) ) {
+		$styles[] = 'h6 { color: ' . trestle_get_option( 'h6_text_color' ) . '; }';
+	}
+
+	// Font size
+	if ( ! empty( trestle_get_option( 'h1_font_size' ) ) ) {
+		$styles[] = 'h1 { font-size: ' . trestle_get_option( 'h1_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_font_size' ) ) ) {
+		$styles[] = 'h2 { font-size: ' . trestle_get_option( 'h2_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_font_size' ) ) ) {
+		$styles[] = 'h3 { font-size: ' . trestle_get_option( 'h3_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_font_size' ) ) ) {
+		$styles[] = 'h4 { font-size: ' . trestle_get_option( 'h4_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_font_size' ) ) ) {
+		$styles[] = 'h5 { font-size: ' . trestle_get_option( 'h5_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_font_size' ) ) ) {
+		$styles[] = 'h6 { font-size: ' . trestle_get_option( 'h6_font_size' ) . '; }';
+	}
+
+	// Text decoration
+	if ( ! empty( trestle_get_option( 'h1_text_decoration' ) ) ) {
+		$styles[] = 'h1 { text-decoration: ' . trestle_get_option( 'h1_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_text_decoration' ) ) ) {
+		$styles[] = 'h2 { text-decoration: ' . trestle_get_option( 'h2_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_text_decoration' ) ) ) {
+		$styles[] = 'h3 { text-decoration: ' . trestle_get_option( 'h3_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_text_decoration' ) ) ) {
+		$styles[] = 'h4 { text-decoration: ' . trestle_get_option( 'h4_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_text_decoration' ) ) ) {
+		$styles[] = 'h5 { text-decoration: ' . trestle_get_option( 'h5_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_text_decoration' ) ) ) {
+		$styles[] = 'h6 { text-decoration: ' . trestle_get_option( 'h6_text_decoration' ) . '; }';
+	}
+
+	// Text style
+	if ( ! empty( trestle_get_option( 'h1_text_style' ) ) ) {
+		$styles[] = 'h1 { text-transform: ' . trestle_get_option( 'h1_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_text_style' ) ) ) {
+		$styles[] = 'h2 { text-transform: ' . trestle_get_option( 'h2_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_text_style' ) ) ) {
+		$styles[] = 'h3 { text-transform: ' . trestle_get_option( 'h3_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_text_style' ) ) ) {
+		$styles[] = 'h4 { text-transform: ' . trestle_get_option( 'h4_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_text_style' ) ) ) {
+		$styles[] = 'h5 { text-transform: ' . trestle_get_option( 'h5_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_text_style' ) ) ) {
+		$styles[] = 'h6 { text-transform: ' . trestle_get_option( 'h6_text_style' ) . '; }';
+	}
+
+
 	printf(
 	'<style type="text/css">%s</style>',
 	esc_attr( implode( ' ', $styles ) )
