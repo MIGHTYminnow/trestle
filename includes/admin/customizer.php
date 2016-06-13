@@ -759,19 +759,9 @@ function trestle_customizer_controls( $wp_customize ) {
 	);
 
 	/**
-	 * Trestle Settings Section.
+	 * Site Layout Section (originally from Genesis).
 	 */
 
-	// Add the section.
-	$wp_customize->add_section(
-		'trestle_settings_section',
-		array(
-			'title'    => __( 'Trestle Settings', 'trestle' ),
-			'priority' => 160,
-		)
-	);
-
-	// Layout.
 	$wp_customize->add_setting(
 		'trestle-settings[layout]',
 		array(
@@ -783,14 +773,28 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_layout_control',
 		array(
-			'section'  => 'trestle_settings_section',
+			'section'  => 'genesis_layout',
 			'settings' => 'trestle-settings[layout]',
 			'label'    => __( 'Layout', 'trestle' ),
 			'type'     => 'radio',
 			'choices'  => array(
 				'bubble' => __( 'Bubble', 'trestle' ),
 				'solid'  => __( 'Solid', 'trestle' ),
+				'boxed'  => __( 'Boxed', 'trestle' ),
 			)
+		)
+	);
+
+	/**
+	 * Trestle Settings Section.
+	 */
+
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_settings_section',
+		array(
+			'title'    => __( 'Trestle Settings', 'trestle' ),
+			'priority' => 160,
 		)
 	);
 

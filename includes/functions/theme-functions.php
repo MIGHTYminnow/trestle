@@ -279,6 +279,10 @@ function trestle_output_styles() {
 		$styles[] = 'h6 { text-transform: ' . trestle_get_option( 'h6_text_style' ) . '; }';
 	}
 
+	// Site Layout
+	if ( ! empty( trestle_get_option( 'h6_text_style' ) ) && "boxed" == trestle_get_option( 'layout' ) ) {
+		$styles[] = 'body.boxed .site-inner { max-width: 1100px; }';
+	}
 
 	printf(
 	'<style type="text/css">%s</style>',
@@ -323,6 +327,10 @@ function trestle_body_classes( $classes ) {
 	// Add 'bubble' class.
 	if ( 'bubble' == trestle_get_option( 'layout' ) )
 		$classes[] = 'bubble';
+
+	// Add 'boxed' class.
+	if ( 'boxed' == trestle_get_option( 'layout' ) )
+		$classes[] = 'boxed';
 
 	// Add link icon classes.
 	if ( trestle_get_option( 'external_link_icons' ) ) {
