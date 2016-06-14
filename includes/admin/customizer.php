@@ -20,6 +20,47 @@ function trestle_customizer_controls( $wp_customize ) {
 	/**
 	 *  Colors Section
 	 */
+	$wp_customize->add_setting(
+		'trestle-settings[site_title_color]',
+		array(
+			'default'    => trestle_get_option( 'site_title_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_site_title_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[site_title_color]',
+				'label'      => __( 'Site Title', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[site_description_color]',
+		array(
+			'default'    => trestle_get_option( 'site_description_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_site_description_color_control',
+			array(
+				'section'    => 'colors',
+				'settings'   => 'trestle-settings[site_description_color]',
+				'label'      => __( 'Site Description', 'trestle' ),
+			)
+		)
+	);
 
 	$wp_customize->add_setting(
 	'trestle-settings[body_bg_color]',
@@ -347,6 +388,42 @@ function trestle_customizer_controls( $wp_customize ) {
 		array(
 			'title'    => __( 'Fonts', 'trestle' ),
 			'priority' => 60,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[site_title_font_size]',
+		array(
+			'default'    => trestle_get_option( 'site_title_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_site_title_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[site_title_font_size]',
+			'label'    => __( 'Site Title Font Size', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[site_description_font_size]',
+		array(
+			'default'    => trestle_get_option( 'site_description_font_size' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_site_description_font_size_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[site_description_font_size]',
+			'label'    => __( 'Site Description Font Size', 'trestle' ),
 		)
 	);
 

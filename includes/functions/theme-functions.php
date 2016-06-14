@@ -135,6 +135,14 @@ function trestle_output_styles() {
 
 	$styles = array();
 
+	if ( ! empty( trestle_get_option( 'site_title_color' ) ) ) {
+		$styles[] = '.site-title a, .site-title a:hover { color: ' . trestle_get_option( 'site_title_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'site_description_color' ) ) ) {
+		$styles[] = '.site-description { color: ' . trestle_get_option( 'site_description_color' ) . '; }';
+	}
+
 	if ( ! empty( trestle_get_option( 'body_bg_color' ) ) ) {
 		$styles[] = 'body.bubble { background-color: ' . trestle_get_option( 'body_bg_color' ) . '; }';
 	}
@@ -205,6 +213,14 @@ function trestle_output_styles() {
 	}
 
 	// Font size
+	if ( ! empty( trestle_get_option( 'site_title_font_size' ) ) ) {
+		$styles[] = '.site-title { font-size: ' . trestle_get_option( 'site_title_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'site_description_font_size' ) ) ) {
+		$styles[] = '.site-description { font-size: ' . trestle_get_option( 'site_description_font_size' ) . '; }';
+	}
+
 	if ( ! empty( trestle_get_option( 'h1_font_size' ) ) ) {
 		$styles[] = 'h1 { font-size: ' . trestle_get_option( 'h1_font_size' ) . '; }';
 	}
