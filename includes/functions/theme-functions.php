@@ -145,6 +145,7 @@ function trestle_output_styles() {
 
 	if ( ! empty( trestle_get_option( 'body_bg_color' ) ) ) {
 		$styles[] = 'body.bubble { background-color: ' . trestle_get_option( 'body_bg_color' ) . '; }';
+		$styles[] = 'body.boxed { background-color: ' . trestle_get_option( 'body_bg_color' ) . '; }';
 	}
 
 	if ( ! empty( trestle_get_option( 'body_text_color' ) ) ) {

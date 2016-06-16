@@ -78,7 +78,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			array(
 				'section'    => 'colors',
 				'settings'   => 'trestle-settings[body_bg_color]',
-				'label'      => __( 'Body Background Color (Bubble)', 'trestle' ),
+				'label'      => __( 'Body Background Color', 'trestle' ),
 			)
 		)
 	);
