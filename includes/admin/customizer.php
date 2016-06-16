@@ -1021,6 +1021,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			'choices'  => array(
 				'full'   => __( 'Full Width', 'trestle' ),
 				'header' => __( 'Header Right', 'trestle' ),
+				'center' => __( 'Center', 'trestle' ),
 			)
 		)
 	);

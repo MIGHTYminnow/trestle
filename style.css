@@ -2642,6 +2642,14 @@ Media Queries
 		padding-right: 20px;
 		padding-right: 2rem;
 	}
+	
+	.nav-primary-location-center .genesis-nav-menu {
+		text-align:center;
+	}
+	
+	.nav-primary-location-center .genesis-nav-menu > li {
+		float: none;
+	}	
 
 	/* Navigation Extras
 	--------------------------------------------- */
