@@ -22,6 +22,7 @@ function trestle_settings_defaults() {
 		'logo_id'                    => '',
 		'logo_id_mobile'             => '',
 		'favicon_url'                => '',
+		'logo_position'              => '',
 		'nav_primary_location'       => 'full',
 		'mobile_nav_toggle'          => 'small-icon',
 		'search_in_nav'              => '',

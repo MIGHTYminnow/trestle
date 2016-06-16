@@ -1439,6 +1439,13 @@ Site Header
 	font-weight: 700;
 }
 
+.center .title-area {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
 .site-title {
 	font-size: 28px;
 	font-size: 2.8rem;

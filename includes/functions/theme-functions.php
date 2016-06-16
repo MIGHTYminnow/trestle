@@ -372,6 +372,11 @@ function trestle_body_classes( $classes ) {
 		$classes[] = 'doc-link-icons';
 	}
 
+	// Logo position
+	if ( trestle_get_option( 'logo_position' ) ) {
+		$classes[] = trestle_get_option( 'logo_position' );
+	}
+
 	// Add menu style class.
 	$nav_primary_location = esc_attr( trestle_get_option( 'nav_primary_location' ) );
 	if ( $nav_primary_location ) {

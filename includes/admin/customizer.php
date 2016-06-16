@@ -979,6 +979,29 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	// Logo position
+	$wp_customize->add_setting(
+		'trestle-settings[logo_position]',
+		array(
+			'default'    => trestle_get_option( 'logo_position' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+		'trestle_logo_position_control',
+		array(
+			'section'  => 'trestle_settings_section',
+			'settings' => 'trestle-settings[logo_position]',
+			'label'    => __( 'Logo Position', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				''   => __( 'Left', 'trestle' ),
+				'center' => __( 'Center', 'trestle' ),
+			)
+		)
+	);
+
 	// Primary nav style.
 	$wp_customize->add_setting(
 		'trestle-settings[nav_primary_location]',
