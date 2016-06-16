@@ -428,6 +428,42 @@ function trestle_customizer_controls( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
+		'trestle-settings[google_font_code]',
+		array(
+			'default'    => trestle_get_option( 'google_font_code' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_google_font_code_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[google_font_code]',
+			'label'    => __( 'Google Font Code', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[body_font_family]',
+		array(
+			'default'    => trestle_get_option( 'body_font_family' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_body_font_family_control',
+		array(
+			'section'  => 'trestle_fonts_section',
+			'settings' => 'trestle-settings[body_font_family]',
+			'label'    => __( 'Body Font Family Name', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
 		'trestle-settings[h1_font_size]',
 		array(
 			'default'    => trestle_get_option( 'h1_font_size' ),

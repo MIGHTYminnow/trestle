@@ -221,6 +221,10 @@ function trestle_output_styles() {
 		$styles[] = '.site-description { font-size: ' . trestle_get_option( 'site_description_font_size' ) . '; }';
 	}
 
+	if ( ! empty( trestle_get_option( 'body_font_family' ) ) ) {
+		$styles[] = 'body { font-family: "' . trestle_get_option( 'body_font_family' ) .  '", sans-serif; }';
+	}
+
 	if ( ! empty( trestle_get_option( 'h1_font_size' ) ) ) {
 		$styles[] = 'h1 { font-size: ' . trestle_get_option( 'h1_font_size' ) . '; }';
 	}
@@ -300,9 +304,14 @@ function trestle_output_styles() {
 		$styles[] = 'body.boxed .site-inner { max-width: 1100px; }';
 	}
 
+	// Google Font
+	if ( ! empty( trestle_get_option( 'google_font_code' ) ) ) {
+		echo trestle_get_option( 'google_font_code' );
+	}
+
 	printf(
 	'<style type="text/css">%s</style>',
-	esc_attr( implode( ' ', $styles ) )
+	implode( ' ', $styles )
 	);
 }
 

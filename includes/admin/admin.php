@@ -51,6 +51,8 @@ function trestle_settings_defaults() {
 		'h6_text_color'              => '#333',
 		'site_title_font_size'       => '28px',
 		'site_description_font_size' => '16px',
+		'google_font_code'           => '',
+		'body_font_family'           => '',
 		'h1_font_size'               => '28px',
 		'h2_font_size'               => '24px',
 		'h3_font_size'               => '20px',
