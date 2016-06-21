@@ -143,9 +143,9 @@ function trestle_output_styles() {
 		$styles[] = '.site-description { color: ' . trestle_get_option( 'site_description_color' ) . '; }';
 	}
 
-	if ( ! empty( trestle_get_option( 'body_bg_color' ) ) ) {
-		$styles[] = 'body.bubble { background-color: ' . trestle_get_option( 'body_bg_color' ) . '; }';
-		$styles[] = 'body.boxed { background-color: ' . trestle_get_option( 'body_bg_color' ) . '; }';
+	if ( ! empty( trestle_get_option( 'site_bg_color' ) ) ) {
+		$styles[] = 'body.bubble { background-color: ' . trestle_get_option( 'site_bg_color' ) . '; }';
+		$styles[] = 'body.boxed { background-color: ' . trestle_get_option( 'site_bg_color' ) . '; }';
 	}
 
 	if ( ! empty( trestle_get_option( 'body_text_color' ) ) ) {

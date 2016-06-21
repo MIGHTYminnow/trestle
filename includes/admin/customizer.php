@@ -63,9 +63,9 @@ function trestle_customizer_controls( $wp_customize ) {
 	);
 
 	$wp_customize->add_setting(
-	'trestle-settings[body_bg_color]',
+	'trestle-settings[site_bg_color]',
 		array(
-			'default'    => trestle_get_option( 'body_bg_color' ),
+			'default'    => trestle_get_option( 'site_bg_color' ),
 			'type'       => 'option',
 			'capability' => 'edit_theme_options',
 		)
@@ -74,10 +74,10 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		new WP_Customize_Color_Control(
 			$wp_customize,
-			'trestle_body_bg_color_control',
+			'trestle_site_bg_color_control',
 			array(
 				'section'    => 'colors',
-				'settings'   => 'trestle-settings[body_bg_color]',
+				'settings'   => 'trestle-settings[site_bg_color]',
 				'label'      => __( 'Site Background Color', 'trestle' ),
 			)
 		)

@@ -35,7 +35,7 @@ function trestle_settings_defaults() {
 		'doc_link_icons'             => 0,
 		'site_title_color'           => '#333',
 		'site_description_color'     => '#999',
-		'body_bg_color'              => '#F5F5F6',
+		'site_bg_color'              => '#F5F5F6',
 		'body_text_color'            => '#666',
 		'header_bg_color'            => '#fff',
 		'menu_bg_color'              => '#333',
