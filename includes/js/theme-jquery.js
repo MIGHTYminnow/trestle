@@ -157,7 +157,7 @@ jQuery( document ).ready( function( $ ) {
 	// Display the Full Screen search when:
 	// 1. The user focuses on a search field, or
 	// 2. The user clicks the Search button
-	$( 'body.fullscreen-search form[role=search] input, body.fullscreen-search form[role=search] button, body.fullscreen-search' ).on( 'focus, click', function( event ) {
+	$( 'body.fullscreen-search form[role=search] input, body.fullscreen-search form[role=search] button' ).on( 'focus, click', function( event ) {
 	    // Prevent the default action
 	    event.preventDefault();
 
