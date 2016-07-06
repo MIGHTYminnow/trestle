@@ -25,6 +25,7 @@ function trestle_settings_defaults() {
 		'nav_primary_location'  => 'full',
 		'mobile_nav_toggle'     => 'small-icon',
 		'search_in_nav'         => '',
+		'fullscreen_search'     => '',
 		'read_more_text'        => __( 'Read&nbsp;More&nbsp;&raquo;', 'trestle' ),
 		'revisions_number'      => 3,
 		'footer_widgets_number' => 3,
