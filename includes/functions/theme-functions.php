@@ -202,6 +202,11 @@ function trestle_body_classes( $classes ) {
 		$classes[] = 'has-logo';
 	}
 
+	// Add fullscreen search class.
+	if ( trestle_get_option( 'fullscreen_search' ) ) {
+		$classes[] = 'fullscreen-search';
+	}
+
 	return $classes;
 
 }
@@ -329,6 +334,30 @@ function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
 	return $nav_items;
 }
 
+add_action( 'wp_footer', 'trestle_output_full_screen_search' );
+/**
+* Outputs the HTML markup for our Full Screen Search
+* CSS hides this by default, and Javascript displays it when the user
+* interacts with any WordPress search field
+*
+* @since 2.2.1
+*/
+function trestle_output_full_screen_search() {
+
+	if ( trestle_get_option( 'fullscreen_search' ) ) {
+		?>
+		<div id="full-screen-search">
+			<button type="button" class="close" id="full-screen-search-close">X</button>
+			<form role="search" method="get" action="<?php echo home_url( '/' ); ?>" id="full-screen-search-form">
+				<div id="full-screen-search-container">
+					<input type="text" name="s" placeholder="<?php _e( 'Search' ); ?>" id="full-screen-search-input" />
+				</div>
+			</form>
+		</div>
+		<?php
+	}
+
+}
 
 /*===========================================
  * Posts & Pages
@@ -485,4 +514,48 @@ function trestle_is_current_or_descendant_post( $post_id = '', $target_id = '' )
 
 	return false;
 
+}
+
+
+//add_filter( 'mm_blockquote_content', 'test_content', 1 );
+
+function test_content( $args ) {
+
+	// Support the image being an ID or a URL.
+	if ( is_numeric( $image_id ) ) {
+	    $image_array = wp_get_attachment_image_src( $args['image_id'], 'thumbnail', false, array( 'class' => 'alignright' )  );
+	    $image_url   = $image_array[0];
+	} else {
+	    $image_url = esc_url( $args['image_id'] );
+	}
+
+	$mm_classes = apply_filters( 'mm_components_custom_classes', '', $component, $args );
+
+	ob_start() ?>
+
+	<?php if ( '' !== $image_url ) : ?>
+		<img class="blockquote-image" src="<?php echo $image_url; ?>">
+	<?php endif; ?>
+
+	<blockquote class="<?php echo esc_attr( $mm_classes ); ?>">
+
+		<p><?php echo wp_kses_post( $args['content'] ); ?></p>
+
+		<?php if ( ! empty( $args['citation'] ) ) : ?>
+
+			<?php if ( ! empty( $args['$citation_link'] ) ) : ?>
+				<cite><a href="<?php echo esc_url( $args['citation_link'] ) ?>" title="<?php echo esc_attr( $args['citation_link_title'] ); ?>" target="<?php echo esc_attr( $args['citation_link_target'] ); ?>"><?php echo esc_html( $args['citation'] ); ?></a></cite>
+			<?php else : ?>
+				<cite><?php echo esc_html( $args['citation'] ); ?></cite>
+			<?php endif; ?>
+
+		<?php endif; ?>
+
+	</blockquote>
+
+	<?php
+
+	$output = ob_get_clean();
+
+	return $output;
 }
