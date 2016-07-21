@@ -1068,6 +1068,25 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	// Fullscreen search
+	$wp_customize->add_setting(
+		'trestle-settings[fullscreen_search]',
+		array(
+			'default'    => trestle_get_option( 'fullscreen_search' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+		'trestle_fullscreen_search_control',
+		array(
+			'section'   => 'trestle_settings_section',
+			'settings'  => 'trestle-settings[fullscreen_search]',
+			'label'     => __( 'Use full screen search?', 'trestle' ),
+			'type'      => 'checkbox',
+		)
+	);
+
 	// Blog post custom read more link text.
 	$wp_customize->add_setting(
 		'trestle-settings[read_more_text]',

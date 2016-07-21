@@ -2207,6 +2207,140 @@ table.ui-datepicker-calendar {
 	margin-right: -125px;
 }
 
+/* Fullscreen Search
+--------------------------------------------- */
+
+/* Reset - Prevents Themes and other Plugins from applying their own styles to our full screen search */
+#full-screen-search,
+#full-screen-search button,
+#full-screen-search button.close,
+#full-screen-search form,
+#full-screen-search form div,
+#full-screen-search form div input,
+#full-screen-search form div input.search {
+    font-family: Arial, sans-serif;
+    background:none;
+    border:0 none;
+    border-radius:0;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    float:none;
+    font-size:100%;
+    height:auto;
+    letter-spacing:normal;
+    list-style:none;
+    outline:none;
+    position:static;
+    text-decoration:none;
+    text-indent:0;
+    text-shadow:none;
+    text-transform:none;
+    width:auto;
+    visibility:visible;
+    overflow:visible;
+    margin:0;
+    padding:0;
+    line-height:1;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    -ms-box-shadow:none;
+    -o-box-shadow:none;
+    box-shadow:none;
+    -webkit-appearance:none;
+    transition: none;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+}
+
+/* Background */
+#full-screen-search {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.95);
+
+    /* Add some CSS3 transitions for showing the Full Screen Search */
+    transition: opacity 0.5s linear;
+}
+
+/* Display Full Screen Search when Open */
+#full-screen-search.open {
+    /*
+    * Because we're using visibility and opacity for CSS transition support,
+    * we define position: fixed; here so that the Full Screen Search doesn't block
+    * the underlying HTML elements when not open
+    */
+    position: fixed;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Search Form */
+#full-screen-search form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Close Button */
+#full-screen-search button.close {
+    position: absolute;
+    z-index: 999999;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: 300;
+    color: #999;
+    cursor: pointer;
+}
+
+/* Search Form Div */
+#full-screen-search form div {
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -25%;
+}
+
+/* Search Form Input Placeholder Color */
+#full-screen-search form div input::-webkit-input-placeholder { 
+    font-family: Arial, sans-serif;
+    color: #ccc;
+}
+#full-screen-search form div input:-moz-placeholder { 
+    font-family: Arial, sans-serif;
+    color: #ccc;
+}
+#full-screen-search form div input::-moz-placeholder { 
+    font-family: Arial, sans-serif;
+    color: #ccc;
+}
+#full-screen-search form div input:-ms-input-placeholder { 
+    font-family: Arial, sans-serif;
+    color: #ccc;
+}
+
+/* Search Form Input */
+#full-screen-search form div input {
+    width: 100%;
+    height: 100px;
+    background: #eee;
+    padding: 20px;
+    font-size: 40px;
+    line-height: 60px;
+}
+
 /*
 Specific Pages
 ---------------------------------------------------------------------------------------------------- */
