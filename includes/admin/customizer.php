@@ -25,7 +25,7 @@ function trestle_customizer_controls( $wp_customize ) {
 		'priority'       => 30,
 		'capability'     => 'edit_theme_options',
 		'theme_supports' => '',
-		'title'          => __('Colors', 'mytheme'),
+		'title'          => __('Colors', 'trestle'),
 		'description'    => __('Color settings pertaining Trestle', 'trestle'),
 	) );
 
@@ -441,17 +441,27 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	/**
+	 * Add Fonts panel
+	 */
+	$wp_customize->add_panel( 'trestle_fonts_panel', array(
+		'priority'       => 30,
+		'capability'     => 'edit_theme_options',
+		'theme_supports' => '',
+		'title'          => __('Fonts', 'trestle'),
+		'description'    => __('Font settings pertaining Trestle', 'trestle'),
+	) );
 
 	/**
-	 * Font Settings Section.
+	 *  Header Fonts Section, controls and settings
 	 */
-
 	// Add the section.
 	$wp_customize->add_section(
-		'trestle_fonts_section',
+		'trestle_header_fonts_section',
 		array(
-			'title'    => __( 'Fonts', 'trestle' ),
-			'priority' => 60,
+			'title'    => __( 'Header', 'trestle' ),
+			'priority' => 10,
+			'panel'    => 'trestle_fonts_panel',
 		)
 	);
 
@@ -467,7 +477,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_site_title_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_header_fonts_section',
 			'settings' => 'trestle-settings[site_title_font_size]',
 			'label'    => __( 'Site Title Font Size', 'trestle' ),
 		)
@@ -485,45 +495,22 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_site_description_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_header_fonts_section',
 			'settings' => 'trestle-settings[site_description_font_size]',
 			'label'    => __( 'Site Description Font Size', 'trestle' ),
 		)
 	);
 
-	$wp_customize->add_setting(
-		'trestle-settings[google_font_code]',
+	/**
+	 *  Text Font Settings Section, controls and settings
+	 */
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_text_fonts_section',
 		array(
-			'default'    => trestle_get_option( 'google_font_code' ),
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	$wp_customize->add_control(
-		'trestle_google_font_code_control',
-		array(
-			'section'  => 'trestle_fonts_section',
-			'settings' => 'trestle-settings[google_font_code]',
-			'label'    => __( 'Google Font Code', 'trestle' ),
-		)
-	);
-
-	$wp_customize->add_setting(
-		'trestle-settings[body_font_family]',
-		array(
-			'default'    => trestle_get_option( 'body_font_family' ),
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	$wp_customize->add_control(
-		'trestle_body_font_family_control',
-		array(
-			'section'  => 'trestle_fonts_section',
-			'settings' => 'trestle-settings[body_font_family]',
-			'label'    => __( 'Body Font Family Name', 'trestle' ),
+			'title'    => __( 'Text', 'trestle' ),
+			'priority' => 20,
+			'panel'    => 'trestle_fonts_panel',
 		)
 	);
 
@@ -539,7 +526,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h1_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h1_font_size]',
 			'label'    => __( 'h1 Font Size', 'trestle' ),
 		)
@@ -557,7 +544,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h1_text_decoration_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h1_text_decoration]',
 			'label'    => __( 'h1 Text Decoration', 'trestle' ),
 			'type'     => 'select',
@@ -582,7 +569,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h1_text_style_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h1_text_style]',
 			'label'    => __( 'h1 Text Style', 'trestle' ),
 			'type'     => 'select',
@@ -607,7 +594,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h2_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h2_font_size]',
 			'label'    => __( 'h2 Font Size', 'trestle' ),
 		)
@@ -625,7 +612,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h2_text_decoration_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h2_text_decoration]',
 			'label'    => __( 'h2 Text Decoration', 'trestle' ),
 			'type'     => 'select',
@@ -650,7 +637,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h2_text_style_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h2_text_style]',
 			'label'    => __( 'h2 Text Style', 'trestle' ),
 			'type'     => 'select',
@@ -675,7 +662,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h3_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h3_font_size]',
 			'label'    => __( 'h3 Font Size', 'trestle' ),
 		)
@@ -693,7 +680,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h3_text_decoration_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h3_text_decoration]',
 			'label'    => __( 'h3 Text Decoration', 'trestle' ),
 			'type'     => 'select',
@@ -718,7 +705,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h3_text_style_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h3_text_style]',
 			'label'    => __( 'h3 Text Style', 'trestle' ),
 			'type'     => 'select',
@@ -743,7 +730,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h4_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h4_font_size]',
 			'label'    => __( 'h4 Font Size', 'trestle' ),
 		)
@@ -761,7 +748,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h4_text_decoration_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h4_text_decoration]',
 			'label'    => __( 'h4 Text Decoration', 'trestle' ),
 			'type'     => 'select',
@@ -786,7 +773,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h4_text_style_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h4_text_style]',
 			'label'    => __( 'h4 Text Style', 'trestle' ),
 			'type'     => 'select',
@@ -811,7 +798,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h5_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h5_font_size]',
 			'label'    => __( 'h5 Font Size', 'trestle' ),
 		)
@@ -829,7 +816,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h5_text_decoration_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h5_text_decoration]',
 			'label'    => __( 'h5 Text Decoration', 'trestle' ),
 			'type'     => 'select',
@@ -854,7 +841,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h5_text_style_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h5_text_style]',
 			'label'    => __( 'h5 Text Style', 'trestle' ),
 			'type'     => 'select',
@@ -879,7 +866,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h6_font_size_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h6_font_size]',
 			'label'    => __( 'h6 Font Size', 'trestle' ),
 		)
@@ -897,7 +884,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h6_text_decoration_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h6_text_decoration]',
 			'label'    => __( 'h6 Text Decoration', 'trestle' ),
 			'type'     => 'select',
@@ -922,7 +909,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_h6_text_style_control',
 		array(
-			'section'  => 'trestle_fonts_section',
+			'section'  => 'trestle_text_fonts_section',
 			'settings' => 'trestle-settings[h6_text_style]',
 			'label'    => __( 'h6 Text Style', 'trestle' ),
 			'type'     => 'select',
@@ -932,6 +919,55 @@ function trestle_customizer_controls( $wp_customize ) {
 				'lowercase'  => 'Lowercase',
 				'uppercase'  => 'Uppercase',
 			)
+		)
+	);
+
+	/**
+	 *  Google Fonts Settings Section, controls and settings
+	 */
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_google_fonts_section',
+		array(
+			'title'    => __( 'Google Fonts', 'trestle' ),
+			'priority' => 60,
+			'panel'    => 'trestle_fonts_panel',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[google_font_code]',
+		array(
+			'default'    => trestle_get_option( 'google_font_code' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_google_font_code_control',
+		array(
+			'section'  => 'trestle_google_fonts_section',
+			'settings' => 'trestle-settings[google_font_code]',
+			'label'    => __( 'Google Font Code', 'trestle' ),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[body_font_family]',
+		array(
+			'default'    => trestle_get_option( 'body_font_family' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		'trestle_body_font_family_control',
+		array(
+			'section'  => 'trestle_google_fonts_section',
+			'settings' => 'trestle-settings[body_font_family]',
+			'label'    => __( 'Body Font Family Name', 'trestle' ),
 		)
 	);
 
