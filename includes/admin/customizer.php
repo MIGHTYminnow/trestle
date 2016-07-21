@@ -17,9 +17,31 @@ add_action( 'customize_register', 'trestle_customizer_controls' );
  */
 function trestle_customizer_controls( $wp_customize ) {
 
+
 	/**
-	 *  Colors Section
+	 * Add Colors panel
 	 */
+	$wp_customize->add_panel( 'trestle_colors_panel', array(
+		'priority'       => 30,
+		'capability'     => 'edit_theme_options',
+		'theme_supports' => '',
+		'title'          => __('Colors', 'mytheme'),
+		'description'    => __('Color settings pertaining Trestle', 'trestle'),
+	) );
+
+	/**
+	 *  Header Colors Section, controls and settings
+	 */
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_header_colors_section',
+		array(
+			'title'    => __( 'Header', 'trestle' ),
+			'priority' => 60,
+			'panel'    => 'trestle_colors_panel',
+		)
+	);
+
 	$wp_customize->add_setting(
 		'trestle-settings[site_title_color]',
 		array(
@@ -34,7 +56,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_site_title_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_header_colors_section',
 				'settings'   => 'trestle-settings[site_title_color]',
 				'label'      => __( 'Site Title', 'trestle' ),
 			)
@@ -55,51 +77,9 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_site_description_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_header_colors_section',
 				'settings'   => 'trestle-settings[site_description_color]',
 				'label'      => __( 'Site Description', 'trestle' ),
-			)
-		)
-	);
-
-	$wp_customize->add_setting(
-	'trestle-settings[site_bg_color]',
-		array(
-			'default'    => trestle_get_option( 'site_bg_color' ),
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'trestle_site_bg_color_control',
-			array(
-				'section'    => 'colors',
-				'settings'   => 'trestle-settings[site_bg_color]',
-				'label'      => __( 'Site Background Color', 'trestle' ),
-			)
-		)
-	);
-
-    $wp_customize->add_setting(
-		'trestle-settings[body_text_color]',
-		array(
-			'default'    => trestle_get_option( 'body_text_color' ),
-			'type'       => 'option',
-			'capability' => 'edit_theme_options',
-		)
-	);
-
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'trestle_body_text_color_control',
-			array(
-				'section'    => 'colors',
-				'settings'   => 'trestle-settings[body_text_color]',
-				'label'      => __( 'Body Text Color', 'trestle' ),
 			)
 		)
 	);
@@ -118,7 +98,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_header_bg_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_header_colors_section',
 				'settings'   => 'trestle-settings[header_bg_color]',
 				'label'      => __( 'Header Background Color', 'trestle' ),
 			)
@@ -139,7 +119,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_menu_bg_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_header_colors_section',
 				'settings'   => 'trestle-settings[menu_bg_color]',
 				'label'      => __( 'Menu Background Color', 'trestle' ),
 			)
@@ -160,7 +140,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_menu_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_header_colors_section',
 				'settings'   => 'trestle-settings[menu_text_color]',
 				'label'      => __( 'Menu Text Color', 'trestle' ),
 			)
@@ -181,14 +161,14 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_sub_menu_bg_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_header_colors_section',
 				'settings'   => 'trestle-settings[sub_menu_bg_color]',
 				'label'      => __( 'Sub-menu Background Color', 'trestle' ),
 			)
 		)
 	);
 
-    $wp_customize->add_setting(
+	$wp_customize->add_setting(
 		'trestle-settings[sub_menu_text_color]',
 		array(
 			'default'    => trestle_get_option( 'sub_menu_text_color' ),
@@ -202,10 +182,80 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_sub_menu_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_header_colors_section',
 				'settings'   => 'trestle-settings[sub_menu_text_color]',
 				'label'      => __( 'Sub-menu Text Color', 'trestle' ),
 			)
+		)
+	);
+
+
+	/**
+	 *  Body Colors Section, controls and settings
+	 */
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_body_colors_section',
+		array(
+			'title'    => __( 'Body', 'trestle' ),
+			'priority' => 60,
+			'panel'    => 'trestle_colors_panel',
+		)
+	);
+
+	$wp_customize->add_setting(
+	'trestle-settings[site_bg_color]',
+		array(
+			'default'    => trestle_get_option( 'site_bg_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_site_bg_color_control',
+			array(
+				'section'    => 'trestle_body_colors_section',
+				'settings'   => 'trestle-settings[site_bg_color]',
+				'label'      => __( 'Site Background Color', 'trestle' ),
+			)
+		)
+	);
+
+    $wp_customize->add_setting(
+		'trestle-settings[body_text_color]',
+		array(
+			'default'    => trestle_get_option( 'body_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_body_text_color_control',
+			array(
+				'section'    => 'trestle_body_colors_section',
+				'settings'   => 'trestle-settings[body_text_color]',
+				'label'      => __( 'Body Text Color', 'trestle' ),
+			)
+		)
+	);
+
+
+	/**
+	 *  Footer Colors Section, controls and settings
+	 */
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_footer_colors_section',
+		array(
+			'title'    => __( 'Footer', 'trestle' ),
+			'priority' => 60,
+			'panel'    => 'trestle_colors_panel',
 		)
 	);
 
@@ -223,7 +273,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_footer_bg_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_footer_colors_section',
 				'settings'   => 'trestle-settings[footer_bg_color]',
 				'label'      => __( 'Footer Background Color', 'trestle' ),
 			)
@@ -244,10 +294,24 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_footer_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_footer_colors_section',
 				'settings'   => 'trestle-settings[footer_text_color]',
 				'label'      => __( 'Footer Text Color', 'trestle' ),
 			)
+		)
+	);
+
+
+	/**
+	 *  Text Colors Section, controls and settings
+	 */
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_text_colors_section',
+		array(
+			'title'    => __( 'Text', 'trestle' ),
+			'priority' => 60,
+			'panel'    => 'trestle_colors_panel',
 		)
 	);
 
@@ -265,7 +329,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_h1_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_text_colors_section',
 				'settings'   => 'trestle-settings[h1_text_color]',
 				'label'      => __( 'h1 Text Color', 'trestle' ),
 			)
@@ -286,7 +350,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_h2_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_text_colors_section',
 				'settings'   => 'trestle-settings[h2_text_color]',
 				'label'      => __( 'h2 Text Color', 'trestle' ),
 			)
@@ -307,7 +371,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_h3_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_text_colors_section',
 				'settings'   => 'trestle-settings[h3_text_color]',
 				'label'      => __( 'h3 Text Color', 'trestle' ),
 			)
@@ -328,7 +392,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_h4_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_text_colors_section',
 				'settings'   => 'trestle-settings[h4_text_color]',
 				'label'      => __( 'h4 Text Color', 'trestle' ),
 			)
@@ -349,7 +413,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_h5_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_text_colors_section',
 				'settings'   => 'trestle-settings[h5_text_color]',
 				'label'      => __( 'h5 Text Color', 'trestle' ),
 			)
@@ -370,7 +434,7 @@ function trestle_customizer_controls( $wp_customize ) {
 			$wp_customize,
 			'trestle_h6_text_color_control',
 			array(
-				'section'    => 'colors',
+				'section'    => 'trestle_text_colors_section',
 				'settings'   => 'trestle-settings[h6_text_color]',
 				'label'      => __( 'h6 Text Color', 'trestle' ),
 			)
