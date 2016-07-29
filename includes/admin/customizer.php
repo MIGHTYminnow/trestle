@@ -224,7 +224,7 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
-    $wp_customize->add_setting(
+	$wp_customize->add_setting(
 		'trestle-settings[body_text_color]',
 		array(
 			'default'    => trestle_get_option( 'body_text_color' ),
@@ -245,6 +245,186 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'trestle-settings[body_link_color]',
+		array(
+			'default'    => trestle_get_option( 'body_link_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_body_link_color_control',
+			array(
+				'section'    => 'trestle_body_colors_section',
+				'settings'   => 'trestle-settings[body_link_color]',
+				'label'      => __( 'Body Link Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[body_link_hover_color]',
+		array(
+			'default'    => trestle_get_option( 'body_link_hover_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_body_link_hover_color_control',
+			array(
+				'section'    => 'trestle_body_colors_section',
+				'settings'   => 'trestle-settings[body_link_hover_color]',
+				'label'      => __( 'Body Link Hover Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[entry_title_link_color]',
+		array(
+			'default'    => trestle_get_option( 'entry_title_link_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_entry_title_link_color_control',
+			array(
+				'section'    => 'trestle_body_colors_section',
+				'settings'   => 'trestle-settings[entry_title_link_color]',
+				'label'      => __( 'Entry Title Link Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[entry_title_link_hover_color]',
+		array(
+			'default'    => trestle_get_option( 'entry_title_link_hover_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_entry_title_link_hover_color_control',
+			array(
+				'section'    => 'trestle_body_colors_section',
+				'settings'   => 'trestle-settings[entry_title_link_hover_color]',
+				'label'      => __( 'Entry Title Link Hover Color', 'trestle' ),
+			)
+		)
+	);
+
+	/**
+	 *  Sidebar Colors Section, controls and settings
+	 */
+	// Add the section.
+	$wp_customize->add_section(
+		'trestle_sidebar_colors_section',
+		array(
+			'title'    => __( 'Sidebar', 'trestle' ),
+			'priority' => 60,
+			'panel'    => 'trestle_colors_panel',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[sidebar_text_color]',
+		array(
+			'default'    => trestle_get_option( 'sidebar_text_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_sidebar_text_color_control',
+			array(
+				'section'    => 'trestle_sidebar_colors_section',
+				'settings'   => 'trestle-settings[sidebar_text_color]',
+				'label'      => __( 'Sidebar Text Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[widget_title_color]',
+		array(
+			'default'    => trestle_get_option( 'widget_title_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_widget_title_color_control',
+			array(
+				'section'    => 'trestle_sidebar_colors_section',
+				'settings'   => 'trestle-settings[widget_title_color]',
+				'label'      => __( 'Widget Title Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[sidebar_link_color]',
+		array(
+			'default'    => trestle_get_option( 'sidebar_link_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_sidebar_link_color_control',
+			array(
+				'section'    => 'trestle_sidebar_colors_section',
+				'settings'   => 'trestle-settings[sidebar_link_color]',
+				'label'      => __( 'Sidebar Link Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[sidebar_link_hover_color]',
+		array(
+			'default'    => trestle_get_option( 'sidebar_link_hover_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_sidebar_link_hover_color_control',
+			array(
+				'section'    => 'trestle_sidebar_colors_section',
+				'settings'   => 'trestle-settings[sidebar_link_hover_color]',
+				'label'      => __( 'Sidebar Link Hover Color', 'trestle' ),
+			)
+		)
+	);
 
 	/**
 	 *  Footer Colors Section, controls and settings
@@ -301,6 +481,47 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'trestle-settings[footer_link_color]',
+		array(
+			'default'    => trestle_get_option( 'footer_link_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_footer_link_color_control',
+			array(
+				'section'    => 'trestle_footer_colors_section',
+				'settings'   => 'trestle-settings[footer_link_color]',
+				'label'      => __( 'Footer Link Color', 'trestle' ),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'trestle-settings[footer_link_hover_color]',
+		array(
+			'default'    => trestle_get_option( 'footer_link_hover_color' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			'trestle_footer_link_hover_color_control',
+			array(
+				'section'    => 'trestle_footer_colors_section',
+				'settings'   => 'trestle-settings[footer_link_hover_color]',
+				'label'      => __( 'Footer Link Hover Color', 'trestle' ),
+			)
+		)
+	);
 
 	/**
 	 *  Text Colors Section, controls and settings
@@ -309,7 +530,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_section(
 		'trestle_text_colors_section',
 		array(
-			'title'    => __( 'Text', 'trestle' ),
+			'title'    => __( 'Headings', 'trestle' ),
 			'priority' => 60,
 			'panel'    => 'trestle_colors_panel',
 		)
@@ -508,7 +729,7 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_section(
 		'trestle_text_fonts_section',
 		array(
-			'title'    => __( 'Text', 'trestle' ),
+			'title'    => __( 'Headings', 'trestle' ),
 			'priority' => 20,
 			'panel'    => 'trestle_fonts_panel',
 		)
