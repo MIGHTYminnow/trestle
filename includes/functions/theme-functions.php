@@ -125,6 +125,229 @@ function trestle_header_actions() {
 
 }
 
+add_action( 'wp_head', 'trestle_output_styles');
+/**
+ * Output the style element that contains all Customizer CSS.
+ *
+ * @since  2.0.0
+ */
+function trestle_output_styles() {
+
+	$styles = array();
+
+	if ( ! empty( trestle_get_option( 'site_title_color' ) ) ) {
+		$styles[] = '.site-title a, .site-title a:hover { color: ' . trestle_get_option( 'site_title_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'site_description_color' ) ) ) {
+		$styles[] = '.site-description { color: ' . trestle_get_option( 'site_description_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'site_bg_color' ) ) ) {
+		$styles[] = 'body.bubble { background-color: ' . trestle_get_option( 'site_bg_color' ) . '; }';
+		$styles[] = 'body.boxed { background-color: ' . trestle_get_option( 'site_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'body_text_color' ) ) ) {
+		$styles[] = 'body { color: ' . trestle_get_option( 'body_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'body_link_color' ) ) ) {
+		$styles[] = '.site-inner a { color: ' . trestle_get_option( 'body_link_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'body_link_hover_color' ) ) ) {
+		$styles[] = '.site-inner a:hover { color: ' . trestle_get_option( 'body_link_hover_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'entry_title_link_color' ) ) ) {
+		$styles[] = '.entry-title a { color: ' . trestle_get_option( 'entry_title_link_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'entry_title_link_hover_color' ) ) ) {
+		$styles[] = '.entry-title a:hover { color: ' . trestle_get_option( 'entry_title_link_hover_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'header_bg_color' ) ) ) {
+		$styles[] = '.site-header { background-color: ' . trestle_get_option( 'header_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'menu_bg_color' ) ) ) {
+		$styles[] = '.nav-primary, .nav-secondary { background-color: ' . trestle_get_option( 'menu_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'menu_text_color' ) ) ) {
+		$styles[] = '.nav-primary a, .nav-secondary a { color: ' . trestle_get_option( 'menu_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sub_menu_bg_color' ) ) ) {
+		$styles[] = '.nav-primary .sub-menu { background-color: ' . trestle_get_option( 'sub_menu_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sub_menu_text_color' ) ) ) {
+		$styles[] = '.nav-primary .sub-menu a { color: ' . trestle_get_option( 'sub_menu_text_color' ) . '; border-color: ' . trestle_get_option( 'sub_menu_text_color' ) . '; }';
+		$styles[] = '.nav-primary .sub-menu-toggle .sub-menu-toggle-span { background-color: ' . trestle_get_option( 'sub_menu_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sidebar_text_color' ) ) ) {
+		$styles[] = '.sidebar-primary p { color: ' . trestle_get_option( 'sidebar_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'widget_title_color' ) ) ) {
+		$styles[] = '.widgettitle { color: ' . trestle_get_option( 'widget_title_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sidebar_link_color' ) ) ) {
+		$styles[] = '.sidebar-primary a { color: ' . trestle_get_option( 'sidebar_link_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'sidebar_link_hover_color' ) ) ) {
+		$styles[] = '.sidebar-primary a:hover { color: ' . trestle_get_option( 'sidebar_link_hover_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'footer_bg_color' ) ) ) {
+		$styles[] = '.site-footer { background-color: ' . trestle_get_option( 'footer_bg_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'footer_text_color' ) ) ) {
+		$styles[] = '.site-footer { color: ' . trestle_get_option( 'footer_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'footer_link_color' ) ) ) {
+		$styles[] = '.site-footer a { color: ' . trestle_get_option( 'footer_link_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'footer_link_hover_color' ) ) ) {
+		$styles[] = '.site-footer a:hover { color: ' . trestle_get_option( 'footer_link_hover_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h1_text_color' ) ) ) {
+		$styles[] = 'h1 { color: ' . trestle_get_option( 'h1_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_text_color' ) ) ) {
+		$styles[] = 'h2 { color: ' . trestle_get_option( 'h2_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_text_color' ) ) ) {
+		$styles[] = 'h3 { color: ' . trestle_get_option( 'h3_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_text_color' ) ) ) {
+		$styles[] = 'h4 { color: ' . trestle_get_option( 'h4_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_text_color' ) ) ) {
+		$styles[] = 'h5 { color: ' . trestle_get_option( 'h5_text_color' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_text_color' ) ) ) {
+		$styles[] = 'h6 { color: ' . trestle_get_option( 'h6_text_color' ) . '; }';
+	}
+
+	// Font size
+	if ( ! empty( trestle_get_option( 'site_title_font_size' ) ) ) {
+		$styles[] = '.site-title { font-size: ' . trestle_get_option( 'site_title_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'site_description_font_size' ) ) ) {
+		$styles[] = '.site-description { font-size: ' . trestle_get_option( 'site_description_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'body_font_family' ) ) ) {
+		$styles[] = 'body { font-family: "' . trestle_get_option( 'body_font_family' ) .  '", sans-serif; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h1_font_size' ) ) ) {
+		$styles[] = 'h1 { font-size: ' . trestle_get_option( 'h1_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_font_size' ) ) ) {
+		$styles[] = 'h2 { font-size: ' . trestle_get_option( 'h2_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_font_size' ) ) ) {
+		$styles[] = 'h3 { font-size: ' . trestle_get_option( 'h3_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_font_size' ) ) ) {
+		$styles[] = 'h4 { font-size: ' . trestle_get_option( 'h4_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_font_size' ) ) ) {
+		$styles[] = 'h5 { font-size: ' . trestle_get_option( 'h5_font_size' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_font_size' ) ) ) {
+		$styles[] = 'h6 { font-size: ' . trestle_get_option( 'h6_font_size' ) . '; }';
+	}
+
+	// Text decoration
+	if ( ! empty( trestle_get_option( 'h1_text_decoration' ) ) ) {
+		$styles[] = 'h1 { text-decoration: ' . trestle_get_option( 'h1_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_text_decoration' ) ) ) {
+		$styles[] = 'h2 { text-decoration: ' . trestle_get_option( 'h2_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_text_decoration' ) ) ) {
+		$styles[] = 'h3 { text-decoration: ' . trestle_get_option( 'h3_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_text_decoration' ) ) ) {
+		$styles[] = 'h4 { text-decoration: ' . trestle_get_option( 'h4_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_text_decoration' ) ) ) {
+		$styles[] = 'h5 { text-decoration: ' . trestle_get_option( 'h5_text_decoration' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_text_decoration' ) ) ) {
+		$styles[] = 'h6 { text-decoration: ' . trestle_get_option( 'h6_text_decoration' ) . '; }';
+	}
+
+	// Text style
+	if ( ! empty( trestle_get_option( 'h1_text_style' ) ) ) {
+		$styles[] = 'h1 { text-transform: ' . trestle_get_option( 'h1_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h2_text_style' ) ) ) {
+		$styles[] = 'h2 { text-transform: ' . trestle_get_option( 'h2_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h3_text_style' ) ) ) {
+		$styles[] = 'h3 { text-transform: ' . trestle_get_option( 'h3_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h4_text_style' ) ) ) {
+		$styles[] = 'h4 { text-transform: ' . trestle_get_option( 'h4_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h5_text_style' ) ) ) {
+		$styles[] = 'h5 { text-transform: ' . trestle_get_option( 'h5_text_style' ) . '; }';
+	}
+
+	if ( ! empty( trestle_get_option( 'h6_text_style' ) ) ) {
+		$styles[] = 'h6 { text-transform: ' . trestle_get_option( 'h6_text_style' ) . '; }';
+	}
+
+	// Site Layout
+	if ( ! empty( trestle_get_option( 'h6_text_style' ) ) && "boxed" == trestle_get_option( 'layout' ) ) {
+		$styles[] = 'body.boxed .site-inner { max-width: 1100px; }';
+	}
+
+	// Google Font
+	if ( ! empty( trestle_get_option( 'google_font_code' ) ) ) {
+		echo trestle_get_option( 'google_font_code' );
+	}
+
+	printf(
+	'<style type="text/css">%s</style>',
+	implode( ' ', $styles )
+	);
+}
+
 add_filter( 'genesis_pre_load_favicon', 'trestle_do_custom_favicon' );
 /**
  * Output custom favicon if specified in the theme options.
@@ -163,6 +386,10 @@ function trestle_body_classes( $classes ) {
 	if ( 'bubble' == trestle_get_option( 'layout' ) )
 		$classes[] = 'bubble';
 
+	// Add 'boxed' class.
+	if ( 'boxed' == trestle_get_option( 'layout' ) )
+		$classes[] = 'boxed';
+
 	// Add link icon classes.
 	if ( trestle_get_option( 'external_link_icons' ) ) {
 		$classes[] = 'external-link-icons';
@@ -175,6 +402,11 @@ function trestle_body_classes( $classes ) {
 	}
 	if ( trestle_get_option( 'doc_link_icons' ) ) {
 		$classes[] = 'doc-link-icons';
+	}
+
+	// Logo position
+	if ( trestle_get_option( 'logo_position' ) ) {
+		$classes[] = trestle_get_option( 'logo_position' );
 	}
 
 	// Add menu style class.
