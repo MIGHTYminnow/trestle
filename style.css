@@ -2303,6 +2303,14 @@ table.ui-datepicker-calendar {
     cursor: pointer;
 }
 
+#full-screen-search #full-screen-search-container {
+	display: none;
+}
+
+#full-screen-search.open #full-screen-search-container {
+	display: inherit;
+}
+
 /* Search Form Div */
 #full-screen-search form div {
     position: absolute;
