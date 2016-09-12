@@ -17,6 +17,8 @@ add_action( 'customize_register', 'trestle_customizer_controls' );
  */
 function trestle_customizer_controls( $wp_customize ) {
 
+	// Remove extra colors panel from the custom background theme support function.
+	$wp_customize->remove_section('colors');
 
 	/**
 	 * Add Colors panel

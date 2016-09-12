@@ -5,7 +5,7 @@
 	Description: Trestle is a Genesis child theme for developers based on the default <a href="http://www.genesisframework.com/">Genesis 2.0 Sample Theme</a>. It features mobile first CSS, helpful theme options, and lots more tools to support your development process.
 	Author: MIGHTYminnow
 	Author URI: http://www.mightyminnow.com/
-	Version: 2.2.1
+	Version: 2.2.2
 	Tags: black, gray, red, white, light, one-column, two-columns, three-columns, left-sidebar, right-sidebar, fluid-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, flexible-header, front-page-post-form, full-width-template, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, genesis, mobile-first, responsive, clean
 	Text Domain: trestle
 	GitHub Theme URI: MIGHTYminnow/trestle
@@ -751,24 +751,7 @@ Structure and Layout
 	clear: both;
 	padding: 20px;
 	padding: 2rem;
-	border-radius: 3px;
-}
-
-.custom-background .site-inner {
-	max-width: 1100px;
-	margin: 20px;
-	margin: 2rem;
-	padding: 30px;
-	padding: 3rem;
-	background-color: #fff;
-}
-
-.custom-background.bubble .site-inner {
-	max-width: 1140px;
-	margin: 0 auto;
-	padding: 20px;
-	padding: 2rem;
-	background-color: transparent;
+	border-radius: 0;
 }
 
 .entry,
@@ -1421,10 +1404,6 @@ Site Header
 	background-color: #fff;
 }
 
-.custom-background .site-header {
-	background-color: transparent;
-}
-
 .site-header .wrap {
 	padding: 20px;
 	padding: 2rem;
@@ -1625,10 +1604,6 @@ Site Navigation
 .bubble #menu-toggle {
 	margin-top: 20px;
 	margin-top: 2rem;
-}
-
-.custom-background #menu-toggle {
-	margin-top: 0;
 }
 
 .genesis-nav-menu {
@@ -2943,14 +2918,6 @@ Media Queries
 
 	.em-calendar-wrapper .fullcalendar tbody td {
 		border-top-width: 1px;
-	}
-
-}
-
-@media (min-width: 1140px) {
-
-	.custom-background .site-inner {
-		margin: 20px auto;
 	}
 
 }

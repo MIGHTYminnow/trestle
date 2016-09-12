@@ -29,8 +29,11 @@ function trestle_add_theme_support() {
 	// Add support for footer widgets if specified in Trestle settings.
 	add_theme_support( 'genesis-footer-widgets', trestle_get_option( 'footer_widgets_number' ) );
 
-	//* Add Accessibility support
+	//* Add Accessibility support.
 	add_theme_support( 'genesis-accessibility', array( 'headings', 'drop-down-menu',  'search-form', 'skip-links', 'rems' ) );
+
+	//* Add Custom Background support.
+	add_theme_support( 'custom-background' );
 
 }
 
