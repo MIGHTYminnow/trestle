@@ -1170,9 +1170,10 @@ function trestle_customizer_controls( $wp_customize ) {
 	$wp_customize->add_control(
 		'trestle_google_font_code_control',
 		array(
-			'section'  => 'trestle_google_fonts_section',
-			'settings' => 'trestle-settings[google_font_code]',
-			'label'    => __( 'Google Font Code', 'trestle' ),
+			'section'     => 'trestle_google_fonts_section',
+			'settings'    => 'trestle-settings[google_font_code]',
+			'label'       => __( 'Google Font Code', 'trestle' ),
+			'description' => '<a target="_blank" href="http://themes.mightyminnow.com/trestle/google-font-styling-setup/">' . __( 'How do I setup Google fonts?' ) . '</a>',
 		)
 	);
 
