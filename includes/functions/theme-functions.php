@@ -384,11 +384,6 @@ function trestle_output_styles() {
 		$styles[] = 'h6 { text-transform: ' . $h6_text_style . '; }';
 	}
 
-	// Site Layout
-	if ( ! empty( $layout ) && "boxed" == $layout ) {
-		$styles[] = 'body.boxed .site-inner { max-width: 1100px; }';
-	}
-
 	// Google Font
 	if ( ! empty( $google_font_code ) ) {
 		echo $google_font_code;
