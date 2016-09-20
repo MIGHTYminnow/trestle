@@ -1667,7 +1667,7 @@ Site Navigation
 
 .genesis-nav-menu [class*="current-"] > ul,
 .genesis-nav-menu [class*="current_"] > ul {
-	display: block;
+	display: block !important;
 }
 
 .genesis-nav-menu li ul {
