@@ -108,7 +108,7 @@ jQuery( document ).ready( function( $ ) {
 
 	// Insert the icons into the nav where appropriate.
 	$( '.nav-primary' ).find( '.genesis-nav-menu .parent:not( [class*="current"] ) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
-    $( '.nav-primary' ).find( '.genesis-nav-menu .parent[class*="current"] > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
+	$( '.nav-primary' ).find( '.genesis-nav-menu .parent[class*="current"] > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
 
 	// Mobile navigation expand/contract functionality.
 	$( '.sub-icon' ).click( function( event ) {
@@ -151,30 +151,30 @@ jQuery( document ).ready( function( $ ) {
 
 	//Remove accessibility menu toggle on mobile.
 	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-	 	$( '#menu-primary').superfish( 'destroy' );
+		$( 'ul.menu-primary' ).superfish( 'destroy' );
 	}
 
 	// Display the Full Screen search when:
 	// 1. The user focuses on a search field, or
 	// 2. The user clicks the Search button
 	$( 'body.fullscreen-search form[role=search] input, body.fullscreen-search form[role=search] button' ).on( 'focus, click', function( event ) {
-	    // Prevent the default action
-	    event.preventDefault();
+		// Prevent the default action
+		event.preventDefault();
 
-	    // Display the Full Screen Search
-	    $( '#full-screen-search' ).addClass( 'open' );
+		// Display the Full Screen Search
+		$( '#full-screen-search' ).addClass( 'open' );
 
-	    // Focus on the Full Screen Search Input Field
-	    $( '#full-screen-search input' ).focus();
+		// Focus on the Full Screen Search Input Field
+		$( '#full-screen-search input' ).focus();
 	} );
 
 	// Hide the Full Screen search when the user clicks the close button
 	$( '#full-screen-search button.close' ).on( 'click', function( event ) {
-	    // Prevent the default event
-	    event.preventDefault();
+		// Prevent the default event
+		event.preventDefault();
 
-	    // Hide the Full Screen Search
-	    $( '#full-screen-search' ).removeClass( 'open' );
+		// Hide the Full Screen Search
+		$( '#full-screen-search' ).removeClass( 'open' );
 	} );
 
 	// Executes when complete page is fully loaded, including all frames, objects, and images.

@@ -1216,6 +1216,21 @@ div.gform_wrapper .gform_footer input[type="submit"] {
 	margin-top: 0.8rem;
 }
 
+.gform_wrapper.gf_browser_chrome .gfield_checkbox li input,
+.gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox],
+.gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio],
+.gform_wrapper.gf_browser_safari .gfield_checkbox li input,
+.gform_wrapper.gf_browser_safari .gfield_checkbox li input[type=checkbox],
+.gform_wrapper.gf_browser_safari .gfield_radio li input[type=radio],
+.gform_wrapper.gf_browser_ie .gfield_checkbox li input,
+.gform_wrapper.gf_browser_ie .gfield_checkbox li input[type=checkbox],
+.gform_wrapper.gf_browser_ie .gfield_radio li input[type=radio],
+.gform_wrapper.gf_browser_gecko .gfield_checkbox li input,
+.gform_wrapper.gf_browser_gecko .gfield_checkbox li input[type=checkbox],
+.gform_wrapper.gf_browser_gecko .gfield_radio li input[type=radio] {
+	margin-top: 0 !important;
+}
+
 /* Jetpack - WP Stats
 --------------------------------------------- */
 
