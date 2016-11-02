@@ -151,7 +151,7 @@ jQuery( document ).ready( function( $ ) {
 
 	//Remove accessibility menu toggle on mobile.
 	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-	 	$( '#menu-primary').superfish( 'destroy' );
+	 	$( 'ul.menu-primary' ).superfish( 'destroy' );
 	}
 
 	// Display the Full Screen search when:
