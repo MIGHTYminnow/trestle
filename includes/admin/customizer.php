@@ -18,6 +18,33 @@ add_action( 'customize_register', 'trestle_customizer_controls' );
 function trestle_customizer_controls( $wp_customize ) {
 
 	/**
+	 * Site Layout Section (originally from Genesis).
+	 */
+
+	$wp_customize->add_setting(
+		'trestle-settings[layout]',
+		array(
+			'default'    => trestle_get_option( 'layout' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+		'trestle_layout_control',
+		array(
+			'section'  => 'genesis_layout',
+			'settings' => 'trestle-settings[layout]',
+			'label'    => __( 'Layout', 'trestle' ),
+			'type'     => 'radio',
+			'choices'  => array(
+				'bubble' => __( 'Bubble', 'trestle' ),
+				'solid'  => __( 'Solid', 'trestle' ),
+				'boxed'  => __( 'Boxed', 'trestle' ),
+			)
+		)
+	);
+
+	/**
 	 * Trestle Settings Section.
 	 */
 
@@ -165,6 +192,25 @@ function trestle_customizer_controls( $wp_customize ) {
 				'small-icon'    => __( 'Small Icon', 'trestle' ),
 				'big-button'    => __( 'Big Button', 'trestle' ),
 			)
+		)
+	);
+
+	// Disable Accessibility
+	$wp_customize->add_setting(
+		'trestle-settings[disable_trestle_accessiblity]',
+		array(
+			'default'    => trestle_get_option( 'disable_trestle_accessiblity' ),
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+		'trestle_accessibility_control',
+		array(
+			'section'   => 'trestle_settings_section',
+			'settings'  => 'trestle-settings[disable_trestle_accessiblity]',
+			'label'     => __( 'Disable Trestle Accessiblity Enhancements?', 'trestle' ),
+			'type'      => 'checkbox',
 		)
 	);
 
