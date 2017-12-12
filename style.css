@@ -1287,13 +1287,26 @@ body .mapp-layout {
 --------------------------------------------- */
 
 .simple-section-nav .current_page_item > a,
-.simple-section-nav .current_page_ancestor > a {
+.simple-section-nav .current_page_ancestor > a,
+.better-section-nav .current_page_item > a,
+.better-section-nav .current_page_ancestor > a {
 
 }
 
 .simple-section-nav .current_page_item > a,
-.simple-section-nav .custom-custom-post-type-parent > a {
+.simple-section-nav .custom-custom-post-type-parent > a,
+.better-section-nav .current_page_item > a,
+.better-section-nav .custom-custom-post-type-parent > a {
 	font-weight: bold;
+}
+
+.better-section-nav .children {
+	display: none;
+}
+
+.better-section-nav li.current_page_item .children,
+.better-section-nav li.current_page_ancestor .children {
+	display: block;
 }
 
 /* Events Manager
