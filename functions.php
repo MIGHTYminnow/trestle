@@ -10,6 +10,9 @@
  * @link    https://my.studiopress.com/themes/academy/
  */
 
+define( 'TRESTLE_DIR', get_stylesheet_directory() );
+define( 'TRESTLE_URL', get_stylesheet_directory_uri() );
+
 // Starts the engine.
 require_once get_template_directory() . '/lib/init.php';
 
