@@ -13,6 +13,11 @@
 define( 'TRESTLE_DIR', get_stylesheet_directory() );
 define( 'TRESTLE_URL', get_stylesheet_directory_uri() );
 
+require_once( TRESTLE_DIR . '/includes/class-accessible-mega-menu.php' );
+
+Accessible_Mega_Menu::init();
+
+
 // Starts the engine.
 require_once get_template_directory() . '/lib/init.php';
 
@@ -78,7 +83,7 @@ function academy_enqueue_scripts_styles() {
 	wp_enqueue_script( 'academy-match-height', get_stylesheet_directory_uri() . '/js/jquery.matchHeight.min.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
 	wp_add_inline_script( 'academy-match-height', "jQuery(document).ready( function() { jQuery( '.half-width-entries .content .entry, .academy-grid .content .entry').matchHeight(); });" );
 
-	wp_enqueue_script( 'global-js', get_stylesheet_directory_uri() . '/js/global.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
+	wp_enqueue_script( 'global-js', get_stylesheet_directory_uri() . '/js/global.js', array( 'jquery', 'accessible-mega-menu' ), CHILD_THEME_VERSION, true );
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 	wp_enqueue_script( 'academy-responsive-menu', get_stylesheet_directory_uri() . '/js/responsive-menus' . $suffix . '.js', array( 'jquery' ), CHILD_THEME_VERSION, true );
