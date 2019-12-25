@@ -50,20 +50,20 @@ jQuery( document).ready(function($){
 			}
 		}
 	}
-	$( '#menu-main' ).on( 'keydown', '.nav-item > a', function(e){
+	$( '#menu-main-menu' ).on( 'keydown', '.nav-item > a', function(e){
 		if ( 13 == e.keyCode) {
 			handleNavItemLink( $(this ) );
 		}
 	});
-	$( '#menu-main' ).on( 'click', '.nav-item > a', function(e){
+	$( '#menu-main-menu' ).on( 'click', '.nav-item > a', function(e){
 		handleNavItemLink( $(this ) );
 	});
 
 
 	$( '#genesis-nav-primary > .wrap' ).addClass( 'nav-menu-wrapper' );
-	$( '#menu-main' ).addClass( 'nav-menu' );
-	$( '#menu-main > li' ).addClass( 'nav-item' );
-	$( '#menu-main > li > ul' ).addClass( 'sub-nav-group' ).wrap( '<div class="sub-nav"></div>');
+	$( '#menu-main-menu' ).addClass( 'nav-menu' );
+	$( '#menu-main-menu > li' ).addClass( 'nav-item' );
+	$( '#menu-main-menu > li > ul' ).addClass( 'sub-nav-group' ).wrap( '<div class="sub-nav"></div>');
 
 	/** Open external links on new window */
 	var h = window.location.host.toLowerCase();
@@ -136,7 +136,7 @@ jQuery( document).ready(function($){
 	});
 
 	$(document).ready(function(){
-		$( '#menu-main .sub-menu-toggle' ).each(function(){
+		$( '#menu-main-menu .sub-menu-toggle' ).each(function(){
 			var text = $(this).closest( '.menu-item' ).find( 'a' ).first().text();
 			$(this).find( '.screen-reader-text' ).html( text );
 		});
@@ -170,7 +170,7 @@ jQuery( document).ready(function($){
     });
 
 	$(document).ready(function(){
-		$( '#genesis-mobile-nav-primary, #menu-main button' ).removeAttr( 'aria-pressed' );
+		$( '#genesis-mobile-nav-primary, #menu-main-menu button' ).removeAttr( 'aria-pressed' );
 
 		$( '.slick-slide' ).removeAttr( 'tabindex' );
 	});
