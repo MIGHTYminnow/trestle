@@ -41,30 +41,6 @@ jQuery( document).ready(function($){
 		}
 	});
 
-	/** Main Menu: Top level links */
-	function handleNavItemLink( $a ) {
-		if ( $(window).width() < 1024 || $a.parent().children( '.sub-nav' ).size() == 0 ) {
-			if ( ! $a.attr('href').includes( $(location).attr('protocol') + '//' + $(location).attr('hostname') ) && $a.attr('href').substr(0,1) != '#' && $a.attr('href').substr(0,1) != '/' ) {
-			} else {
-				window.location.href = $a.attr( 'href' );
-			}
-		}
-	}
-	$( '#menu-main-menu' ).on( 'keydown', '.nav-item > a', function(e){
-		if ( 13 == e.keyCode) {
-			handleNavItemLink( $(this ) );
-		}
-	});
-	$( '#menu-main-menu' ).on( 'click', '.nav-item > a', function(e){
-		handleNavItemLink( $(this ) );
-	});
-
-
-	$( '#genesis-nav-primary > .wrap' ).addClass( 'nav-menu-wrapper' );
-	$( '#menu-main-menu' ).addClass( 'nav-menu' );
-	$( '#menu-main-menu > li' ).addClass( 'nav-item' );
-	$( '#menu-main-menu > li > ul' ).addClass( 'sub-nav-group' ).wrap( '<div class="sub-nav"></div>');
-
 	/** Open external links on new window */
 	var h = window.location.host.toLowerCase();
 	$('[href^="http"]').not('[href*="' + h + '"]').attr( "target", "_blank" );
@@ -136,40 +112,6 @@ jQuery( document).ready(function($){
 	});
 
 	$(document).ready(function(){
-		$( '#menu-main-menu .sub-menu-toggle' ).each(function(){
-			var text = $(this).closest( '.menu-item' ).find( 'a' ).first().text();
-			$(this).find( '.screen-reader-text' ).html( text );
-		});
-	});
-
-    $(".accessible-mega-menu > .nav-menu-wrapper").accessibleMegaMenu({
-        /* prefix for generated unique id attributes, which are required 
-           to indicate aria-owns, aria-controls and aria-labelledby */
-        uuidPrefix: "accessible-megamenu",
-
-        /* css class used to define the megamenu styling */
-        menuClass: "nav-menu",
-
-        /* css class for a top-level navigation item in the megamenu */
-        topNavItemClass: "nav-item",
-
-        /* css class for a megamenu panel */
-        panelClass: "sub-nav",
-
-        /* css class for a group of items within a megamenu panel */
-        panelGroupClass: "sub-nav-group",
-
-        /* css class for the hover state */
-        hoverClass: "hover",
-
-        /* css class for the focus state */
-        focusClass: "focus",
-
-        /* css class for the open state */
-        openClass: "open"
-    });
-
-	$(document).ready(function(){
 		$( '#genesis-mobile-nav-primary, #menu-main-menu button' ).removeAttr( 'aria-pressed' );
 
 		$( '.slick-slide' ).removeAttr( 'tabindex' );
@@ -214,5 +156,66 @@ jQuery(document).on('gform_post_render', function(){
 	jQuery( '.gfield_error input, .gfield_error select, .gfield_error textarea' ).each(function(){
 		var id = jQuery(this).closest( '.gfield' ).find( '.validation_message' ).attr( 'id' );
 		jQuery(this).attr( 'aria-describedby', '#' + id );
+	});
+});
+
+/* -------------------------------------------------------- *
+ * - Accessible Mega Menu
+ * -------------------------------------------------------- */
+jQuery( document) .ready( function($){
+	function handleNavItemLink( $a ) {
+		if ( $(window).width() < 1024 || $a.parent().children( '.sub-nav' ).size() == 0 ) {
+			if ( ! $a.attr('href').includes( $(location).attr('protocol') + '//' + $(location).attr('hostname') ) && $a.attr('href').substr(0,1) != '#' && $a.attr('href').substr(0,1) != '/' ) {
+			} else {
+				window.location.href = $a.attr( 'href' );
+			}
+		}
+	}
+	$( '#menu-main-menu' ).on( 'keydown', '.nav-item > a', function(e){
+		if ( 13 == e.keyCode) {
+			handleNavItemLink( $(this ) );
+		}
+	});
+	$( '#menu-main-menu' ).on( 'click', '.nav-item > a', function(e){
+		handleNavItemLink( $(this ) );
+	});
+
+	$( '#genesis-nav-primary > .wrap' ).addClass( 'nav-menu-wrapper' );
+	$( '#menu-main-menu' ).addClass( 'nav-menu' );
+	$( '#menu-main-menu > li' ).addClass( 'nav-item' );
+	$( '#menu-main-menu > li > ul' ).addClass( 'sub-nav-group' ).wrap( '<div class="sub-nav"></div>');
+
+    $(".accessible-mega-menu > .nav-menu-wrapper").accessibleMegaMenu({
+        /* prefix for generated unique id attributes, which are required 
+           to indicate aria-owns, aria-controls and aria-labelledby */
+        uuidPrefix: "accessible-megamenu",
+
+        /* css class used to define the megamenu styling */
+        menuClass: "nav-menu",
+
+        /* css class for a top-level navigation item in the megamenu */
+        topNavItemClass: "nav-item",
+
+        /* css class for a megamenu panel */
+        panelClass: "sub-nav",
+
+        /* css class for a group of items within a megamenu panel */
+        panelGroupClass: "sub-nav-group",
+
+        /* css class for the hover state */
+        hoverClass: "hover",
+
+        /* css class for the focus state */
+        focusClass: "focus",
+
+        /* css class for the open state */
+        openClass: "open"
+    });
+
+	$(document).ready(function(){ // Do after all document ready code has been executed.
+		$( '#menu-main-menu .sub-menu-toggle' ).each(function(){
+			var text = $(this).closest( '.menu-item' ).find( 'a' ).first().text();
+			$(this).find( '.screen-reader-text' ).html( text );
+		});
 	});
 });
