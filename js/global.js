@@ -171,19 +171,19 @@ jQuery( document) .ready( function($){
 			}
 		}
 	}
-	$( '#menu-main-menu' ).on( 'keydown', '.nav-item > a', function(e){
+	$( '.accessible-mega-menu #menu-main-menu' ).on( 'keydown', '.nav-item > a', function(e){
 		if ( 13 == e.keyCode) {
 			handleNavItemLink( $(this ) );
 		}
 	});
-	$( '#menu-main-menu' ).on( 'click', '.nav-item > a', function(e){
+	$( '.accessible-mega-menu #menu-main-menu' ).on( 'click', '.nav-item > a', function(e){
 		handleNavItemLink( $(this ) );
 	});
 
 	$( '#genesis-nav-primary > .wrap' ).addClass( 'nav-menu-wrapper' );
-	$( '#menu-main-menu' ).addClass( 'nav-menu' );
-	$( '#menu-main-menu > li' ).addClass( 'nav-item' );
-	$( '#menu-main-menu > li > ul' ).addClass( 'sub-nav-group' ).wrap( '<div class="sub-nav"></div>');
+	$( '.accessible-mega-menu #menu-main-menu' ).addClass( 'nav-menu' );
+	$( '.accessible-mega-menu #menu-main-menu > li' ).addClass( 'nav-item' );
+	$( '.accessible-mega-menu #menu-main-menu > li > ul' ).addClass( 'sub-nav-group' ).wrap( '<div class="sub-nav"></div>');
 
     $(".accessible-mega-menu > .nav-menu-wrapper").accessibleMegaMenu({
         /* prefix for generated unique id attributes, which are required 
