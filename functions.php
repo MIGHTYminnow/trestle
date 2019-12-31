@@ -156,6 +156,7 @@ add_theme_support( 'genesis-responsive-viewport' );
 // Adds support for custom header.
 add_theme_support(
 	'custom-header', array(
+		'flex-width'     => true,
 		'flex-height'     => true,
 		'header-selector' => '.site-title a',
 		'header-text'     => false,
