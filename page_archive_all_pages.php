@@ -28,8 +28,9 @@ add_action( 'genesis_post_content', 'genesis_page_archive_content' );
 function genesis_page_archive_content() { 
 
 	// Pause Exclude Pages plugin functionality.
-	pause_exclude_pages();
-	
+	if ( function_exists( 'pause_exclude_pages' ) ) {
+		pause_exclude_pages();
+	}
 	?>
 	
 	<h4><?php _e( 'Pages:', 'genesis' ); ?></h4>
@@ -60,7 +61,9 @@ function genesis_page_archive_content() {
 	<?php
 
 	// Resume Exclude Pages plugin functionality.
-	resume_exclude_pages();
+	if ( function_exists( 'resume_exclude_pages' ) ) {
+		resume_exclude_pages();
+	}
 
 }
 
