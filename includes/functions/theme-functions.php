@@ -52,6 +52,37 @@ function trestle_remove_genesis_css_enqueue() {
 }
 
 /*===========================================
+ * 3rd Party Libraries
+===========================================*/
+
+add_action( 'init', 'trestle_load_bfa' );
+/**
+ * Initialize the Better Font Awesome Library.
+ *
+ * @since  2.0.0
+ */
+function trestle_load_bfa() {
+
+	// Better Font Awesome Library
+	require_once trailingslashit( get_stylesheet_directory() ) . 'lib/better-font-awesome-library/better-font-awesome-library.php';
+
+	// Set the library initialization args.
+	$args = array(
+			'version'             => 'latest',
+			'minified'            => true,
+			'remove_existing_fa'  => false,
+			'load_styles'         => true,
+			'load_admin_styles'   => true,
+			'load_shortcode'      => true,
+			'load_tinymce_plugin' => true,
+	);
+
+	// Initialize the Better Font Awesome Library.
+	Better_Font_Awesome_Library::get_instance( $args );
+
+}
+
+/*===========================================
  * Header
 ===========================================*/
 
