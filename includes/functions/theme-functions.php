@@ -145,3 +145,82 @@ function trestle_do_custom_favicon( $favicon_url ) {
 	$trestle_favicon_url = trestle_get_option( 'favicon_url' );
 	return $trestle_favicon_url ? $trestle_favicon_url : $favicon_url;
 }
+
+/*===========================================
+ * Body Classes
+===========================================*/
+
+add_filter( 'body_class', 'trestle_body_classes' );
+/**
+ * Adds custom classes to the <body> element for styling purposes.
+ *
+ * @since 1.0.0
+ *
+ * @param array $classes Body classes.
+ * @return array 		 Updated body classes.
+ */
+function trestle_body_classes( $classes ) {
+
+	// Add 'no-jquery' class to be removed by jQuery if enabled.
+	$classes[] = 'no-jquery';
+
+	// Add 'bubble' class.
+	if ( 'bubble' == trestle_get_option( 'layout' ) )
+		$classes[] = 'bubble';
+
+	// Add 'boxed' class.
+	if ( 'boxed' == trestle_get_option( 'layout' ) )
+		$classes[] = 'boxed';
+
+	// Add link icon classes.
+	if ( trestle_get_option( 'external_link_icons' ) ) {
+		$classes[] = 'external-link-icons';
+	}
+	if ( trestle_get_option( 'email_link_icons' ) ) {
+		$classes[] = 'email-link-icons';
+	}
+	if ( trestle_get_option( 'pdf_link_icons' ) ) {
+		$classes[] = 'pdf-link-icons';
+	}
+	if ( trestle_get_option( 'doc_link_icons' ) ) {
+		$classes[] = 'doc-link-icons';
+	}
+
+	// Logo position
+	if ( trestle_get_option( 'logo_position' ) ) {
+		$classes[] = trestle_get_option( 'logo_position' );
+	}
+
+	// Add menu style class.
+	$nav_primary_location = esc_attr( trestle_get_option( 'nav_primary_location' ) );
+	if ( $nav_primary_location ) {
+		$classes[] = 'nav-primary-location-' . $nav_primary_location;
+	}
+
+	// Add mobile menu toggle class.
+	$mobile_nav_toggle = esc_attr( trestle_get_option( 'mobile_nav_toggle' ) );
+	if ( 'big-button' == $mobile_nav_toggle ) {
+		$classes[] = 'big-button-nav-toggle';
+	} elseif ( 'small-icon' == $mobile_nav_toggle ) {
+		$classes[] = 'small-icon-nav-toggle';
+	}
+
+	// Add footer widget number class.
+	$footer_widgets_number = esc_attr( trestle_get_option( 'footer_widgets_number' ) );
+	if ( $footer_widgets_number ) {
+		$classes[] = 'footer-widgets-number-' . $footer_widgets_number;
+	}
+
+	// Add logo class.
+	if ( trestle_get_option( 'logo_id' ) || trestle_get_option( 'logo_id_mobile' ) ) {
+		$classes[] = 'has-logo';
+	}
+
+	// Add fullscreen search class.
+	if ( trestle_get_option( 'fullscreen_search' ) ) {
+		$classes[] = 'fullscreen-search';
+	}
+
+	return $classes;
+
+}
