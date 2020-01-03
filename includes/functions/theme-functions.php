@@ -26,4 +26,7 @@ function trestle_add_theme_support() {
 	// Add viewport meta tag for mobile browsers.
 	add_theme_support( 'genesis-responsive-viewport' );
 
+	// Add support for footer widgets if specified in Trestle settings.
+	add_theme_support( 'genesis-footer-widgets', trestle_get_option( 'footer_widgets_number' ) );
+
 }
