@@ -19,4 +19,8 @@ add_action( 'after_setup_theme', 'trestle_add_theme_support' );
  * @since    2.0.0
  */
 function trestle_add_theme_support() {
+
+	// Add HTML5 markup structure.
+	add_theme_support( 'html5' );
+
 }
