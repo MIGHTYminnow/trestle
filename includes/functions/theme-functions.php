@@ -38,3 +38,15 @@ function trestle_add_theme_support() {
 	add_theme_support( 'custom-background' );
 
 }
+
+add_action( 'after_setup_theme', 'trestle_remove_genesis_css_enqueue' );
+/**
+ * Stop Genesis from enqueuing the child theme stylesheet in the usual way.
+ *
+ * @since    2.1.0
+ */
+function trestle_remove_genesis_css_enqueue() {
+
+	remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
+
+}
