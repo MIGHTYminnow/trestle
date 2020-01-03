@@ -34,4 +34,7 @@ function trestle_add_theme_support() {
 		add_theme_support( 'genesis-accessibility', array( 'headings', 'drop-down-menu',  'search-form', 'skip-links', 'rems' ) );
 	}
 
+	//* Add Custom Background support.
+	add_theme_support( 'custom-background' );
+
 }
