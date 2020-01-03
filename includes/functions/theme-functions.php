@@ -29,4 +29,9 @@ function trestle_add_theme_support() {
 	// Add support for footer widgets if specified in Trestle settings.
 	add_theme_support( 'genesis-footer-widgets', trestle_get_option( 'footer_widgets_number' ) );
 
+	if( ! trestle_get_option( 'disable_trestle_accessiblity' ) ) {
+		//* Add Accessibility support.
+		add_theme_support( 'genesis-accessibility', array( 'headings', 'drop-down-menu',  'search-form', 'skip-links', 'rems' ) );
+	}
+
 }
