@@ -38,6 +38,32 @@ require_once dirname( __FILE__ ) . '/includes/functions/theme-functions.php';
 // Admin functionality.
 require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
 
+add_action( 'genesis_setup', 'trestle_theme_setup', 15 );
+/**
+ * Initialize Trestle.
+ *
+ * @since  1.0.0
+ */
+function trestle_theme_setup() {
+
+	/*===========================================
+	 * Theme Setup
+	===========================================*/
+
+	// Child theme definitions (do not remove).
+	define( 'TRESTLE_THEME_NAME', 'Trestle' );
+	define( 'TRESTLE_THEME_URL', 'http://demo.mightyminnow.com/theme/trestle/' );
+	define( 'TRESTLE_THEME_VERSION', '2.2.2' );
+	define( 'TRESTLE_SETTINGS_FIELD', 'trestle-settings' );
+
+	// Setup default theme settings.
+	trestle_settings_defaults();
+
+	// Load theme text domain.
+	load_theme_textdomain( 'trestle', get_stylesheet_directory() . '/languages' );
+
+}
+
 /* ======================================================== *
  * = Academy Pro
  * ======================================================== */
