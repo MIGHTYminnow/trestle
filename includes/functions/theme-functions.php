@@ -23,4 +23,7 @@ function trestle_add_theme_support() {
 	// Add HTML5 markup structure.
 	add_theme_support( 'html5' );
 
+	// Add viewport meta tag for mobile browsers.
+	add_theme_support( 'genesis-responsive-viewport' );
+
 }
