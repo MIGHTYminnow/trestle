@@ -35,6 +35,9 @@ Accessible_Mega_Menu::init();
 // Theme functions.
 require_once dirname( __FILE__ ) . '/includes/functions/theme-functions.php';
 
+// Admin functionality.
+require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
+
 /* ======================================================== *
  * = Academy Pro
  * ======================================================== */
