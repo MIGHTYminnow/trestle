@@ -224,3 +224,84 @@ function trestle_body_classes( $classes ) {
 	return $classes;
 
 }
+
+
+/*===========================================
+ * Header
+===========================================*/
+
+add_filter( 'genesis_seo_title', 'trestle_do_logos', 10, 3 );
+/**
+ * Output logos.
+ *
+ * @since 1.0.0
+ */
+function trestle_do_logos( $title, $inside, $wrap ) {
+
+	$logo_id = trestle_get_option( 'logo_id' );
+	$logo_id_mobile = trestle_get_option( 'logo_id_mobile' );
+	$logo_html = '';
+
+	// Regular logo.
+	if ( $logo_id ) {
+
+		// Default logo classes.
+		$classes = array(
+			'logo',
+			'logo-full'
+		);
+
+		// If no mobile logo is specified, make regular logo act as mobile logo too.
+		if( ! $logo_id_mobile ) {
+			$classes[] = 'show';
+		}
+
+		// Prepare the classes.
+		$logo_attr = array(
+			'class'	=> implode( $classes, ' ' ),
+		);
+
+		// Build the <img> tag.
+		$logo_html .= wp_get_attachment_image( $logo_id, 'full', false, $logo_attr );
+
+	}
+
+	// Mobile logo.
+	if ( $logo_id_mobile ) {
+
+		// Default mobile logo class.
+		$classes = array(
+			'logo',
+			'logo-mobile'
+		);
+
+		// If no regular logo is specified, make mobile logo act as regular logo too.
+		if( ! $logo_id )
+			$classes[] = 'show';
+
+		// Prepare the classes.
+		$logo_attr = array(
+			'class'	=> implode( $classes, ' ' ),
+		);
+
+		// Build the <img> tag.
+		$logo_html .= wp_get_attachment_image( $logo_id_mobile, 'full', false, $logo_attr );
+
+	}
+
+	if ( $logo_html ) {
+		$inside .= sprintf( '<a href="%s" title="%s" class="logos">%s</a>',
+			trailingslashit( home_url() ),
+			esc_attr( get_bloginfo( 'name' ) ),
+			$logo_html
+		);
+	}
+
+	// Build the title.
+	$title  = genesis_html5() ? sprintf( "<{$wrap} %s>", genesis_attr( 'site-title' ) ) : sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
+	$title .= genesis_html5() ? "{$inside}</{$wrap}>" : '';
+
+	// Echo (filtered).
+	return $title;
+
+}
