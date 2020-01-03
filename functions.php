@@ -1,4 +1,8 @@
 <?php
+/* ======================================================== *
+ * = Trestle 3 
+ * ======================================================== */
+
 /**
  * Trestle 3
  *
@@ -12,17 +16,32 @@ require_once( TRESTLE_DIR . '/includes/class-accessible-mega-menu.php' );
 
 Accessible_Mega_Menu::init();
 
+/* ======================================================== *
+ * = Trestle 2 
+ * ======================================================== */
+
 /**
- * Trestle 3
+ * Theme functionality.
  *
- * Code from Trestle 2.
+ * @since  1.0.0
+ *
+ * @package Trestle
  */
+
+/*===========================================
+ * Required Files
+===========================================*/
+
+// Theme functions.
+require_once dirname( __FILE__ ) . '/includes/functions/theme-functions.php';
+
+/* ======================================================== *
+ * = Academy Pro
+ * ======================================================== */
 
 /**
  * Academy Pro.
  *
- * Code from Academy Pro.
- * 
  * This file adds functions to the Academy Pro Theme.
  *
  * @package Academy
