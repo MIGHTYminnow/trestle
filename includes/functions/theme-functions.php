@@ -8,3 +8,15 @@
  *
  * @package Trestle
  */
+
+/*===========================================
+ * Theme Setup
+===========================================*/
+add_action( 'after_setup_theme', 'trestle_add_theme_support' );
+/**
+ * Initialize Trestle defaults and theme options.
+ *
+ * @since    2.0.0
+ */
+function trestle_add_theme_support() {
+}
