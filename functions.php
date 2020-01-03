@@ -1,13 +1,8 @@
 <?php
 /**
- * Academy Pro.
+ * Trestle 3
  *
- * This file adds functions to the Academy Pro Theme.
- *
- * @package Academy
- * @author  StudioPress
- * @license GPL-2.0+
- * @link    https://my.studiopress.com/themes/academy/
+ * Code from Trestle 3.
  */
 
 define( 'TRESTLE_DIR', get_stylesheet_directory() );
@@ -17,6 +12,24 @@ require_once( TRESTLE_DIR . '/includes/class-accessible-mega-menu.php' );
 
 Accessible_Mega_Menu::init();
 
+/**
+ * Trestle 3
+ *
+ * Code from Trestle 2.
+ */
+
+/**
+ * Academy Pro.
+ *
+ * Code from Academy Pro.
+ * 
+ * This file adds functions to the Academy Pro Theme.
+ *
+ * @package Academy
+ * @author  StudioPress
+ * @license GPL-2.0+
+ * @link    https://my.studiopress.com/themes/academy/
+ */
 
 // Starts the engine.
 require_once get_template_directory() . '/lib/init.php';
