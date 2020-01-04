@@ -347,3 +347,28 @@ function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
 
 	return $nav_items;
 }
+
+add_action( 'wp_footer', 'trestle_output_full_screen_search' );
+/**
+* Outputs the HTML markup for our Full Screen Search
+* CSS hides this by default, and Javascript displays it when the user
+* interacts with any WordPress search field
+*
+* @since 2.2.1
+*/
+function trestle_output_full_screen_search() {
+
+	if ( trestle_get_option( 'fullscreen_search' ) ) {
+		?>
+		<div id="full-screen-search">
+			<button type="button" class="close" id="full-screen-search-close">X</button>
+			<form role="search" method="get" action="<?php echo home_url( '/' ); ?>" id="full-screen-search-form">
+				<div id="full-screen-search-container">
+					<input type="text" name="s" placeholder="<?php _e( 'Search' ); ?>" id="full-screen-search-input" />
+				</div>
+			</form>
+		</div>
+		<?php
+	}
+
+}
