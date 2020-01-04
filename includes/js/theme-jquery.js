@@ -24,12 +24,12 @@ jQuery( document ).ready( function( $ ) {
 	$( 'a[href$=".pdf"]' ).attr({ "target":"_blank" }).addClass( 'pdf-link' );
 	$( 'a[href$=".doc"]' ).attr({ "target":"_blank" }).addClass( 'doc-link' );
 	$( 'a' ).has( 'img' ).addClass( 'image-link' );
-/*
+
 	// Add classes to parts of lists.
 	$( 'li:last-child' ).addClass( 'last' );
 	$( 'li:first-child' ).addClass( 'first' );
 	$( 'ul, ol' ).parent( 'li' ).addClass( 'parent' );
-
+/*
 	// Create container for toggle buttons.
 	if ( $body.hasClass( 'big-button-nav-toggle' ) ) {
 		$( '.site-header' ).after( '<div class="header-toggle-buttons" />' );
