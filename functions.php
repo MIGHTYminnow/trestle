@@ -47,6 +47,9 @@ require_once dirname( __FILE__ ) . '/includes/shortcodes/shortcodes.php';
 // Additional sidebars.
 require_once dirname( __FILE__ ) . '/includes/widget-areas/widget-areas.php';
 
+// Plugin activation class.
+require_once dirname( __FILE__ ) . '/lib/class-tgm-plugin-activation.php';
+
 add_action( 'genesis_setup', 'trestle_theme_setup', 15 );
 /**
  * Initialize Trestle.
