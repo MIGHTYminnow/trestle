@@ -5,7 +5,7 @@
  *
  * @package Trestle
  */
-/*
+
 // Executes when the document is ready.
 jQuery( document ).ready( function( $ ) {
 
@@ -14,7 +14,7 @@ jQuery( document ).ready( function( $ ) {
 
 	// Remove .no-jquery body class.
 	$body.removeClass( 'no-jquery' );
-
+/*
 	// External Links.
 	var h = window.location.host.toLowerCase();
 	$( '[href^="http"]' ).not( '[href*="' + h + '"]' ).addClass( 'external-link' ).attr( "target", "_blank" );
@@ -181,5 +181,5 @@ jQuery( document ).ready( function( $ ) {
 	$( window ).on( 'load', function() {
 
 	});
-
+*/
 }); /* end of page load scripts */
