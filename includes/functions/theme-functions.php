@@ -436,3 +436,31 @@ function trestle_featured_image_fallback( $args ) {
 
 	return $args;
 }
+
+
+/*===========================================
+ * General Actions & Filters
+===========================================*/
+
+add_filter( 'excerpt_more', 'trestle_read_more_link' );
+add_filter( 'get_the_content_more_link', 'trestle_read_more_link' );
+add_filter( 'the_content_more_link', 'trestle_read_more_link' );
+/**
+ * Displays custom Trestle "read more" text in place of WordPress default.
+ *
+ * @since 1.0.0
+ *
+ * @param string $default_text Default "read more" text.
+ * @return string (Updated) "read more" text.
+ */
+function trestle_read_more_link( $default_text ) {
+
+	// Get Trestle custom "read more" link text.
+	$custom_text = esc_attr( trestle_get_option( 'read_more_text' ) );
+
+	if ( $custom_text ) {
+		return '&hellip;&nbsp;<a class="more-link" title="' . $custom_text . '" href="' . get_permalink() . '">' . $custom_text . '</a>';
+	} else {
+		return $default_text;
+	}
+}
