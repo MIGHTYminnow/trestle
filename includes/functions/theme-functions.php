@@ -241,6 +241,7 @@ function trestle_do_logos() {
 	$logo_id = trestle_get_option( 'logo_id' );
 	$logo_id_mobile = trestle_get_option( 'logo_id_mobile' );
 	$logo_html = '';
+	$site_name = esc_attr( get_bloginfo( 'name' ) );
 
 	// Regular logo.
 	if ( $logo_id ) {
@@ -259,6 +260,7 @@ function trestle_do_logos() {
 		// Prepare the classes.
 		$logo_attr = array(
 			'class'	=> implode( $classes, ' ' ),
+			'alt' => $site_name,
 		);
 
 		// Build the <img> tag.
@@ -282,6 +284,7 @@ function trestle_do_logos() {
 		// Prepare the classes.
 		$logo_attr = array(
 			'class'	=> implode( $classes, ' ' ),
+			'alt' => $site_name,
 		);
 
 		// Build the <img> tag.
@@ -290,9 +293,8 @@ function trestle_do_logos() {
 	}
 
 	if ( $logo_html ) {
-		$inside .= sprintf( '<a href="%s" title="%s" class="logos">%s</a>',
+		$inside .= sprintf( '<a href="%s" class="logos">%s</a>',
 			trailingslashit( home_url() ),
-			esc_attr( get_bloginfo( 'name' ) ),
 			$logo_html
 		);
 	}
