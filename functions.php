@@ -38,6 +38,9 @@ require_once dirname( __FILE__ ) . '/includes/functions/theme-functions.php';
 // Admin functionality.
 require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
 
+// Customizer controls.
+require_once dirname( __FILE__ ) . '/includes/admin/customizer.php';
+
 add_action( 'genesis_setup', 'trestle_theme_setup', 15 );
 /**
  * Initialize Trestle.
