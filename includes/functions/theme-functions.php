@@ -372,3 +372,27 @@ function trestle_output_full_screen_search() {
 	}
 
 }
+
+/*===========================================
+ * Posts & Pages
+===========================================*/
+
+add_filter( 'post_class', 'trestle_post_classes' );
+/**
+ * Add extra classes to posts in certain situations.
+ *
+ * @since  2.2.0
+ *
+ * @param array $classes Post classes.
+ * @return array 		 Updated post classes.
+ */
+function trestle_post_classes( $classes ) {
+
+	// If post doesn't have a featured image.
+	if ( ! has_post_thumbnail() ) {
+		$classes[] = 'no-featured-image';
+	}
+
+	return $classes;
+
+}
