@@ -1,0 +1,691 @@
+/**
+ * Trestle RTL styles
+ *
+ * @since 1.0.0
+ *
+ * @package Trestle
+ */
+
+/* Table of Contents
+
+	- HTML5 Reset
+		- Baseline Normalize
+		- Box Sizing
+		- Float Clearing
+	- Defaults
+		- Typographical Elements
+		- Links
+		- Headings
+		- Objects
+		- Forms & Buttons
+		- Tables
+	- Structure and Layout
+		- Site Containers
+		- Column Widths and Positions
+		- Column Classes
+	- Common Classes
+		- WordPress
+		- Genesis
+		- Titles
+	- Widgets
+		- Featured Content
+	- Plugins
+		- Genesis eNews Extended
+		- Genesis Latest Tweets
+		- Gravity Forms
+		- Jetpack
+		- FancyBox for WordPress
+		- MapPress
+		- Simple Section Navigation
+	- Site Header
+		- Title Area
+		- Widget Area
+	- Site Navigation
+		- General Navigation
+		- Sub Navigation
+		- Site Header Navigation
+		- Primary / Mobile Navigation
+		- Navigation Extras
+		- Sub Menus
+		- Non jQuery Styles
+		- Secondary Navigation
+	- Content Area
+		- Entries
+		- Pagination
+		- Comments
+	- Sidebars
+	- Footer Widgets
+	- Site Footer
+	- General Components
+	- Specific Pages
+	- Media Queries
+
+*/
+
+
+/*
+HTML5 Reset
+---------------------------------------------------------------------------------------------------- */
+/* Baseline Normalize
+   normalize.css v2.1.2 | MIT License | git.io/normalize
+-------------------------------------------- */
+
+/* Box Sizing
+--------------------------------------------- */
+
+/* Float Clearing
+--------------------------------------------- */
+
+
+/*
+Defaults
+---------------------------------------------------------------------------------------------------- */
+
+/* Typographical Elements
+--------------------------------------------- */
+
+blockquote {
+	margin: 20px 55px 24px 40px;
+	margin: 2rem 5.5rem 2.4rem 4rem;
+}
+
+blockquote::before {
+	content: "\201D";
+	right: -30px;
+	left: auto;
+}
+
+/* Links
+--------------------------------------------- */
+
+.external-link-icons .external-link:after {
+	margin: 0 4px 0 0;
+}
+
+.email-link-icons .email-link:before {
+	margin: 0 0 0 4px;
+}
+
+.pdf-link-icons .pdf-link:before {
+	margin: 0 0 0 4px;
+}
+
+.doc-link-icons .doc-link:before {
+	margin: 0 0 0 4px;
+}
+
+
+/* Headings
+--------------------------------------------- */
+
+/* Objects
+--------------------------------------------- */
+
+/* Forms & Buttons
+--------------------------------------------- */
+
+/* Button Colors & Classes */
+
+.arrow-right:after,
+.arrow-left:before {
+	display: none;
+}
+
+.arrow-right:before {
+	display: inline-block;
+	content: "\f0a9\00a0\00a0";
+	font-family: FontAwesome;
+}
+
+.arrow-left:after {
+	display: inline-block;
+	content: "\00a0\00a0\f0a8";
+	font-family: FontAwesome;
+}
+
+/* Tables
+--------------------------------------------- */
+
+th,
+td {
+	text-align: right;
+}
+
+
+/*
+Structure and Layout
+---------------------------------------------------------------------------------------------------- */
+
+/* Site Containers
+--------------------------------------------- */
+
+/* Column Widths and Positions
+--------------------------------------------- */
+
+.content-sidebar-wrap {
+	float: right;
+}
+
+.content-sidebar-sidebar .content-sidebar-wrap {
+	float: right;
+}
+
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+	float: left;
+}
+
+/* Content */
+
+.content-sidebar .content,
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content {
+	float: right;
+}
+
+.content {
+	float: left;
+}
+
+/* Primary Sidebar */
+
+.sidebar-primary {
+	float: left;
+}
+
+.sidebar-content .sidebar-primary,
+.sidebar-sidebar-content .sidebar-primary {
+	float: right;
+}
+
+/* Secondary Sidebar */
+
+.sidebar-secondary {
+	float: right;
+}
+
+.content-sidebar-sidebar .sidebar-secondary {
+	float: left;
+}
+
+/* Column Classes
+   Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
+--------------------------------------------- */
+
+.five-sixths,
+.four-sixths,
+.one-fourth,
+.one-half,
+.one-sixth,
+.one-third,
+.three-fourths,
+.three-sixths,
+.two-fourths,
+.two-sixths,
+.two-thirds,
+.footer-widgets .widget-area {
+	float: right;
+}
+
+
+/*
+Common Classes
+---------------------------------------------------------------------------------------------------- */
+
+/* WordPress
+--------------------------------------------- */
+
+.avatar {
+	float: right;
+}
+
+.alignright .avatar {
+	margin-left: 24px;
+	margin-left: 2.4rem;
+	margin-right: auto;
+}
+
+.alignleft .avatar {
+	margin-right: 24px;
+	margin-right: 2.4rem;
+	margin-left: auto;
+}
+
+.alignright {
+	float: right;
+	text-align: right;
+}
+
+.alignleft {
+	float: left;
+	text-align: left;
+}
+
+img.alignright,
+.wp-caption.alignright {
+	margin: 0 0 24px 24px;
+	margin: 0 0 2.4rem 2.4rem;
+}
+
+img.alignleft,
+.wp-caption.alignleft {
+	margin: 0 24px 24px 0;
+	margin: 0 2.4rem 2.4rem 0;
+}
+
+/* Genesis
+--------------------------------------------- */
+
+.author-box .avatar {
+	margin-left: 24px;
+	margin-left: 2.4rem;
+	margin-right: auto;
+}
+
+/* Titles
+--------------------------------------------- */
+
+
+/*
+Widgets
+---------------------------------------------------------------------------------------------------- */
+
+/* Featured Content
+--------------------------------------------- */
+
+
+/*
+Plugins
+---------------------------------------------------------------------------------------------------- */
+
+/* Genesis eNews Extended
+--------------------------------------------- */
+
+/* Genesis Latest Tweets
+--------------------------------------------- */
+
+/* Gravity Forms
+--------------------------------------------- */
+
+/* Jetpack
+--------------------------------------------- */
+
+/* FancyBox for Wordpress
+--------------------------------------------- */
+
+/* MapPress
+--------------------------------------------- */
+
+/* Simple Section Navigation
+--------------------------------------------- */
+
+
+/*
+Site Header
+---------------------------------------------------------------------------------------------------- */
+
+/* Title Area
+--------------------------------------------- */
+
+.title-area {
+	float: right;
+}
+
+/* Full width header, no widgets */
+
+/* Logo, hide text */
+
+.header-image .site-title a {
+	float: right;
+}
+
+/* Widget Area
+--------------------------------------------- */
+
+
+/*
+Site Navigation
+---------------------------------------------------------------------------------------------------- */
+
+/* General Navigation
+--------------------------------------------- */
+
+.genesis-nav-menu > .rss > a {
+	margin-left: 15px;
+	margin-left: 1.5rem;
+	margin-right: auto;
+}
+
+/* Sub Navigation
+--------------------------------------------- */
+
+.genesis-nav-menu .sub-menu li,
+.genesis-nav-menu ul li {
+	padding-right: 15px;
+	padding-right: 1.5rem;
+	padding-left: 0;
+}
+
+/* Site Header Navigation
+--------------------------------------------- */
+
+/* Primary / Mobile Navigation
+--------------------------------------------- */
+
+.nav-primary .genesis-nav-menu a {
+	padding-left: 50px;
+	padding-left: 5rem;
+	padding-right: 20px;
+}
+
+/* Navigation Extras
+--------------------------------------------- */
+
+/* Sub Menus
+--------------------------------------------- */
+
+.genesis-nav-menu .sub-menu li,
+.genesis-nav-menu ul li {
+	padding-right: 15px;
+	padding-right: 1.5rem;
+}
+
+.nav-primary .genesis-nav-menu .sub-icon {
+	left: 0;
+	padding-right: 0;
+	padding-left: 0;
+	right: auto;
+}
+
+/* Non jQuery Styles
+--------------------------------------------- */
+
+/* Secondary Navigation
+--------------------------------------------- */
+
+
+/*
+Content Area
+---------------------------------------------------------------------------------------------------- */
+
+/* Entries
+--------------------------------------------- */
+
+.content ol,
+.content ul,
+.ez-home-container-area ol,
+.ez-home-container-area ul {
+	margin-right: 40px;
+	margin-right: 4rem;
+	margin-left: auto;
+}
+
+.entry-comments-link::before {
+	margin: 0 2px 0 6px;
+	margin: 0 0.2rem 0 0.6rem;
+}
+
+/* Pagination
+--------------------------------------------- */
+
+/* Comments
+--------------------------------------------- */
+
+.comment-respond label {
+	margin-left: 12px;
+	margin-left: 1.2rem;
+	margin-right: auto;
+}
+
+.comment-list li li {
+	margin-left: -32px;
+	margin-left: -3.2rem;
+	margin-right: auto;
+}
+
+li.comment {
+	border-left: none;
+	border-right: none;
+}
+
+.comment .avatar {
+	margin: 0 0 24px 16px;
+	margin: 0 0 2.4rem 1.6rem;
+}
+
+
+/*
+Sidebars
+---------------------------------------------------------------------------------------------------- */
+
+
+/*
+Footer Widgets
+---------------------------------------------------------------------------------------------------- */
+
+.footer-widgets-1,
+.footer-widgets-2 {
+	float: right;
+}
+
+.footer-widgets-3 {
+	float: left;
+}
+
+
+/*
+Site Footer
+---------------------------------------------------------------------------------------------------- */
+
+
+/*
+General Components
+---------------------------------------------------------------------------------------------------- */
+
+/* Search Form
+--------------------------------------------- */
+
+.search-form {
+	padding-left: 125px;
+	padding-right: 0;
+}
+
+.search-form input[type="submit"] {
+	float: left;
+	margin-left: -125px;
+	margin-right: auto;
+}
+
+
+/*
+Specific Pages
+---------------------------------------------------------------------------------------------------- */
+
+
+/*
+Media Queries
+---------------------------------------------------------------------------------------------------- */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+
+	.search-form input[type="submit"] {
+		float: left;
+		margin-left: -125px;
+		margin-right: auto;
+	}
+
+}
+
+@media (min-width: 480px) {
+
+}
+
+
+/*
+Media Queries
+---------------------------------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+
+	/* Header
+	--------------------------------------------- */
+
+	.title-area {
+		text-align: right;
+	}
+
+	.header-image .site-header .wrap {
+		background-position: right top;
+	}
+
+	.header-widget-area .widget {
+		float: left;
+		clear: left;
+	}
+
+	.site-header .menu .last a {
+		padding-left: 0;
+		padding-right: 10px;
+		padding-right: 1rem;
+	}
+
+	.site-header .genesis-nav-menu {
+		text-align: left;
+	}
+
+	.content-sidebar .sidebar-primary,
+	.sidebar-content-sidebar .content,
+	.sidebar-content-sidebar .sidebar-primary,
+	.sidebar-sidebar-content .content,
+	.sidebar-sidebar-content .sidebar-primary {
+		padding-right: 20px;
+		padding-left: 0;
+	}
+
+	.content-sidebar-sidebar .content,
+	.sidebar-content .sidebar-primary,
+	.content-sidebar-sidebar .sidebar-primary {
+		padding-left: 20px;
+		padding-left: 0;
+	}
+
+	/* Columns
+	--------------------------------------------- */
+
+	.five-sixths,
+	.four-sixths,
+	.one-fourth,
+	.one-half,
+	.one-sixth,
+	.one-third,
+	.three-fourths,
+	.three-sixths,
+	.two-fourths,
+	.two-sixths,
+	.two-thirds,
+	.footer-widgets .widget-area {
+		margin-right: 2.564102564102564%;
+		margin-left: auto;
+	}
+
+	.first,
+	.footer-widgets .footer-widgets-1 {
+		margin-right: 0;
+	}
+
+	/* Non-Mobile Navigation
+	--------------------------------------------- */
+
+	.nav-primary .genesis-nav-menu li {
+		text-align: right;
+	}
+
+	.nav-primary .genesis-nav-menu a,
+	.nav-primary .genesis-nav-menu > .right {
+		padding: 20px;
+		padding: 2rem;
+	}
+
+	/* Navigation Extras
+	--------------------------------------------- */
+
+	.nav-primary .genesis-nav-menu > .right {
+		float: left;
+	}
+
+	/* Sub Menus
+	--------------------------------------------- */
+
+	.genesis-nav-menu li .sub-menu,
+	.genesis-nav-menu li ul {
+		border-width: 0 0 1px;
+	}
+
+	.genesis-nav-menu .sub-menu li,
+	.genesis-nav-menu ul li {
+		padding-right: 0;
+	}
+
+	.nav-primary .genesis-nav-menu ul a,
+	.nav-primary .genesis-nav-menu ul ul a {
+		position: relative;
+		width: 200px;
+		padding: 10px 20px;
+		padding: 1rem 2rem;
+		border-width: 1px 1px 0 1px;
+	}
+
+	.nav-primary .genesis-nav-menu > .parent > a:before {
+		content: "\f0d7";
+		position: relative;
+		top: -.2em;
+		margin-right: 8px;
+		margin-left: 0;
+		font-family: FontAwesome;
+		font-size: .6em;
+	}
+
+	.nav-primary .genesis-nav-menu > .parent > a:after {
+		display: none;
+	}
+
+	.nav-primary .genesis-nav-menu ul .parent > a:after {
+		content: "\f0d9";
+		position: absolute;
+		top: 1em;
+		left: 8px;
+		right: auto;
+		margin: 0;
+		font-family: FontAwesome;
+		font-size: .8em;
+		vertical-align: middle;
+	}
+
+	.nav-primary .genesis-nav-menu li:hover {
+		position: relative;
+	}
+
+	.nav-primary .genesis-nav-menu li:hover > ul {
+		left: auto;
+		opacity: 1;
+	}
+
+	.nav-primary .genesis-nav-menu ul li:hover > ul {
+		top: 0;
+		right: 100%;
+		margin-right: -1px;
+		margin-left: 0;
+	}
+
+	/* Bubble Layout - Padding & Margins
+	--------------------------------------------- */
+
+	.bubble .content,
+	.bubble .sidebar-primary {
+		padding: 0;
+	}
+
+}
