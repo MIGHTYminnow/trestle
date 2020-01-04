@@ -128,6 +128,30 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+	// Header style
+	$header_style = trestle_get_option( 'header_style' );
+	$wp_customize->add_setting(
+		'trestle-settings[header_style]',
+		array(
+			'default'    => ( $header_style ) ? $header_style : 'modern',
+			'type'       => 'option',
+			'capability' => 'edit_theme_options',
+		)
+	);
+	$wp_customize->add_control(
+		'trestle_header_style_control',
+		array(
+			'section'  => 'trestle_settings_section',
+			'settings' => 'trestle-settings[header_style]',
+			'label'    => __( 'Header Style', 'trestle' ),
+			'type'     => 'select',
+			'choices'  => array(
+				'modern' => __( 'Trestle Modern', 'trestle' ),
+				'classic'   => __( 'Trestle Classic', 'trestle' ),
+			)
+		)
+	);
+
 	// Logo position
 	$wp_customize->add_setting(
 		'trestle-settings[logo_position]',
@@ -430,4 +454,18 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
+}
+
+add_action( 'customize_controls_enqueue_scripts', 'trestle_enqueue_customizer_script' );
+/**
+ * Enqueues the Trestle customizer script.
+ */
+function trestle_enqueue_customizer_script() {
+	wp_enqueue_script(
+		'trestle-customizer',
+		get_stylesheet_directory_uri() . '/includes/js/customizer.js',
+		array( 'jquery' ),
+		null,
+		true
+	);
 }
