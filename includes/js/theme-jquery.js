@@ -14,11 +14,11 @@ jQuery( document ).ready( function( $ ) {
 
 	// Remove .no-jquery body class.
 	$body.removeClass( 'no-jquery' );
-/*
+
 	// External Links.
 	var h = window.location.host.toLowerCase();
 	$( '[href^="http"]' ).not( '[href*="' + h + '"]' ).addClass( 'external-link' ).attr( "target", "_blank" );
-
+/*
 	// Add classes to different types of links.
 	$( 'a[href^="mailto:"]' ).addClass( 'email-link' );
 	$( 'a[href$=".pdf"]' ).attr({ "target":"_blank" }).addClass( 'pdf-link' );
