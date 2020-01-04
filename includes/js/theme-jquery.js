@@ -30,13 +30,14 @@ jQuery( document ).ready( function( $ ) {
 	$( 'li:first-child' ).addClass( 'first' );
 	$( 'ul, ol' ).parent( 'li' ).addClass( 'parent' );
 
+/*
 	// Create container for toggle buttons.
 	if ( $body.hasClass( 'big-button-nav-toggle' ) ) {
 		$( '.site-header' ).after( '<div class="header-toggle-buttons" />' );
 	} else {
 		$( '.site-header .title-area' ).after( '<div class="header-toggle-buttons" />' );
 	}
-/*
+
 	// Add either small icon toggles or big button toggle.
 	$( '.site-header .widget-area, .nav-primary' ).each( function( i ) {
 
@@ -148,12 +149,12 @@ jQuery( document ).ready( function( $ ) {
 		// Expand/contract.
 		$button.toggleClass( 'open' ).next( '.widget-area' ).slideToggle();
 	});
-
+*/
 	//Remove accessibility menu toggle on mobile.
 	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		$( 'ul.menu-primary' ).superfish( 'destroy' );
 	}
-
+/*
 	// Display the Full Screen search when:
 	// 1. The user focuses on a search field, or
 	// 2. The user clicks the Search button
@@ -176,10 +177,10 @@ jQuery( document ).ready( function( $ ) {
 		// Hide the Full Screen Search
 		$( '#full-screen-search' ).removeClass( 'open' );
 	} );
-
+*/
 	// Executes when complete page is fully loaded, including all frames, objects, and images.
 	$( window ).on( 'load', function() {
 
 	});
-*/
+
 }); /* end of page load scripts */
