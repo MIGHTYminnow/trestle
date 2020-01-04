@@ -230,18 +230,6 @@ add_action( 'genesis_before', 'genesis_skip_links', 5 );
 // Adds viewport meta tag for mobile browsers.
 add_theme_support( 'genesis-responsive-viewport' );
 
-// Adds support for custom header.
-add_theme_support(
-	'custom-header', array(
-		'flex-width'     => true,
-		'flex-height'     => true,
-		'header-selector' => '.site-title a',
-		'header-text'     => false,
-		'height'          => 160,
-		'width'           => 600,
-	)
-);
-
 // Replace CSS header logo with real <img> logo.
 add_action( 'init', 'trestle_custom_header' );
 
