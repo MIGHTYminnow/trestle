@@ -328,3 +328,22 @@ function trestle_nav_primary_location() {
 	}
 
 }
+
+add_filter( 'wp_nav_menu_items', 'trestle_custom_nav_extras', 10, 2 );
+/**
+ * Add custom nav extras.
+ *
+ * @since 1.0.0
+ *
+ * @param  string   $nav_items <li> list of menu items.
+ * @param  stdClass $menu_args Arguments for the menu.
+ * @return string   <li> list of menu items with custom navigation extras <li> appended.
+ */
+function trestle_custom_nav_extras( $nav_items, stdClass $menu_args ) {
+
+	if ( 'primary' == $menu_args->theme_location && trestle_get_option( 'search_in_nav' ) ) {
+		return $nav_items . '<li class="right custom">' . get_search_form( false ) . '</li>';
+	}
+
+	return $nav_items;
+}
