@@ -305,3 +305,26 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 	return $title;
 
 }
+
+
+/*===========================================
+ * Navigation
+===========================================*/
+
+add_action( 'wp_loaded', 'trestle_nav_primary_location' );
+/**
+ * Move primary navigation into the header if need be.
+ *
+ * This is hooked on wp_loaded instead of init because for some reason init
+ * won't fire on the customizer preview.
+ *
+ * @since  1.2.0
+ */
+function trestle_nav_primary_location() {
+
+	if ( 'header' == trestle_get_option( 'nav_primary_location' ) ) {
+		remove_action( 'genesis_after_header', 'genesis_do_nav' );
+		add_action( 'genesis_header', 'genesis_do_nav', 12 );
+	}
+
+}
