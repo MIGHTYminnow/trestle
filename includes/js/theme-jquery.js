@@ -29,14 +29,14 @@ jQuery( document ).ready( function( $ ) {
 	$( 'li:last-child' ).addClass( 'last' );
 	$( 'li:first-child' ).addClass( 'first' );
 	$( 'ul, ol' ).parent( 'li' ).addClass( 'parent' );
-/*
+
 	// Create container for toggle buttons.
 	if ( $body.hasClass( 'big-button-nav-toggle' ) ) {
 		$( '.site-header' ).after( '<div class="header-toggle-buttons" />' );
 	} else {
 		$( '.site-header .title-area' ).after( '<div class="header-toggle-buttons" />' );
 	}
-
+/*
 	// Add either small icon toggles or big button toggle.
 	$( '.site-header .widget-area, .nav-primary' ).each( function( i ) {
 
