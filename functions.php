@@ -41,6 +41,9 @@ require_once dirname( __FILE__ ) . '/includes/admin/admin.php';
 // Customizer controls.
 require_once dirname( __FILE__ ) . '/includes/admin/customizer.php';
 
+// Shortcodes.
+require_once dirname( __FILE__ ) . '/includes/shortcodes/shortcodes.php';
+
 add_action( 'genesis_setup', 'trestle_theme_setup', 15 );
 /**
  * Initialize Trestle.
