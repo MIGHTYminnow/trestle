@@ -13,6 +13,38 @@
  */
 
 /* Table of Contents
+	- Site Header
+		- Logo
+*/
+
+/*
+Site Header
+---------------------------------------------------------------------------------------------------- */
+
+/* Logo
+--------------------------------------------- */
+
+#site-container .site-header > .wrap .title-area .logo-mobile {
+	display: block;
+}
+#site-container .site-header > .wrap .title-area .logo-full {
+	display: none;
+}
+
+@media( min-width: 768px ) {
+	#site-container .site-header > .wrap .title-area .logo-mobile {
+		display: none;
+	}
+	#site-container .site-header > .wrap .title-area .logo-full {
+		display: block;
+	}	
+}
+
+#site-container .site-header > .wrap .title-area .logo.show {
+	display: block !important;
+}
+
+/* Table of Contents
 	- HTML5 Reset
 		- Baseline Normalize
 		- Box Sizing

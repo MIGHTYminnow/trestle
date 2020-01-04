@@ -230,13 +230,13 @@ function trestle_body_classes( $classes ) {
  * Header
 ===========================================*/
 
-add_filter( 'genesis_seo_title', 'trestle_do_logos', 10, 3 );
+add_action( 'genesis_site_title', 'trestle_do_logos' );
 /**
  * Output logos.
  *
  * @since 1.0.0
  */
-function trestle_do_logos( $title, $inside, $wrap ) {
+function trestle_do_logos() {
 
 	$logo_id = trestle_get_option( 'logo_id' );
 	$logo_id_mobile = trestle_get_option( 'logo_id_mobile' );
@@ -297,12 +297,7 @@ function trestle_do_logos( $title, $inside, $wrap ) {
 		);
 	}
 
-	// Build the title.
-	$title  = genesis_html5() ? sprintf( "<{$wrap} %s>", genesis_attr( 'site-title' ) ) : sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
-	$title .= genesis_html5() ? "{$inside}</{$wrap}>" : '';
-
-	// Echo (filtered).
-	return $title;
+	echo $inside;
 
 }
 

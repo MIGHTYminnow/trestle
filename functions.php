@@ -237,17 +237,6 @@ if ( ! function_exists( 'trestle_custom_header' ) ) {
 	function trestle_custom_header() {
 		remove_action( 'wp_head', 'genesis_custom_header_style' );
 		remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
-		add_action( 'genesis_site_title', 'trestle_print_logo' );
-	}
-}
-
-if ( ! function_exists( 'trestle_print_logo' ) ) {
-	function trestle_print_logo() {
-		?>
-		<a href="<?php echo site_url(); ?>">
-			<img src="<?php echo get_header_image(); ?>" alt="<?php echo get_bloginfo( 'name' ); ?>">
-		</a>
-		<?php
 	}
 }
 
