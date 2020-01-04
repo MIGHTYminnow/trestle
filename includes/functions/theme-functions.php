@@ -396,3 +396,23 @@ function trestle_post_classes( $classes ) {
 	return $classes;
 
 }
+
+add_filter( 'wp_revisions_to_keep', 'trestle_update_revisions_number', 10, 2 );
+/**
+ * Sets the number of post revisions.
+ *
+ * @since  1.0.0
+ *
+ * @param  int $num Default number of post revisions.
+ * @return int      Number of post revisions specified in Trestle admin panel.
+ */
+function trestle_update_revisions_number( $num ) {
+
+	$trestle_revisions_number = esc_attr( trestle_get_option( 'revisions_number' ) );
+
+	if ( isset( $trestle_revisions_number ) ) {
+		return $trestle_revisions_number;
+	}
+
+	return $num;
+}
