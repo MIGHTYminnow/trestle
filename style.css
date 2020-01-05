@@ -5359,6 +5359,55 @@ Site Navigation
 	background: #E8510E;
 }
 
+@media( min-width: 768px ) {
+	.trestle-classic .header-toggle-buttons{
+		display: none;
+	}
+}
+
+/* -------------------------------------------------------- *
+ * - Primary Navigation
+ * -------------------------------------------------------- */
+@media( min-width: 768px ) {
+	.trestle-classic #genesis-nav-primary{
+		z-index: 9999999;
+		overflow: visible;
+		position: relative;
+		opacity: 1;
+	}
+	.trestle-classic #genesis-nav-primary .menu{
+		display: flex;
+		justify-content: flex-start;
+	}
+	.trestle-classic #genesis-nav-primary .menu > .menu-item{
+		position: relative;
+		width: auto;
+	}
+	.trestle-classic #genesis-nav-primary .menu > .menu-item > a{
+		border: none;
+	}
+	.trestle-classic #genesis-nav-primary .menu > .menu-item-has-children > a::after{
+		content: "\f0d7";
+		margin-left: 10px;
+		font-family: FontAwesome;
+	}
+	.trestle-classic #genesis-nav-primary .sub-icon{
+		display: none;
+	}
+	.trestle-classic #genesis-nav-primary .menu > .menu-item > .sub-menu{
+		position: absolute !important;
+		top: auto;
+		right: auto;
+		bottom: 0;
+		left: 0;
+		width: 200px;
+		transform: translate( 0, 100% );
+	}
+	.trestle-classic #genesis-nav-primary .menu > .menu-item:hover > .sub-menu{
+			display: block !important;	
+	}
+}
+
 /* ======================================================== *
  * = Big Button Mobile Menu Toggle 
  * ======================================================== */
