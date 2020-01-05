@@ -5551,3 +5551,31 @@ Site Navigation
 	text-decoration: none;
 	transform: none;
 }
+
+/* -------------------------------------------------------- *
+ * - SearchForm in Mobile Menu 
+ * -------------------------------------------------------- */
+#genesis-nav-primary li{
+	float: none;
+}
+#genesis-nav-primary .search-form{
+	display: flex;
+	width: 100% !important;
+}
+#genesis-nav-primary .search-form .search-form-label{
+	display: none;
+}
+#genesis-nav-primary .search-form .search-form-input{
+	display: block;
+	max-width: none;
+	width: calc( 100% - 60px );
+	margin-right: 10px;
+}
+#genesis-nav-primary .search-form .search-form-submit{
+	padding: 0;
+}
+@media( min-width: 768px ) {
+	#genesis-nav-primary .search-form{
+		display: none !important;
+	}
+}
