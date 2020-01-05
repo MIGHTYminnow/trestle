@@ -30,16 +30,16 @@ jQuery( document ).ready( function( $ ) {
 	$( 'li:first-child' ).addClass( 'first' );
 	$( 'ul, ol' ).parent( 'li' ).addClass( 'parent' );
 
-/*
+
 	// Create container for toggle buttons.
 	if ( $body.hasClass( 'big-button-nav-toggle' ) ) {
-		$( '.site-header' ).after( '<div class="header-toggle-buttons" />' );
+		$( '.trestle-classic .site-header' ).after( '<div class="header-toggle-buttons" />' );
 	} else {
-		$( '.site-header .title-area' ).after( '<div class="header-toggle-buttons" />' );
+		$( '.trestle-classic .site-header .title-area' ).after( '<div class="header-toggle-buttons" />' );
 	}
 
 	// Add either small icon toggles or big button toggle.
-	$( '.site-header .widget-area, .nav-primary' ).each( function( i ) {
+	$( '.trestle-classic .site-header .widget-area, .trestle-classic .nav-primary' ).each( function( i ) {
 
 		// Store target.
 		$target = $( this );
@@ -69,14 +69,14 @@ jQuery( document ).ready( function( $ ) {
 		}
 
 		// Add toggle buttons to header.
-		$( '.header-toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">' + navText + '</a>' );
+		$( '.trestle-classic .header-toggle-buttons' ).prepend( '<a id="toggle-button-' + i + '" class="' + buttonClass + '" href="#">' + navText + '</a>' );
 
 		// Add target class to nav and widget areas.
 		$target.addClass( 'toggle-target-' + i );
 	});
 
 	// A widget areas and primary nav mobile toggle functionality.
-	$( '.header-toggle-buttons .toggle-button' ).click( function( event ) {
+	$( '.trestle-classic .header-toggle-buttons .toggle-button' ).click( function( event ) {
 
 		// Prevent default behavior.
 		event.preventDefault();
@@ -88,15 +88,15 @@ jQuery( document ).ready( function( $ ) {
 		$button = $( this );
 
 		// Match the button to the right target.
-		$target = $( '.toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
+		$target = $( '.trestle-classic .toggle-target-' + $button.attr( 'id' ).match( /\d+/ ) );
 
 		// Toggle buttons.
 		$button.toggleClass( 'open' );
-		$( '.header-toggle-buttons .toggle-button' ).not( $button ).removeClass( 'open' );
+		$( '.trestle-classic .header-toggle-buttons .toggle-button' ).not( $button ).removeClass( 'open' );
 
 		// Toggle targets.
 		$target.toggleClass( 'open' );
-		$( '[class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
+		$( '.trestle-classic [class*="toggle-target"]' ).not( $target ).removeClass( 'open' );
 
 		// Remove focus.
 		$button.blur();
@@ -108,11 +108,11 @@ jQuery( document ).ready( function( $ ) {
 	var openIcon = '-';
 
 	// Insert the icons into the nav where appropriate.
-	$( '.nav-primary' ).find( '.genesis-nav-menu .parent:not( [class*="current"] ) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
-	$( '.nav-primary' ).find( '.genesis-nav-menu .parent[class*="current"] > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
+	$( '.trestle-classic .nav-primary' ).find( '.genesis-nav-menu .parent:not( [class*="current"] ) > a' ).after( '<a class="sub-icon" href="#">' + closedIcon + '</a>' );
+	$( '.trestle-classic .nav-primary' ).find( '.genesis-nav-menu .parent[class*="current"] > a' ).after( '<a class="sub-icon" href="#">' + openIcon + '</a>' );
 
 	// Mobile navigation expand/contract functionality.
-	$( '.sub-icon' ).click( function( event ) {
+	$( '.trestle-classic .sub-icon' ).click( function( event ) {
 
 		// Prevent default behavior.
 		event.preventDefault();
@@ -135,7 +135,7 @@ jQuery( document ).ready( function( $ ) {
 	});
 
 	// Header widget area expand/contract functionality.
-	$( '.widget-area-toggle' ).click( function( event ) {
+	$( '.trestle-classic .widget-area-toggle' ).click( function( event ) {
 
 		// Prevent default behavior.
 		event.preventDefault();
@@ -149,7 +149,7 @@ jQuery( document ).ready( function( $ ) {
 		// Expand/contract.
 		$button.toggleClass( 'open' ).next( '.widget-area' ).slideToggle();
 	});
-*/
+
 	//Remove accessibility menu toggle on mobile.
 	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		$( 'ul.menu-primary' ).superfish( 'destroy' );
@@ -181,6 +181,12 @@ jQuery( document ).ready( function( $ ) {
 	// Executes when complete page is fully loaded, including all frames, objects, and images.
 	$( window ).on( 'load', function() {
 
+	});
+
+	jQuery(document).ready(function($){
+		$( '.trestle-classic #genesis-mobile-nav-primary' ).remove();
+		$( '.trestle-classic #genesis-nav-primary' ).removeClass( 'genesis-responsive-menu' );
+		$( '.trestle-classic .header-toggle-buttons a' ).removeClass( '.targets-genesis-responsive-menu' );
 	});
 
 }); /* end of page load scripts */

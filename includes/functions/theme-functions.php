@@ -186,9 +186,13 @@ function trestle_body_classes( $classes ) {
 		$classes[] = 'doc-link-icons';
 	}
 
+	$header_style = trestle_get_option( 'header_style' );
+	$classes[] = ( $header_style ) ? "trestle-{$header_style}" : 'trestle-modern';
+
 	// Logo position
 	if ( trestle_get_option( 'logo_position' ) ) {
 		$classes[] = trestle_get_option( 'logo_position' );
+		$classes[] = 'logo-' . trestle_get_option( 'logo_position' );
 	}
 
 	// Add menu style class.
@@ -319,7 +323,7 @@ add_action( 'wp_loaded', 'trestle_nav_primary_location' );
  */
 function trestle_nav_primary_location() {
 
-	if ( 'header' == trestle_get_option( 'nav_primary_location' ) ) {
+	if ( 'header' == trestle_get_option( 'nav_primary_location' ) || 'modern' == trestle_get_option( 'header_style' ) ) {
 		remove_action( 'genesis_after_header', 'genesis_do_nav' );
 		add_action( 'genesis_header', 'genesis_do_nav', 12 );
 	}

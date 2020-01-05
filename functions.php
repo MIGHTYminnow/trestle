@@ -339,10 +339,6 @@ add_theme_support(
 	)
 );
 
-// Repositions primary navigation menu.
-remove_action( 'genesis_after_header', 'genesis_do_nav' );
-add_action( 'genesis_header', 'genesis_do_nav', 12 );
-
 // Repositions the secondary navigation menu.
 remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 add_action( 'genesis_footer', 'genesis_do_subnav', 5 );
@@ -771,7 +767,9 @@ add_filter( 'genesis_markup_search-form-submit_open', function( $open, $args ) {
 }, 1, 2 );
 
 add_filter( 'genesis_markup_search-form-submit_content', function( $open, $args ) {
-	return '<i class="fa fa-search" aria-hidden="true"></i><span class="screen-reader-text">Search</span>';
+	return ( 'classic' == trestle_get_option( 'header_style' ) )
+		? '<span class="search-submit-text">Search</span>'
+		: '<i class="fa fa-search" aria-hidden="true"></i><span class="screen-reader-text">Search</span>';
 }, 1, 2 );
 
 add_filter( 'genesis_markup_search-form-submit_close', function( $open, $args ) {

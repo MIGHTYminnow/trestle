@@ -1,4 +1,4 @@
-/**
+	/**
  * Theme Name: Trestle
  * Theme URI: https://github.com/MIGHTYminnow/trestle
  * Template: genesis
@@ -4806,4 +4806,620 @@ legend{
 	#site-container .site-header > .wrap #genesis-nav-primary{
 		width: 900px;
 	}
+}
+
+
+/* ======================================================== *
+ * = Trestle Classic 
+ * ======================================================== */
+
+/*
+Site Header
+---------------------------------------------------------------------------------------------------- */
+
+.trestle-classic .site-header {
+	position: relative;
+	background-color: #fff;
+}
+
+.trestle-classic .site-header .wrap {
+	padding: 20px;
+	padding: 2rem;
+}
+
+/* Title Area
+--------------------------------------------- */
+
+.trestle-classic .title-area {
+	float: left;
+	width: auto;
+	font-weight: 700;
+}
+
+.trestle-classic .center .title-area {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.trestle-classic .site-title {
+	font-size: 28px;
+	font-size: 2.8rem;
+	line-height: 1;
+	margin: 0 0 8px;
+	margin: 0 0 0.8rem;
+	text-transform: uppercase;
+}
+
+.trestle-classic .site-title a,
+.trestle-classic .site-title a:hover {
+	color: #333;
+}
+
+.trestle-classic .site-description {
+	color: #999;
+	font-size: 16px;
+	font-size: 1.6rem;
+	font-weight: 300;
+	line-height: 1;
+	margin-bottom: 0;
+}
+
+.trestle-classic .has-logo .site-title a:first-child {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+}
+
+/* Logo
+--------------------------------------------- */
+
+.trestle-classic .logo-full {
+	display: none;
+}
+
+.trestle-classic .logo.show {
+	display: inline-block !important;
+}
+
+/* Header Widget Areas
+--------------------------------------------- */
+
+.trestle-classic .site-header .widget-area {
+	width: 100%;
+	padding: 20px;
+	background-color: #eee;
+	border: 1px solid #ddd;
+	border-width: 1px 0;
+	overflow: hidden;
+}
+
+.trestle-classic .site-header .search-form {
+	margin: 0 auto ;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* Header Toggle Styles
+--------------------------------------------- */
+
+.trestle-classic .header-toggle-buttons {
+	font-size: 0;
+	text-align: right;
+}
+
+.trestle-classic .header-toggle-buttons .toggle-button {
+	margin-left: 15px;
+}
+
+.trestle-classic .header-toggle-buttons .toggle-button.open {
+	color: #f15123;
+}
+
+.trestle-classic .header-toggle-buttons .toggle-button:before {
+	content: "\f002";
+	font-family: FontAwesome;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	-webkit-font-smoothing: antialiased;
+	font-size: 28px;
+	font-size: 2.8rem;
+	line-height: 1;
+}
+
+.trestle-classic .header-toggle-buttons .toggle-button.nav-toggle:before {
+	content: "\f0c9";
+}
+
+.trestle-classic .big-button-nav-toggle .header-toggle-buttons .nav-toggle {
+	display: block;
+	background-color: #333;
+	color: #fff;
+	margin-left: 0;
+	font-size: 16px;
+	font-size: 1.6rem;
+	padding: 15px 26px;
+	padding: 1.5rem 2.6rem;
+	margin: 0 20px;
+	margin: 0 2rem;
+	text-align: center;
+	border-radius: 3px;
+	text-transform: uppercase;
+	-webkit-transition: all 0s;
+	   -moz-transition: all 0s;
+	    -ms-transition: all 0s;
+	     -o-transition: all 0s;
+		    transition: all 0s;
+}
+
+.trestle-classic .big-button-nav-toggle .header-toggle-buttons .nav-toggle:before {
+	content: "\f0ca";
+	margin-right: 8px;
+	font-size: 16px;
+	font-size: 1.6rem;
+}
+
+.trestle-classic .big-button-nav-toggle .header-toggle-buttons .targets-widget-area {
+	position: absolute;
+	right: 20px;
+	right: 2rem;
+	top: 20px;
+	top: 2rem;
+}
+
+.trestle-classic .nav-primary,
+.trestle-classic .site-header .widget-area {
+	position: absolute;
+	z-index: -999;
+	top: 100%;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	box-shadow: 0 4px 8px 1px rgba(0,0,0,0.4);
+	-webkit-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	   -moz-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	    -ms-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	     -o-transition: opacity 0.25s ease, z-index 0s 0.25s;
+	        transition: opacity 0.25s ease, z-index 0s 0.25s;
+}
+
+.trestle-classic .site-container > .nav-primary {
+	top: auto;
+}
+
+.trestle-classic .nav-primary.open,
+.trestle-classic .widget-area.open {
+	z-index: 50;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	-webkit-transition: z-index 0s ease, opacity 0.25s 0s;
+	   -moz-transition: z-index 0s ease, opacity 0.25s 0s;
+	    -ms-transition: z-index 0s ease, opacity 0.25s 0s;
+	     -o-transition: z-index 0s ease, opacity 0.25s 0s;
+	        transition: z-index 0s ease, opacity 0.25s 0s;
+}
+
+/*
+Site Navigation
+---------------------------------------------------------------------------------------------------- */
+
+/* General Navigation
+--------------------------------------------- */
+
+.trestle-classic #menu-toggle {
+	display: block;
+	clear: both;
+	margin: 0 20px;
+	margin: 0 2rem;
+	text-align: center;
+
+}
+
+.trestle-classic .bubble #menu-toggle {
+	margin-top: 20px;
+	margin-top: 2rem;
+}
+
+.trestle-classic .genesis-nav-menu {
+	clear: both;
+	margin: 0;
+	color: #999;
+	width: 100%;
+}
+
+.trestle-classic .genesis-nav-menu li {
+	position: relative;
+	display: block;
+	border-width: 1px 0;
+}
+
+.trestle-classic .genesis-nav-menu li.first {
+	border-top: none;
+}
+
+.trestle-classic .genesis-nav-menu a {
+	border: 0 solid #eee;
+	border-bottom-width: 1px;
+}
+
+.trestle-classic .genesis-nav-menu a,
+.trestle-classic .genesis-nav-menu > .right {
+	color: #999;
+	display: block;
+	position: relative;
+}
+
+.trestle-classic .genesis-nav-menu a:hover,
+.trestle-classic .genesis-nav-menu [class*="current-"] > a,
+.trestle-classic .genesis-nav-menu [class*="current_"] > a {
+	color: #fff;
+}
+
+.trestle-classic .genesis-nav-menu > li > a {
+	text-transform: uppercase;
+}
+
+.trestle-classic .genesis-nav-menu > .rss > a {
+	margin-right: 15px;
+	margin-right: 1.5rem;
+}
+
+/* Sub Navigation
+--------------------------------------------- */
+
+.trestle-classic .genesis-nav-menu ul {
+	display: none;
+	margin: 0;
+	background-color: #fff;
+	border-bottom: 1px solid #eee;
+	-webkit-transition: opacity .4s ease-in-out;
+	   -moz-transition: opacity .4s ease-in-out;
+	    -ms-transition: opacity .4s ease-in-out;
+	     -o-transition: opacity .4s ease-in-out;
+	        transition: opacity .4s ease-in-out;
+}
+
+.trestle-classic .genesis-nav-menu [class*="current-"] > ul,
+.trestle-classic .genesis-nav-menu [class*="current_"] > ul {
+	display: block !important;
+}
+
+.trestle-classic .genesis-nav-menu li ul {
+	border: 0 solid #eee;
+}
+
+.trestle-classic .genesis-nav-menu > li > ul {
+	font-size: 0.9em;
+}
+
+.trestle-classic .genesis-nav-menu ul li {
+	padding-left: 15px;
+	padding-left: 1.5rem;
+}
+
+.trestle-classic .genesis-nav-menu ul a {
+	position: relative;
+	padding: 10px 5px;
+}
+
+.trestle-classic .genesis-nav-menu ul a:hover,
+.trestle-classic .genesis-nav-menu ul [class*="current-"] > a,
+.trestle-classic .genesis-nav-menu ul [class*="current_"] > a {
+	color: #222;
+}
+
+.trestle-classic .genesis-nav-menu .sub-icon,
+.trestle-classic .genesis-nav-menu ul .sub-icon {
+	position: absolute;
+	z-index: 99;
+	top: 0;
+	right: 0;
+	width: 50px;
+	padding-left: 0;
+	padding-right: 0;
+	background-color: transparent;
+	border: none;
+	text-align: center;
+}
+
+/* Primary Navigation
+--------------------------------------------- */
+
+.trestle-classic .nav-primary,
+.trestle-classic .nav-secondary {
+	overflow: hidden;
+	background-color: #333;
+}
+
+.trestle-classic .nav-primary a {
+	padding-right: 50px;
+	padding-right: 5rem;
+}
+
+.trestle-classic .big-button-nav-toggle .nav-primary {
+	margin: 4px 20px 0;
+	margin: 0.4rem 2rem 0;
+	border-radius: 3px;
+	box-shadow: none;
+}
+
+/* Navigation Extras
+--------------------------------------------- */
+
+.trestle-classic .genesis-nav-menu > .right > a {
+	display: inline;
+	padding: 0;
+	border: none;
+}
+
+.trestle-classic .genesis-nav-menu > .right .button,
+.trestle-classic .genesis-nav-menu > .right .search-form {
+	margin: -1em 0;
+	color: #fff;
+}
+
+.trestle-classic .genesis-nav-menu > .right .button {
+	margin: -0.6em 0;
+}
+
+.trestle-classic .genesis-nav-menu > .right .button,
+.trestle-classic .genesis-nav-menu > .right input {
+	display: inline-block;
+	float: none !important;
+	width: auto;
+	padding: 0.6em 1.2em;
+}
+
+.trestle-classic .genesis-nav-menu > .right .search-form {
+	display: block;
+	padding: 0;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.trestle-classic .genesis-nav-menu > .right input[type="submit"] {
+	margin: 0 0 0 0.5em;
+}
+
+/* Secondary Navigation
+--------------------------------------------- */
+
+.trestle-classic .nav-secondary {
+	background-color: #fff;
+}
+
+.trestle-classic .nav-secondary a:hover,
+.trestle-classic .nav-secondary [class*="current-"] > a,
+.trestle-classic .nav-secondary [class*="current_"] > a {
+	color: #111;
+}
+
+/* Header Navigation
+--------------------------------------------- */
+
+.trestle-classic .site-header .widget-area .menu a,
+.trestle-classic .site-header .widget-area .menu .right {
+	padding: 15px 10px;
+	padding: 1.5rem 1rem;
+	font-size: .8em;
+	border-bottom-width: 0;
+}
+
+.trestle-classic .site-header .widget-area .menu a:hover,
+.trestle-classic .site-header .widget-area .menu [class*="current-"] > a,
+.trestle-classic .site-header .widget-area .menu [class*="current_"] > a {
+	color: #333;
+}
+
+.trestle-classic .site-header .widget-area .menu > li {
+	display: inline-block;
+	border-top: none;
+}
+
+.trestle-classic .site-header .widget-area .menu li ul {
+	display: none;
+}
+
+/* Header Primary Navigation
+--------------------------------------------- */
+
+.trestle-classic .site-header .nav-primary {
+	margin: 0;
+}
+
+.trestle-classic .site-header .nav-primary .wrap {
+	padding: 0;
+}
+
+.trestle-classic .site-header .right {
+	padding-right: 0;
+}
+
+/** Manual Fixes */
+.trestle-classic #genesis-nav-primary .wrap {
+	padding: 0 !important;
+}
+.trestle-classic .genesis-nav-menu > li > a{
+	margin: 0;
+}
+
+.trestle-classic #genesis-nav-primary li{
+	position: relative;
+	padding: 0;
+	width: 100%;
+}
+.trestle-classic #genesis-nav-primary a{
+	padding: 14px 10px;
+	font-weight: normal;
+	text-decoration: none !important;
+}
+.trestle-classic #genesis-nav-primary a:first-child{
+	width: 100%;
+}
+.trestle-classic #genesis-nav-primary .sub-menu{
+	display: none !important;
+	position: relative !important;
+	opacity: 1 !important;
+	left: 0;
+	width: 100%;
+	border-radius: 0;
+}
+.trestle-classic #genesis-nav-primary .sub-menu.open{
+	display: block !important;
+}
+.trestle-classic #genesis-nav-primary .sub-menu a{
+	font-size: 14px !important;
+}
+
+/* -------------------------------------------------------- *
+ * - Logo
+ * -------------------------------------------------------- */
+.trestle-classic #site-container .site-header > .wrap .title-area a{
+	display: inline-block;
+}
+
+/* -------------------------------------------------------- *
+ * - Header Toggle Buttons 
+ * -------------------------------------------------------- */
+.trestle-classic .header-toggle-buttons{
+	order: 2;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area{
+	padding: 18px 20px;
+	display: block;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .widget_text,
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .widget_text *{
+	position: relative;
+	top: auto;
+	left: auto;
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	text-align: left;
+	transform: none;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .widget_text{
+	margin-bottom: 20px;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .widget_text a{
+	display: inline-block;
+	font-weight: 300;
+	font: 300 1.6rem/1.625 'Lato', sans-serif;
+	color: #666;
+}
+.trestle-classic .site-header .search-form-input{
+	display: block;
+}
+.trestle-classic .site-header .widget_search{
+	width: auto;
+	height: auto;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .search-form{
+	display: flex;
+	padding: 0 !important;
+	border-radius: 0 !important;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .search-form label{
+	display: none;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .search-form-input{
+	flex-grow: 1;
+	margin: 0 10px 0 0;
+	padding: 20px;
+	width: calc( 100% - 140px ) !important;
+	max-width: none;
+	height: 52px;
+	font-weight: 700;
+	color: #999;
+	border: 1px solid #DDD;
+	border-radius: 3px;
+	box-shadow: 1px 1px 3px #eee inset;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .search-form-input::placeholder {
+	color: #999;
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .search-form-submit{
+	margin: 0;
+	padding: 10px 26px;
+	width: 120px;
+	height: 52px;
+	font-size: 16px !important;
+	border-radius: 3px !important;
+	background: #333; 
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .search-form-submit:hover,
+.trestle-classic #site-container .site-header > .wrap .header-widget-area .search-form-submit:focus{
+	color: #FFF;
+	background: #E8510E;
+}
+
+/* ======================================================== *
+ * = Big Button Mobile Menu Toggle 
+ * ======================================================== */
+
+/* -------------------------------------------------------- *
+ * - Site Header 
+ * -------------------------------------------------------- */
+.trestle-classic.big-button-nav-toggle #site-container .site-header{
+	border: none;
+}
+
+/* -------------------------------------------------------- *
+ * - Header Widget Area 
+ * -------------------------------------------------------- */
+.trestle-classic #site-container .site-header > .wrap .header-widget-area{
+	position: absolute;
+	top: auto;
+	bottom: 0;
+	padding: 0;
+	width: 100%;
+	height: 0;
+	transform: translate( 0, 100% );
+}
+.trestle-classic #site-container .site-header > .wrap .header-widget-area.open{
+	height: auto;
+	padding: 20px;
+}
+
+/* -------------------------------------------------------- *
+ * - Header Toggle Buttons 
+ * -------------------------------------------------------- */
+
+/* Navigation Button */
+.trestle-classic.big-button-nav-toggle .targets-nav-primary,
+.trestle-classic.big-button-nav-toggle .targets-nav-primary:hover,
+.trestle-classic.big-button-nav-toggle .targets-nav-primary:focus{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 15px;
+	padding: 20px;
+	font-size: 16px;
+	line-height: 1;
+	color: #FFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	background: #333;
+	border-radius: 3px;
+}
+.trestle-classic.big-button-nav-toggle .targets-nav-primary::before{
+	margin-right: 10px;
+	font-size: 16px;
+}
+
+/* Search Button */
+.trestle-classic.big-button-nav-toggle .targets-widget-area{
+	z-index: 99999;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	margin: 0;
+	text-decoration: none;
+	transform: none;
 }

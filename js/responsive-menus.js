@@ -402,7 +402,9 @@
 
 		if ( _getAllMenusArray() !== null ) {
 
-			genesisMenu.init();
+			if ( jQuery( 'body' ).hasClass( 'trestle-modern' ) ) {
+				genesisMenu.init();
+			}
 
 		}
 
