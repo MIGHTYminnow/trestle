@@ -5282,6 +5282,25 @@ Site Navigation
 	display: inline-block;
 }
 
+@media( min-width: 768px ) {
+	.trestle-classic #site-container .site-header > .wrap .title-area{
+		float: left;
+		max-width: 50%;
+		width: auto;
+	}
+}
+
+/* -------------------------------------------------------- *
+ * - Logo (Centered Logo)
+ * -------------------------------------------------------- */
+@media( min-width: 768px ) {
+	.logo-center.trestle-classic #site-container .site-header > .wrap .title-area{
+		max-width: 100%;
+		width: 100%;
+		text-align: center;
+	}
+}
+
 /* -------------------------------------------------------- *
  * - Header Toggle Buttons 
  * -------------------------------------------------------- */
@@ -5366,6 +5385,39 @@ Site Navigation
 }
 
 /* -------------------------------------------------------- *
+ * - Header Widget Area
+ * -------------------------------------------------------- */
+@media( min-width: 768px ) {
+	.trestle-classic #site-container .site-header > .wrap .header-widget-area.widget-area{
+		z-index: 999999;
+		float: right;
+		position: relative;
+		max-width: 50%;
+		width: auto;
+		height: auto;
+		opacity: 1;
+		transform: none;
+		box-shadow: none;
+		background: none;
+		border: none;
+	}
+	.trestle-classic #site-container .site-header > .wrap .header-widget-area .widget_text .textwidget *{
+		text-align: right;
+		background: none;
+	}
+}
+
+/* -------------------------------------------------------- *
+ * - Logo (Centered Logo)
+ * -------------------------------------------------------- */
+@media( min-width: 768px ) {
+	.logo-center.trestle-classic #site-container .site-header > .wrap .header-widget-area.widget-area{
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+/* -------------------------------------------------------- *
  * - Primary Navigation
  * -------------------------------------------------------- */
 @media( min-width: 768px ) {
@@ -5405,6 +5457,33 @@ Site Navigation
 	}
 	.trestle-classic #genesis-nav-primary .menu > .menu-item:hover > .sub-menu{
 			display: block !important;	
+	}
+}
+
+/* -------------------------------------------------------- *
+ * - Primary Navigation (Center)
+ * -------------------------------------------------------- */
+@media( min-width: 768px ) {
+	.nav-primary-location-center.trestle-classic #genesis-nav-primary .menu{
+		justify-content: center;
+	}
+}
+
+/* -------------------------------------------------------- *
+ * - Primary Navigation (Header Right)
+ * -------------------------------------------------------- */
+@media( min-width: 768px ) {
+	.nav-primary-location-header.trestle-classic #genesis-nav-primary{
+		margin-top: 0 !important;
+		background: none;
+		box-shadow: none;
+	}
+	.nav-primary-location-header.trestle-classic #genesis-nav-primary .menu{
+		width: 100%;
+		justify-content: flex-end;
+	}
+	.nav-primary-location-header.trestle-classic #genesis-nav-primary .menu a:hover{
+		color: #000;
 	}
 }
 
