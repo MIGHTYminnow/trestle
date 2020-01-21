@@ -106,28 +106,6 @@ function trestle_customizer_controls( $wp_customize ) {
 		)
 	);
 
-	// Upload a mobile logo.
-	$wp_customize->add_setting(
-		'trestle-settings[favicon_url]',
-		array(
-			'default'           => trestle_get_option( 'favicon_url' ),
-			'type'              => 'option',
-			'capability'        => 'edit_theme_options',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
-	$wp_customize->add_control(
-		new WP_Customize_Image_Control(
-			$wp_customize,
-			'trestle_favicon_control',
-			array(
-				'label'    => __( 'Upload a favicon', 'trestle' ),
-				'section'  => 'trestle_settings_section',
-				'settings' => 'trestle-settings[favicon_url]',
-			)
-		)
-	);
-
 	// Header style
 	$header_style = trestle_get_option( 'header_style' );
 	$wp_customize->add_setting(

@@ -130,22 +130,6 @@ function trestle_header_actions() {
 
 }
 
-add_filter( 'genesis_pre_load_favicon', 'trestle_do_custom_favicon' );
-/**
- * Output custom favicon if specified in the theme options.
- *
- * @since   1.0.0
- *
- * @param   string  $favicon_url  Default favicon URL.
- *
- * @return  string  Custom favicon URL (if specified), or the default URL.
- */
-function trestle_do_custom_favicon( $favicon_url ) {
-
-	$trestle_favicon_url = trestle_get_option( 'favicon_url' );
-	return $trestle_favicon_url ? $trestle_favicon_url : $favicon_url;
-}
-
 /*===========================================
  * Body Classes
 ===========================================*/
